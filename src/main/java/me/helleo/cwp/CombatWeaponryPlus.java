@@ -5,6 +5,7 @@ package me.helleo.cwp;
 // ctrl + f is very useful for finding things
 
 
+import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -40,7 +41,7 @@ import java.util.*;
 
 public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
-
+    public static String pluginName = "CombatWeaponryPlus";
 
     public List<NamespacedKey> keys = new ArrayList<NamespacedKey>();
 
@@ -63,13 +64,13 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         //emeraldgear
         String ee = this.getConfig().getString("Emerald");
-        if (ee == "true") {
-            Bukkit.addRecipe(getRecipe());
+        if (ConfigurationsBool.Emerald.getValue()) {
+            Bukkit.addRecipe(getEmeraldHelmetRecipe());
             Bukkit.addRecipe(getChestplateRecipe());
             Bukkit.addRecipe(getLeggingsRecipe());
             Bukkit.addRecipe(getBootsRecipe());
         }
-        if (this.getConfig().getString("EmeraldGear") == "true") {
+        if (ConfigurationsBool.EmeraldGear.getValue()) {
             Bukkit.addRecipe(getPickaxeRecipe());
             Bukkit.addRecipe(getSwordRecipe());
             Bukkit.addRecipe(getAxeRecipe());
@@ -79,16 +80,13 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         }
 
         //swords
-        String s = this.getConfig().getString("ChorusBlade");
-        if (s == "true") {
+        if (ConfigurationsBool.ChorusBlade.getValue()) {
             Bukkit.addRecipe(getSworddRecipe());
         }
-        String s2 = this.getConfig().getString("SwordBow");
-        if (s2 == "true") {
+        if (ConfigurationsBool.SwordBow.getValue()) {
             Bukkit.addRecipe(getSwordbowRecipe());
         }
-        String s3 = this.getConfig().getString("HeavySwordBow");
-        if (s3 == "true") {
+        if (ConfigurationsBool.HeavySwordBow.getValue()) {
             Bukkit.addRecipe(getHSwordbowRecipe());
         }
 
@@ -363,7 +361,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-    public ShapedRecipe getRecipe() {
+    public ShapedRecipe getEmeraldHelmetRecipe() {
 
         //emerald helmet
 
@@ -734,7 +732,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
-        recipe.shape(" E ", "PCP", "qBq");
+        recipe.shape(" E ",
+                "PCP",
+                "qBq");
 
         recipe.setIngredient('E', Material.END_ROD);
         recipe.setIngredient('P', Material.ENDER_EYE);

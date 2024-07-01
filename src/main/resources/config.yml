@@ -136,46 +136,46 @@ ChorusEnchantLevels:
   Knockback: 2
 #
 EnchantsSwordBow: true
-SbowEnchantLevels:
+SwordBowEnchantLevels:
   Smite: 5
   Unbreaking: 3
   Mending: 1
 #
 EnchantsHeavySwordBow: true
-HSbowEnchantLevels:
+HeavySwordBowEnchantLevels:
   Smite: 5
   Power: 3
   Unbreaking: 5
   Mending: 1
 #
 EnchantsPlatedChainmail: true
-PChainEnchantLevels:
+PlatedChainmailEnchantLevels:
   Unbreaking: 5
 #
-EnchantsObsidianPick: true
-OPickEnchantLevels:
+EnchantsObsidianPickaxe: true
+ObsidianPickEnchantLevels:
   Unbreaking: 10
 #
 EnchantsDiamondShield: true
-DShieldEnchantLevels:
+DiamondShieldEnchantLevels:
   Unbreaking: 5
 #
 EnchantsNetheriteShield: true
-NShieldEnchantLevels:
+NetheriteShieldEnchantLevels:
   Unbreaking: 10
 #ADJUST DAMAGE MULTIPLIERS=====================================================================================================
 # An easy way to customize damage of basic weapons (knifes, longswords, spears, rapiers, etc.)
 # Damage dealt by these weapons will be multiplied by the numbers below. (default multiplier is 1 for all)
 # These multipliers affect both newly crafted and preexisting weapons.
 # NOTE: the adjusted damage will not show up in the item descriptions. You will have to go and change those item descriptions yourself.
-mKnives: 1
-mRapiers: 1
-mKatanas: 1
-mScythes: 1
-mLongswords: 1
-mSpears: 1
-mSabers: 1
-mCleavers: 1
+MultiplierKnives: 1
+MultiplierRapiers: 1
+MultiplierKatanas: 1
+MultiplierScythes: 1
+MultiplierLongswords: 1
+MultiplierSpears: 1
+MultiplierSabers: 1
+MultiplierCleavers: 1
 #
 #==============================================================================================================================
 #READ THIS:
@@ -190,58 +190,58 @@ mCleavers: 1
 UseCustomValues: true
 #set UseCustomValues to false to make the plugin use the default numbers instead of the numbers below
 #ARMOR: ==================================================================================================================================================================
-aRedstoneCore:
+ArmorRedstoneCore:
   Armor: 2
-aEmeraldHelmet:
+ArmorEmeraldHelmet:
   Armor: 2
   BonusHealth: 1
-aEmeraldChestplate:
+ArmorEmeraldChestplate:
   Armor: 6
   BonusHealth: 1
-aEmeraldLeggings:
+ArmorEmeraldLeggings:
   Armor: 5
   BonusHealth: 1
-aEmeraldBoots:
+ArmorEmeraldBoots:
   Armor: 2
   BonusHealth: 1
-aPlateChainHelmet:
+ArmorPlateChainHelmet:
   Armor: 4
-aPlateChainChestplate:
+ArmorPlateChainChestplate:
   Armor: 6
-aPlateChainLeggings:
+ArmorPlateChainLeggings:
   Armor: 6
-aPlateChainBoots:
+ArmorPlateChainBoots:
   Armor: 4
-aPrismarineHelmet:
+ArmorPrismarineHelmet:
   Armor: 4
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 1
-aPrismarineChestplate:
+ArmorPrismarineChestplate:
   Armor: 9
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 2
-aPrismarineLeggings:
+ArmorPrismarineLeggings:
   Armor: 7
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 2
-aPrismarineBoots:
+ArmorPrismarineBoots:
   Armor: 4
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 1
-aWitherHelmet:
+ArmorWitherHelmet:
   KBResist: 2
   BonusHealth: 5
-aWitherChestplate:
+ArmorWitherChestplate:
   KBResist: 2
   BonusHealth: 5
-aWitherLeggings:
+ArmorWitherLeggings:
   KBResist: 2
   BonusHealth: 5
-aWitherBoots:
+ArmorWitherBoots:
   KBResist: 2
   BonusHealth: 5
 #BOWS: ============================================================================================================

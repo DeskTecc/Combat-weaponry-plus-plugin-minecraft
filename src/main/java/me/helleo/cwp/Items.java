@@ -1,5 +1,6 @@
 package me.helleo.cwp;
 
+import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -36,7 +37,7 @@ public class Items {
         //modifier
         double hp = 1;
         double def = 2;
-        if (config.getString("UseCustomValues") == "true") {
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
             hp = config.getDouble("aEmeraldHelmet.BonusHealth");
             def = config.getDouble("aEmeraldHelmet.Armor");
         }
