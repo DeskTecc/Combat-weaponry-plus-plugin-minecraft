@@ -6,6 +6,11 @@ package me.helleo.cwp;
 
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.items.armors.EmeraldBoots;
+import me.helleo.cwp.items.armors.EmeraldHelmet;
+import me.helleo.cwp.items.armors.EmeraldChestplate;
+import me.helleo.cwp.items.armors.EmeraldLeggings;
+import me.helleo.cwp.items.tools.*;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -29,6 +34,7 @@ import org.bukkit.inventory.meta.CrossbowMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -42,8 +48,9 @@ import java.util.*;
 public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     public static String pluginName = "CombatWeaponryPlus";
+    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("CombatWeaponryPlus");
 
-    public List<NamespacedKey> keys = new ArrayList<NamespacedKey>();
+    public static List<NamespacedKey> keys = new ArrayList<NamespacedKey>();
 
     //Random number thing for  crit
     public static Integer getRandomInt(Integer max) {
@@ -65,17 +72,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         //emeraldgear
         String ee = this.getConfig().getString("Emerald");
         if (ConfigurationsBool.Emerald.getValue()) {
-            Bukkit.addRecipe(getEmeraldHelmetRecipe());
-            Bukkit.addRecipe(getChestplateRecipe());
-            Bukkit.addRecipe(getLeggingsRecipe());
-            Bukkit.addRecipe(getBootsRecipe());
+            Bukkit.addRecipe(EmeraldHelmet.getArmorPieceRecipe());
+            Bukkit.addRecipe(EmeraldChestplate.getArmorPieceRecipe());
+            Bukkit.addRecipe(EmeraldLeggings.getArmorPieceRecipe());
+            Bukkit.addRecipe(EmeraldBoots.getArmorPieceRecipe());
         }
         if (ConfigurationsBool.EmeraldGear.getValue()) {
-            Bukkit.addRecipe(getPickaxeRecipe());
-            Bukkit.addRecipe(getSwordRecipe());
-            Bukkit.addRecipe(getAxeRecipe());
-            Bukkit.addRecipe(getShovelRecipe());
-            Bukkit.addRecipe(getHoeRecipe());
+            Bukkit.addRecipe(EmeraldPickaxe.getToolRecipe());
+            Bukkit.addRecipe(EmeraldSword.getToolRecipe());
+            Bukkit.addRecipe(EmeraldAxe.getToolRecipe());
+            Bukkit.addRecipe(EmeraldShovel.getToolRecipe());
+            Bukkit.addRecipe(EmeraldHoe.getToolRecipe());
 
         }
 
@@ -361,372 +368,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-    public ShapedRecipe getEmeraldHelmetRecipe() {
-
-        //emerald helmet
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_helmet");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, Items.emeraldHelmet(this.getConfig()));
-
-        recipe.shape("EEE", "E E", "   ");
-
-        recipe.setIngredient('E', Material.EMERALD);
-
-        return recipe;
-
-
-    }
-
-    public ShapedRecipe getChestplateRecipe() {
-
-        //emerald chestplate
-
-        ItemStack item = new ItemStack(Material.GOLDEN_CHESTPLATE);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double hp = 1;
-        double def = 6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            hp = this.getConfig().getDouble("aEmeraldChestplate.BonusHealth");
-            def = this.getConfig().getDouble("aEmeraldChestplate.Armor");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Chestplate");
-        if (this.getConfig().getString("EnchantmentsOnEmeraldArmor") == "true") {
-            int num = this.getConfig().getInt("EmeraldArmorEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldArmorEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_chestplate");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("E E", "EEE", "EEE");
-
-        recipe.setIngredient('E', Material.EMERALD);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getLeggingsRecipe() {
-
-        //emerald leggings
-
-        ItemStack item = new ItemStack(Material.GOLDEN_LEGGINGS);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double hp = 1;
-        double def = 5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            hp = this.getConfig().getDouble("aEmeraldLeggings.BonusHealth");
-            def = this.getConfig().getDouble("aEmeraldLeggings.Armor");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Leggings");
-        if (this.getConfig().getString("EnchantmentsOnEmeraldArmor") == "true") {
-            int num = this.getConfig().getInt("EmeraldArmorEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldArmorEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_leggings");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("EEE", "E E", "E E");
-
-        recipe.setIngredient('E', Material.EMERALD);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getBootsRecipe() {
-
-        //emerald boots
-
-        ItemStack item = new ItemStack(Material.GOLDEN_BOOTS);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double hp = 1;
-        double def = 2;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            hp = this.getConfig().getDouble("aEmeraldBoots.BonusHealth");
-            def = this.getConfig().getDouble("aEmeraldBoots.Armor");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Boots");
-        if (this.getConfig().getString("EnchantmentsOnEmeraldArmor") == "true") {
-            int num = this.getConfig().getInt("EmeraldArmorEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldArmorEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_boots");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("   ", "E E", "E E");
-
-        recipe.setIngredient('E', Material.EMERALD);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getPickaxeRecipe() {
-
-        //emerald pickaxe
-
-        ItemStack item = new ItemStack(Material.GOLDEN_PICKAXE);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Pickaxe");
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_pickaxe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("EEE", " S ", " S ");
-
-        recipe.setIngredient('E', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getSwordRecipe() {
-
-        //emerald sword
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double dmg = 5;
-        double spd = -2.2;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aEmeraldSword.damage") - 1;
-            spd = this.getConfig().getDouble("aEmeraldSword.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-        //AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Movement Speed", 0.05,
-        //			Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        //meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-
-        List<String> lore = new ArrayList<String>();
-
-        lore.add("");
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 6 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 1.8 Attack Speed"));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Sword");
-        meta.setCustomModelData(1000017);
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_sword");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" E ", " E ", " S ");
-
-        recipe.setIngredient('E', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getAxeRecipe() {
-
-        //emerald Axe
-
-        ItemStack item = new ItemStack(Material.GOLDEN_AXE);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Axe");
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_axe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("EE ", "ES ", " S ");
-
-        recipe.setIngredient('E', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getShovelRecipe() {
-
-        //emerald shovel
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SHOVEL);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Shovel");
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_shovel");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" E ", " S ", " S ");
-
-        recipe.setIngredient('E', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-
-    //SWORDS
-
-    public ShapedRecipe getHoeRecipe() {
-
-        //emerald hoe
-
-        ItemStack item = new ItemStack(Material.GOLDEN_HOE);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Hoe");
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_hoe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("EE ", " S ", " S ");
-
-        recipe.setIngredient('E', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
     public ShapedRecipe getSworddRecipe() {
 
         //ChorusBlade
 
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.name")));
-
-        if (this.getConfig().getString("EnchantsChorusBlade") == "true") {
-            int num = this.getConfig().getInt("ChorusEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("ChorusEnchantLevels.Knockback");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.KNOCKBACK, num2, true);
-        }
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dChorusBlade.line9")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setLore(lore);
-
-        //modifier
-        double dmg = 3;
-        double spd = 6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aChorusBlade.damage") - 1;
-            spd = this.getConfig().getDouble("aChorusBlade.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        meta.setCustomModelData(1000007);
-        item.setItemMeta(meta);
 
         NamespacedKey key = new NamespacedKey(this, "chorusblade");
         keys.add(key);

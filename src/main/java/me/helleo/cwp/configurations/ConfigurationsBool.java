@@ -60,7 +60,7 @@ public enum ConfigurationsBool {
     AwakenedVesselWhite(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("AwakenedVesselWhite")),
     AwakenedVesselPurple(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("AwakenedVesselPurple")),
     EnchantmentsOnEmeraldArmor(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EnchantmentsOnEmeraldArmor")),
-    EnchantmentsOnEmeraldBear(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EnchantmentsOnEmeraldGear")),
+    EnchantmentsOnEmeraldGear(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EnchantmentsOnEmeraldGear")),
     EnchantsChorusBlade(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EnchantsChorusBlade")),
     EnchantsSwordBow(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EnchantsSwordBow")),
     EnchantsHeavySwordBow(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EnchantsHeavySwordBow")),
@@ -78,6 +78,6 @@ public enum ConfigurationsBool {
         this.value = value;
     }
     public boolean getValue(){
-        return value;
+        return this.value;
     }
 }

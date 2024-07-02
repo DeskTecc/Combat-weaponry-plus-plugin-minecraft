@@ -124,7 +124,7 @@ EmeraldArmorEnchantLevels:
   Unbreaking: 10
   Mending: 1
 #
-EnchantsOnEmeraldGear: false
+EnchantmentsOnEmeraldGear: false
 # THIS INCLUDES ALL EMERALD WEAPONS AND TOOLS
 EmeraldGearEnchantLevels:
   Unbreaking: 10
@@ -190,344 +190,344 @@ MultiplierCleavers: 1
 UseCustomValues: true
 #set UseCustomValues to false to make the plugin use the default numbers instead of the numbers below
 #ARMOR: ==================================================================================================================================================================
-ArmorRedstoneCore:
+Armors_RedstoneCore:
   Armor: 2
-ArmorEmeraldHelmet:
+Armors_EmeraldHelmet:
   Armor: 2
   BonusHealth: 1
-ArmorEmeraldChestplate:
+Armors_EmeraldChestplate:
   Armor: 6
   BonusHealth: 1
-ArmorEmeraldLeggings:
+Armors_EmeraldLeggings:
   Armor: 5
   BonusHealth: 1
-ArmorEmeraldBoots:
+Armors_EmeraldBoots:
   Armor: 2
   BonusHealth: 1
-ArmorPlateChainHelmet:
+Armors_PlateChainHelmet:
   Armor: 4
-ArmorPlateChainChestplate:
+Armors_PlateChainChestplate:
   Armor: 6
-ArmorPlateChainLeggings:
+Armors_PlateChainLeggings:
   Armor: 6
-ArmorPlateChainBoots:
+Armors_PlateChainBoots:
   Armor: 4
-ArmorPrismarineHelmet:
+Armors_PrismarineHelmet:
   Armor: 4
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 1
-ArmorPrismarineChestplate:
+Armors_PrismarineChestplate:
   Armor: 9
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 2
-ArmorPrismarineLeggings:
+Armors_PrismarineLeggings:
   Armor: 7
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 2
-ArmorPrismarineBoots:
+Armors_PrismarineBoots:
   Armor: 4
   ArmorToughness: 3
   KBResist: 1
   BonusHealth: 1
-ArmorWitherHelmet:
+Armors_WitherHelmet:
   KBResist: 2
   BonusHealth: 5
-ArmorWitherChestplate:
+Armors_WitherChestplate:
   KBResist: 2
   BonusHealth: 5
-ArmorWitherLeggings:
+Armors_WitherLeggings:
   KBResist: 2
   BonusHealth: 5
-ArmorWitherBoots:
+Armors_WitherBoots:
   KBResist: 2
   BonusHealth: 5
 #BOWS: ============================================================================================================
-aSwordBow:
-  damage: 9
-  speed: 1
-aHeavySwordBow:
-  damage: 11
-  speed: 0.8
-  moveSpeed: -0.05
-  offhandMoveSpeed: -0.05
+Bows_SwordBow:
+  Damage: 9
+  Speed: 1
+Bows_HeavySwordBow:
+  Damage: 11
+  Speed: 0.8
+  MoveSpeed: -0.05
+  OffhandMoveSpeed: -0.05
   KBResist: 5
-  offhandKBResist: 5
-aLongswordBow:
-  damage: 8
-  speed: 1.4
+  OffhandKBResist: 5
+Bows_LongswordBow:
+  Damage: 8
+  Speed: 1.4
 #increasing arrow speed also increases the damage as well
 #use dmgMultiplier to increase or decrease arrow damage (arrow damage will be multiplied by that number)
-aLongBow:
-  arrowSpeed: 4
-  dmgMultiplier: 1
-aRecurveBow:
-  arrowSpeed: 5
-  dmgMultiplier: 1
-aCompoundBow:
-  arrowSpeed: 6
-  dmgMultiplier: 1
+Bows_LongBow:
+  ArrowSpeed: 4
+  DmgMultiplier: 1
+Bows_RecurveBow:
+  ArrowSpeed: 5
+  DmgMultiplier: 1
+Bows_CompoundBow:
+  ArrowSpeed: 6
+  DmgMultiplier: 1
 #CHARMS: ============================================================================================================
-aEmeraldCharm:
+Charms_EmeraldCharm:
   BonusHealth: 4
   BonusArmor: -2
-aBlazeCharm:
+Charms_BlazeCharm:
   BonusDamage: 4
   BonusHealth: -2
-aGoldCharm:
+Charms_GoldCharm:
   BonusAttackSpeedPercent: 30
   BonusMoveSpeedPercent: -15
 #OTHER: ============================================================================================================
-aInfusedVessel:
-  damage: 10
-  speed: 1.6
-aCursedVessel:
-  damage: 10
-  speed: 1.6
-aAwakenedVesselPurple:
-  damage: 12
-  speed: 1.4
-aAwakenedVesselWhite:
-  damage: 12
-  speed: 1.4
-aVolcanicBlade:
-  damage: 8
-  speed: 1.6
-aVolcanicSpear:
-  damage: 5
-  speed: 2.5
-aVolcanicAxe:
-  damage: 10
-  speed: 1
-aVolcanicCleaver:
-  damage: 13
-  speed: 0.4
-aPrismarinePickaxe:
-  damage: 7
-  speed: 1.2
-aPrismarineAxe:
-  damage: 11
-  speed: 1
-aPrismarineShovel:
-  damage: 7.5
-  speed: 1
-aPrismarineHoe:
-  damage: 2
-  speed: 4
+Others_InfusedVessel:
+  Damage: 10
+  Speed: 1.6
+Others_CursedVessel:
+  Damage: 10
+  Speed: 1.6
+Others_AwakenedVesselPurple:
+  Damage: 12
+  Speed: 1.4
+Others_AwakenedVesselWhite:
+  Damage: 12
+  Speed: 1.4
+Others_VolcanicBlade:
+  Damage: 8
+  Speed: 1.6
+Others_VolcanicSpear:
+  Damage: 5
+  Speed: 2.5
+Others_VolcanicAxe:
+  Damage: 10
+  Speed: 1
+Others_VolcanicCleaver:
+  Damage: 13
+  Speed: 0.4
+Others_PrismarinePickaxe:
+  Damage: 7
+  Speed: 1.2
+Others_PrismarineAxe:
+  Damage: 11
+  Speed: 1
+Others_PrismarineShovel:
+  Damage: 7.5
+  Speed: 1
+Others_PrismarineHoe:
+  Damage: 2
+  Speed: 4
 #SWORDS: ============================================================================================================
-aEmeraldSword:
-  damage: 6
-  speed: 1.8
-aChorusBlade:
-  damage: 4
-  speed: 10
-aPrismarineSword:
-  damage: 9
-  speed: 1.6
+Swords_EmeraldSword:
+  Damage: 6
+  Speed: 1.8
+Swords_ChorusBlade:
+  Damage: 4
+  Speed: 10
+Swords_PrismarineSword:
+  Damage: 9
+  Speed: 1.6
 #BASIC WEAPONS: ============================================================================================================
 #SCYTHES
-aWoodenScythe:
-  damage: 7
-  speed: 1
-aGoldenScythe:
-  damage: 7
-  speed: 1.2
-aStoneScythe:
-  damage: 7.5
-  speed: 1
-aIronScythe:
-  damage: 8
-  speed: 1
-aEmeraldScythe:
-  damage: 8
-  speed: 1.2
-aDiamondScythe:
-  damage: 9
-  speed: 1
-aNetheriteScythe:
-  damage: 10
-  speed: 1
+Scythes_WoodenScythe:
+  Damage: 7
+  Speed: 1
+Scythes_GoldenScythe:
+  Damage: 7
+  Speed: 1.2
+Scythes_StoneScythe:
+  Damage: 7.5
+  Speed: 1
+Scythes_IronScythe:
+  Damage: 8
+  Speed: 1
+Scythes_EmeraldScythe:
+  Damage: 8
+  Speed: 1.2
+Scythes_DiamondScythe:
+  Damage: 9
+  Speed: 1
+Scythes_NetheriteScythe:
+  Damage: 10
+  Speed: 1
 #the amount of dmg added when netherite weapons are upgraded to pris can be customized below (default is +1)
 #the speed will remain the same as the netherite version
-aPrismarineScythe:
-  damageAdded: 1
+Scythes_PrismarineScythe:
+  DamageAdded: 1
 #RAPIERS
-aWoodenRapier:
-  damage: 3
-  speed: 1.9
-aGoldenRapier:
-  damage: 3
-  speed: 2.4
-aStoneRapier:
-  damage: 3.5
-  speed: 1.9
-aIronRapier:
-  damage: 4
-  speed: 1.9
-aEmeraldRapier:
-  damage: 4
-  speed: 2.4
-aDiamondRapier:
-  damage: 5
-  speed: 1.9
-aNetheriteRapier:
-  damage: 6
-  speed: 1.9
-aPrismarineRapier:
-  damageAdded: 1
+Rapiers_WoodenRapier:
+  Damage: 3
+  Speed: 1.9
+Rapiers_GoldenRapier:
+  Damage: 3
+  Speed: 2.4
+Rapiers_StoneRapier:
+  Damage: 3.5
+  Speed: 1.9
+Rapiers_IronRapier:
+  Damage: 4
+  Speed: 1.9
+Rapiers_EmeraldRapier:
+  Damage: 4
+  Speed: 2.4
+Rapiers_DiamondRapier:
+  Damage: 5
+  Speed: 1.9
+Rapiers_NetheriteRapier:
+  Damage: 6
+  Speed: 1.9
+Rapiers_PrismarineRapier:
+  DamageAdded: 1
 #LONGSWORDS
-aWoodenLongsword:
-  damage: 5
-  speed: 1.2
-aGoldenLongsword:
-  damage: 5
-  speed: 1.4
-aStoneLongsword:
-  damage: 6
-  speed: 1.2
-aIronLongsword:
-  damage: 7
-  speed: 1.2
-aEmeraldLongsword:
-  damage: 7
-  speed: 1.4
-aDiamondLongsword:
-  damage: 8
-  speed: 1.2
-aNetheriteLongsword:
-  damage: 9
-  speed: 1.2
-aPrismarineLongsword:
-  damageAdded: 1
+Longswords_WoodenLongsword:
+  Damage: 5
+  Speed: 1.2
+Longswords_GoldenLongsword:
+  Damage: 5
+  Speed: 1.4
+Longswords_StoneLongsword:
+  Damage: 6
+  Speed: 1.2
+Longswords_IronLongsword:
+  Damage: 7
+  Speed: 1.2
+Longswords_EmeraldLongsword:
+  Damage: 7
+  Speed: 1.4
+Longswords_DiamondLongsword:
+  Damage: 8
+  Speed: 1.2
+Longswords_NetheriteLongsword:
+  Damage: 9
+  Speed: 1.2
+Longswords_PrismarineLongsword:
+  DamageAdded: 1
 #KNIVES
-aWoodenKnife:
-  damage: 2
-  speed: 3
-aGoldenKnife:
-  damage: 2
-  speed: 4
-aStoneKnife:
-  damage: 2.5
-  speed: 3
-aIronKnife:
-  damage: 3
-  speed: 3
-aEmeraldKnife:
-  damage: 3
-  speed: 4
-aDiamondKnife:
-  damage: 4
-  speed: 3
-aNetheriteKnife:
-  damage: 5
-  speed: 3
-aPrismarineKnife:
-  damageAdded: 1
+Knives_WoodenKnife:
+  Damage: 2
+  Speed: 3
+Knives_GoldenKnife:
+  Damage: 2
+  Speed: 4
+Knives_StoneKnife:
+  Damage: 2.5
+  Speed: 3
+Knives_IronKnife:
+  Damage: 3
+  Speed: 3
+Knives_EmeraldKnife:
+  Damage: 3
+  Speed: 4
+Knives_DiamondKnife:
+  Damage: 4
+  Speed: 3
+Knives_NetheriteKnife:
+  Damage: 5
+  Speed: 3
+Knives_PrismarineKnife:
+  DamageAdded: 1
 #SPEARS
-aWoodenSpear:
-  damage: 2
-  speed: 2.5
-aGoldenSpear:
-  damage: 2
-  speed: 2.8
-aStoneSpear:
-  damage: 2.5
-  speed: 2.5
-aIronSpear:
-  damage: 3
-  speed: 2.5
-aEmeraldSpear:
-  damage: 3
-  speed: 2.8
-aDiamondSpear:
-  damage: 4
-  speed: 2.5
-aNetheriteSpear:
-  damage: 5
-  speed: 2.5
-aPrismarineSpear:
-  damageAdded: 1
+Spears_WoodenSpear:
+  Damage: 2
+  Speed: 2.5
+Spears_GoldenSpear:
+  Damage: 2
+  Speed: 2.8
+Spears_StoneSpear:
+  Damage: 2.5
+  Speed: 2.5
+Spears_IronSpear:
+  Damage: 3
+  Speed: 2.5
+Spears_EmeraldSpear:
+  Damage: 3
+  Speed: 2.8
+Spears_DiamondSpear:
+  Damage: 4
+  Speed: 2.5
+Spears_NetheriteSpear:
+  Damage: 5
+  Speed: 2.5
+Spears_PrismarineSpear:
+  DamageAdded: 1
 #KATANAS
-aWoodenKatana:
-  damage: 3.5
-  speed: 1.7
-  moveSpeed: 0.02
-aGoldenKatana:
-  damage: 3.5
-  speed: 2
-  moveSpeed: 0.02
-aStoneKatana:
-  damage: 4
-  speed: 1.7
-  moveSpeed: 0.02
-aIronKatana:
-  damage: 5
-  speed: 1.7
-  moveSpeed: 0.02
-aEmeraldKatana:
-  damage: 5
-  speed: 2
-  moveSpeed: 0.02
-aDiamondKatana:
-  damage: 6
-  speed: 1.7
-  moveSpeed: 0.02
-aNetheriteKatana:
-  damage: 7
-  speed: 1.7
-  moveSpeed: 0.02
-aPrismarineKatana:
-  damageAdded: 1
+Katanas_WoodenKatana:
+  Damage: 3.5
+  Speed: 1.7
+  MoveSpeed: 0.02
+Katanas_GoldenKatana:
+  Damage: 3.5
+  Speed: 2
+  MoveSpeed: 0.02
+Katanas_StoneKatana:
+  Damage: 4
+  Speed: 1.7
+  MoveSpeed: 0.02
+Katanas_IronKatana:
+  Damage: 5
+  Speed: 1.7
+  MoveSpeed: 0.02
+Katanas_EmeraldKatana:
+  Damage: 5
+  Speed: 2
+  MoveSpeed: 0.02
+Katanas_DiamondKatana:
+  Damage: 6
+  Speed: 1.7
+  MoveSpeed: 0.02
+Katanas_NetheriteKatana:
+  Damage: 7
+  Speed: 1.7
+  MoveSpeed: 0.02
+Katanas_PrismarineKatana:
+  DamageAdded: 1
 #SABERS
-aWoodenSaber:
-  damage: 4
-  speed: 1.6
-aGoldenSaber:
-  damage: 4
-  speed: 1.6
-aStoneSaber:
-  damage: 5
-  speed: 1.6
-aIronSaber:
-  damage: 6
-  speed: 1.6
-aEmeraldSaber:
-  damage: 6
-  speed: 1.6
-aDiamondSaber:
-  damage: 7
-  speed: 1.6
-aNetheriteSaber:
-  damage: 8
-  speed: 1.6
-aPrismarineSaber:
-  damageAdded: 1
+Sabers_WoodenSaber:
+  Damage: 4
+  Speed: 1.6
+Sabers_GoldenSaber:
+  Damage: 4
+  Speed: 1.6
+Sabers_StoneSaber:
+  Damage: 5
+  Speed: 1.6
+Sabers_IronSaber:
+  Damage: 6
+  Speed: 1.6
+Sabers_EmeraldSaber:
+  Damage: 6
+  Speed: 1.6
+Sabers_DiamondSaber:
+  Damage: 7
+  Speed: 1.6
+Sabers_NetheriteSaber:
+  Damage: 8
+  Speed: 1.6
+Sabers_PrismarineSaber:
+  DamageAdded: 1
 #CLEAVERS
-aWoodenCleaver:
-  damage: 9
-  speed: 0.4
-aGoldenCleaver:
-  damage: 9
-  speed: 0.4
-aStoneCleaver:
-  damage: 10
-  speed: 0.4
-aIronCleaver:
-  damage: 11
-  speed: 0.4
-aEmeraldCleaver:
-  damage: 11
-  speed: 0.4
-aDiamondCleaver:
-  damage: 12
-  speed: 0.4
-aNetheriteCleaver:
-  damage: 13
-  speed: 0.4
-aPrismarineCleaver:
-  damageAdded: 1
+Cleavers_WoodenCleaver:
+  Damage: 9
+  Speed: 0.4
+Cleavers_GoldenCleaver:
+  Damage: 9
+  Speed: 0.4
+Cleavers_StoneCleaver:
+  Damage: 10
+  Speed: 0.4
+Cleavers_IronCleaver:
+  Damage: 11
+  Speed: 0.4
+Cleavers_EmeraldCleaver:
+  Damage: 11
+  Speed: 0.4
+Cleavers_DiamondCleaver:
+  Damage: 12
+  Speed: 0.4
+Cleavers_NetheriteCleaver:
+  Damage: 13
+  Speed: 0.4
+Cleavers_PrismarineCleaver:
+  DamageAdded: 1
 #
 #======================================================================================================================================================
 # MAKE NETHERITE WEAPONS REQUIRE INGOTS INSTEAD OF SCRAP TO CRAFT (in the crafting table recipe)
@@ -544,696 +544,695 @@ NetheriteIngots: false
 #The ones below are the ones I've gotten done so far
 #(This is still a work in progress)
 #ARMOR: ==========================================================================
-dRedstoneCore:
-  name: "Redstone Core"
-  line1: ""
-  line2: "&6Power Source"
-  line3: "&7- While equipped, redstone powered"
-  line4: "&7  weapons will no longer require"
-  line5: "&7  holding redstone in the offhand"
-dWitheringArmorSet:
-  line1: ""
-  line2: "&6Full Set Bonus"
-  line3: "&7- Fully charged melee attacks"
-  line4: "&7  heal 50% of the damage dealt"
-  line5: "&7- When damage is taken, "
-  line6: "&7  get Wither III for 2 seconds"
-  line7: "&7  if your health is less than half"
-  line8: ""
-dWitheringHelmet:
-  name: "&eWithering Helmet"
-dWitheringChestplate:
-  name: "&eWithering Chestplate"
-dWitheringLeggings:
-  name: "&eWithering Leggings"
-dWitheringBoots:
-  name: "&eWithering Boots"
+DescriptionRedstoneCore:
+  Name: "Redstone Core"
+  Line1: ""
+  Line2: "&6Power Source"
+  Line3: "&7- While equipped, redstone powered"
+  Line4: "&7  weapons will no longer require"
+  Line5: "&7  holding redstone in the offhand"
+DescriptionWitheringArmorSet:
+  Line1: ""
+  Line2: "&6Full Set Bonus"
+  Line3: "&7- Fully charged melee attacks"
+  Line4: "&7  heal 50% of the damage dealt"
+  Line5: "&7- When damage is taken, "
+  Line6: "&7  get Wither III for 2 seconds"
+  Line7: "&7  if your health is less than half"
+  Line8: ""
+DescriptionWitheringHelmet:
+  Name: "&eWithering Helmet"
+DescriptionWitheringChestplate:
+  Name: "&eWithering Chestplate"
+DescriptionWitheringLeggings:
+  Name: "&eWithering Leggings"
+DescriptionWitheringBoots:
+  Name: "&eWithering Boots"
 #BOWS: ============================================================================================================
-dSwordBow:
-  name: "Sword Bow"
-  line1: ""
-  line2: "&7Combination of a sword and bow"
-  line3: ""
-dHeavySwordBow:
-  name: "Heavy Sword Bow"
-  line1: ""
-  line2: "&7The Ultimate Bow"
-  line3: ""
-dLongswordBow:
-  name: "Longsword Bow"
-  line1: ""
-  line2: "&6Strong Shot"
-  line3: "&7- Slightly increased arrow velocity"
-  line4: ""
-  line5: "&7When in Main Hand:"
-  line6: "&9 8 Attack Damage"
-  line7: "&9 1.4 Attack Speed"
-dLongBow:
-  name: "Longbow"
-  line1: ""
-  line2: "&6Strong Shot"
-  line3: "&7- Slightly increased arrow velocity"
-  line4: ""
-dRecurveBow:
-  name: "Recurve Bow"
-  line1: ""
-  line2: "&6Sharp Shot"
-  line3: "&7- Increased arrow velocity"
-  line4: ""
-dCompoundBow:
-  name: "Compound Bow"
-  line1: ""
-  line2: "&6Strike Shot"
-  line3: "&7- Greatly increased arrow velocity"
-  line4: ""
-dRepeatingCrossbow:
-  name: "Repeating Crossbow"
-  line1: ""
-  line2: "&6Redstone Powered"
-  line3: "&7- Hold redstone dust in offhand"
-  line4: "&7- Fires 4 more arrows after the first arrow"
-  line5: ""
-dBurstCrossbow:
-  name: "Burst Crossbow"
-  line1: ""
-  line2: "&6Redstone Powered"
-  line3: "&7- Hold redstone dust in offhand"
-  line4: "&7- Fires an additional arrow above and below"
-  line5: ""
-dRedstoneBow:
-  name: "Redstone Bow"
-  line1: ""
-  line2: "&6Redstone Powered"
-  line3: "&7- Hold redstone dust in offhand"
-  line4: "&7- Increases arrow speed and makes arrow piercing"
-  line5: "&7- Also decreases arrow damage"
-  line6: ""
+DescriptionSwordBow:
+  Name: "Sword Bow"
+  Line1: ""
+  Line2: "&7Combination of a sword and bow"
+  Line3: ""
+DescriptionHeavySwordBow:
+  Name: "Heavy Sword Bow"
+  Line1: ""
+  Line2: "&7The Ultimate Bow"
+  Line3: ""
+DescriptionLongswordBow:
+  Name: "Longsword Bow"
+  Line1: ""
+  Line3: "&7- Slightly increased arrow velocity"
+  Line4: ""
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 8 Attack Damage"
+  Line7: "&9 1.4 Attack Speed"
+DescriptionLongBow:
+  Name: "Longbow"
+  Line1: ""
+  Line2: "&6Strong Shot"
+  Line3: "&7- Slightly increased arrow velocity"
+  Line4: ""
+DescriptionRecurveBow:
+  Name: "Recurve Bow"
+  Line1: ""
+  Line2: "&6Sharp Shot"
+  Line3: "&7- Increased arrow velocity"
+  Line4: ""
+DescriptionCompoundBow:
+  Name: "Compound Bow"
+  Line1: ""
+  Line2: "&6Strike Shot"
+  Line3: "&7- Greatly increased arrow velocity"
+  Line4: ""
+DescriptionRepeatingCrossbow:
+  Name: "Repeating Crossbow"
+  Line1: ""
+  Line2: "&6Redstone Powered"
+  Line3: "&7- Hold redstone dust in offhand"
+  Line4: "&7- Fires 4 more arrows after the first arrow"
+  Line5: ""
+DescriptionBurstCrossbow:
+  Name: "Burst Crossbow"
+  Line1: ""
+  Line2: "&6Redstone Powered"
+  Line3: "&7- Hold redstone dust in offhand"
+  Line4: "&7- Fires an additional arrow above and below"
+  Line5: ""
+DescriptionRedstoneBow:
+  Name: "Redstone Bow"
+  Line1: ""
+  Line2: "&6Redstone Powered"
+  Line3: "&7- Hold redstone dust in offhand"
+  Line4: "&7- Increases arrow speed and makes arrow piercing"
+  Line5: "&7- Also decreases arrow damage"
+  Line6: ""
 #CHARMS: ============================================================================================================
-dFeatherCharm:
-  name: "&fFeather Charm"
-  line1: ""
-  line2: "&7Negates fall damage when held in offhand"
-dEmeraldCharm:
-  name: "&2Emerald Charm"
-  line1: ""
-  line2: "&7When held in offhand,"
-  line3: "&7exchanges armor for more health"
-dBlazeCharm:
-  name: "&6Blaze Charm"
-  line1: ""
-  line2: "&7When held in offhand,"
-  line3: "&7exchanges health for more damage"
-dGoldCharm:
-  name: "&eGold Charm"
-  line1: ""
-  line2: "&7When held in offhand,"
-  line3: "&7exchanges move speed for more attack speed"
-dStarCharm:
-  name: "&dStar Charm"
-  line1: ""
-  line2: "&7Increases xp gained from mobs when held in offhand"
-dFrostCharm:
-  name: "&bFrost Charm"
-  line1: ""
-  line2: "&6Freeze"
-  line3: "&7- When this item is held in offhand,"
-  line4: "&7  attacks will inflict slowness for 1 second"
+DescriptionFeatherCharm:
+  Name: "&fFeather Charm"
+  Line1: ""
+  Line2: "&7Negates fall damage when held in offhand"
+DescriptionEmeraldCharm:
+  Name: "&2Emerald Charm"
+  Line1: ""
+  Line2: "&7When held in offhand,"
+  Line3: "&7exchanges armor for more health"
+DescriptionBlazeCharm:
+  Name: "&6Blaze Charm"
+  Line1: ""
+  Line2: "&7When held in offhand,"
+  Line3: "&7exchanges health for more damage"
+DescriptionGoldCharm:
+  Name: "&eGold Charm"
+  Line1: ""
+  Line2: "&7When held in offhand,"
+  Line3: "&7exchanges move speed for more attack speed"
+DescriptionStarCharm:
+  Name: "&dStar Charm"
+  Line1: ""
+  Line2: "&7Increases xp gained from mobs when held in offhand"
+DescriptionFrostCharm:
+  Name: "&bFrost Charm"
+  Line1: ""
+  Line2: "&6Freeze"
+  Line3: "&7- When this item is held in offhand,"
+  Line4: "&7  attacks will inflict slowness for 1 second"
 #OTHER: ============================================================================================================
-dPrismarineAlloy:
-  name: "&aPrismarine Alloy"
-  line1: ""
-  line2: "&7Use in a smithing table to upgrade"
-  line3: "&7netherite armor or tools."
-  line4: "&7Uses &bLapis Lazuli &7as a template."
-  line5: ""
-dObsidianPickaxe:
-  name: "&5Obsidian Pickaxe"
-  line1: ""
-  line2: "&7Gives user Haste III"
-  line3: ""
-dReallyGoodSword:
-  name: "Really Really Good Sword"
-  line1: ""
-  line2: "&6ULTIMATE SWORD"
-  line3: "&7- Right click to kill everything"
-  line4: ""
-  line5: "&7When in Main Hand:"
-  line6: "&9 69696969 Attack Damage"
-dVessel:
-  name: "&eVessel"
-  line1: ""
-  line2: "&6Parry"
-  line3: "&7- Right click"
-  line4: "&7  (1 second cooldown)"
-dInfusedVessel:
-  name: "&eInfused Vessel"
-  line1: ""
-  line2: "&6Wither's Evil"
-  line3: "&7- Inflicts wither"
-  line4: "&7  on opponents"
-  line5: "&6Parry"
-  line6: "&7- Right click"
-  line7: "&7  (1 second cooldown)"
-  line8: ""
-  line9: "&7When in Main Hand:"
-  line10: "&9 10 Attack Damage"
-  line11: "&9 1.6 Attack Speed"
-dCursedVessel:
-  name: "&eCursed Vessel"
-  line1: ""
-  line2: "&6Dragon's Curse"
-  line3: "&7- +50% damage dealt"
-  line4: "&7  +50% damage taken"
-  line5: "&6Parry"
-  line6: "&7- Right click"
-  line7: "&7  (1 second cooldown)"
-  line8: ""
-  line9: "&7When in Main Hand:"
-  line10: "&9 10 Attack Damage"
-  line11: "&9 1.6 Attack Speed"
-dAwakenedVesselPurple:
-  name: "&dAwakened Vessel"
-  line1: ""
-  line2: "&6Evocation"
-  line3: "&7- Summons fangs to attack"
-  line4: "&7  all mobs within a 5 block"
-  line5: "&7  radius, dealing 6 damage"
-  line6: "&7  Shift + Right click to toggle"
-  line7: "&7- (Activates on a"
-  line8: "&7  fully charged attack)"
-  line9: "&7- Uses up 1 xp level each use"
-  line10: "&6Parry"
-  line11: "&7- Right click"
-  line12: "&7  (1 second cooldown)"
-  line13: ""
-  line14: "&7When in Main Hand:"
-  line15: "&9 12 Attack Damage"
-  line16: "&9 1.4 Attack Speed"
-dAwakenedVesselWhite:
-  name: "&dAwakened Vessel"
-  line1: ""
-  line2: "&6Magic Aura"
-  line3: "&7- Inflicts 6 magic damage"
-  line4: "&7  on all mobs within"
-  line5: "&7  a 5 block radius"
-  line6: "&7  Shift + Right click to toggle"
-  line7: "&7- (Activates on a"
-  line8: "&7  fully charged attack)"
-  line9: "&7- Uses up 1 xp level each use"
-  line10: "&6Parry"
-  line11: "&7- Right click"
-  line12: "&7  (1 second cooldown)"
-  line13: ""
-  line14: "&7When in Main Hand:"
-  line15: "&9 12 Attack Damage"
-  line16: "&9 1.4 Attack Speed"
-dVolcanicBlade:
-  name: "Volcanic Blade"
-  line1: ""
-  line2: "&6Eruption"
-  line3: "&7- When an attack hits an opponent,"
-  line4: "&7  damage nearby entities within 1"
-  line5: "&7  block, setting them on fire"
-  line6: "&9   5 Attack Damage"
-  line7: "&9   3s of Fire"
-  line8: ""
-  line9: "&7When in Main Hand:"
-  line10: "&9 8 Attack Damage"
-  line11: "&9 1.6 Attack Speed"
-dVolcanicSpear:
-  name: "Volcanic Spear"
-  line1: ""
-  line2: "&6Eruption"
-  line3: "&7- When an attack hits an opponent,"
-  line4: "&7  damage nearby entities within 1"
-  line5: "&7  block, setting them on fire"
-  line6: "&9   5 Attack Damage"
-  line7: "&9   3s of Fire"
-  line8: ""
-  line9: "&7When in Main Hand:"
-  line10: "&9 5 Attack Damage"
-  line11: "&9 2.5 Attack Speed"
-dVolcanicAxe:
-  name: "Volcanic Axe"
-  line1: ""
-  line2: "&6Eruption"
-  line3: "&7- When an attack hits an opponent,"
-  line4: "&7  damage nearby entities within 1"
-  line5: "&7  block, setting them on fire"
-  line6: "&9   5 Attack Damage"
-  line7: "&9   3s of Fire"
-  line8: ""
-  line9: "&7When in Main Hand:"
-  line10: "&9 10 Attack Damage"
-  line11: "&9 1 Attack Speed"
-dVolcanicCleaver:
-  name: "Volcanic Cleaver"
-  line1: ""
-  line2: "&6Eruption"
-  line3: "&7- When an attack hits an opponent,"
-  line4: "&7  damage nearby entities within 1"
-  line5: "&7  block, setting them on fire"
-  line6: "&9   5 Attack Damage"
-  line7: "&9   3s of Fire"
-  line8: ""
-  line9: "&7When in Main Hand:"
-  line10: "&9 13 Attack Damage"
-  line11: "&9 0.4 Attack Speed"
-dPrismarinePickaxe:
-  name: "&aPrismarine Pickaxe"
-  line1: ""
-  line2: "&7When in Main Hand:"
-  line3: "&9 7 Attack Damage"
-  line4: "&9 1.2 Attack Speed"
-dPrismarineAxe:
-  name: "&aPrismarine Axe"
-  line1: ""
-  line2: "&7When in Main Hand:"
-  line3: "&9 11 Attack Damage"
-  line4: "&9 1 Attack Speed"
-dPrismarineShovel:
-  name: "&aPrismarine Shovel"
-  line1: ""
-  line2: "&7When in Main Hand:"
-  line3: "&9 7.5 Attack Damage"
-  line4: "&9 1 Attack Speed"
-dPrismarineHoe:
-  name: "&aPrismarine Hoe"
-  line1: ""
-  line2: "&7When in Main Hand:"
-  line3: "&9 2 Attack Damage"
-  line4: "&9 4 Attack Speed"
+DescriptionPrismarineAlloy:
+  Name: "&aPrismarine Alloy"
+  Line1: ""
+  Line2: "&7Use in a smithing table to upgrade"
+  Line3: "&7netherite armor or tools."
+  Line4: "&7Uses &bLapis Lazuli &7as a template."
+  Line5: ""
+DescriptionObsidianPickaxe:
+  Name: "&5Obsidian Pickaxe"
+  Line1: ""
+  Line2: "&7Gives user Haste III"
+  Line3: ""
+DescriptionReallyGoodSword:
+  Name: "Really Really Good Sword"
+  Line1: ""
+  Line2: "&6ULTIMATE SWORD"
+  Line3: "&7- Right click to kill everything"
+  Line4: ""
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 69696969 Attack Damage"
+DescriptionVessel:
+  Name: "&eVessel"
+  Line1: ""
+  Line2: "&6Parry"
+  Line3: "&7- Right click"
+  Line4: "&7  (1 second cooldown)"
+DescriptionInfusedVessel:
+  Name: "&eInfused Vessel"
+  Line1: ""
+  Line2: "&6Wither's Evil"
+  Line3: "&7- Inflicts wither"
+  Line4: "&7  on opponents"
+  Line5: "&6Parry"
+  Line6: "&7- Right click"
+  Line7: "&7  (1 second cooldown)"
+  Line8: ""
+  Line9: "&7When in Main Hand:"
+  Line10: "&9 10 Attack Damage"
+  Line11: "&9 1.6 Attack Speed"
+DescriptionCursedVessel:
+  Name: "&eCursed Vessel"
+  Line1: ""
+  Line2: "&6Dragon's Curse"
+  Line3: "&7- +50% damage dealt"
+  Line4: "&7  +50% damage taken"
+  Line5: "&6Parry"
+  Line6: "&7- Right click"
+  Line7: "&7  (1 second cooldown)"
+  Line8: ""
+  Line9: "&7When in Main Hand:"
+  Line10: "&9 10 Attack Damage"
+  Line11: "&9 1.6 Attack Speed"
+DescriptionAwakenedVesselPurple:
+  Name: "&dAwakened Vessel"
+  Line1: ""
+  Line2: "&6Evocation"
+  Line3: "&7- Summons fangs to attack"
+  Line4: "&7  all mobs within a 5 block"
+  Line5: "&7  radius, dealing 6 damage"
+  Line6: "&7  Shift + Right click to toggle"
+  Line7: "&7- (Activates on a"
+  Line8: "&7  fully charged attack)"
+  Line9: "&7- Uses up 1 xp level each use"
+  Line10: "&6Parry"
+  Line11: "&7- Right click"
+  Line12: "&7  (1 second cooldown)"
+  Line13: ""
+  Line14: "&7When in Main Hand:"
+  Line15: "&9 12 Attack Damage"
+  Line16: "&9 1.4 Attack Speed"
+DescriptionAwakenedVesselWhite:
+  Name: "&dAwakened Vessel"
+  Line1: ""
+  Line2: "&6Magic Aura"
+  Line3: "&7- Inflicts 6 magic damage"
+  Line4: "&7  on all mobs within"
+  Line5: "&7  a 5 block radius"
+  Line6: "&7  Shift + Right click to toggle"
+  Line7: "&7- (Activates on a"
+  Line8: "&7  fully charged attack)"
+  Line9: "&7- Uses up 1 xp level each use"
+  Line10: "&6Parry"
+  Line11: "&7- Right click"
+  Line12: "&7  (1 second cooldown)"
+  Line13: ""
+  Line14: "&7When in Main Hand:"
+  Line15: "&9 12 Attack Damage"
+  Line16: "&9 1.4 Attack Speed"
+DescriptionVolcanicBlade:
+  Name: "Volcanic Blade"
+  Line1: ""
+  Line2: "&6Eruption"
+  Line3: "&7- When an attack hits an opponent,"
+  Line4: "&7  damage nearby entities within 1"
+  Line5: "&7  block, setting them on fire"
+  Line6: "&9   5 Attack Damage"
+  Line7: "&9   3s of Fire"
+  Line8: ""
+  Line9: "&7When in Main Hand:"
+  Line10: "&9 8 Attack Damage"
+  Line11: "&9 1.6 Attack Speed"
+DescriptionVolcanicSpear:
+  Name: "Volcanic Spear"
+  Line1: ""
+  Line2: "&6Eruption"
+  Line3: "&7- When an attack hits an opponent,"
+  Line4: "&7  damage nearby entities within 1"
+  Line5: "&7  block, setting them on fire"
+  Line6: "&9   5 Attack Damage"
+  Line7: "&9   3s of Fire"
+  Line8: ""
+  Line9: "&7When in Main Hand:"
+  Line10: "&9 5 Attack Damage"
+  Line11: "&9 2.5 Attack Speed"
+DescriptionVolcanicAxe:
+  Name: "Volcanic Axe"
+  Line1: ""
+  Line2: "&6Eruption"
+  Line3: "&7- When an attack hits an opponent,"
+  Line4: "&7  damage nearby entities within 1"
+  Line5: "&7  block, setting them on fire"
+  Line6: "&9   5 Attack Damage"
+  Line7: "&9   3s of Fire"
+  Line8: ""
+  Line9: "&7When in Main Hand:"
+  Line10: "&9 10 Attack Damage"
+  Line11: "&9 1 Attack Speed"
+DescriptionVolcanicCleaver:
+  Name: "Volcanic Cleaver"
+  Line1: ""
+  Line2: "&6Eruption"
+  Line3: "&7- When an attack hits an opponent,"
+  Line4: "&7  damage nearby entities within 1"
+  Line5: "&7  block, setting them on fire"
+  Line6: "&9   5 Attack Damage"
+  Line7: "&9   3s of Fire"
+  Line8: ""
+  Line9: "&7When in Main Hand:"
+  Line10: "&9 13 Attack Damage"
+  Line11: "&9 0.4 Attack Speed"
+DescriptionPrismarinePickaxe:
+  Name: "&aPrismarine Pickaxe"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 7 Attack Damage"
+  Line4: "&9 1.2 Attack Speed"
+DescriptionPrismarineAxe:
+  Name: "&aPrismarine Axe"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 11 Attack Damage"
+  Line4: "&9 1 Attack Speed"
+DescriptionPrismarineShovel:
+  Name: "&aPrismarine Shovel"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 7.5 Attack Damage"
+  Line4: "&9 1 Attack Speed"
+DescriptionPrismarineHoe:
+  Name: "&aPrismarine Hoe"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 2 Attack Damage"
+  Line4: "&9 4 Attack Speed"
 #SWORDS: ============================================================================================================
-dPrismarineSword:
-  name: "&aPrismarine Sword"
-  line1: ""
-  line2: "&7When in Main Hand:"
-  line3: "&9 9 Attack Damage"
-  line4: "&9 1.6 Attack Speed"
-dChorusBlade:
-  name: "Chorus Blade"
-  line1: ""
-  line2: "&6Teleport"
-  line3: "&7- Shoot an ender pearl"
-  line4: "&7 (Right click)"
-  line5: "&7 (2 second cooldown)"
-  line6: ""
-  line7: "&7When in Main Hand:"
-  line8: "&9 4 Attack Damage"
-  line9: "&9 10 Attack Speed"
+DescriptionPrismarineSword:
+  Name: "&aPrismarine Sword"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 9 Attack Damage"
+  Line4: "&9 1.6 Attack Speed"
+DescriptionChorusBlade:
+  Name: "Chorus Blade"
+  Line1: ""
+  Line2: "&6Teleport"
+  Line3: "&7- Shoot an ender pearl"
+  Line4: "&7 (Right click)"
+  Line5: "&7 (2 second cooldown)"
+  Line6: ""
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 4 Attack Damage"
+  Line9: "&9 10 Attack Speed"
 #BASIC WEAPONS: ===============================================================================================
 #SCYTHES
-ScytheDescription:
-  line1: ""
-  line2: "&6Two Handed"
-  line3: "&7- +30% damage if there is no item in offhand"
-  line4: "&6Cutting Edge"
-  line5: "&7- +50% damage to players"
-  line6: "&7  without a chestplate"
-  line7: ""
-dWoodenScythe:
-  name: "Wooden Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 7 Attack Damage"
-  line10: "&9 1 Attack Speed"
-dStoneScythe:
-  name: "Stone Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 7.5 Attack Damage"
-  line10: "&9 1 Attack Speed"
-dGoldenScythe:
-  name: "Golden Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 7 Attack Damage"
-  line10: "&9 1.2 Attack Speed"
-dEmeraldScythe:
-  name: "&2Emerald Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 8 Attack Damage"
-  line10: "&9 1.2 Attack Speed"
-dIronScythe:
-  name: "Iron Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 8 Attack Damage"
-  line10: "&9 1 Attack Speed"
-dDiamondScythe:
-  name: "Diamond Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 9 Attack Damage"
-  line10: "&9 1 Attack Speed"
-dNetheriteScythe:
-  name: "Netherite Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 10 Attack Damage"
-  line10: "&9 1 Attack Speed"
-dPrismarineScythe:
-  name: "&aPrismarine Scythe"
-  line8: "&7When in Main Hand:"
-  line9: "&9 11 Attack Damage"
-  line10: "&9 1 Attack Speed"
+DescriptionScythe:
+  Line1: ""
+  Line2: "&6Two Handed"
+  Line3: "&7- +30% damage if there is no item in offhand"
+  Line4: "&6Cutting Edge"
+  Line5: "&7- +50% damage to players"
+  Line6: "&7  without a chestplate"
+  Line7: ""
+DescriptionWoodenScythe:
+  Name: "Wooden Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 7 Attack Damage"
+  Line10: "&9 1 Attack Speed"
+DescriptionStoneScythe:
+  Name: "Stone Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 7.5 Attack Damage"
+  Line10: "&9 1 Attack Speed"
+DescriptionGoldenScythe:
+  Name: "Golden Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 7 Attack Damage"
+  Line10: "&9 1.2 Attack Speed"
+DescriptionEmeraldScythe:
+  Name: "&2Emerald Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 8 Attack Damage"
+  Line10: "&9 1.2 Attack Speed"
+DescriptionIronScythe:
+  Name: "Iron Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 8 Attack Damage"
+  Line10: "&9 1 Attack Speed"
+DescriptionDiamondScythe:
+  Name: "Diamond Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 9 Attack Damage"
+  Line10: "&9 1 Attack Speed"
+DescriptionNetheriteScythe:
+  Name: "Netherite Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 10 Attack Damage"
+  Line10: "&9 1 Attack Speed"
+DescriptionPrismarineScythe:
+  Name: "&aPrismarine Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 11 Attack Damage"
+  Line10: "&9 1 Attack Speed"
 #RAPIERS
-RapierDescription:
-  line1: ""
-  line2: "&6Armor Piercing"
-  line3: "&7- +5% damage for each piece of armor"
-  line4: "&7   your opponent has"
-  line5: "&7   (stacks multiplicatively)"
-  line6: "&7- Disables shields for 2 seconds"
-  line7: ""
-dWoodenRapier:
-  name: "Wooden Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 3 Attack Damage"
-  line10: "&9 1.9 Attack Speed"
-dStoneRapier:
-  name: "Stone Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 3.5 Attack Damage"
-  line10: "&9 1.9 Attack Speed"
-dGoldenRapier:
-  name: "Golden Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 3 Attack Damage"
-  line10: "&9 2.4 Attack Speed"
-dIronRapier:
-  name: "Iron Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 4 Attack Damage"
-  line10: "&9 1.9 Attack Speed"
-dEmeraldRapier:
-  name: "&2Emerald Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 4 Attack Damage"
-  line10: "&9 2.4 Attack Speed"
-dDiamondRapier:
-  name: "Diamond Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 5 Attack Damage"
-  line10: "&9 1.9 Attack Speed"
-dNetheriteRapier:
-  name: "Netherite Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 6 Attack Damage"
-  line10: "&9 1.9 Attack Speed"
-dPrismarineRapier:
-  name: "&aPrismarine Rapier"
-  line8: "&7When in Main Hand:"
-  line9: "&9 7 Attack Damage"
-  line10: "&9 1.9 Attack Speed"
+DescriptionRapier:
+  Line1: ""
+  Line2: "&6Armor Piercing"
+  Line3: "&7- +5% damage for each piece of armor"
+  Line4: "&7   your opponent has"
+  Line5: "&7   (stacks multiplicatively)"
+  Line6: "&7- Disables shields for 2 seconds"
+  Line7: ""
+DescriptionWoodenRapier:
+  Name: "Wooden Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 3 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
+DescriptionStoneRapier:
+  Name: "Stone Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 3.5 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
+DescriptionGoldenRapier:
+  Name: "Golden Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 3 Attack Damage"
+  Line10: "&9 2.4 Attack Speed"
+DescriptionIronRapier:
+  Name: "Iron Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 4 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
+DescriptionEmeraldRapier:
+  Name: "&2Emerald Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 4 Attack Damage"
+  Line10: "&9 2.4 Attack Speed"
+DescriptionDiamondRapier:
+  Name: "Diamond Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 5 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
+DescriptionNetheriteRapier:
+  Name: "Netherite Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 6 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
+DescriptionPrismarineRapier:
+  Name: "&aPrismarine Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 7 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
 #LONGSWORDS
-LongswordDescription:
-  line1: ""
-  line2: "&6Two Handed"
-  line3: "&7- +30% damage if there is"
-  line4: "&7  no item in your offhand"
-  line5: ""
-dWoodenLongsword:
-  name: "Wooden Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 5 Attack Damage"
-  line8: "&9 1.2 Attack Speed"
-dStoneLongsword:
-  name: "Stone Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 6 Attack Damage"
-  line8: "&9 1.2 Attack Speed"
-dGoldenLongsword:
-  name: "Golden Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 5 Attack Damage"
-  line8: "&9 1.4 Attack Speed"
-dIronLongsword:
-  name: "Iron Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 7 Attack Damage"
-  line8: "&9 1.2 Attack Speed"
-dEmeraldLongsword:
-  name: "&2Emerald Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 7 Attack Damage"
-  line8: "&9 1.4 Attack Speed"
-dDiamondLongsword:
-  name: "Diamond Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 8 Attack Damage"
-  line8: "&9 1.2 Attack Speed"
-dNetheriteLongsword:
-  name: "Netherite Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 9 Attack Damage"
-  line8: "&9 1.2 Attack Speed"
-dPrismarineLongsword:
-  name: "&aPrismarine Longsword"
-  line6: "&7When in Main Hand:"
-  line7: "&9 10 Attack Damage"
-  line8: "&9 1.2 Attack Speed"
+DescriptionLongsword:
+  Line1: ""
+  Line2: "&6Two Handed"
+  Line3: "&7- +30% damage if there is"
+  Line4: "&7  no item in your offhand"
+  Line5: ""
+DescriptionWoodenLongsword:
+  Name: "Wooden Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 5 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
+DescriptionStoneLongsword:
+  Name: "Stone Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 6 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
+DescriptionGoldenLongsword:
+  Name: "Golden Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 5 Attack Damage"
+  Line8: "&9 1.4 Attack Speed"
+DescriptionIronLongsword:
+  Name: "Iron Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 7 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
+DescriptionEmeraldLongsword:
+  Name: "&2Emerald Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 7 Attack Damage"
+  Line8: "&9 1.4 Attack Speed"
+DescriptionDiamondLongsword:
+  Name: "Diamond Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 8 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
+DescriptionNetheriteLongsword:
+  Name: "Netherite Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 9 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
+DescriptionPrismarineLongsword:
+  Name: "&aPrismarine Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 10 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
 #KNIVES
-KnifeDescription:
-  line1: ""
-  line2: "&6Cutting Edge"
-  line3: "&7- +100% damage to players without a chestplate"
-  line4: "&6Combo"
-  line5: "&7- Getting 2 consecutive hits gives Strength I"
-  line6: ""
-dWoodenKnife:
-  name: "Wooden Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 2 Attack Damage"
-  line9: "&9 3 Attack Speed"
-dStoneKnife:
-  name: "Stone Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 2.5 Attack Damage"
-  line9: "&9 3 Attack Speed"
-dGoldenKnife:
-  name: "Golden Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 2 Attack Damage"
-  line9: "&9 4 Attack Speed"
-dIronKnife:
-  name: "Iron Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 3 Attack Damage"
-  line9: "&9 3 Attack Speed"
-dEmeraldKnife:
-  name: "&2Emerald Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 3 Attack Damage"
-  line9: "&9 4 Attack Speed"
-dDiamondKnife:
-  name: "Diamond Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 4 Attack Damage"
-  line9: "&9 3 Attack Speed"
-dNetheriteKnife:
-  name: "Netherite Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 5 Attack Damage"
-  line9: "&9 3 Attack Speed"
-dPrismarineKnife:
-  name: "&aPrismarine Knife"
-  line7: "&7When in Main Hand:"
-  line8: "&9 6 Attack Damage"
-  line9: "&9 3 Attack Speed"
+DescriptionKnife:
+  Line1: ""
+  Line2: "&6Cutting Edge"
+  Line3: "&7- +100% damage to players without a chestplate"
+  Line4: "&6Combo"
+  Line5: "&7- Getting 2 consecutive hits gives Strength I"
+  Line6: ""
+DescriptionWoodenKnife:
+  Name: "Wooden Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 2 Attack Damage"
+  Line9: "&9 3 Attack Speed"
+DescriptionStoneKnife:
+  Name: "Stone Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 2.5 Attack Damage"
+  Line9: "&9 3 Attack Speed"
+DescriptionGoldenKnife:
+  Name: "Golden Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 2 Attack Damage"
+  Line9: "&9 4 Attack Speed"
+DescriptionIronKnife:
+  Name: "Iron Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 3 Attack Damage"
+  Line9: "&9 3 Attack Speed"
+DescriptionEmeraldKnife:
+  Name: "&2Emerald Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 3 Attack Damage"
+  Line9: "&9 4 Attack Speed"
+DescriptionDiamondKnife:
+  Name: "Diamond Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 4 Attack Damage"
+  Line9: "&9 3 Attack Speed"
+DescriptionNetheriteKnife:
+  Name: "Netherite Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 5 Attack Damage"
+  Line9: "&9 3 Attack Speed"
+DescriptionPrismarineKnife:
+  Name: "&aPrismarine Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 6 Attack Damage"
+  Line9: "&9 3 Attack Speed"
 #SPEARS
-SpearDescription:
-  line1: ""
-  line2: "&6Armor Piercing"
-  line3: "&7- +5% damage for each piece of armor"
-  line4: "&7   your opponent has"
-  line5: "&7   (stacks multiplicatively)"
-  line6: "&7- Disables shields for 1 second"
-  line7: "&6Two Handed"
-  line8: "&7- +30% damage if there is no item in offhand"
-  line9: ""
-dWoodenSpear:
-  name: "Wooden Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 2 Attack Damage"
-  line12: "&9 2.5 Attack Speed"
-dStoneSpear:
-  name: "Stone Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 2.5 Attack Damage"
-  line12: "&9 2.5 Attack Speed"
-dGoldenSpear:
-  name: "Golden Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 2 Attack Damage"
-  line12: "&9 2.8 Attack Speed"
-dIronSpear:
-  name: "Iron Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 3 Attack Damage"
-  line12: "&9 2.5 Attack Speed"
-dEmeraldSpear:
-  name: "&2Emerald Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 3 Attack Damage"
-  line12: "&9 2.8 Attack Speed"
-dDiamondSpear:
-  name: "Diamond Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 4 Attack Damage"
-  line12: "&9 2.5 Attack Speed"
-dNetheriteSpear:
-  name: "Netherite Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 5 Attack Damage"
-  line12: "&9 2.5 Attack Speed"
-dPrismarineSpear:
-  name: "&aPrismarine Spear"
-  line10: "&7When in Main Hand:"
-  line11: "&9 6 Attack Damage"
-  line12: "&9 2.5 Attack Speed"
+DescriptionSpear:
+  Line1: ""
+  Line2: "&6Armor Piercing"
+  Line3: "&7- +5% damage for each piece of armor"
+  Line4: "&7   your opponent has"
+  Line5: "&7   (stacks multiplicatively)"
+  Line6: "&7- Disables shields for 1 second"
+  Line7: "&6Two Handed"
+  Line8: "&7- +30% damage if there is no item in offhand"
+  Line9: ""
+DescriptionWoodenSpear:
+  Name: "Wooden Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 2 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
+DescriptionStoneSpear:
+  Name: "Stone Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 2.5 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
+DescriptionGoldenSpear:
+  Name: "Golden Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 2 Attack Damage"
+  Line12: "&9 2.8 Attack Speed"
+DescriptionIronSpear:
+  Name: "Iron Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 3 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
+DescriptionEmeraldSpear:
+  Name: "&2Emerald Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 3 Attack Damage"
+  Line12: "&9 2.8 Attack Speed"
+DescriptionDiamondSpear:
+  Name: "Diamond Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 4 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
+DescriptionNetheriteSpear:
+  Name: "Netherite Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 5 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
+DescriptionPrismarineSpear:
+  Name: "&aPrismarine Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 6 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
 #KATANAS
-KatanaDescription:
-  line1: ""
-  line2: "&6Lightweight"
-  line3: "&7- Slightly increases"
-  line4: "&7  movement speed"
-  line5: "&6Two Handed"
-  line6: "&7- +30% damage if there is"
-  line7: "&7  no item in offhand"
-  line8: "&6Critical Hit"
-  line9: "&7- 20% chance to deal 10% more"
-  line10: "&7  damage when two handed"
-  line11: ""
-dWoodenKatana:
-  name: "Wooden Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 3.5 Attack Damage"
-  line14: "&9 1.7 Attack Speed"
-dStoneKatana:
-  name: "Stone Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 4 Attack Damage"
-  line14: "&9 1.7 Attack Speed"
-dGoldenKatana:
-  name: "Golden Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 3.5 Attack Damage"
-  line14: "&9 2 Attack Speed"
-dIronKatana:
-  name: "Iron Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 5 Attack Damage"
-  line14: "&9 1.7 Attack Speed"
-dEmeraldKatana:
-  name: "&2Emerald Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 5 Attack Damage"
-  line14: "&9 2 Attack Speed"
-dDiamondKatana:
-  name: "Diamond Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 6 Attack Damage"
-  line14: "&9 1.7 Attack Speed"
-dNetheriteKatana:
-  name: "Netherite Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 7 Attack Damage"
-  line14: "&9 1.7 Attack Speed"
-dPrismarineKatana:
-  name: "&aPrismarine Katana"
-  line12: "&7When in Main Hand:"
-  line13: "&9 8 Attack Damage"
-  line14: "&9 1.7 Attack Speed"
+DescriptionKatana:
+  Line1: ""
+  Line2: "&6Lightweight"
+  Line3: "&7- Slightly increases"
+  Line4: "&7  movement speed"
+  Line5: "&6Two Handed"
+  Line6: "&7- +30% damage if there is"
+  Line7: "&7  no item in offhand"
+  Line8: "&6Critical Hit"
+  Line9: "&7- 20% chance to deal 10% more"
+  Line10: "&7  damage when two handed"
+  Line11: ""
+DescriptionWoodenKatana:
+  Name: "Wooden Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 3.5 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
+DescriptionStoneKatana:
+  Name: "Stone Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 4 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
+DescriptionGoldenKatana:
+  Name: "Golden Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 3.5 Attack Damage"
+  Line14: "&9 2 Attack Speed"
+DescriptionIronKatana:
+  Name: "Iron Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 5 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
+DescriptionEmeraldKatana:
+  Name: "&2Emerald Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 5 Attack Damage"
+  Line14: "&9 2 Attack Speed"
+DescriptionDiamondKatana:
+  Name: "Diamond Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 6 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
+DescriptionNetheriteKatana:
+  Name: "Netherite Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 7 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
+DescriptionPrismarineKatana:
+  Name: "&aPrismarine Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 8 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
 #SABERS
-SaberDescription:
-  line1: ""
-  line2: "&6Dual Wielding"
-  line3: "&7- Can be used in either hand"
-  line4: ""
-dWoodenSaber:
-  name: "Wooden Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 4 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dStoneSaber:
-  name: "Stone Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 5 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dGoldenSaber:
-  name: "Golden Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 4 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dIronSaber:
-  name: "Iron Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 6 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dEmeraldSaber:
-  name: "&2Emerald Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 6 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dDiamondSaber:
-  name: "Diamond Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 7 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dNetheriteSaber:
-  name: "Netherite Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 8 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
-dPrismarineSaber:
-  name: "&aPrismarine Saber"
-  line5: "&7When in Main Hand:"
-  line6: "&9 9 Attack Damage"
-  line7: "&9 1.6 Attack Speed"
+DescriptionSaber:
+  Line1: ""
+  Line2: "&6Dual Wielding"
+  Line3: "&7- Can be used in either hand"
+  Line4: ""
+DescriptionWoodenSaber:
+  Name: "Wooden Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 4 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionStoneSaber:
+  Name: "Stone Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 5 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionGoldenSaber:
+  Name: "Golden Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 4 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionIronSaber:
+  Name: "Iron Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 6 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionEmeraldSaber:
+  Name: "&2Emerald Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 6 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionDiamondSaber:
+  Name: "Diamond Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 7 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionNetheriteSaber:
+  Name: "Netherite Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 8 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+DescriptionPrismarineSaber:
+  Name: "&aPrismarine Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 9 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
 #CLEAVERS
-CleaverDescription:
-  line1: ""
-  line2: "&6Momentum"
-  line3: "&7- When an attack hits an opponent"
-  line4: "&7  while attack cooldown is between"
-  line5: "&7  &260%-100% &7charged (not inclusive),"
-  line6: "&7  gain &2+0.25 &7attack speed (max &26 &7stacks)"
-  line7: "&7- Attack speed &2resets &7upon landing"
-  line8: "&7  a fully charged attack"
-  line9: ""
-dWoodenCleaver:
-  name: "Wooden Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 9 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dGoldenCleaver:
-  name: "Golden Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 9 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dStoneCleaver:
-  name: "Stone Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 10 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dIronCleaver:
-  name: "Iron Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 11 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dEmeraldCleaver:
-  name: "&2Emerald Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 11 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dDiamondCleaver:
+DescriptionCleaver:
+  Line1: ""
+  Line2: "&6Momentum"
+  Line3: "&7- When an attack hits an opponent"
+  Line4: "&7  while attack cooldown is between"
+  Line5: "&7  &260%-100% &7charged (not inclusive),"
+  Line6: "&7  gain &2+0.25 &7attack speed (max &26 &7stacks)"
+  Line7: "&7- Attack speed &2resets &7upon landing"
+  Line8: "&7  a fully charged attack"
+  Line9: ""
+DescriptionWoodenCleaver:
+  Name: "Wooden Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 9 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionGoldenCleaver:
+  Name: "Golden Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 9 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionStoneCleaver:
+  Name: "Stone Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 10 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionIronCleaver:
+  Name: "Iron Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 11 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionEmeraldCleaver:
+  Name: "&2Emerald Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 11 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionDiamondCleaver:
   name: "Diamond Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 12 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dNetheriteCleaver:
-  name: "Netherite Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 13 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
-dPrismarineCleaver:
-  name: "&aPrismarine Cleaver"
-  line10: "&7When in Main Hand:"
-  line11: "&9 14 Attack Damage"
-  line12: "&9 0.4 Attack Speed"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 12 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionNetheriteCleaver:
+  Name: "Netherite Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 13 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionPrismarineCleaver:
+  Name: "&aPrismarine Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 14 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
 # BE SURE TO LET ME KNOW IF ANYTHING ISN'T WORKING RIGHT
