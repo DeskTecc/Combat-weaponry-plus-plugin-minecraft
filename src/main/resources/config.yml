@@ -1200,15 +1200,15 @@ DescriptionWoodenCleaver:
   Line10: "&7When in Main Hand:"
   Line11: "&9 9 Attack Damage"
   Line12: "&9 0.4 Attack Speed"
-DescriptionGoldenCleaver:
-  Name: "Golden Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 9 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
 DescriptionStoneCleaver:
   Name: "Stone Cleaver"
   Line10: "&7When in Main Hand:"
   Line11: "&9 10 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+DescriptionGoldenCleaver:
+  Name: "Golden Cleaver"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 9 Attack Damage"
   Line12: "&9 0.4 Attack Speed"
 DescriptionIronCleaver:
   Name: "Iron Cleaver"
