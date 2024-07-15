@@ -10,15 +10,11 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.EquipmentSlotGroup;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ChorusBlade {
 
@@ -69,5 +65,24 @@ public class ChorusBlade {
         meta.setCustomModelData(1000007);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static ShapedRecipe getToolRecipe(){
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chorusblade");
+        CombatWeaponryPlus.keys.add(key);
+        ShapedRecipe recipe = new ShapedRecipe(key, getTool());
+
+        recipe.shape(
+                " E ",
+                "PCP",
+                "qBq");
+
+        recipe.setIngredient('E', Material.END_ROD);
+        recipe.setIngredient('P', Material.ENDER_EYE);
+        recipe.setIngredient('C', Material.CHORUS_FLOWER);
+        recipe.setIngredient('B', Material.BLAZE_ROD);
+        recipe.setIngredient('q', Material.END_CRYSTAL);
+
+        return recipe;
     }
 }

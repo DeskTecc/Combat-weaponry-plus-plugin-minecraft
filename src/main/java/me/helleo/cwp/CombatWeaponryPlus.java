@@ -6,11 +6,11 @@ package me.helleo.cwp;
 
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.items.armors.EmeraldBoots;
-import me.helleo.cwp.items.armors.EmeraldHelmet;
-import me.helleo.cwp.items.armors.EmeraldChestplate;
-import me.helleo.cwp.items.armors.EmeraldLeggings;
+import me.helleo.cwp.items.armors.*;
 import me.helleo.cwp.items.tools.*;
+import me.helleo.cwp.items.weapons.bows.HeavySwordBow;
+import me.helleo.cwp.items.weapons.bows.SwordBow;
+import me.helleo.cwp.items.weapons.misc.ChorusBlade;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -64,13 +64,10 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         Cooldown.setupCooldown();
 
-
-
         this.getServer().getPluginManager().registerEvents(this, this);
         this.saveDefaultConfig();
 
         //emeraldgear
-        String ee = this.getConfig().getString("Emerald");
         if (ConfigurationsBool.Emerald.getValue()) {
             Bukkit.addRecipe(EmeraldHelmet.getArmorPieceRecipe());
             Bukkit.addRecipe(EmeraldChestplate.getArmorPieceRecipe());
@@ -88,22 +85,21 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         //swords
         if (ConfigurationsBool.ChorusBlade.getValue()) {
-            Bukkit.addRecipe(getSworddRecipe());
+            Bukkit.addRecipe(ChorusBlade.getToolRecipe());
         }
         if (ConfigurationsBool.SwordBow.getValue()) {
-            Bukkit.addRecipe(getSwordbowRecipe());
+            Bukkit.addRecipe(SwordBow.getToolRecipe());
         }
         if (ConfigurationsBool.HeavySwordBow.getValue()) {
-            Bukkit.addRecipe(getHSwordbowRecipe());
+            Bukkit.addRecipe(HeavySwordBow.getToolRecipe());
         }
 
         //chaimail
-        String qq = this.getConfig().getString("Chainmail");
-        if (qq == "true") {
-            Bukkit.addRecipe(getChnHelmetRecipe());
-            Bukkit.addRecipe(getChnChestRecipe());
-            Bukkit.addRecipe(getChnLegRecipe());
-            Bukkit.addRecipe(getChnBootsRecipe());
+        if (ConfigurationsBool.Chainmail.getValue()) {
+            Bukkit.addRecipe(ChainmailHelmet.getArmorPieceRecipe());
+            Bukkit.addRecipe(ChainmailChestplate.getArmorPieceRecipe());
+            Bukkit.addRecipe(ChainmailLeggings.getArmorPieceRecipe());
+            Bukkit.addRecipe(ChainmailBoots.getArmorPieceRecipe());
         }
         //platedchain
         String q1q = this.getConfig().getString("PlatedChainmail");
@@ -368,29 +364,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-    public ShapedRecipe getSworddRecipe() {
-
-        //ChorusBlade
-
-
-
-        NamespacedKey key = new NamespacedKey(this, "chorusblade");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" E ",
-                "PCP",
-                "qBq");
-
-        recipe.setIngredient('E', Material.END_ROD);
-        recipe.setIngredient('P', Material.ENDER_EYE);
-        recipe.setIngredient('C', Material.CHORUS_FLOWER);
-        recipe.setIngredient('B', Material.BLAZE_ROD);
-        recipe.setIngredient('q', Material.END_CRYSTAL);
-
-        return recipe;
-    }
-
     @EventHandler()
     public void onClick(PlayerInteractEvent event) {
         if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.IRON_SWORD))
@@ -414,212 +387,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
                 }
 
-    }
-
-    public ShapedRecipe getSwordbowRecipe() {
-
-        //sword bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dSwordBow.name")));
-        if (this.getConfig().getString("EnchantsSwordBow") == "true") {
-            int num = this.getConfig().getInt("SbowEnchantLevels.Smite");
-            int num2 = this.getConfig().getInt("SbowEnchantLevels.Unbreaking");
-
-            int num4 = this.getConfig().getInt("SbowEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DAMAGE_UNDEAD, num, true);
-            meta.addEnchant(Enchantment.DURABILITY, num2, true);
-            meta.addEnchant(Enchantment.MENDING, num4, true);
-        }
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dSwordBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dSwordBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dSwordBow.line3")));
-        meta.setLore(lore);
-
-        //modifier
-        double dmg = 8;
-        double spd = -3;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aSwordBow.damage") - 1;
-            spd = this.getConfig().getDouble("aSwordBow.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setCustomModelData(1000001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "sword_bow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("ISs", "SCs", "ISs");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('s', Material.STRING);
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('C', Material.IRON_SWORD);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getHSwordbowRecipe() {
-
-        // heavy sword bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dHeavySwordBow.name")));
-        if (this.getConfig().getString("EnchantsHeavySwordBow") == "true") {
-            int num = this.getConfig().getInt("HSbowEnchantLevels.Power");
-            int num2 = this.getConfig().getInt("HSbowEnchantLevels.Unbreaking");
-            int num3 = this.getConfig().getInt("HSbowEnchantLevels.Smite");
-            int num4 = this.getConfig().getInt("HSbowEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.ARROW_DAMAGE, num, true);
-            meta.addEnchant(Enchantment.DURABILITY, num2, true);
-            meta.addEnchant(Enchantment.DAMAGE_UNDEAD, num3, true);
-            meta.addEnchant(Enchantment.MENDING, num4, true);
-        }
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dHeavySwordBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dHeavySwordBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dHeavySwordBow.line3")));
-        meta.setLore(lore);
-
-        //modifier
-        double dmg = 10;
-        double spd = -3.2;
-        double mspd = -0.05;
-        double omspd = -0.05;
-        double kbr = 0.5;
-        double okbr = 0.5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aHeavySwordBow.damage") - 1;
-            spd = this.getConfig().getDouble("aHeavySwordBow.speed") - 4;
-            mspd = this.getConfig().getDouble("aHeavySwordBow.moveSpeed");
-            omspd = this.getConfig().getDouble("aHeavySwordBow.offhandMoveSpeed");
-            kbr = this.getConfig().getDouble("aHeavySwordBow.KBResist") / 10;
-            okbr = this.getConfig().getDouble("aHeavySwordBow.offhandKBResist") / 10;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        //speed
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", mspd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "Speed", omspd,
-                Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier4);
-
-        //knockback res
-        AttributeModifier modifier5 = new AttributeModifier(UUID.randomUUID(), "KnockbackRes", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier5);
-        AttributeModifier modifier6 = new AttributeModifier(UUID.randomUUID(), "KnockbackRes", okbr,
-                Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier6);
-
-        meta.setCustomModelData(1000002);
-
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "heavy_sword_bow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("ISs", "SCs", "ISs");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('s', Material.CHAIN);
-        recipe.setIngredient('I', Material.NETHERITE_SCRAP);
-        recipe.setIngredient('C', Material.NETHERITE_SWORD);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getChnHelmetRecipe() {
-
-        //chainmail armor
-
-        ItemStack item = new ItemStack(Material.CHAINMAIL_HELMET);
-
-        NamespacedKey key = new NamespacedKey(this, "chainmail_helmet");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("CCC", "C C", "   ");
-
-        recipe.setIngredient('C', Material.CHAIN);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getChnChestRecipe() {
-
-        //chainmail armor
-
-        ItemStack item = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
-
-        NamespacedKey key = new NamespacedKey(this, "chainmail_chestplate");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("C C", "CCC", "CCC");
-
-        recipe.setIngredient('C', Material.CHAIN);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getChnLegRecipe() {
-
-        //chainmail armor
-
-        ItemStack item = new ItemStack(Material.CHAINMAIL_LEGGINGS);
-
-        NamespacedKey key = new NamespacedKey(this, "chainmail_leggings");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("CCC", "C C", "C C");
-
-        recipe.setIngredient('C', Material.CHAIN);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getChnBootsRecipe() {
-
-        //chainmail armor
-
-        ItemStack item = new ItemStack(Material.CHAINMAIL_BOOTS);
-
-        NamespacedKey key = new NamespacedKey(this, "chainmail_boots");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("   ", "C C", "C C");
-
-        recipe.setIngredient('C', Material.CHAIN);
-
-        return recipe;
     }
 
     public ShapedRecipe getPChnHelmetRecipe() {
