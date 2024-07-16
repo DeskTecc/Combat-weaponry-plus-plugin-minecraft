@@ -4,6 +4,7 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -20,8 +21,7 @@ public class EmeraldHelmet extends BaseArmor {
     static ItemStack item = new ItemStack(Material.GOLDEN_HELMET);
     static ItemMeta meta = item.getItemMeta();
 
-
-    public static ItemStack getArmorPiece() {
+    public ItemStack getArmorPiece() {
         double hp = 1;
         double def = 2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -50,17 +50,22 @@ public class EmeraldHelmet extends BaseArmor {
     }
 
 
-    public static ShapedRecipe getArmorPieceRecipe() {
+    public ShapedRecipe getArmorPieceRecipe() {
         //emerald helmet
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_helmet");
         CombatWeaponryPlus.keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
-        recipe.shape("EEE", "E E", "   ");
+        recipe.shape(
+                "EEE",
+                "E E",
+                "   ");
 
         recipe.setIngredient('E', Material.EMERALD);
-
         return recipe;
+    }
+    public static void setArmorPieceRecipe(){
+        Bukkit.addRecipe(new EmeraldHelmet().getArmorPieceRecipe());
     }
 }

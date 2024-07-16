@@ -4,6 +4,7 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -15,23 +16,23 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmeraldSword {
+public class EmeraldSword extends BaseTool {
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
 
-    public static ItemStack getTool(){
+    public ItemStack getTool(){
         //modifier
-        double dmg = 5;
-        double spd = -2.2;
+        double damage = 5;
+        double speed = -2.2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Swords_EmeraldSword_Damage.getValue();
-            spd = ConfigurationsDouble.Swords_EmeraldSword_Speed.getValue();
+            damage = ConfigurationsDouble.Swords_EmeraldSword_Damage.getValue();
+            speed = ConfigurationsDouble.Swords_EmeraldSword_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), dmg,
+        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
@@ -39,8 +40,8 @@ public class EmeraldSword {
 
         lore.add("");
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+dmg+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+spd+" Attack Speed"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -58,7 +59,7 @@ public class EmeraldSword {
         return item;
     }
 
-    public static ShapedRecipe getToolRecipe(){
+    public ShapedRecipe getToolRecipe(){
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_sword");
         CombatWeaponryPlus.keys.add(key);
@@ -70,6 +71,10 @@ public class EmeraldSword {
         recipe.setIngredient('S', Material.STICK);
 
         return recipe;
+    }
+
+    public static void setToolRecipe(){
+        Bukkit.addRecipe(new EmeraldSword().getToolRecipe());
     }
 
 }

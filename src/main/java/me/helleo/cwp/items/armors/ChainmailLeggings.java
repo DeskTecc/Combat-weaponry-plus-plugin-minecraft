@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.armors;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -12,16 +13,15 @@ public class ChainmailLeggings extends BaseArmor {
     //static ItemMeta meta = item.getItemMeta();
 
 
-    /*public static ItemStack getArmorPiece() {
+    public ItemStack getArmorPiece() {
+        return null;
+    }
 
-    } */
 
-
-    public static ShapedRecipe getArmorPieceRecipe() {
+    public ShapedRecipe getArmorPieceRecipe() {
 
         //chainmail leggings
 
-        ItemStack item = new ItemStack(Material.CHAINMAIL_LEGGINGS);
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chainmail_leggings");
         CombatWeaponryPlus.keys.add(key);
@@ -35,5 +35,9 @@ public class ChainmailLeggings extends BaseArmor {
         recipe.setIngredient('C', Material.CHAIN);
 
         return recipe;
+    }
+
+    public static void setArmorPieceRecipe(){
+        Bukkit.addRecipe(new ChainmailLeggings().getArmorPieceRecipe());
     }
 }

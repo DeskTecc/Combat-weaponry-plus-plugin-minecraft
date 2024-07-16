@@ -4,6 +4,7 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -11,12 +12,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class EmeraldPickaxe {
+public class EmeraldPickaxe extends BaseTool{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_PICKAXE);
     static ItemMeta meta = item.getItemMeta();
 
-    public static ItemStack getTool(){
+    public ItemStack getTool(){
 
         // emerald pickaxe
 
@@ -32,16 +33,23 @@ public class EmeraldPickaxe {
         return item;
     }
 
-    public static ShapedRecipe getToolRecipe(){
+    public ShapedRecipe getToolRecipe(){
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_pickaxe");
         CombatWeaponryPlus.keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
-        recipe.shape("EEE", " S ", " S ");
+        recipe.shape(
+                "EEE",
+                " S ",
+                " S ");
 
         recipe.setIngredient('E', Material.EMERALD);
         recipe.setIngredient('S', Material.STICK);
 
         return recipe;
+    }
+
+    public static void setToolRecipe(){
+        Bukkit.addRecipe(new EmeraldPickaxe().getToolRecipe());
     }
 }

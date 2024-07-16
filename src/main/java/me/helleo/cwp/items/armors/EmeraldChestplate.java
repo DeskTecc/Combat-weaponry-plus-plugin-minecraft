@@ -4,6 +4,7 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -20,7 +21,7 @@ public class EmeraldChestplate extends BaseArmor{
     static ItemStack item = new ItemStack(Material.GOLDEN_CHESTPLATE);
     static ItemMeta meta = item.getItemMeta();
 
-    public static ItemStack getArmorPiece(){
+    public ItemStack getArmorPiece(){
 
         //emerald chestplate
 
@@ -49,15 +50,22 @@ public class EmeraldChestplate extends BaseArmor{
         return item;
     }
 
-    public static ShapedRecipe getArmorPieceRecipe() {
+    public ShapedRecipe getArmorPieceRecipe() {
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_chestplate");
         CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
-        recipe.shape("E E", "EEE", "EEE");
+        recipe.shape(
+                "E E",
+                "EEE",
+                "EEE");
 
         recipe.setIngredient('E', Material.EMERALD);
 
         return recipe;
+    }
+
+    public static void setArmorPieceRecipe(){
+        Bukkit.addRecipe(new EmeraldChestplate().getArmorPieceRecipe());
     }
 }

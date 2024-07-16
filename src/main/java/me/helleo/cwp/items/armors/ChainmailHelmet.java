@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.armors;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -12,16 +13,14 @@ public class ChainmailHelmet extends BaseArmor {
     //static ItemMeta meta = item.getItemMeta();
 
 
-    /*public static ItemStack getArmorPiece() {
+    public ItemStack getArmorPiece() {
+        return null;
+    }
 
-    } */
 
-
-    public static ShapedRecipe getArmorPieceRecipe() {
+    public ShapedRecipe getArmorPieceRecipe() {
 
         //chainmail helmet
-
-        ItemStack item = new ItemStack(Material.CHAINMAIL_HELMET);
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chainmail_helmet");
         CombatWeaponryPlus.keys.add(key);
@@ -35,5 +34,9 @@ public class ChainmailHelmet extends BaseArmor {
         recipe.setIngredient('C', Material.CHAIN);
 
         return recipe;
+    }
+
+    public static void setArmorPieceRecipe(){
+        Bukkit.addRecipe(new ChainmailHelmet().getArmorPieceRecipe());
     }
 }

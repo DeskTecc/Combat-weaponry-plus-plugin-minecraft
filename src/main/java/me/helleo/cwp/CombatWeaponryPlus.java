@@ -69,48 +69,45 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         //emeraldgear
         if (ConfigurationsBool.Emerald.getValue()) {
-            Bukkit.addRecipe(EmeraldHelmet.getArmorPieceRecipe());
-            Bukkit.addRecipe(EmeraldChestplate.getArmorPieceRecipe());
-            Bukkit.addRecipe(EmeraldLeggings.getArmorPieceRecipe());
-            Bukkit.addRecipe(EmeraldBoots.getArmorPieceRecipe());
+            EmeraldHelmet.setArmorPieceRecipe();
+            EmeraldChestplate.setArmorPieceRecipe();
+            EmeraldLeggings.setArmorPieceRecipe();
+            EmeraldBoots.setArmorPieceRecipe();
         }
         if (ConfigurationsBool.EmeraldGear.getValue()) {
-            Bukkit.addRecipe(EmeraldPickaxe.getToolRecipe());
-            Bukkit.addRecipe(EmeraldSword.getToolRecipe());
-            Bukkit.addRecipe(EmeraldAxe.getToolRecipe());
-            Bukkit.addRecipe(EmeraldShovel.getToolRecipe());
-            Bukkit.addRecipe(EmeraldHoe.getToolRecipe());
-
+            EmeraldPickaxe.setToolRecipe();
+            EmeraldSword.setToolRecipe();
+            EmeraldAxe.setToolRecipe();
+            EmeraldShovel.setToolRecipe();
+            EmeraldHoe.setToolRecipe();
         }
 
         //swords
         if (ConfigurationsBool.ChorusBlade.getValue()) {
-            Bukkit.addRecipe(ChorusBlade.getToolRecipe());
+            ChorusBlade.setToolRecipe();
         }
         if (ConfigurationsBool.SwordBow.getValue()) {
-            Bukkit.addRecipe(SwordBow.getToolRecipe());
+            SwordBow.setBowRecipe();
         }
         if (ConfigurationsBool.HeavySwordBow.getValue()) {
-            Bukkit.addRecipe(HeavySwordBow.getToolRecipe());
+            HeavySwordBow.setBowRecipe();
         }
 
         //chaimail
         if (ConfigurationsBool.Chainmail.getValue()) {
-            Bukkit.addRecipe(ChainmailHelmet.getArmorPieceRecipe());
-            Bukkit.addRecipe(ChainmailChestplate.getArmorPieceRecipe());
-            Bukkit.addRecipe(ChainmailLeggings.getArmorPieceRecipe());
-            Bukkit.addRecipe(ChainmailBoots.getArmorPieceRecipe());
+            ChainmailHelmet.setArmorPieceRecipe();
+            ChainmailChestplate.setArmorPieceRecipe();
+            ChainmailLeggings.setArmorPieceRecipe();
+            ChainmailBoots.setArmorPieceRecipe();
         }
+
         //platedchain
-        String q1q = this.getConfig().getString("PlatedChainmail");
-        if (q1q == "true") {
-            Bukkit.addRecipe(getPChnHelmetRecipe());
-            Bukkit.addRecipe(getPChnChestRecipe());
-            Bukkit.addRecipe(getPChnLegRecipe());
-            Bukkit.addRecipe(getPChnBootsRecipe());
-
+        if (ConfigurationsBool.PlatedChainmail.getValue()) {
+            PlatedChainmailHelmet.setArmorPieceRecipe();
+            PlatedChainmailChestplate.setArmorPieceRecipe();
+            PlatedChainmailLeggings.setArmorPieceRecipe();
+            PlatedChainmailBoots.setArmorPieceRecipe();
         }
-
 
         //charms
         String fc = this.getConfig().getString("FeatherCharm");
@@ -389,155 +386,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-    public ShapedRecipe getPChnHelmetRecipe() {
-
-        //plated chainmail armor
-
-        ItemStack item = new ItemStack(Material.IRON_HELMET);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double def = 4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            def = this.getConfig().getDouble("aPlateChainHelmet.Armor");
-        }
-
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
-
-        meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Helmet");
-        if (this.getConfig().getString("EnchantsPlatedChainmail") == "true") {
-            int num = this.getConfig().getInt("PChainEnchantLevels.Unbreaking");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-        }
-
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "plated_chainmail_helmet");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("III", "IHI", "III");
-
-        recipe.setIngredient('H', Material.CHAINMAIL_HELMET);
-        recipe.setIngredient('I', Material.IRON_NUGGET);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getPChnChestRecipe() {
-
-        //plated chainmail armor
-
-        ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double def = 6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            def = this.getConfig().getDouble("aPlateChainChestplate.Armor");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
-
-        meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Chestplate");
-        if (this.getConfig().getString("EnchantsPlatedChainmail") == "true") {
-            int num = this.getConfig().getInt("PChainEnchantLevels.Unbreaking");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-        }
-
-        item.setItemMeta(meta);
-
-
-        NamespacedKey key = new NamespacedKey(this, "plated_chainmail_chestplate");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("III", "ICI", "III");
-
-        recipe.setIngredient('C', Material.CHAINMAIL_CHESTPLATE);
-        recipe.setIngredient('I', Material.IRON_NUGGET);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getPChnLegRecipe() {
-
-        //plated chainmail armor
-
-        ItemStack item = new ItemStack(Material.IRON_LEGGINGS);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double def = 6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            def = this.getConfig().getDouble("aPlateChainLeggings.Armor");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
-
-        meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Leggings");
-        if (this.getConfig().getString("EnchantsPlatedChainmail") == "true") {
-            int num = this.getConfig().getInt("PChainEnchantLevels.Unbreaking");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-        }
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "plated_chainmail_leggings");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("III", "ILI", "III");
-
-        recipe.setIngredient('L', Material.CHAINMAIL_LEGGINGS);
-        recipe.setIngredient('I', Material.IRON_NUGGET);
-
-        return recipe;
-    }
-
 
     //Scythes
-
-    public ShapedRecipe getPChnBootsRecipe() {
-
-        //plated chainmail armor
-
-        ItemStack item = new ItemStack(Material.IRON_BOOTS);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-        double def = 4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            def = this.getConfig().getDouble("aPlateChainBoots.Armor");
-        }
-
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Defense", def,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
-
-        meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Boots");
-        if (this.getConfig().getString("EnchantsPlatedChainmail") == "true") {
-            int num = this.getConfig().getInt("PChainEnchantLevels.Unbreaking");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-        }
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "plated_chainmail_boots");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("III", "IBI", "III");
-
-        recipe.setIngredient('B', Material.CHAINMAIL_BOOTS);
-        recipe.setIngredient('I', Material.IRON_NUGGET);
-
-        return recipe;
-    }
 
     public ShapedRecipe getWScytheRecipe() {
 

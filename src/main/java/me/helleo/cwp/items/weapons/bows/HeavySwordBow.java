@@ -5,6 +5,7 @@ import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -18,11 +19,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeavySwordBow {
+public class HeavySwordBow extends BaseBow{
     static ItemStack item = new ItemStack(Material.BOW);
     static ItemMeta meta = item.getItemMeta();
 
-    public static ItemStack getTool() {
+    public ItemStack getBow() {
 
         //modifier
         double damage = 10;
@@ -58,12 +59,13 @@ public class HeavySwordBow {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Line3.getValue()));
         meta.setLore(lore);
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), speed,
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), damage,
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
+        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
+
 
         //speed
         AttributeModifier modifier3 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Speed"), moveSpeed,
@@ -87,12 +89,15 @@ public class HeavySwordBow {
         return item;
     }
 
-    public static ShapedRecipe getToolRecipe(){
+    public ShapedRecipe getBowRecipe(){
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "heavy_sword_bow");
         CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getTool());
+        ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
-        recipe.shape("ISs", "SCs", "ISs");
+        recipe.shape(
+                "ISs",
+                "SCs",
+                "ISs");
 
         recipe.setIngredient('S', Material.STICK);
         recipe.setIngredient('s', Material.CHAIN);
@@ -100,5 +105,9 @@ public class HeavySwordBow {
         recipe.setIngredient('C', Material.NETHERITE_SWORD);
 
         return recipe;
+    }
+
+    public static void setBowRecipe(){
+        Bukkit.addRecipe(new HeavySwordBow().getBowRecipe());
     }
 }

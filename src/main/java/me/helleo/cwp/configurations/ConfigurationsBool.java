@@ -9,6 +9,7 @@ public enum ConfigurationsBool {
     ResourcePack(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("ResourcePack")),
     ShieldParry(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("ShieldParry")),
     Chainmail(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("Chainmail")),
+    PlatedChainmail(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("PlatedChainmail")),
     RedstoneCore(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("RedstoneCore")),
     EmeraldGear(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("EmeraldGear")),
     ChorusBlade(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("ChorusBlade")),

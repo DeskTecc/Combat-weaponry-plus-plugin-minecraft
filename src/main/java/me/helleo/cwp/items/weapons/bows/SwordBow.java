@@ -5,6 +5,7 @@ import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -18,28 +19,27 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwordBow {
+public class SwordBow extends BaseBow{
     static ItemStack item = new ItemStack(Material.BOW);
     static ItemMeta meta = item.getItemMeta();
 
-    public static ItemStack getTool() {
+    public ItemStack getBow() {
         //sword bow
 
         //modifier
-        double dmg = 8;
-        double spd = -3;
+        double damage = 8;
+        double speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Bows_SwordBow_Damage.getValue();
-            spd = ConfigurationsDouble.Bows_SwordBow_Speed.getValue();
+            damage = ConfigurationsDouble.Bows_SwordBow_Damage.getValue();
+            speed = ConfigurationsDouble.Bows_SwordBow_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier( new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), spd,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), dmg,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Name.getValue()));
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), damage,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
+        AttributeModifier modifier2 = new AttributeModifier( new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), speed,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         if (ConfigurationsBool.EnchantsSwordBow.getValue()) {
             int enchantmentSmite = (int) ConfigurationsDouble.SwordBowEnchantLevels_Smite.getValue();
@@ -56,6 +56,7 @@ public class SwordBow {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Line3.getValue()));
 
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Name.getValue()));
 
         meta.setLore(lore);
         meta.setCustomModelData(1000001);
@@ -63,10 +64,10 @@ public class SwordBow {
         return item;
     }
 
-    public static ShapedRecipe getToolRecipe(){
+    public ShapedRecipe getBowRecipe(){
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "sword_bow");
         CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getTool());
+        ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(
                 "ISs",
@@ -79,5 +80,9 @@ public class SwordBow {
         recipe.setIngredient('C', Material.IRON_SWORD);
 
         return recipe;
+    }
+
+    public static void setBowRecipe(){
+        Bukkit.addRecipe(new SwordBow().getBowRecipe());
     }
 }

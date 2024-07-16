@@ -5,6 +5,7 @@ import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -21,7 +22,7 @@ public class ChorusBlade {
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
 
-    public static ItemStack getTool(){
+    public ItemStack getTool(){
 
         //modifier
         double dmg = 3;
@@ -67,7 +68,7 @@ public class ChorusBlade {
         return item;
     }
 
-    public static ShapedRecipe getToolRecipe(){
+    public ShapedRecipe getToolRecipe(){
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chorusblade");
         CombatWeaponryPlus.keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
@@ -84,5 +85,9 @@ public class ChorusBlade {
         recipe.setIngredient('q', Material.END_CRYSTAL);
 
         return recipe;
+    }
+
+    public static void setToolRecipe(){
+        Bukkit.addRecipe(new ChorusBlade().getToolRecipe());
     }
 }
