@@ -12,6 +12,7 @@ import me.helleo.cwp.items.tools.*;
 import me.helleo.cwp.items.weapons.bows.HeavySwordBow;
 import me.helleo.cwp.items.weapons.bows.SwordBow;
 import me.helleo.cwp.items.weapons.misc.ChorusBlade;
+import me.helleo.cwp.items.weapons.scythes.*;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -51,7 +52,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     public static String pluginName = "CombatWeaponryPlus";
     public static Plugin plugin = Bukkit.getPluginManager().getPlugin("CombatWeaponryPlus");
 
-    public static List<NamespacedKey> keys = new ArrayList<NamespacedKey>();
+    public static List<NamespacedKey> keys = new ArrayList<>();
 
     //Random number thing for  crit
     public static Integer getRandomInt(Integer max) {
@@ -132,11 +133,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         //scythes
         if (this.getConfig().getString("Scythes") == "true") {
-            Bukkit.addRecipe(getWScytheRecipe());
-            Bukkit.addRecipe(getSScytheRecipe());
-            Bukkit.addRecipe(getGScytheRecipe());
-            Bukkit.addRecipe(getIScytheRecipe());
-            Bukkit.addRecipe(getDScytheRecipe());
+            WoodenScythe.setScytheRecipe();
+            StoneScythe.setScytheRecipe();
+            GoldenScythe.setScytheRecipe();
+            IronScythe.setScytheRecipe();
+            DiamondScythe.setScytheRecipe();
             Bukkit.addRecipe(getNScytheRecipe());
 
         }
@@ -385,164 +386,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     //Scythes
 
-    public ShapedRecipe getWScytheRecipe() {
-
-        //wooden scythe
-
-        ItemStack item = new ItemStack(Material.WOODEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenScythe.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenScythe.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenScythe.line10")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 6;
-        double spd = -3;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aWoodenScythe.damage") - 1;
-            spd = this.getConfig().getDouble("aWoodenScythe.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenScythe.name")));
-        meta.setCustomModelData(1000003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wooden_scythe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("SSS", "  S", "  S");
-
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getSScytheRecipe() {
-
-        //stone scythe
-
-        ItemStack item = new ItemStack(Material.STONE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneScythe.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneScythe.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneScythe.line10")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 6.5;
-        double spd = -3;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aStoneScythe.damage") - 1;
-            spd = this.getConfig().getDouble("aStoneScythe.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneScythe.name")));
-        meta.setCustomModelData(1000003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "stone_scythe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("CCC", "  S", "  S");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('C', Material.COBBLESTONE);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getGScytheRecipe() {
-
-        //golden scythe
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenScythe.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenScythe.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenScythe.line10")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 6;
-        double spd = -2.8;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aGoldenScythe.damage") - 1;
-            spd = this.getConfig().getDouble("aGoldenScythe.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenScythe.name")));
-        meta.setCustomModelData(1000003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "golden_scythe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("GGG", "  S", "  S");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('G', Material.GOLD_INGOT);
-
-        return recipe;
-    }
-
     public ShapedRecipe getEScytheRecipe() {
 
         //EMERALSSS scythe
@@ -598,112 +441,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         recipe.setIngredient('S', Material.STICK);
         recipe.setIngredient('E', Material.EMERALD);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getIScytheRecipe() {
-
-        //iron scythe
-
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronScythe.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronScythe.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronScythe.line10")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 7;
-        double spd = -3;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aIronScythe.damage") - 1;
-            spd = this.getConfig().getDouble("aIronScythe.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronScythe.name")));
-        meta.setCustomModelData(1000003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "iron_scythe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("III", "  S", "  S");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('I', Material.IRON_INGOT);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getDScytheRecipe() {
-
-        //diamond scythe
-
-        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("ScytheDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondScythe.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondScythe.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondScythe.line10")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 8;
-        double spd = -3;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aDiamondScythe.damage") - 1;
-            spd = this.getConfig().getDouble("aDiamondScythe.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondScythe.name")));
-        meta.setCustomModelData(1000003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "diamond_scythe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("DDD", "  S", "  S");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('D', Material.DIAMOND);
 
         return recipe;
     }
