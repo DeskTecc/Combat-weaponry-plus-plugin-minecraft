@@ -7,6 +7,7 @@ package me.helleo.cwp;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.armors.*;
+import me.helleo.cwp.items.charms.*;
 import me.helleo.cwp.items.tools.*;
 import me.helleo.cwp.items.weapons.bows.HeavySwordBow;
 import me.helleo.cwp.items.weapons.bows.SwordBow;
@@ -110,29 +111,24 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         }
 
         //charms
-        String fc = this.getConfig().getString("FeatherCharm");
-        if (fc == "true") {
-            Bukkit.addRecipe(getFCharmRecipe());
+        if (ConfigurationsBool.FeatherCharm.getValue()) {
+            FeatherCharm.setCharmRecipe();
         }
-        String ec = this.getConfig().getString("EmeraldCharm");
-        if (ec == "true") {
-            Bukkit.addRecipe(getECharmRecipe());
+        if (ConfigurationsBool.EmeraldCharm.getValue()) {
+            EmeraldCharm.setCharmRecipe();
         }
-        String bc = this.getConfig().getString("BlazeCharm");
-        if (bc == "true") {
-            Bukkit.addRecipe(getBCharmRecipe());
+        if (ConfigurationsBool.BlazeCharm.getValue()) {
+            BlazeCharm.setCharmRecipe();
         }
-        if (this.getConfig().getString("GoldCharm") == "true") {
-            Bukkit.addRecipe(getGCharmRecipe());
+        if (ConfigurationsBool.GoldCharm.getValue()) {
+            GoldCharm.setCharmRecipe();
         }
-        if (this.getConfig().getString("StarCharm") == "true") {
-            Bukkit.addRecipe(getERecipe());
+        if (ConfigurationsBool.StarCharm.getValue()) {
+            StarCharm.setCharmRecipe();
         }
-        String frc = this.getConfig().getString("FrostCharm");
-        if (frc == "true") {
-            Bukkit.addRecipe(getFrCharmRecipe());
+        if (ConfigurationsBool.FrostCharm.getValue()) {
+            FrostCharm.setCharmRecipe();
         }
-
 
         //scythes
         if (this.getConfig().getString("Scythes") == "true") {
@@ -3472,39 +3468,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     //CHARMS
 
 
-    public ShapedRecipe getFCharmRecipe() {
-
-        //feather charm
-
-        ItemStack item = new ItemStack(Material.FEATHER);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFeatherCharm.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFeatherCharm.line2")));
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFeatherCharm.name")));
-        meta.addEnchant(Enchantment.DURABILITY, 5, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "feather_charm");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("dLd", "LFL", "dLd");
-
-        recipe.setIngredient('F', Material.FEATHER);
-        recipe.setIngredient('d', Material.DIAMOND);
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-
-        return recipe;
-    }
-
-
     @EventHandler
     public void onFall(EntityDamageEvent event) {
         if (event.getEntity().getType() == EntityType.PLAYER) {
@@ -3520,150 +3483,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         }
     }
 
-    public ShapedRecipe getECharmRecipe() {
-
-        //emerald charm
-
-        ItemStack item = new ItemStack(Material.EMERALD);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-
-        double hp = 4;
-        double def = -2;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            hp = this.getConfig().getDouble("aEmeraldCharm.BonusHealth");
-            def = this.getConfig().getDouble("aEmeraldCharm.BonusArmor");
-
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Armor", def,
-                Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCharm.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCharm.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCharm.line3")));
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCharm.name")));
-        meta.addEnchant(Enchantment.DURABILITY, 5, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        //meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_charm");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("dLd", "LFL", "dLd");
-
-        recipe.setIngredient('F', Material.EMERALD);
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-        recipe.setIngredient('d', Material.DIAMOND);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getBCharmRecipe() {
-
-
-        ItemStack item = new ItemStack(Material.BLAZE_ROD);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-
-        double dmg = 4;
-        double hp = -2;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aBlazeCharm.BonusDamage");
-            hp = this.getConfig().getDouble("aBlazeCharm.BonusHealth");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier2);
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBlazeCharm.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBlazeCharm.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBlazeCharm.line3")));
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBlazeCharm.name")));
-        meta.addEnchant(Enchantment.DURABILITY, 5, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "blaze_charm");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("dLd", "LBL", "dLd");
-
-        recipe.setIngredient('B', Material.BLAZE_ROD);
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-        recipe.setIngredient('d', Material.DIAMOND);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getGCharmRecipe() {
-
-        //gold charm
-
-        ItemStack item = new ItemStack(Material.GOLD_INGOT);
-        ItemMeta meta = item.getItemMeta();
-
-        //modifier
-
-        double atkspd = 0.3;
-        double mvspd = -0.15;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            atkspd = this.getConfig().getDouble("aGoldCharm.BonusAttackSpeedPercent") / 100;
-            mvspd = this.getConfig().getDouble("aGoldCharm.BonusMoveSpeedPercent") / 100;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", atkspd,
-                Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Move Speed", mvspd,
-                Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier2);
-
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldCharm.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldCharm.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldCharm.line3")));
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldCharm.name")));
-        meta.addEnchant(Enchantment.DURABILITY, 5, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "gold_charm");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("dLd", "LBL", "dLd");
-
-        recipe.setIngredient('B', Material.GOLD_INGOT);
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-        recipe.setIngredient('d', Material.DIAMOND);
-
-        return recipe;
-    }
     // below is test stuff, i dont remember what it was for
 
     //furnace recipe??
@@ -7290,35 +7109,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
     }
 
-    public ShapedRecipe getERecipe() {
-
-        //ggggg
-        ItemStack item = new ItemStack(Material.NETHER_STAR);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStarCharm.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStarCharm.line2")));
-        meta.setLore(lore);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStarCharm.name")));
-        meta.setCustomModelData(4920001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "star_charm");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("dLd", "LeL", "dLd");
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-        recipe.setIngredient('e', Material.NETHER_STAR);
-        recipe.setIngredient('d', Material.DIAMOND);
-
-
-        return recipe;
-    }
-
     //DUAL WIELDING
     @EventHandler
     public void onRightClickEntity(PlayerInteractEntityEvent event) {
@@ -9694,49 +9484,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
 
         }
-    }
-
-    public ShapedRecipe getFrCharmRecipe() {
-
-        //frost charm
-
-        ItemStack item = new ItemStack(Material.WOODEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFrostCharm.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFrostCharm.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFrostCharm.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFrostCharm.line4")));
-        meta.setLore(lore);
-        meta.setCustomModelData(45);
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dFrostCharm.name")));
-        meta.addEnchant(Enchantment.DURABILITY, 5, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", 0,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 0,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        meta.setUnbreakable(true);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "frost_charm");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("dLd", "LBL", "dLd");
-
-        recipe.setIngredient('B', Material.BLUE_ICE);
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-        recipe.setIngredient('d', Material.DIAMOND);
-
-        return recipe;
     }
 
     @EventHandler
