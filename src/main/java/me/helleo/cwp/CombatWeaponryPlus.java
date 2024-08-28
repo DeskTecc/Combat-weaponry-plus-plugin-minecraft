@@ -8,9 +8,11 @@ package me.helleo.cwp;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.armors.*;
 import me.helleo.cwp.items.charms.*;
+import me.helleo.cwp.items.misc.Eelytra;
+import me.helleo.cwp.items.misc.PrismarineAlloy;
+import me.helleo.cwp.items.misc.ReallyGoodSword;
 import me.helleo.cwp.items.tools.*;
-import me.helleo.cwp.items.weapons.bows.HeavySwordBow;
-import me.helleo.cwp.items.weapons.bows.SwordBow;
+import me.helleo.cwp.items.weapons.bows.*;
 import me.helleo.cwp.items.weapons.katanas.*;
 import me.helleo.cwp.items.weapons.knives.*;
 import me.helleo.cwp.items.weapons.longswords.*;
@@ -220,8 +222,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             }
         }
 
-        if (this.getConfig().getString("Prismarine") == "true") {
-            Bukkit.addRecipe(getinsttRecipe());
+        if (ConfigurationsBool.Prismarine.getValue()) {
+            PrismarineAlloy.setItemRecipe();
+
             Bukkit.addRecipe(getprisswordsrecipe());
             Bukkit.addRecipe(getprispickrecipe());
             Bukkit.addRecipe(getprisaxerecipe());
@@ -233,28 +236,24 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             Bukkit.addRecipe(getprisbootsrecipe());
         }
 
-        if (this.getConfig().getString("Longbow") == "true") {
-
-            Bukkit.addRecipe(getLongBowRecipe());
+        if (ConfigurationsBool.Longbow.getValue()) {
+            LongBow.setBowRecipe();
         }
-        if (this.getConfig().getString("Recurvebow") == "true") {
-
-            Bukkit.addRecipe(getRecurveBowRecipe());
+        if (ConfigurationsBool.Recurvebow.getValue()) {
+            RecurveBow.setBowRecipe();
         }
-        if (this.getConfig().getString("Compoundbow") == "true") {
-
-            Bukkit.addRecipe(getCompoundBowRecipe());
+        if (ConfigurationsBool.Compoundbow.getValue()) {
+            CompoundBow.setBowRecipe();
         }
 
-        //Bukkit.addRecipe(getTESTbowRecipe());
-        if (this.getConfig().getString("Eelytra") == "true") {
-            Bukkit.addRecipe(getEelytraRecipe());
+        if (ConfigurationsBool.Eelytra.getValue()) {
+            Eelytra.setItemRecipe();
         }
 
-//Bukkit.addRecipe(geteaeaRecipe());
-//Bukkit.addRecipe(gettestt());
-        if (this.getConfig().getString("ReallyGoodSword") == "true") {
-            Bukkit.addRecipe(getOPSWORDRecipe());
+        //Bukkit.addRecipe(geteaeaRecipe());
+        //Bukkit.addRecipe(gettestt());
+        if (ConfigurationsBool.ReallyGoodSword.getValue()) {
+            ReallyGoodSword.setItemRecipe();
         }
         if (this.getConfig().getString("DiamondShield") == "true") {
             Bukkit.addRecipe(getDiaShieldRecipe());
@@ -2245,44 +2244,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     }
 
 
-    public ShapedRecipe getinsttRecipe() {
-
-
-        ItemStack item = new ItemStack(Material.PRISMARINE_SHARD);
-        ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(9999901);
-        List<String> lore = new ArrayList<String>();
-
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dPrismarineAlloy.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dPrismarineAlloy.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dPrismarineAlloy.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dPrismarineAlloy.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dPrismarineAlloy.line5")));
-
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dPrismarineAlloy.name")));
-        meta.addEnchant(Enchantment.DURABILITY, 5, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "prisupgrade");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LCL", "IBI", "LDL");
-
-        recipe.setIngredient('B', Material.NETHERITE_INGOT);
-        recipe.setIngredient('L', Material.PRISMARINE_SHARD);
-        recipe.setIngredient('D', Material.DIAMOND_BLOCK);
-        recipe.setIngredient('I', Material.IRON_BLOCK);
-        recipe.setIngredient('C', Material.PRISMARINE_CRYSTALS);
-
-        return recipe;
-    }
-
 
 //public ShapedRecipe getTESTbowRecipe() {
 
@@ -2517,43 +2478,6 @@ public void onCraftingLbowevent(PrepareItemCraftEvent event) {
     }
 }
 */
-    public ShapedRecipe getLongBowRecipe() {
-
-        //long bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongBow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongBow.line4")));
-
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongBow.name")));
-        meta.setCustomModelData(3330001);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", -0.01,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "longbow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LCL", "CBC", "LCL");
-
-        recipe.setIngredient('B', Material.BOW);
-        recipe.setIngredient('L', Material.IRON_INGOT);
-        recipe.setIngredient('C', Material.STICK);
-
-        return recipe;
-    }
 
     /*
 @EventHandler
@@ -2613,40 +2537,6 @@ public void onCraftingRbowevent(PrepareItemCraftEvent event) {
     }
 }
 */
-    public ShapedRecipe getRecurveBowRecipe() {
-
-        // recurve bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRecurveBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRecurveBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRecurveBow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRecurveBow.line4")));
-
-        meta.setLore(lore);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", -0.02,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRecurveBow.name")));
-        meta.setCustomModelData(3330002);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "recurvebow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LCL", "CBQ", "LQL");
-
-        recipe.setIngredient('B', Material.BOW);
-        recipe.setIngredient('C', Material.CRIMSON_STEM);
-        recipe.setIngredient('Q', Material.WARPED_STEM);
-        recipe.setIngredient('L', Material.IRON_BARS);
-
-        return recipe;
-    }
 
     /*
 @EventHandler
@@ -2706,77 +2596,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     }
 }
 */
-    public ShapedRecipe getCompoundBowRecipe() {
-
-        // compound bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCompoundBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCompoundBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCompoundBow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCompoundBow.line4")));
-
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCompoundBow.name")));
-        meta.setCustomModelData(3330003);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", -0.03,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "compoundbow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LCL", "CBC", "LCL");
-
-        recipe.setIngredient('B', Material.BOW);
-        recipe.setIngredient('C', Material.NETHERITE_SCRAP);
-        recipe.setIngredient('L', Material.IRON_BLOCK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getEelytraRecipe() {
-
-        //test elytra
-
-        ItemStack item = new ItemStack(Material.ELYTRA);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-
-        lore.add("");
-
-        lore.add(ChatColor.GRAY + "test");
-        lore.add(ChatColor.GRAY + "(not really meant to be");
-        lore.add(ChatColor.GRAY + "obtainable yet but you can");
-        lore.add(ChatColor.GRAY + "test it in creative or something)");
-        lore.add("");
-
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.GOLD + "Eelytra");
-        meta.setCustomModelData(1560001);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "eelytra");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LCL", "CBC", "LCL");
-
-        recipe.setIngredient('B', Material.ELYTRA);
-        recipe.setIngredient('C', Material.EXPERIENCE_BOTTLE);
-        recipe.setIngredient('L', Material.BEDROCK);
-
-        return recipe;
-    }
 
     @EventHandler()
     public void oncccClick(PlayerInteractEvent event) {
@@ -3000,43 +2819,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
         recipe.setIngredient('M', Material.BONE);
         recipe.setIngredient('S', Material.BEDROCK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getOPSWORDRecipe() {
-
-        ItemStack item = new ItemStack(Material.NETHERITE_HOE);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.line6")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        meta.setLore(lore);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dReallyGoodSword.name")));
-        meta.setCustomModelData(1234567);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "reallygoodsword");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LLL", "fef", "fsf");
-        recipe.setIngredient('L', Material.LAPIS_BLOCK);
-        recipe.setIngredient('e', Material.GOLD_BLOCK);
-        recipe.setIngredient('s', Material.DIAMOND_BLOCK);
-        recipe.setIngredient('f', Material.REDSTONE);
-
 
         return recipe;
     }
