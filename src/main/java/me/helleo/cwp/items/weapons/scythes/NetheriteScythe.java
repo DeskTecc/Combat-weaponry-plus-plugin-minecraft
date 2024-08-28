@@ -20,26 +20,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DiamondScythe extends BaseScythe{
+public class NetheriteScythe extends BaseScythe{
 
-    static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+    static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getScythe() {
         List<String> lore = setLore();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionNetheriteScythe_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionNetheriteScythe_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionNetheriteScythe_Line10.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         //modifier
-        double dmg = 8;
+        double dmg = 9;
         double spd = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Scythes_DiamondScythe_Damage.getValue();
-            spd = ConfigurationsDouble.Scythes_DiamondScythe_Speed.getValue();
+            dmg = ConfigurationsDouble.Scythes_NetheriteScythe_Damage.getValue();
+            spd = ConfigurationsDouble.Scythes_NetheriteScythe_Speed.getValue();
         }
         AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -49,28 +49,34 @@ public class DiamondScythe extends BaseScythe{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Name.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionNetheriteScythe_Name.getValue()));
         meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;
     }
 
     public ShapedRecipe getScytheRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "diamond_scythe");
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "netherite_scythe");
         CombatWeaponryPlus.keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getScythe());
 
         recipe.shape(
-                "DDD",
+                "NNN",
                 "  S",
                 "  S");
 
         recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('D', Material.DIAMOND);
+
+        if (ConfigurationsBool.NetheriteIngots.getValue()) {
+            recipe.setIngredient('N', Material.NETHERITE_INGOT);
+        } else {
+            recipe.setIngredient('N', Material.NETHERITE_SCRAP);
+        }
 
         return recipe;
     }
+
     public static void setScytheRecipe(){
-        Bukkit.addRecipe(new DiamondScythe().getScytheRecipe());
+        Bukkit.addRecipe(new NetheriteScythe().getScytheRecipe());
     }
 }

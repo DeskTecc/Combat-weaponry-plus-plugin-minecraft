@@ -4,12 +4,14 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.configurations.ConfigurationsString;
+import me.helleo.cwp.items.tools.EmeraldAxe;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -20,26 +22,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DiamondScythe extends BaseScythe{
+public class EmeraldScythe extends BaseScythe{
 
-    static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+    static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getScythe() {
         List<String> lore = setLore();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldScythe_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldScythe_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldScythe_Line10.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
+        if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
+            int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
+            int mendingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();
+            meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
+            meta.addEnchant(Enchantment.MENDING, mendingValue, true);
+        }
         //modifier
-        double dmg = 8;
-        double spd = -3;
+        double dmg = 7;
+        double spd = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Scythes_DiamondScythe_Damage.getValue();
-            spd = ConfigurationsDouble.Scythes_DiamondScythe_Speed.getValue();
+            dmg = ConfigurationsDouble.Scythes_EmeraldScythe_Damage.getValue();
+            spd = ConfigurationsDouble.Scythes_EmeraldScythe_Speed.getValue();
         }
         AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -49,28 +57,29 @@ public class DiamondScythe extends BaseScythe{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Name.getValue()));
-        meta.setCustomModelData(1000003);
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldScythe_Name.getValue()));
+        meta.setCustomModelData(1000013);
         item.setItemMeta(meta);
         return item;
     }
 
     public ShapedRecipe getScytheRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "diamond_scythe");
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_scythe");
         CombatWeaponryPlus.keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getScythe());
 
         recipe.shape(
-                "DDD",
+                "EEE",
                 "  S",
                 "  S");
 
         recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('E', Material.EMERALD);
 
         return recipe;
     }
+
     public static void setScytheRecipe(){
-        Bukkit.addRecipe(new DiamondScythe().getScytheRecipe());
+        Bukkit.addRecipe(new EmeraldScythe().getScytheRecipe());
     }
 }

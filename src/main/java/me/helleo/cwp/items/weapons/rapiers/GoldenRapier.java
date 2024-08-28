@@ -1,4 +1,4 @@
-package me.helleo.cwp.items.weapons.scythes;
+package me.helleo.cwp.items.weapons.rapiers;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
@@ -16,30 +16,29 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DiamondScythe extends BaseScythe{
+public class GoldenRapier extends BaseRapier{
 
-    static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+    static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
 
-    public ItemStack getScythe() {
+    public ItemStack getRapier() {
         List<String> lore = setLore();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Line10.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         //modifier
-        double dmg = 8;
-        double spd = -3;
+        double dmg = 2;
+        double spd = -1.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Scythes_DiamondScythe_Damage.getValue();
-            spd = ConfigurationsDouble.Scythes_DiamondScythe_Speed.getValue();
+            dmg = ConfigurationsDouble.Rapiers_GoldenRapier_Damage.getValue();
+            spd = ConfigurationsDouble.Rapiers_GoldenRapier_Speed.getValue();
         }
         AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -48,29 +47,26 @@ public class DiamondScythe extends BaseScythe{
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondScythe_Name.getValue()));
-        meta.setCustomModelData(1000003);
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Name.getValue()));
+        meta.setCustomModelData(1000005);
         item.setItemMeta(meta);
         return item;
     }
 
-    public ShapedRecipe getScytheRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "diamond_scythe");
+    public ShapedRecipe getRapierRecipe() {
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "golden_rapier");
         CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getScythe());
+        ShapedRecipe recipe = new ShapedRecipe(key, getRapier());
 
-        recipe.shape(
-                "DDD",
-                "  S",
-                "  S");
+        recipe.shape("  C", "CC ", "SC ");
 
+        recipe.setIngredient('C', Material.GOLD_INGOT);
         recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('D', Material.DIAMOND);
 
         return recipe;
     }
-    public static void setScytheRecipe(){
-        Bukkit.addRecipe(new DiamondScythe().getScytheRecipe());
+
+    public static void setRapierRecipe(){
+        Bukkit.addRecipe(new GoldenRapier().getRapierRecipe());
     }
 }

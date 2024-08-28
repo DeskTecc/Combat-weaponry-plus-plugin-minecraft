@@ -1,0 +1,82 @@
+package me.helleo.cwp.items.weapons.rapiers;
+
+import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.configurations.ConfigurationsDouble;
+import me.helleo.cwp.configurations.ConfigurationsString;
+import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
+import java.util.UUID;
+
+public class EmeraldRapier extends BaseRapier{
+
+    static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
+    static ItemMeta meta = item.getItemMeta();
+
+    public ItemStack getRapier() {
+        List<String> lore = setLore();
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldRapier_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldRapier_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldRapier_Line10.getValue()));
+        meta.setLore(lore);
+        //important:
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        //modifier
+        double dmg = 3;
+        double spd = -1.6;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            dmg = ConfigurationsDouble.Rapiers_EmeraldRapier_Damage.getValue();
+            spd = ConfigurationsDouble.Rapiers_EmeraldRapier_Speed.getValue();
+        }
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
+
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldRapier_Name.getValue()));
+        meta.setCustomModelData(1000015);
+        if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
+            int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
+            int mendingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();
+            meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
+            meta.addEnchant(Enchantment.MENDING, mendingValue, true);
+        }
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public ShapedRecipe getRapierRecipe() {
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_rapier");
+        CombatWeaponryPlus.keys.add(key);
+        ShapedRecipe recipe = new ShapedRecipe(key, getRapier());
+
+        recipe.shape(
+                "  C",
+                "CC ",
+                "SC ");
+
+        recipe.setIngredient('C', Material.EMERALD);
+        recipe.setIngredient('S', Material.STICK);
+
+        return recipe;
+    }
+
+    public static void setRapierRecipe(){
+        Bukkit.addRecipe(new EmeraldRapier().getRapierRecipe());
+    }
+}
