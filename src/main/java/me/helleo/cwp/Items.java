@@ -29,7 +29,7 @@ public class Items {
         return item;
     }
 
-    public static ItemStack witherBone(FileConfiguration config) {
+    public static ItemStack witherBone() {
 
         ItemStack item = new ItemStack(Material.BONE);
         ItemMeta meta = item.getItemMeta();

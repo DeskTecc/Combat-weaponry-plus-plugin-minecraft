@@ -6,18 +6,21 @@ package me.helleo.cwp;
 
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.configurations.ConfigurationsString;
 import me.helleo.cwp.items.armors.*;
 import me.helleo.cwp.items.charms.*;
-import me.helleo.cwp.items.misc.Eelytra;
-import me.helleo.cwp.items.misc.PrismarineAlloy;
-import me.helleo.cwp.items.misc.ReallyGoodSword;
+import me.helleo.cwp.items.misc.*;
+import me.helleo.cwp.items.shields.DiamondShield;
+import me.helleo.cwp.items.shields.NetheriteShield;
 import me.helleo.cwp.items.tools.*;
 import me.helleo.cwp.items.weapons.bows.*;
+import me.helleo.cwp.items.weapons.cleavers.*;
 import me.helleo.cwp.items.weapons.katanas.*;
 import me.helleo.cwp.items.weapons.knives.*;
 import me.helleo.cwp.items.weapons.longswords.*;
-import me.helleo.cwp.items.weapons.misc.ChorusBlade;
+import me.helleo.cwp.items.weapons.misc.*;
 import me.helleo.cwp.items.weapons.rapiers.*;
+import me.helleo.cwp.items.weapons.sabers.*;
 import me.helleo.cwp.items.weapons.scythes.*;
 import me.helleo.cwp.items.weapons.spears.*;
 import net.md_5.bungee.api.ChatColor;
@@ -76,13 +79,30 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(this, this);
         this.saveDefaultConfig();
 
-        //emeraldgear
+
+        //ARMORS
+        if (ConfigurationsBool.Chainmail.getValue()) {
+            ChainmailHelmet.setArmorPieceRecipe();
+            ChainmailChestplate.setArmorPieceRecipe();
+            ChainmailLeggings.setArmorPieceRecipe();
+            ChainmailBoots.setArmorPieceRecipe();
+        }
+
+        if (ConfigurationsBool.PlatedChainmail.getValue()) {
+            PlatedChainmailHelmet.setArmorPieceRecipe();
+            PlatedChainmailChestplate.setArmorPieceRecipe();
+            PlatedChainmailLeggings.setArmorPieceRecipe();
+            PlatedChainmailBoots.setArmorPieceRecipe();
+        }
+
         if (ConfigurationsBool.Emerald.getValue()) {
             EmeraldHelmet.setArmorPieceRecipe();
             EmeraldChestplate.setArmorPieceRecipe();
             EmeraldLeggings.setArmorPieceRecipe();
             EmeraldBoots.setArmorPieceRecipe();
         }
+
+
         if (ConfigurationsBool.EmeraldGear.getValue()) {
             EmeraldPickaxe.setToolRecipe();
             EmeraldSword.setToolRecipe();
@@ -91,34 +111,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             EmeraldHoe.setToolRecipe();
         }
 
-        //swords
-        if (ConfigurationsBool.ChorusBlade.getValue()) {
-            ChorusBlade.setToolRecipe();
-        }
-        if (ConfigurationsBool.SwordBow.getValue()) {
-            SwordBow.setBowRecipe();
-        }
-        if (ConfigurationsBool.HeavySwordBow.getValue()) {
-            HeavySwordBow.setBowRecipe();
-        }
 
-        //chaimail
-        if (ConfigurationsBool.Chainmail.getValue()) {
-            ChainmailHelmet.setArmorPieceRecipe();
-            ChainmailChestplate.setArmorPieceRecipe();
-            ChainmailLeggings.setArmorPieceRecipe();
-            ChainmailBoots.setArmorPieceRecipe();
-        }
-
-        //platedchain
-        if (ConfigurationsBool.PlatedChainmail.getValue()) {
-            PlatedChainmailHelmet.setArmorPieceRecipe();
-            PlatedChainmailChestplate.setArmorPieceRecipe();
-            PlatedChainmailLeggings.setArmorPieceRecipe();
-            PlatedChainmailBoots.setArmorPieceRecipe();
-        }
-
-        //charms
+        //CHARMS
         if (ConfigurationsBool.FeatherCharm.getValue()) {
             FeatherCharm.setCharmRecipe();
         }
@@ -138,52 +132,62 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             FrostCharm.setCharmRecipe();
         }
 
-        //scythes
-        if (ConfigurationsBool.Scythes.getValue()) {
-            WoodenScythe.setScytheRecipe();
-            StoneScythe.setScytheRecipe();
-            GoldenScythe.setScytheRecipe();
-            IronScythe.setScytheRecipe();
-            DiamondScythe.setScytheRecipe();
-            NetheriteScythe.setScytheRecipe();
+        //BOWS
+        if (ConfigurationsBool.Longbow.getValue()) {
+            LongBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.Recurvebow.getValue()) {
+            RecurveBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.Compoundbow.getValue()) {
+            CompoundBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.SwordBow.getValue()) {
+            SwordBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.HeavySwordBow.getValue()) {
+            HeavySwordBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.LongswordBow.getValue()) {
+            LongswordBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.RedstoneBow.getValue()) {
+            RedstoneBow.setBowRecipe();
+        }
+        if (ConfigurationsBool.RepeatingCrossbow.getValue()) {
+            RepeatingCrossbow.setBowRecipe();
+        }
+        if (ConfigurationsBool.BurstCrossbow.getValue()) {
+            BurstCrossbow.setBowRecipe();
+        }
+
+        //CLEAVERS
+        if (ConfigurationsBool.Cleavers.getValue()) {
+            WoodenCleaver.setCleaverRecipe();
+            StoneCleaver.setCleaverRecipe();
+            GoldenCleaver.setCleaverRecipe();
+            IronCleaver.setCleaverRecipe();
+            DiamondCleaver.setCleaverRecipe();
+            NetheriteCleaver.setCleaverRecipe();
             if(ConfigurationsBool.EmeraldGear.getValue()){
-                EmeraldScythe.setScytheRecipe();
+                EmeraldCleaver.setCleaverRecipe();
             }
         }
 
-        //obbypick
-
-        if (ConfigurationsBool.ObsidianPickaxe.getValue()) {
-            ObsidianPickaxe.setToolRecipe();
-        }
-
-        //rapiers
-        if (ConfigurationsBool.Rapiers.getValue()) {
-            WoodenRapier.setRapierRecipe();
-            StoneRapier.setRapierRecipe();
-            GoldenRapier.setRapierRecipe();
-            IronRapier.setRapierRecipe();
-            DiamondRapier.setRapierRecipe();
-            NetheriteRapier.setRapierRecipe();
+        //KATANAS
+        if (ConfigurationsBool.Katanas.getValue()) {
+            WoodenKatana.setKatanaRecipe();
+            StoneKatana.setKatanaRecipe();
+            GoldenKatana.setKatanaRecipe();
+            IronKatana.setKatanaRecipe();
+            DiamondKatana.setKatanaRecipe();
+            NetheriteKatana.setKatanaRecipe();
             if(ConfigurationsBool.EmeraldGear.getValue()){
-                EmeraldRapier.setRapierRecipe();
+                EmeraldKatana.setKatanaRecipe();
             }
         }
 
-        //longswords
-        if (ConfigurationsBool.Longswords.getValue()) {
-            WoodenLongsword.setLongswordRecipe();
-            StoneLongsword.setLongswordRecipe();
-            GoldenLongsword.setLongswordRecipe();
-            IronLongsword.setLongswordRecipe();
-            DiamondLongsword.setLongswordRecipe();
-            NetheriteLongsword.setLongswordRecipe();
-            if(ConfigurationsBool.EmeraldGear.getValue()){
-                EmeraldLongsword.setLongswordRecipe();
-            }
-        }
-
-        //knifes
+        //KNIVES
         if (ConfigurationsBool.Knives.getValue()) {
             WoodenKnife.setKnifeRecipe();
             StoneKnife.setKnifeRecipe();
@@ -196,7 +200,59 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             }
         }
 
-        //spears
+        //LONGSWORDS
+        if (ConfigurationsBool.Longswords.getValue()) {
+            WoodenLongsword.setLongswordRecipe();
+            StoneLongsword.setLongswordRecipe();
+            GoldenLongsword.setLongswordRecipe();
+            IronLongsword.setLongswordRecipe();
+            DiamondLongsword.setLongswordRecipe();
+            NetheriteLongsword.setLongswordRecipe();
+            if(ConfigurationsBool.EmeraldGear.getValue()){
+                EmeraldLongsword.setLongswordRecipe();
+            }
+        }
+
+        //RAPIERS
+        if (ConfigurationsBool.Rapiers.getValue()) {
+            WoodenRapier.setRapierRecipe();
+            StoneRapier.setRapierRecipe();
+            GoldenRapier.setRapierRecipe();
+            IronRapier.setRapierRecipe();
+            DiamondRapier.setRapierRecipe();
+            NetheriteRapier.setRapierRecipe();
+            if(ConfigurationsBool.EmeraldGear.getValue()){
+                EmeraldRapier.setRapierRecipe();
+            }
+        }
+
+        //SABERS
+        if (ConfigurationsBool.Sabers.getValue()) {
+            WoodenSaber.setSaberRecipe();
+            StoneSaber.setSaberRecipe();
+            GoldenSaber.setSaberRecipe();
+            IronSaber.setSaberRecipe();
+            DiamondSaber.setSaberRecipe();
+            NetheriteSaber.setSaberRecipe();
+            if(ConfigurationsBool.EmeraldGear.getValue()){
+                EmeraldSaber.setSaberRecipe();
+            }
+        }
+
+        //SCYTHES
+        if (ConfigurationsBool.Scythes.getValue()) {
+            WoodenScythe.setScytheRecipe();
+            StoneScythe.setScytheRecipe();
+            GoldenScythe.setScytheRecipe();
+            IronScythe.setScytheRecipe();
+            DiamondScythe.setScytheRecipe();
+            NetheriteScythe.setScytheRecipe();
+            if(ConfigurationsBool.EmeraldGear.getValue()){
+                EmeraldScythe.setScytheRecipe();
+            }
+        }
+
+        //SPEARS
         if (ConfigurationsBool.Spears.getValue()) {
             WoodenSpear.setSpearRecipe();
             StoneSpear.setSpearRecipe();
@@ -209,17 +265,22 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             }
         }
 
-        //katanas
-        if (ConfigurationsBool.Katanas.getValue()) {
-            WoodenKatana.setKatanaRecipe();
-            StoneKatana.setKatanaRecipe();
-            GoldenKatana.setKatanaRecipe();
-            IronKatana.setKatanaRecipe();
-            DiamondKatana.setKatanaRecipe();
-            NetheriteKatana.setKatanaRecipe();
-            if(ConfigurationsBool.EmeraldGear.getValue()){
-                EmeraldKatana.setKatanaRecipe();
-            }
+        //SHIELDS
+        if (ConfigurationsBool.DiamondShield.getValue()) {
+            DiamondShield.setShieldRecipe();
+        }
+        if (ConfigurationsBool.NetheriteShield.getValue()) {
+            NetheriteShield.setShieldRecipe();
+        }
+
+        //MISC
+
+        if (ConfigurationsBool.ChorusBlade.getValue()) {
+            ChorusBlade.setToolRecipe();
+        }
+
+        if (ConfigurationsBool.ObsidianPickaxe.getValue()) {
+            ObsidianPickaxe.setToolRecipe();
         }
 
         if (ConfigurationsBool.Prismarine.getValue()) {
@@ -236,110 +297,56 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             Bukkit.addRecipe(getprisbootsrecipe());
         }
 
-        if (ConfigurationsBool.Longbow.getValue()) {
-            LongBow.setBowRecipe();
-        }
-        if (ConfigurationsBool.Recurvebow.getValue()) {
-            RecurveBow.setBowRecipe();
-        }
-        if (ConfigurationsBool.Compoundbow.getValue()) {
-            CompoundBow.setBowRecipe();
-        }
-
         if (ConfigurationsBool.Eelytra.getValue()) {
             Eelytra.setItemRecipe();
         }
 
-        //Bukkit.addRecipe(geteaeaRecipe());
-        //Bukkit.addRecipe(gettestt());
         if (ConfigurationsBool.ReallyGoodSword.getValue()) {
             ReallyGoodSword.setItemRecipe();
         }
-        if (this.getConfig().getString("DiamondShield") == "true") {
-            Bukkit.addRecipe(getDiaShieldRecipe());
-        }
-        if (this.getConfig().getString("NetheriteShield") == "true") {
-            Bukkit.addRecipe(getNethShieldRecipe());
-        }
-        Bukkit.addRecipe(getawakswordsrecipe());
-        if (this.getConfig().getString("Sabers") == "true") {
-            Bukkit.addRecipe(getWSaberRecipe());
-            Bukkit.addRecipe(getGSaberRecipe());
-            Bukkit.addRecipe(getSSaberRecipe());
-            Bukkit.addRecipe(getISaberRecipe());
-            Bukkit.addRecipe(getDSaberRecipe());
-            Bukkit.addRecipe(getNSaberRecipe());
-        }
-        if (this.getConfig().getString("EmeraldGear") == "true" && this.getConfig().getString("Sabers") == "true") {
-            Bukkit.addRecipe(getESaberRecipe());
-        }
-        if (this.getConfig().getString("RepeatingCrossbow") == "true") {
-            Bukkit.addRecipe(getrepcrossRecipe());
 
-        }
-        if (this.getConfig().getString("BurstCrossbow") == "true") {
-            Bukkit.addRecipe(getburscrossRecipe());
-        }
-        if (this.getConfig().getString("RedstoneCore") == "true") {
-            Bukkit.addRecipe(getRedPlateRecipe());
-        }
-        if (this.getConfig().getString("LongswordBow") == "true") {
-            Bukkit.addRecipe(getLsBowRecipe());
-        }
-        if (this.getConfig().getString("RedstoneBow") == "true") {
-            Bukkit.addRecipe(getRedstoneBowRecipe());
-        }
-        if (this.getConfig().getString("TridentBow") == "true") {
-            Bukkit.addRecipe(getTridentBowRecipe());
+        if (ConfigurationsBool.RedstoneCore.getValue()) {
+            RedstoneCore.setItemRecipe();
         }
 
-        if (this.getConfig().getString("WitherArmor") == "true") {
-            Bukkit.addRecipe(getWitherHelmetRecipe());
-            Bukkit.addRecipe(getWitherChestRecipe());
-            Bukkit.addRecipe(getWitherLegRecipe());
-            Bukkit.addRecipe(getWitherBootsRecipe());
-
-        }
-        if (this.getConfig().getString("JumpElytra") == "true") {
-            Bukkit.addRecipe(jumpElytraRecipe());
-        }
-        if (this.getConfig().getString("TestKatana") == "true") {
-            Bukkit.addRecipe(getTestKatanaRecipe());
-        }
-        if (this.getConfig().getString("TestScythe") == "true") {
-            Bukkit.addRecipe(getTestScytheRecipe());
-        }
-        if (this.getConfig().getString("Cleavers") == "true") {
-            Bukkit.addRecipe(getCleaverRecipe());
-            Bukkit.addRecipe(getGoldCleaverRecipe());
-            Bukkit.addRecipe(getStoneCleaverRecipe());
-            Bukkit.addRecipe(getICleaverRecipe());
-            Bukkit.addRecipe(getECleaverRecipe());
-            Bukkit.addRecipe(getDCleaverRecipe());
-            Bukkit.addRecipe(getNCleaverRecipe());
-        }
-        if (this.getConfig().getString("FishSword") == "true") {
-            Bukkit.addRecipe(getTestFishRecipe());
+        if (ConfigurationsBool.TridentBow.getValue()) {
+            TridentBow.setBowRecipe();
         }
 
-        if (this.getConfig().getString("WindBlade") == "true") {
-            Bukkit.addRecipe(getWindBladeRecipe());
+        if (ConfigurationsBool.WitherArmor.getValue()) {
+            WitherHelmet.setArmorRecipe();
+            WitherChestplate.setArmorRecipe();
+            WitherLeggings.setArmorRecipe();
+            WitherBoots.setArmorRecipe();
         }
-        if (this.getConfig().getString("VolcanicBlade") == "true") {
-            Bukkit.addRecipe(getFlameBladeRecipe());
+        if (ConfigurationsBool.JumpElytra.getValue()) {
+            JumpElytra.setItemRecipe();
         }
-        if (this.getConfig().getString("VolcanicSpear") == "true") {
-            Bukkit.addRecipe(getFlameSpearRecipe());
+        if (ConfigurationsBool.TestKatana.getValue()) {
+            TestKatana.setItemRecipe();
         }
-        if (this.getConfig().getString("VolcanicAxe") == "true") {
-            Bukkit.addRecipe(getFlameAxeRecipe());
+        if (ConfigurationsBool.TestScythe.getValue()) {
+            TestScythe.setItemRecipe();
         }
-        if (this.getConfig().getString("VolcanicCleaver") == "true") {
-            Bukkit.addRecipe(getFlameCleaverRecipe());
-        }
-        //Bukkit.addRecipe(testsmithingrecipe());
-        //Bukkit.addRecipe(realtestrecipe());
 
+        if (ConfigurationsBool.FishSword.getValue()) {
+            FishSword.setItemRecipe();
+        }
+        if (ConfigurationsBool.WindBlade.getValue()) {
+            WindBlade.setItemRecipe();
+        }
+        if (ConfigurationsBool.VolcanicBlade.getValue()) {
+            VolcanicBlade.setItemRecipe();
+        }
+        if (ConfigurationsBool.VolcanicSpear.getValue()) {
+            VolcanicSpear.setItemRecipe();
+        }
+        if (ConfigurationsBool.VolcanicAxe.getValue()) {
+            VolcanicAxe.setItemRecipe();
+        }
+        if (ConfigurationsBool.VolcanicCleaver.getValue()) {
+            VolcanicCleaver.setItemRecipe();
+        }
     }
 
     @Override
@@ -2823,114 +2830,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         return recipe;
     }
 
-    public ShapedRecipe getrepcrossRecipe() {
-
-        //repeater crossbow
-
-        ItemStack item = new ItemStack(Material.CROSSBOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRepeatingCrossbow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRepeatingCrossbow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRepeatingCrossbow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRepeatingCrossbow.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRepeatingCrossbow.line5")));
-        meta.setLore(lore);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRepeatingCrossbow.name")));
-        meta.setCustomModelData(5552001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "repeater_crossbow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("SIS", "sRs", "rSr");
-
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('r', Material.REDSTONE);
-        recipe.setIngredient('s', Material.STRING);
-        recipe.setIngredient('R', Material.REPEATER);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getburscrossRecipe() {
-
-        //burst crossbow
-
-        ItemStack item = new ItemStack(Material.CROSSBOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBurstCrossbow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBurstCrossbow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBurstCrossbow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBurstCrossbow.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBurstCrossbow.line5")));
-
-        meta.setLore(lore);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dBurstCrossbow.name")));
-        meta.setCustomModelData(5552002);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "burst_crossbow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("SIS", "sRs", "rSr");
-
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('r', Material.REDSTONE);
-        recipe.setIngredient('s', Material.STRING);
-        recipe.setIngredient('R', Material.COMPARATOR);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getRedstoneBowRecipe() {
-
-        //redstone bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.line6")));
-
-        meta.setLore(lore);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneBow.name")));
-        meta.setCustomModelData(3330005);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "redstone_bow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("rIs", "SRs", "rIs");
-
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('r', Material.REDSTONE);
-        recipe.setIngredient('s', Material.STRING);
-        recipe.setIngredient('R', Material.COMPARATOR);
-
-        return recipe;
-    }
-
 
     @EventHandler
     public void playerCrossBowShoot(EntityShootBowEvent event) {
@@ -3792,61 +3691,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
         }
     }
-
-
-    public ShapedRecipe getDiaShieldRecipe() {
-
-        ItemStack item = new ItemStack(Material.SHIELD);
-        ItemMeta meta = item.getItemMeta();
-        if (this.getConfig().getString("EnchantsDiamondShield") == "true") {
-            int num = this.getConfig().getInt("DShieldEnchantLevels.Unbreaking");
-
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-
-        }
-
-        meta.setDisplayName("Diamond Shield");
-        meta.setCustomModelData(5430001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "diamondshield");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LeL", "LLL", " L ");
-        recipe.setIngredient('L', Material.IRON_INGOT);
-        recipe.setIngredient('e', Material.DIAMOND);
-
-
-        return recipe;
-    }
-
-    public ShapedRecipe getNethShieldRecipe() {
-
-        ItemStack item = new ItemStack(Material.SHIELD);
-        ItemMeta meta = item.getItemMeta();
-        if (this.getConfig().getString("EnchantsNetheriteShield") == "true") {
-            int num = this.getConfig().getInt("NShieldEnchantLevels.Unbreaking");
-
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-
-        }
-        meta.setDisplayName("Netherite Shield");
-        meta.setCustomModelData(5430002);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "netheriteshield");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LeL", "LLL", " L ");
-        recipe.setIngredient('L', Material.IRON_INGOT);
-        recipe.setIngredient('e', Material.NETHERITE_INGOT);
-
-
-        return recipe;
-    }
-
 
     @EventHandler()
     public void onParryClick(PlayerInteractEvent event) {
@@ -4855,528 +4699,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    public ShapedRecipe getWSaberRecipe() {
-
-        //wood
-
-        ItemStack item = new ItemStack(Material.WOODEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 4
-         * spd: 1.6
-         */
-        double dmg = 3;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aWoodenSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aWoodenSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenSaber.name")));
-        meta.setCustomModelData(1000010);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wooden_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" SS", " S ", "S  ");
-
-
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getGSaberRecipe() {
-
-        //gold
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 4
-         * spd: 1.6
-         */
-        double dmg = 3;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aGoldenSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aGoldenSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenSaber.name")));
-        meta.setCustomModelData(1000010);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "golden_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" aa", " a ", "S  ");
-
-        recipe.setIngredient('a', Material.GOLD_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getSSaberRecipe() {
-
-        //stone
-
-        ItemStack item = new ItemStack(Material.STONE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 5
-         * spd: 1.6
-         */
-        double dmg = 4;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aStoneSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aStoneSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneSaber.name")));
-        meta.setCustomModelData(1000010);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "stone_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" aa", " a ", "S  ");
-
-        recipe.setIngredient('a', Material.COBBLESTONE);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getISaberRecipe() {
-
-        //iron
-
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 6
-         * spd: 1.6
-         */
-        double dmg = 5;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aIronSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aIronSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronSaber.name")));
-        meta.setCustomModelData(1000010);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "iron_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" aa", " a ", "S  ");
-
-        recipe.setIngredient('a', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getESaberRecipe() {
-
-        //emerald
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 6
-         * spd: 1.6
-         */
-        double dmg = 5;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aEmeraldSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aEmeraldSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldSaber.name")));
-        meta.setCustomModelData(1000030);
-
-        //enchants
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" aa", " a ", "S  ");
-
-        recipe.setIngredient('a', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getDSaberRecipe() {
-
-        //diamond
-
-        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 7
-         * spd: 1.6
-         */
-        double dmg = 6;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aDiamondSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aDiamondSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondSaber.name")));
-        meta.setCustomModelData(1000010);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "diamond_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" aa", " a ", "S  ");
-
-        recipe.setIngredient('a', Material.DIAMOND);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getNSaberRecipe() {
-
-        //netherite
-
-        ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("SaberDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteSaber.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteSaber.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteSaber.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 8
-         * spd: 1.6
-         */
-        double dmg = 7;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aNetheriteSaber.damage") - 1;
-            spd = this.getConfig().getDouble("aNetheriteSaber.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteSaber.name")));
-        meta.setCustomModelData(1000010);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "netherite_saber");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" aa", " a ", "S  ");
-
-        recipe.setIngredient('a', Material.NETHERITE_SCRAP);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getRedPlateRecipe() {
-
-
-        ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneCore.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneCore.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneCore.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneCore.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneCore.line5")));
-        meta.setLore(lore);
-        meta.setUnbreakable(true);
-        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        //modifier
-        double arm = 2;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            arm = this.getConfig().getDouble("aRedstoneCore.Armor");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Armor", arm,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dRedstoneCore.name")));
-        meta.setCustomModelData(1231234);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "redstone_core");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("ede", "dcd", "bab");
-
-        recipe.setIngredient('a', Material.IRON_CHESTPLATE);
-        recipe.setIngredient('b', Material.LEATHER);
-        recipe.setIngredient('c', Material.REDSTONE_BLOCK);
-        recipe.setIngredient('d', Material.COMPARATOR);
-        recipe.setIngredient('e', Material.QUARTZ);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getLsBowRecipe() {
-
-        //longsword bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.line7")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        double dmg = 7;
-        double spd = -2.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aLongswordBow.damage") - 1;
-            spd = this.getConfig().getDouble("aLongswordBow.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
-
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dLongswordBow.name")));
-        meta.setCustomModelData(3330004);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "longsword_bow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" b ", " b ", "bab");
-
-        recipe.setIngredient('a', Material.BOW);
-        recipe.setIngredient('b', Material.IRON_INGOT);
-//	recipe.setIngredient('c', Material.IRON_BLOCK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getTridentBowRecipe() {
-
-        //trident bow
-
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add("");
-
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6I made this for fun"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Shoots tridents (converts arrows to tridents)"));
-        lore.add("");
-        meta.setLore(lore);
-
-
-        meta.setDisplayName("Trident Bow");
-        meta.setCustomModelData(1069691);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "trident_bow");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" b ", "bab", " b ");
-
-        recipe.setIngredient('a', Material.TRIDENT);
-        recipe.setIngredient('b', Material.BEDROCK);
-//	recipe.setIngredient('c', Material.IRON_BLOCK);
-
-        return recipe;
-    }
-
 // test for spawning custom particle
 // spawns armor stand with item with custom texture
 // doesn't really work because the armor stand is sometimes visible for a split second before becoming invis
@@ -5506,233 +4828,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
     }
 
-
-    //test
-    public ShapedRecipe getWitherHelmetRecipe() {
-
-        //wither bone helmet
-
-        ItemStack item = new ItemStack(Material.IRON_HELMET);
-        ItemMeta meta = item.getItemMeta();
-
-        double kbr = 0.2;
-        double hp = 5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            kbr = this.getConfig().getDouble("aWitherHelmet.KBResist") / 10;
-            hp = this.getConfig().getDouble("aWitherHelmet.BonusHealth");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "KnockbackResistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringHelmet.name")));
-        meta.setCustomModelData(5553331);
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line8")));
-
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wither_bone_helmet");
-        keys.add(key);
-
-        ItemStack wbone = new ItemStack(Material.BONE);
-        ItemMeta meta2 = wbone.getItemMeta();
-        meta2.setDisplayName(ChatColor.YELLOW + "Wither Bone");
-        meta2.setCustomModelData(2222222);
-        wbone.setItemMeta(meta2);
-
-        @SuppressWarnings("deprecation")
-        RecipeChoice wibone = new RecipeChoice.ExactChoice(Items.witherBone(this.getConfig()));
-        ShapedRecipe recipe = new ShapedRecipe(key, item); //custom item that will be crafted
-        recipe.shape("BBB", "B B", " N ");
-        //recipe.setIngredient('I', Material.BEDROCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('B', wibone); // usage of the RecipeChoice
-        return recipe;
-    }
-
-    public ShapedRecipe getWitherChestRecipe() {
-
-        //wither bone chestplate
-
-        ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
-        ItemMeta meta = item.getItemMeta();
-
-        double kbr = 0.2;
-        double hp = 5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            kbr = this.getConfig().getDouble("aWitherChestplate.KBResist") / 10;
-            hp = this.getConfig().getDouble("aWitherChestplate.BonusHealth");
-        }
-
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "KnockbackResistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringChestplate.name")));
-        meta.setCustomModelData(5553332);
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line8")));
-
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wither_bone_chestplate");
-        keys.add(key);
-
-        ItemStack wbone = new ItemStack(Material.BONE);
-        ItemMeta meta2 = wbone.getItemMeta();
-
-        meta2.setDisplayName(ChatColor.YELLOW + "Wither Bone");
-        meta2.setCustomModelData(2222222);
-        wbone.setItemMeta(meta2);
-
-        @SuppressWarnings("deprecation")
-        RecipeChoice wibone = new RecipeChoice.ExactChoice(Items.witherBone(this.getConfig()));
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("N N", "B B", "BBB");
-        //recipe.setIngredient('I', Material.BEDROCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('B', wibone);
-        return recipe;
-    }
-
-    public ShapedRecipe getWitherLegRecipe() {
-
-        //wither bone leggings
-
-        ItemStack item = new ItemStack(Material.IRON_LEGGINGS);
-        ItemMeta meta = item.getItemMeta();
-
-        double kbr = 0.2;
-        double hp = 5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            kbr = this.getConfig().getDouble("aWitherLeggings.KBResist") / 10;
-            hp = this.getConfig().getDouble("aWitherLeggings.BonusHealth");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "KnockbackResistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringLeggings.name")));
-        meta.setCustomModelData(5553333);
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line8")));
-
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wither_bone_leggings");
-        keys.add(key);
-
-        ItemStack wbone = new ItemStack(Material.BONE);
-        ItemMeta meta2 = wbone.getItemMeta();
-        meta2.setDisplayName(ChatColor.YELLOW + "Wither Bone");
-        meta2.setCustomModelData(2222222);
-        wbone.setItemMeta(meta2);
-
-        @SuppressWarnings("deprecation")
-        RecipeChoice wibone = new RecipeChoice.ExactChoice(Items.witherBone(this.getConfig()));
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("BNB", "B B", "B B");
-        //recipe.setIngredient('I', Material.BEDROCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('B', wibone);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getWitherBootsRecipe() {
-
-        //wither bone boots
-
-        ItemStack item = new ItemStack(Material.IRON_BOOTS);
-        ItemMeta meta = item.getItemMeta();
-        double kbr = 0.2;
-        double hp = 5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            kbr = this.getConfig().getDouble("aWitherBoots.KBResist") / 10;
-            hp = this.getConfig().getDouble("aWitherBoots.BonusHealth");
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "KnockbackResistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringBoots.name")));
-        meta.setCustomModelData(5553334);
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWitheringArmorSet.line8")));
-
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wither_bone_boots");
-        keys.add(key);
-
-        ItemStack wbone = new ItemStack(Material.BONE);
-        ItemMeta meta2 = wbone.getItemMeta();
-        meta2.setDisplayName(ChatColor.YELLOW + "Wither Bone");
-        meta2.setCustomModelData(2222222);
-        wbone.setItemMeta(meta2);
-
-        @SuppressWarnings("deprecation")
-        RecipeChoice wibone = new RecipeChoice.ExactChoice(Items.witherBone(this.getConfig()));
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("   ", "BIB", "N N");
-        //recipe.setIngredient('I', Material.BEDROCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('B', wibone);
-        return recipe;
-    }
-
     @EventHandler
     public void witherArmorBonusThing(EntityDamageByEntityEvent event) {
         //healing
@@ -5835,40 +4930,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    public ShapedRecipe jumpElytraRecipe() {
-
-        //test item for double jump
-
-        ItemStack item = new ItemStack(Material.ELYTRA);
-        ItemMeta meta = item.getItemMeta();
-
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Armor", 3,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
-
-        meta.setDisplayName(ChatColor.YELLOW + "Jump Elytra");
-        meta.setCustomModelData(1212121);
-
-        List<String> lore = new ArrayList<String>();
-        lore.add("");
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6Double Jump"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Press jump in midair to jump"));
-        lore.add("");
-
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "jump_elytra");
-        keys.add(key);
-
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("NNN", "   ", "   ");
-        //recipe.setIngredient('I', Material.BEDROCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        return recipe;
-    }
-
     @EventHandler
     public void doubleJump(EntityToggleGlideEvent event) {
         if (!(event.getEntity() instanceof Player)) {
@@ -5905,428 +4966,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 }
             }
         }
-    }
-
-    public ShapedRecipe getCleaverRecipe() {
-
-        //wood
-
-        ItemStack item = new ItemStack(Material.WOODEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 9
-         * spd: 0.4
-         */
-        double dmg = 8;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aWoodenCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aWoodenCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dWoodenCleaver.name")));
-        meta.setCustomModelData(1000021);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wooden_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" SS", "SS ", "S  ");
-
-
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getGoldCleaverRecipe() {
-
-        //gold
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 9
-         * spd: 0.4
-         */
-        double dmg = 8;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aGoldenCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aGoldenCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dGoldenCleaver.name")));
-        meta.setCustomModelData(1000021);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "golden_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MM ", "S  ");
-
-        recipe.setIngredient('M', Material.GOLD_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getStoneCleaverRecipe() {
-
-        //stone
-
-        ItemStack item = new ItemStack(Material.STONE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 10
-         * spd: 0.4
-         */
-        double dmg = 9;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aStoneCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aStoneCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dStoneCleaver.name")));
-        meta.setCustomModelData(1000021);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "stone_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MM ", "S  ");
-
-        recipe.setIngredient('M', Material.COBBLESTONE);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getICleaverRecipe() {
-
-        //iron
-
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 11
-         * spd: 0.4
-         */
-        double dmg = 10;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aIronCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aIronCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dIronCleaver.name")));
-        meta.setCustomModelData(1000021);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "iron_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MM ", "S  ");
-
-        recipe.setIngredient('M', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getECleaverRecipe() {
-
-        //em
-
-        ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 11
-         * spd: 0.4
-         */
-        double dmg = 10;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aEmeraldCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aEmeraldCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dEmeraldCleaver.name")));
-        meta.setCustomModelData(1000031);
-
-        //enchants
-        if (this.getConfig().getString("EnchantsOnEmeraldGear") == "true") {
-            int num = this.getConfig().getInt("EmeraldGearEnchantLevels.Unbreaking");
-            int num2 = this.getConfig().getInt("EmeraldGearEnchantLevels.Mending");
-            meta.addEnchant(Enchantment.DURABILITY, num, true);
-            meta.addEnchant(Enchantment.MENDING, num2, true);
-        }
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "emerald_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MM ", "S  ");
-
-        recipe.setIngredient('M', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getDCleaverRecipe() {
-
-        //diamond
-
-        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 12
-         * spd: 0.4
-         */
-        double dmg = 11;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aDiamondCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aDiamondCleaver.speed") - 4;
-        }
-
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dDiamondCleaver.name")));
-        meta.setCustomModelData(1000021);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "diamond_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MM ", "S  ");
-
-        recipe.setIngredient('M', Material.DIAMOND);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getNCleaverRecipe() {
-
-        //netherite
-
-        ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("CleaverDescription.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteCleaver.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteCleaver.line12")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-
-        /*actual stats:
-         * dmg: 13
-         * spd: 0.4
-         */
-        double dmg = 12;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aNetheriteCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aNetheriteCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dNetheriteCleaver.name")));
-        meta.setCustomModelData(1000021);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "netherite_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MM ", "S  ");
-
-        recipe.setIngredient('M', Material.NETHERITE_SCRAP);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
     }
 
     @EventHandler
@@ -6522,103 +5161,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    public ShapedRecipe getTestKatanaRecipe() {
-
-        //test
-
-        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6Charged Strike"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Hit 5 times to charge,"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  charge attacks require 2 hands"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6  - Slash"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  In main hand, right click to"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  launch target directly upwards"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9   4 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6  - Thrust"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  In off hand, right click to"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  launch target further"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9   8 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 6 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 1.7 Attack Speed"));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -2.3,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 5,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Diamond Katana v2"));
-        meta.setCustomModelData(2000002);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "diamond_katana_test");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("  M", " M ", "S  ");
-
-        recipe.setIngredient('M', Material.DIAMOND);
-        recipe.setIngredient('S', Material.BEDROCK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getTestScytheRecipe() {
-
-        //test
-
-        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6Hook"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Right click opponent to pull"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  them toward you (CD: 3s)"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9   5 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 9 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 1 Attack Speed"));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -3,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 8,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Diamond Scythe v2"));
-        meta.setCustomModelData(2000003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "diamond_scythe_test");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("MMM", "  S", "  S");
-
-        recipe.setIngredient('M', Material.DIAMOND);
-        recipe.setIngredient('S', Material.BEDROCK);
-
-        return recipe;
-    }
-
     @EventHandler
     public void onScytheRightClick(PlayerInteractEntityEvent event) {
         //scythe test ability
@@ -6659,95 +5201,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
             //}
         }
-    }
-
-    public ShapedRecipe getTestFishRecipe() {
-
-        //test
-
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6Fish"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- In main hand, right click"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  entity"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9   29 Explosion Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 6 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 1.7 Attack Speed"));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -2.3,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 5,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Fish"));
-        meta.setCustomModelData(38);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "fish_test");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("  M", " M ", "S  ");
-
-        recipe.setIngredient('M', Material.SALMON);
-        recipe.setIngredient('S', Material.BEDROCK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getWindBladeRecipe() {
-
-        //test
-
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6Vacuum"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Hold right click to pull in entities"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  within a 4 block radius of you"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 6 Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 1.7 Attack Speed"));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -2.3,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 5,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Wind Blade"));
-        meta.setCustomModelData(21);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "wind_sword");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("  M", " M ", "S  ");
-
-        recipe.setIngredient('M', Material.BEE_SPAWN_EGG);
-        recipe.setIngredient('S', Material.BEDROCK);
-
-        return recipe;
     }
 
     @EventHandler
@@ -6811,221 +5264,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
 
         }
-    }
-
-    public ShapedRecipe getFlameBladeRecipe() {
-
-        //fire sword
-
-        ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.line11")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 7;
-        double spd = -2.4;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aVolcanicBlade.damage") - 1;
-            spd = this.getConfig().getDouble("aVolcanicBlade.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicBlade.name")));
-        meta.setCustomModelData(5000);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "fire_sword");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" M ", " M ", " N ");
-
-        recipe.setIngredient('M', Material.MAGMA_BLOCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getFlameSpearRecipe() {
-
-        //fire spear
-
-        ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.line11")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 4;
-        double spd = -1.5;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aVolcanicSpear.damage") - 1;
-            spd = this.getConfig().getDouble("aVolcanicSpear.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicSpear.name")));
-        meta.setCustomModelData(5001);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "fire_spear");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", " NM", "S  ");
-
-        recipe.setIngredient('M', Material.MAGMA_BLOCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getFlameAxeRecipe() {
-
-        //fire axe
-
-        ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.line11")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 9;
-        double spd = -3;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aVolcanicAxe.damage") - 1;
-            spd = this.getConfig().getDouble("aVolcanicAxe.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicAxe.name")));
-        meta.setCustomModelData(5002);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "fire_axe");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("MM ", "MN ", " S ");
-
-        recipe.setIngredient('M', Material.MAGMA_BLOCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe getFlameCleaverRecipe() {
-
-        //fire cleaver
-
-        ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.line11")));
-        meta.setLore(lore);
-        //important:
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        //modifier
-        double dmg = 12;
-        double spd = -3.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aVolcanicCleaver.damage") - 1;
-            spd = this.getConfig().getDouble("aVolcanicCleaver.speed") - 4;
-        }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dVolcanicCleaver.name")));
-        meta.setCustomModelData(5003);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "fire_cleaver");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape(" MM", "MNM", "SM ");
-
-        recipe.setIngredient('M', Material.MAGMA_BLOCK);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
     }
 
     @EventHandler

@@ -79,6 +79,8 @@ public enum ConfigurationsDouble {
     Bows_HeavySwordBow_OffhandMoveSpeed(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_HeavySwordBow.OffhandMoveSpeed")),
     Bows_HeavySwordBow_KBResist(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_HeavySwordBow.KBResist")),
     Bows_HeavySwordBow_OffhandKBResist(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_HeavySwordBow.OffhandKBResist")),
+    Bows_LongSwordBow_Damage(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_LongSwordBow.Damage")),
+    Bows_LongSwordBow_Speed(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_LongSwordBow.Speed")),
     Bows_LongBow_ArrowSpeed(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_LongBow.ArrowSpeed")),
     Bows_LongBow_DmgMultiplier(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_LongBow.DmgMultiplier")),
     Bows_RecurveBow_ArrowSpeed(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble("Bows_RecurveBow.ArrowSpeed")),

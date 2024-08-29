@@ -33,6 +33,7 @@ public enum ConfigurationsString {
     DescriptionHeavySwordBow_Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionHeavySwordBow.Line3")),
     DescriptionLongswordBow_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongswordBow.Name")),
     DescriptionLongswordBow_Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongswordBow.Line1")),
+    DescriptionLongswordBow_Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongswordBow.Line2")),
     DescriptionLongswordBow_Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongswordBow.Line3")),
     DescriptionLongswordBow_Line4(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongswordBow.Line4")),
     DescriptionLongswordBow_Line5(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongswordBow.Line5")),
