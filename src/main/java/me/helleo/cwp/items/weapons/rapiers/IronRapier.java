@@ -29,7 +29,7 @@ public class IronRapier extends BaseRapier{
         List<String> lore = setLore();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionIronRapier_Line8.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionIronRapier_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionIronRapier_Name.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionIronRapier_Line10.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
