@@ -1555,33 +1555,34 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         ItemStack result = tool.clone();
         ItemMeta resultm = result.getItemMeta();
+        assert resultm != null;
         resultm.setCustomModelData(1220003);
         double arm = 7;
         double armt = 3;
         double kbr = 0.1;
         double hp = 2;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            arm = this.getConfig().getDouble("aPrismarineLeggings.Armor");
-            armt = this.getConfig().getDouble("aPrismarineLeggings.ArmorToughness");
-            kbr = this.getConfig().getDouble("aPrismarineLeggings.KBResist") / 10;
-            hp = this.getConfig().getDouble("aPrismarineLeggings.BonusHealth");
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            arm = ConfigurationsDouble.Armors_PrismarineLeggings_Armor.getValue();
+            armt = ConfigurationsDouble.Armors_PrismarineLeggings_ArmorToughness.getValue();
+            kbr = ConfigurationsDouble.Armors_PrismarineLeggings_KBResist.getValue() / 10;
+            hp = ConfigurationsDouble.Armors_PrismarineLeggings_BonusHealth.getValue();
         }
         resultm.setDisplayName(ChatColor.GREEN + "Prismarine Leggings");
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Armor", arm,
+        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "armor", arm,
                 Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Armor", armt,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "armor_toughness", armt,
                 Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Armor", kbr,
+        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "armor_knockback_resistance", kbr,
                 Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "Armor", hp,
+        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "armor_max_health", hp,
                 Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier4);
         result.setItemMeta(resultm);
 
-        if (this.getConfig().getString("Prismarine") == "true") {
+        if (ConfigurationsBool.Prismarine.getValue()) {
             event.setResult(result);
         }
     }
@@ -1627,33 +1628,34 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         ItemStack result = tool.clone();
         ItemMeta resultm = result.getItemMeta();
+        assert resultm != null;
         resultm.setCustomModelData(1220004);
         double arm = 4;
         double armt = 3;
         double kbr = 0.1;
         double hp = 1;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            arm = this.getConfig().getDouble("aPrismarineBoots.Armor");
-            armt = this.getConfig().getDouble("aPrismarineBoots.ArmorToughness");
-            kbr = this.getConfig().getDouble("aPrismarineBoots.KBResist") / 10;
-            hp = this.getConfig().getDouble("aPrismarineBoots.BonusHealth");
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            arm = ConfigurationsDouble.Armors_PrismarineBoots_Armor.getValue();
+            armt = ConfigurationsDouble.Armors_PrismarineBoots_ArmorToughness.getValue();
+            kbr = ConfigurationsDouble.Armors_PrismarineBoots_KBResist.getValue() / 10;
+            hp = ConfigurationsDouble.Armors_PrismarineBoots_BonusHealth.getValue();
         }
         resultm.setDisplayName(ChatColor.GREEN + "Prismarine Boots");
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Armor", arm,
+        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "armor", arm,
                 Operation.ADD_NUMBER, EquipmentSlot.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Armor", armt,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "armor_toughness", armt,
                 Operation.ADD_NUMBER, EquipmentSlot.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Armor", kbr,
+        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "armor_knockback_resistance", kbr,
                 Operation.ADD_NUMBER, EquipmentSlot.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "Armor", hp,
+        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "armor_max_health", hp,
                 Operation.ADD_NUMBER, EquipmentSlot.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier4);
         result.setItemMeta(resultm);
 
-        if (this.getConfig().getString("Prismarine") == "true") {
+        if (ConfigurationsBool.Prismarine.getValue()) {
             event.setResult(result);
         }
     }
@@ -1714,7 +1716,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     @EventHandler
     public void playerBowShoot(EntityShootBowEvent event) {
         Entity entity = event.getEntity();
-        Float speed = event.getForce();
+        float speed = event.getForce();
         Arrow arrow = (Arrow) event.getProjectile();
         if (entity.getType().equals(EntityType.PLAYER)) {
             Player player = (Player) entity;
@@ -1775,9 +1777,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                         //vector.getZ()* speed * 3.5));
                         double aspd = 4;
                         double x = 1;
-                        if (this.getConfig().getString("UseCustomValues") == "true") {
-                            aspd = this.getConfig().getDouble("aLongBow.arrowSpeed");
-                            x = this.getConfig().getDouble("aLongBow.dmgMultiplier");
+                        if (ConfigurationsBool.UseCustomValues.getValue()) {
+                            aspd = ConfigurationsDouble.Bows_LongBow_ArrowSpeed.getValue();
+                            x = ConfigurationsDouble.Bows_LongBow_DmgMultiplier.getValue();
                         }
                         arrow.setVelocity(new Vector
                                 (vector.getX() * speed * aspd,
@@ -1797,9 +1799,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                             //vector.getZ()* speed * 3.5));
                             double aspd = 5;
                             double x = 1;
-                            if (this.getConfig().getString("UseCustomValues") == "true") {
-                                aspd = this.getConfig().getDouble("aRecurveBow.arrowSpeed");
-                                x = this.getConfig().getDouble("aRecurveBow.dmgMultiplier");
+                            if (ConfigurationsBool.UseCustomValues.getValue()) {
+                                aspd = ConfigurationsDouble.Bows_RecurveBow_ArrowSpeed.getValue();
+                                x = ConfigurationsDouble.Bows_RecurveBow_DmgMultiplier.getValue();
                             }
                             arrow.setVelocity(new Vector
                                     (vector.getX() * speed * aspd,
@@ -1819,9 +1821,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                                 //vector.getZ()* speed * 3.5));
                                 double aspd = 6;
                                 double x = 1;
-                                if (this.getConfig().getString("UseCustomValues") == "true") {
-                                    aspd = this.getConfig().getDouble("aCompoundBow.arrowSpeed");
-                                    x = this.getConfig().getDouble("aCompoundBow.dmgMultiplier");
+                                if (ConfigurationsBool.UseCustomValues.getValue()) {
+                                    aspd = ConfigurationsDouble.Bows_CompoundBow_ArrowSpeed.getValue();
+                                    x = ConfigurationsDouble.Bows_CompoundBow_DmgMultiplier.getValue();
                                 }
                                 arrow.setVelocity(new Vector
                                         (vector.getX() * speed * aspd,
@@ -2151,56 +2153,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
     }
 
-    public ShapedRecipe geteaeaRecipe() {
-
-        //test
-
-        ItemStack item = new ItemStack(Material.ACACIA_BOAT);
-        ItemMeta meta = item.getItemMeta();
-
-
-        meta.setDisplayName(ChatColor.GOLD + "aaa ingot");
-        meta.setCustomModelData(3330001);
-        meta.addEnchant(Enchantment.MENDING, 43, true);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "aaaingot");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("LLL", "LBe", "LLL");
-
-        recipe.setIngredient('B', Material.ACACIA_BOAT);
-        recipe.setIngredient('L', Material.IRON_INGOT);
-        recipe.setIngredient('e', Material.BEDROCK);
-
-        return recipe;
-    }
-
-    public ShapedRecipe gettestt() {
-        ItemStack item = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "aaa sword");
-        item.setItemMeta(meta);
-
-        ItemStack item2 = new ItemStack(Material.ACACIA_BOAT);
-        ItemMeta meta2 = item.getItemMeta();
-        meta2.setDisplayName(ChatColor.GOLD + "aaa ingot");
-        meta2.setCustomModelData(3330001);
-        meta2.addEnchant(Enchantment.MENDING, 43, true);
-        item2.setItemMeta(meta2);
-
-        @SuppressWarnings("deprecation")
-        RecipeChoice custom1Choice = new RecipeChoice.ExactChoice(item2);
-        NamespacedKey key = new NamespacedKey(this, "eeaaeeeaea");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item); //custom item that will be crafted
-        recipe.shape(" H ", " H ", " I ");
-        recipe.setIngredient('I', Material.BEDROCK);
-        recipe.setIngredient('H', custom1Choice); // usage of the RecipeChoice
-        return recipe;
-    }
-
     //unused item
     public ShapedRecipe getbonekatRecipe() {
 
@@ -2310,7 +2262,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
-                                        Float speed = event.getForce();
+                                        float speed = event.getForce();
                                         arrow.setVelocity(new Vector
                                                 (playerDirection.getX() * speed * 4.5,
                                                         playerDirection.getY() * speed * 5,
@@ -2325,7 +2277,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         Vector playerDirection = player.getLocation().getDirection();
                                         Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                        Float speed = event.getForce();
+                                        float speed = event.getForce();
                                         arrow.setVelocity(new Vector
                                                 (playerDirection.getX() * speed * 4.5,
                                                         playerDirection.getY() * speed * 5,
@@ -2340,7 +2292,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         Vector playerDirection = player.getLocation().getDirection();
                                         Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                        Float speed = event.getForce();
+                                        float speed = event.getForce();
                                         arrow.setVelocity(new Vector
                                                 (playerDirection.getX() * speed * 4.5,
                                                         playerDirection.getY() * speed * 5,
@@ -2356,7 +2308,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         Vector playerDirection = player.getLocation().getDirection();
                                         Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                        Float speed = event.getForce();
+                                        float speed = event.getForce();
                                         arrow.setVelocity(new Vector
                                                 (playerDirection.getX() * speed * 4.5,
                                                         playerDirection.getY() * speed * 5,
@@ -2389,7 +2341,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
-                                            Float speed = event.getForce();
+                                            float speed = event.getForce();
                                             arrow.setVelocity(new Vector
                                                     (playerDirection.getX() * speed * 4.5,
                                                             playerDirection.getY() * speed * 5,
@@ -2404,7 +2356,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                             Vector playerDirection = player.getLocation().getDirection();
                                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                            Float speed = event.getForce();
+                                            float speed = event.getForce();
                                             arrow.setVelocity(new Vector
                                                     (playerDirection.getX() * speed * 4.5,
                                                             playerDirection.getY() * speed * 5,
@@ -2419,7 +2371,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                             Vector playerDirection = player.getLocation().getDirection();
                                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                            Float speed = event.getForce();
+                                            float speed = event.getForce();
                                             arrow.setVelocity(new Vector
                                                     (playerDirection.getX() * speed * 4.5,
                                                             playerDirection.getY() * speed * 5,
@@ -2435,7 +2387,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                             Vector playerDirection = player.getLocation().getDirection();
                                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                            Float speed = event.getForce();
+                                            float speed = event.getForce();
                                             arrow.setVelocity(new Vector
                                                     (playerDirection.getX() * speed * 4.5,
                                                             playerDirection.getY() * speed * 5,
@@ -2455,7 +2407,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                 arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
-                                Float speed = event.getForce();
+                                float speed = event.getForce();
                                 arrow.setVelocity(new Vector
                                         (playerDirection.getX() * speed * 4.5,
                                                 playerDirection.getY() * speed * 5,
@@ -2470,7 +2422,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 Vector playerDirection = player.getLocation().getDirection();
                                 Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                 arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                Float speed = event.getForce();
+                                float speed = event.getForce();
                                 arrow.setVelocity(new Vector
                                         (playerDirection.getX() * speed * 4.5,
                                                 playerDirection.getY() * speed * 5,
@@ -2485,7 +2437,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 Vector playerDirection = player.getLocation().getDirection();
                                 Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                 arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                Float speed = event.getForce();
+                                float speed = event.getForce();
                                 arrow.setVelocity(new Vector
                                         (playerDirection.getX() * speed * 4.5,
                                                 playerDirection.getY() * speed * 5,
@@ -2501,7 +2453,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 Vector playerDirection = player.getLocation().getDirection();
                                 Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                                 arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                                Float speed = event.getForce();
+                                float speed = event.getForce();
                                 arrow.setVelocity(new Vector
                                         (playerDirection.getX() * speed * 4.5,
                                                 playerDirection.getY() * speed * 5,
@@ -2529,7 +2481,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
-                            Float speed = event.getForce();
+                            float speed = event.getForce();
                             arrow.setVelocity(new Vector
                                     (playerDirection.getX() * speed * 4.5,
                                             playerDirection.getY() * speed * 5,
@@ -2544,7 +2496,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             Vector playerDirection = player.getLocation().getDirection();
                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                            Float speed = event.getForce();
+                            float speed = event.getForce();
                             arrow.setVelocity(new Vector
                                     (playerDirection.getX() * speed * 4.5,
                                             playerDirection.getY() * speed * 5,
@@ -2559,7 +2511,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             Vector playerDirection = player.getLocation().getDirection();
                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                            Float speed = event.getForce();
+                            float speed = event.getForce();
                             arrow.setVelocity(new Vector
                                     (playerDirection.getX() * speed * 4.5,
                                             playerDirection.getY() * speed * 5,
@@ -2575,7 +2527,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             Vector playerDirection = player.getLocation().getDirection();
                             Arrow arrow = player.launchProjectile(Arrow.class, playerDirection);
                             arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
-                            Float speed = event.getForce();
+                            float speed = event.getForce();
                             arrow.setVelocity(new Vector
                                     (playerDirection.getX() * speed * 4.5,
                                             playerDirection.getY() * speed * 5,
@@ -2864,7 +2816,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
 
                                             //stuff
-                                            Float speed = event.getForce();
+                                            float speed = event.getForce();
                                             Arrow arrow = (Arrow) event.getProjectile();
                                             Vector vector = player.getLocation().getDirection();
 
@@ -2884,7 +2836,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         }
 
                         //stuff
-                        Float speed = event.getForce();
+                        float speed = event.getForce();
                         Arrow arrow = (Arrow) event.getProjectile();
                         Vector vector = player.getLocation().getDirection();
 
@@ -2912,7 +2864,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                     player.getInventory().getItemInOffHand().setAmount(player.getInventory().getItemInOffHand().getAmount() - 1);
 
                     //stuff
-                    Float speed = event.getForce();
+                    float speed = event.getForce();
                     Arrow arrow = (Arrow) event.getProjectile();
                     Vector vector = player.getLocation().getDirection();
 
@@ -2977,7 +2929,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 }
             }
         }
-        if (this.getConfig().getString("InfusedVessel") == "true") {
+        if (ConfigurationsBool.InfusedVessel.getValue()) {
             if (killed.getType() == EntityType.WITHER) {
                 if (event.getEntity().getKiller() != null) {
                     if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
@@ -2996,32 +2948,32 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
                                     ItemMeta meta2 = player.getInventory().getItemInMainHand().getItemMeta();
                                     meta2.setCustomModelData(2222224);
-                                    meta2.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.name")));
+                                    meta2.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Name.getValue()));
                                     double dmg = 9;
                                     double spd = -2.4;
                                     if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                        dmg = this.getConfig().getDouble("aInfusedVessel.damage") - 1;
-                                        spd = this.getConfig().getDouble("aInfusedVessel.speed") - 4;
+                                        dmg = ConfigurationsDouble.Others_InfusedVessel_Damage.getValue();
+                                        spd = ConfigurationsDouble.Others_InfusedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifier1a = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
+                                    AttributeModifier modifier1a = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                                             Operation.ADD_NUMBER, EquipmentSlot.HAND);
                                     meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1a);
-                                    AttributeModifier modifier2a = new AttributeModifier(UUID.randomUUID(), "Atackspeed", spd,
+                                    AttributeModifier modifier2a = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                                             Operation.ADD_NUMBER, EquipmentSlot.HAND);
                                     meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2a);
 
-                                    List<String> lore2 = new ArrayList<String>();
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line1")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line2")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line3")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line4")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line5")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line6")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line7")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line8")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line9")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line10")));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dInfusedVessel.line11")));
+                                    List<String> lore2 = new ArrayList<>();
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line1.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line2.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line3.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line4.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line5.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line6.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line7.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line8.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line9.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line10.getValue()));
+                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line11.getValue()));
                                     meta2.setLore(lore2);
                                     //important:
                                     meta2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -3034,7 +2986,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 }
             }
         }
-        if (this.getConfig().getString("CursedVessel") == "true") {
+        if (ConfigurationsBool.CursedVessel.getValue()) {
             if (killed.getType() == EntityType.ENDER_DRAGON) {
                 if (event.getEntity().getKiller() != null) {
                     if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
@@ -3052,35 +3004,35 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                     world.spawnParticle(Particle.CLOUD, player.getLocation(), 100);
                                     ItemMeta meta3 = player.getInventory().getItemInMainHand().getItemMeta();
                                     meta3.setCustomModelData(2222225);
-                                    meta3.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.name")));
+                                    meta3.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Name.getValue()));
                                     double dmg = 9;
                                     double spd = -2.4;
-                                    if (this.getConfig().getString("UseCustomValues") == "true") {
-                                        dmg = this.getConfig().getDouble("aCursedVessel.damage") - 1;
-                                        spd = this.getConfig().getDouble("aCursedVessel.speed") - 4;
+                                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                                        dmg = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
+                                        spd = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifier1e = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
+                                    AttributeModifier modifier1e = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                                             Operation.ADD_NUMBER, EquipmentSlot.HAND);
                                     meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1e);
-                                    AttributeModifier modifier2e = new AttributeModifier(UUID.randomUUID(), "Atackspeed", spd,
+                                    AttributeModifier modifier2e = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                                             Operation.ADD_NUMBER, EquipmentSlot.HAND);
                                     meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2e);
                                     //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,
                                     //		Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
                                     //meta3.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier3e);
 
-                                    List<String> lore3 = new ArrayList<String>();
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line1")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line2")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line3")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line4")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line5")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line6")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line7")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line8")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line9")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line10")));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dCursedVessel.line11")));
+                                    List<String> lore3 = new ArrayList<>();
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line1.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line2.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line3.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line4.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line5.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line6.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line7.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line8.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line9.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line10.getValue()));
+                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line11.getValue()));
                                     meta3.setLore(lore3);
                                     //important:
                                     meta3.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -3388,45 +3340,46 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
         ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.name")));
+        assert meta != null;
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Name.getValue()));
         meta.setCustomModelData(2222228);
         double dmg = 11;
         double spd = -2.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aAwakenedVesselPurple.damage") - 1;
-            spd = this.getConfig().getDouble("aAwakenedVesselPurple.speed") - 4;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            dmg = ConfigurationsDouble.Others_AwakenedVesselPurple_Damage.getValue();
+            spd = ConfigurationsDouble.Others_AwakenedVesselPurple_Speed.getValue();
         }
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
+        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                 Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Atackspeed", spd,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                 Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line12")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line13")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line14")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line15")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselPurple.line16")));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line11.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line12.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line13.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line14.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line15.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line16.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         item.setItemMeta(meta);
 
-        if (this.getConfig().getString("AwakenedVesselPurple") == "true") {
+        if (ConfigurationsBool.AwakenedVesselPurple.getValue()) {
             event.setResult(item);
         }
 
@@ -3466,18 +3419,19 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
         ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.name")));
+        assert meta != null;
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Name.getValue()));
         meta.setCustomModelData(2222226);
         double dmg = 11;
         double spd = -2.6;
-        if (this.getConfig().getString("UseCustomValues") == "true") {
-            dmg = this.getConfig().getDouble("aAwakenedVesselWhite.damage") - 1;
-            spd = this.getConfig().getDouble("aAwakenedVesselWhite.speed") - 4;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            dmg = ConfigurationsDouble.Others_AwakenedVesselWhite_Damage.getValue();
+            spd = ConfigurationsDouble.Others_AwakenedVesselWhite_Speed.getValue();
         }
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
+        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                 Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Atackspeed", spd,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                 Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
