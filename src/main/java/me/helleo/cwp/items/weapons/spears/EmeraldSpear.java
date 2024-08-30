@@ -46,10 +46,10 @@ public class EmeraldSpear extends BaseSpear{
             dmg = ConfigurationsDouble.Spears_EmeraldSpear_Damage.getValue();
             spd = ConfigurationsDouble.Spears_EmeraldSpear_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

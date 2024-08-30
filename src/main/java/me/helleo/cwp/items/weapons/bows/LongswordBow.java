@@ -33,7 +33,6 @@ public class LongswordBow extends BaseBow{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongswordBow_Line4.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongswordBow_Line5.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongswordBow_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongswordBow_Line7.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -44,10 +43,10 @@ public class LongswordBow extends BaseBow{
             dmg = ConfigurationsDouble.Bows_LongSwordBow_Damage.getValue();
             spd = ConfigurationsDouble.Bows_LongSwordBow_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "damage", dmg,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 

@@ -44,13 +44,13 @@ public class GoldenKatana extends BaseKatana{
             spd = ConfigurationsDouble.Katanas_GoldenKatana_Speed.getValue();
             mspd = ConfigurationsDouble.Katanas_GoldenKatana_MoveSpeed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Move SPeed", mspd,
+        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "move_speed", mspd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenKatana_Name.getValue()));

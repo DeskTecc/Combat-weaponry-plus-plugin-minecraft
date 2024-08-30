@@ -37,7 +37,7 @@ public class PlatedChainmailChestplate extends BaseArmor {
 
         meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Chestplate");
         if (ConfigurationsBool.EnchantsPlatedChainmail.getValue()) {
-            int num = (int) ConfigurationsDouble.PlatedChainmailEnchantLevels_Unbreaking.getValue());
+            int num = (int) ConfigurationsDouble.PlatedChainmailEnchantLevels_Unbreaking.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, num, true);
         }
 

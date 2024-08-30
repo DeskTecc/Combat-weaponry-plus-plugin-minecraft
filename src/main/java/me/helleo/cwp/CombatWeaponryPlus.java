@@ -61,7 +61,9 @@ import java.util.*;
 public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     public static String pluginName = "CombatWeaponryPlus";
-    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("CombatWeaponryPlus");
+
+    public static Plugin plugin;
+
 
     public static List<NamespacedKey> keys = new ArrayList<>();
 
@@ -74,7 +76,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-
+        plugin = this;
         Cooldown.setupCooldown();
 
         this.getServer().getPluginManager().registerEvents(this, this);
@@ -286,7 +288,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             ObsidianPickaxe.setToolRecipe();
         }
 
-        if (ConfigurationsBool.Prismarine.getValue()) {
+        //PRISMARINE ITEMS
+        //temporary disabled
+        /*if (ConfigurationsBool.Prismarine.getValue()) {
             PrismarineAlloy.setItemRecipe();
 
             Bukkit.addRecipe(getprisswordsrecipe());
@@ -299,7 +303,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             Bukkit.addRecipe(getprislegrecipe());
             Bukkit.addRecipe(getprisbootsrecipe());
         }
-
+*/
         if (ConfigurationsBool.Eelytra.getValue()) {
             Eelytra.setItemRecipe();
         }

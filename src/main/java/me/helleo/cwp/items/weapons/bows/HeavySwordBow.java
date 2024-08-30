@@ -59,27 +59,27 @@ public class HeavySwordBow extends BaseBow{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Line3.getValue()));
         meta.setLore(lore);
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Damage"), damage,
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "attack_damage"), damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Attack Speed"), speed,
+        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "attack_speed"), speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
 
         //speed
-        AttributeModifier modifier3 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Speed"), moveSpeed,
+        AttributeModifier modifier3 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "speed"), moveSpeed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Speed"), offHandMoveSpeed,
+        AttributeModifier modifier4 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "speed_offhand"), offHandMoveSpeed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier4);
 
         //knockback res
-        AttributeModifier modifier5 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "KnockbackRes"), KBResist,
+        AttributeModifier modifier5 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance"), KBResist,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier5);
-        AttributeModifier modifier6 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "KnockbackRes"), offHandKBResist,
+        AttributeModifier modifier6 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance_offhand"), offHandKBResist,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier6);
 

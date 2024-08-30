@@ -41,10 +41,10 @@ public class EmeraldCleaver extends BaseCleaver{
             dmg = ConfigurationsDouble.Cleavers_EmeraldCleaver_Damage.getValue();
             spd = ConfigurationsDouble.Cleavers_EmeraldCleaver_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "attack _speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

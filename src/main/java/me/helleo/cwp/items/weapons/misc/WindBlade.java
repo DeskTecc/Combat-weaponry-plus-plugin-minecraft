@@ -37,10 +37,10 @@ public class WindBlade {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -2.3,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "attack_speed", -2.3,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 5,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_damage", 5,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

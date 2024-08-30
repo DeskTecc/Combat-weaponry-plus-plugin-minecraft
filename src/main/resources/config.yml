@@ -582,11 +582,11 @@ DescriptionHeavySwordBow:
 DescriptionLongswordBow:
   Name: "Longsword Bow"
   Line1: ""
-  Line3: "&7- Slightly increased arrow velocity"
-  Line4: ""
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 8 Attack Damage"
-  Line7: "&9 1.4 Attack Speed"
+  Line2: "&7- Slightly increased arrow velocity"
+  Line3: ""
+  Line4: "&7When in Main Hand:"
+  Line5: "&9 8 Attack Damage"
+  Line6: "&9 1.4 Attack Speed"
 DescriptionLongBow:
   Name: "Longbow"
   Line1: ""
@@ -1221,7 +1221,7 @@ DescriptionEmeraldCleaver:
   Line11: "&9 11 Attack Damage"
   Line12: "&9 0.4 Attack Speed"
 DescriptionDiamondCleaver:
-  name: "Diamond Cleaver"
+  Name: "Diamond Cleaver"
   Line10: "&7When in Main Hand:"
   Line11: "&9 12 Attack Damage"
   Line12: "&9 0.4 Attack Speed"

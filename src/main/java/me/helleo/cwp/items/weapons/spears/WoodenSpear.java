@@ -40,10 +40,10 @@ public class WoodenSpear extends BaseSpear {
             dmg = ConfigurationsDouble.Spears_WoodenSpear_Damage.getValue();
             spd = ConfigurationsDouble.Spears_WoodenSpear_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", spd,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", dmg,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
@@ -68,7 +68,7 @@ public class WoodenSpear extends BaseSpear {
     }
 
     public static void setSpearRecipe(){
-        Bukkit.addRecipe(new WoodenKnife().getKnifeRecipe());
+        Bukkit.addRecipe(new WoodenSpear().getSpearRecipe());
     }
 
 }

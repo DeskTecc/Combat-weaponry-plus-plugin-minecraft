@@ -38,10 +38,10 @@ public class TestScythe {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -3,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "attack_speed", -3,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 8,
+        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_damage", 8,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

@@ -1,5 +1,6 @@
 package me.helleo.cwp.listeners;
 
+import me.helleo.cwp.CombatWeaponryPlus;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -13,7 +14,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -362,7 +362,7 @@ public class EntityDamage implements Listener {
                                 if (random == 1) {
                                     double crit = bonus * 1.1;
                                     event.setDamage(crit);
-                                    getServer().getScheduler().runTaskLater((Plugin) this, new Runnable() {
+                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                         public void run() {
                                             World world = player.getWorld();
                                             world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -370,7 +370,7 @@ public class EntityDamage implements Listener {
                                         }
                                     }, 2L); //the 2L is ticks, there are 20 ticks in a second so this is 1/10th of a second delay
 
-                                    getServer().getScheduler().runTaskLater((Plugin) this, new Runnable() {
+                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                         public void run() {
                                             World world = player.getWorld();
                                             world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -378,7 +378,7 @@ public class EntityDamage implements Listener {
                                         }
                                     }, 4L);
 
-                                    getServer().getScheduler().runTaskLater((Plugin) this, new Runnable() {
+                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                         public void run() {
                                             World world = player.getWorld();
                                             world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -386,7 +386,7 @@ public class EntityDamage implements Listener {
                                         }
                                     }, 6L);
 
-                                    getServer().getScheduler().runTaskLater((Plugin) this, new Runnable() {
+                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                         public void run() {
                                             World world = player.getWorld();
                                             world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);

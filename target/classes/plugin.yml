@@ -1,0 +1,4 @@
+name: CombatWeaponryPlus
+version: '1.5.8'
+main: me.helleo.cwp.CombatWeaponryPlus
+api-version: '1.20'
