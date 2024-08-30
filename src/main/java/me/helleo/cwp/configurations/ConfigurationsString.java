@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
 
 public enum ConfigurationsString {
+    PackLink(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("PackLink")),
     DescriptionRedstoneCore_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionRedstoneCore.Name")),
     DescriptionRedstoneCore_Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionRedstoneCore.Line1")),
     DescriptionRedstoneCore_Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionRedstoneCore.Line2")),
