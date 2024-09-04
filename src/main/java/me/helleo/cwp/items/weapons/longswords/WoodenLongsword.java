@@ -13,9 +13,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class WoodenLongsword extends BaseLongsword{
 
@@ -23,25 +21,25 @@ public class WoodenLongsword extends BaseLongsword{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getLongsword(){
+        double attack_damage = 4;
+        double attack_speed = -2.8;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            attack_damage = ConfigurationsDouble.Longswords_WoodenLongsword_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Longswords_WoodenLongsword_Speed.getValue();
+        }
+
         List<String> lore = setLore();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionWoodenLongsword_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionWoodenLongsword_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionWoodenLongsword_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        //modifier
-        double dmg = 4;
-        double spd = -2.8;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Longswords_WoodenLongsword_Damage.getValue();
-            spd = ConfigurationsDouble.Longswords_WoodenLongsword_Speed.getValue();
-        }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

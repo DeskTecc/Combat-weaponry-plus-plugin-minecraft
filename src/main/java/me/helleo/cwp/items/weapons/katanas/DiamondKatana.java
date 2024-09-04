@@ -13,9 +13,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class DiamondKatana extends BaseKatana{
 
@@ -23,29 +21,30 @@ public class DiamondKatana extends BaseKatana{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getKatana() {
+        double attack_damage = 5;
+        double attack_speed = -2.3;
+        double move_speed = 0.02;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            attack_damage = ConfigurationsDouble.Katanas_DiamondKatana_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Katanas_DiamondKatana_Speed.getValue();
+            move_speed = ConfigurationsDouble.Katanas_DiamondKatana_MoveSpeed.getValue();
+        }
+
         List<String> lore = setLore();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondKatana_Line12.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondKatana_Line13.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondKatana_Line14.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        double dmg = 5;
-        double spd = -2.3;
-        double mspd = 0.02;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Katanas_DiamondKatana_Damage.getValue();
-            spd = ConfigurationsDouble.Katanas_DiamondKatana_Speed.getValue();
-            mspd = ConfigurationsDouble.Katanas_DiamondKatana_MoveSpeed.getValue();
-        }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), mspd,
+        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionDiamondKatana_Name.getValue()));

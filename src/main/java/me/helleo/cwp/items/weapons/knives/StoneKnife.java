@@ -22,24 +22,25 @@ public class StoneKnife extends BaseKnife{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getKnife() {
+        double attack_damage = 1.5;
+        double attack_speed = -1;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            attack_damage = ConfigurationsDouble.Knives_StoneKnife_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Knives_StoneKnife_Speed.getValue();
+        }
+
         List<String> lore = setLore();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionStoneKnife_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionStoneKnife_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionStoneKnife_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        double dmg = 1.5;
-        double spd = -1;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Knives_StoneKnife_Damage.getValue();
-            spd = ConfigurationsDouble.Knives_StoneKnife_Speed.getValue();
-        }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

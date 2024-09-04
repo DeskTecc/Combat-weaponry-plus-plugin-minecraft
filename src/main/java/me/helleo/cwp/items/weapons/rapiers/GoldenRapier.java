@@ -14,7 +14,6 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
-import java.util.UUID;
 
 public class GoldenRapier extends BaseRapier{
 
@@ -22,25 +21,25 @@ public class GoldenRapier extends BaseRapier{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getRapier() {
+        double attack_damage = 2;
+        double attack_speed = -1.6;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            attack_damage = ConfigurationsDouble.Rapiers_GoldenRapier_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Rapiers_GoldenRapier_Speed.getValue();
+        }
+
         List<String> lore = setLore();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldenRapier_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        //modifier
-        double dmg = 2;
-        double spd = -1.6;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Rapiers_GoldenRapier_Damage.getValue();
-            spd = ConfigurationsDouble.Rapiers_GoldenRapier_Speed.getValue();
-        }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 

@@ -58,7 +58,7 @@ public class PlayerClick implements Listener {
                             world.playSound(player.getLocation(), Sound.MUSIC_DISC_CAT, 10, 1);
                             ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
                             meta.setDisplayName("GOTTEM");
-                            List<String> lore = new ArrayList<String>();
+                            List<String> lore = new ArrayList<>();
                             lore.add("");
                             lore.add(ChatColor.translateAlternateColorCodes('&', "&6im sorry"));
                             lore.add("");

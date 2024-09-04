@@ -4,7 +4,6 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.configurations.ConfigurationsString;
-import me.helleo.cwp.items.weapons.spears.EmeraldSpear;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,9 +14,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class EmeraldKatana extends BaseKatana{
 
@@ -25,29 +22,30 @@ public class EmeraldKatana extends BaseKatana{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getKatana() {
+        double attack_damage = 4;
+        double attack_speed = -2;
+        double move_speed = 0.02;
+        if (ConfigurationsBool.UseCustomValues.getValue()) {
+            attack_damage = ConfigurationsDouble.Katanas_EmeraldKatana_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Katanas_EmeraldKatana_Speed.getValue();
+            move_speed = ConfigurationsDouble.Katanas_EmeraldKatana_MoveSpeed.getValue();
+        }
+
         List<String> lore = setLore();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldKatana_Line12.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldKatana_Line13.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldKatana_Line14.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        double dmg = 4;
-        double spd = -2;
-        double mspd = 0.02;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Katanas_EmeraldKatana_Damage.getValue();
-            spd = ConfigurationsDouble.Katanas_EmeraldKatana_Speed.getValue();
-            mspd = ConfigurationsDouble.Katanas_EmeraldKatana_MoveSpeed.getValue();
-        }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), mspd,
+        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldKatana_Name.getValue()));

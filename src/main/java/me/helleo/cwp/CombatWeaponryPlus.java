@@ -31,7 +31,6 @@ import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.attribute.AttributeModifier.Operation;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.AbstractArrow.PickupStatus;
 import org.bukkit.entity.*;
 import org.bukkit.entity.ArmorStand.LockType;
@@ -2323,7 +2322,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                             if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() != 1231234) {
 
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552001 && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
+                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552001 &&
+                                        player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                     if (player.getInventory().getChestplate() != null) {
                                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                                             if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
@@ -2600,7 +2600,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                                     if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() != 1231234) {
 
-                                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552002 && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
+                                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552002 &&
+                                                player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                             if (player.getInventory().getChestplate() != null) {
                                                 if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                                                     if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
@@ -2782,7 +2783,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
 
                                         //stuff
-                                        Float speed = event.getForce();
+                                        float speed = event.getForce();
                                         Arrow arrow = (Arrow) event.getProjectile();
                                         Vector vector = player.getLocation().getDirection();
 
@@ -2925,7 +2926,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             int random2 = getRandomInt(100);
             if (random2 == 1) {
                 if (ConfigurationsBool.Vessel.getValue()) {
-                    world.dropItemNaturally(killed.getLocation(), Items.vessel(this.getConfig()));
+                    world.dropItemNaturally(killed.getLocation(), Items.vessel());
                 }
             }
         }
@@ -3503,8 +3504,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
             return;
         }
-        if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_SWORD))
-            if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData())
+        if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_SWORD)) {
+            if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                 if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasLore()) {
                     Player player = event.getPlayer();
 
@@ -3515,22 +3516,19 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
                             if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222226 ||
                                     player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222228) {
-                                List<Entity> ee = player.getNearbyEntities(5, 5, 5);
+                                List<Entity> nearbyEntities = player.getNearbyEntities(5, 5, 5);
                                 //if (player.getLevel() > ee.size()) {
                                 if (player.getLevel() > 1) {
 
                                     player.setLevel(player.getLevel() - 1);
 
 
-                                    for (int e = 0; e < ee.size(); e++) {
-                                        Entity entity = ee.get(e);
-
-
+                                    for (Entity entity : nearbyEntities) {
                                         if (entity instanceof LivingEntity) {
                                             LivingEntity livingen = (LivingEntity) entity;
 
                                             if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222226) {
-                                                if (livingen.getCategory().equals(EntityCategory.UNDEAD)) {
+                                                if (livingen.getType().equals(EntityType.ZOMBIE)) {
                                                     livingen.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 0));
                                                 } else {
                                                     if (!(entity instanceof Player)) {
@@ -3555,12 +3553,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                     }
 
                                 }
-
-                                //}
-                                //player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                //}
-
-                                //Cooldown.setCooldown(event.getPlayer(), 1);
                             }
                         }
                     }
@@ -3614,7 +3606,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         }
                     }
                 }
-
+            }
+        }
     }
 
     //DUAL WIELDING
@@ -3630,7 +3623,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 || player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1000030) {
 
                             //stops dual wielding 2 different weapon type:
-                            if (this.getConfig().getString("DualWieldSaberOnly") == "true") {
+                            if (ConfigurationsBool.DualWieldSaberOnly.getValue()) {
                                 //test the config thing, not sure if it works
                                 if (player.getInventory().getItemInMainHand() != null) {
                                     if (player.getInventory().getItemInMainHand().hasItemMeta()) {
@@ -4095,17 +4088,13 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 e.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 5, 10));
                 e.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 5, 10));
                 //below gives other entities near target slowness too, except for the player
-                List<Entity> ee = e.getNearbyEntities(2, 2, 2);
-                for (int en = 0; en < ee.size(); en++) {
-                    Entity entity = ee.get(en);
-
+                List<Entity> nearbyEntities = e.getNearbyEntities(2, 2, 2);
+                for (Entity entity : nearbyEntities) {
                     if (entity instanceof LivingEntity) {
                         LivingEntity livingen = (LivingEntity) entity;
                         if (livingen != player) {
-
                             livingen.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 5, 10));
                             livingen.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 5, 10));
-
                         }
                     }
                 }
@@ -4132,6 +4121,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             standd.setGravity(false);
             ItemStack item = new ItemStack(Material.POTATO);
             ItemMeta meta = item.getItemMeta();
+            assert meta != null;
             meta.setCustomModelData(37);
             item.setItemMeta(meta);
 
@@ -4154,31 +4144,31 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
-            }, (long) 0.5);
+            }, 0);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
             }, 1);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
-            }, (long) 1.5);
+            }, 1);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
             }, 2);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
-            }, (long) 2.5);
+            }, 2);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
             }, 3);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
-            }, (long) 3.5);
+            }, 3);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
             }, 4);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 player.getWorld().playSound(ent.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 4);
-            }, (long) 4.5);
+            },4);
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 stand.remove();
                 standd.remove();
@@ -4377,21 +4367,21 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         //katana test ability
         //idea for this ability came from when i did the texture wrong somehow which made the texture appear sideways when held in offhand
         //
-        Player p = event.getPlayer();
-        if (p.getInventory().getItemInMainHand().getType() != Material.AIR) {
-            if (p.getInventory().getItemInOffHand().getType() == Material.AIR) {
-                if (p.getInventory().getItemInMainHand().hasItemMeta()) {
-                    if (p.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                        if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 205) {
+        Player player = event.getPlayer();
+        if (player.getInventory().getItemInMainHand().getType() != Material.AIR) {
+            if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
+                if (player.getInventory().getItemInMainHand().hasItemMeta()) {
+                    if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 205) {
                             Damageable e = (Damageable) event.getRightClicked();
-                            ItemMeta meta = p.getInventory().getItemInMainHand().getItemMeta();
+                            ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
                             meta.setCustomModelData(2000002);
 
-                            p.getInventory().getItemInMainHand().setItemMeta(meta);
-                            e.damage(4, p);
+                            player.getInventory().getItemInMainHand().setItemMeta(meta);
+                            e.damage(4, player);
                             e.setVelocity(e.getLocation().getDirection().setX(0).setY(0.5).setZ(0));
-                            World world = p.getWorld();
-                            world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 2);
+                            World world = player.getWorld();
+                            world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 2);
                             e.getWorld().spawnParticle(Particle.SWEEP_ATTACK, e.getLocation().getX(), e.getLocation().getY() + 1, e.getLocation().getZ(), 3);
                             e.getWorld().spawnParticle(Particle.CRIT, e.getLocation().getX(), e.getLocation().getY() + 1, e.getLocation().getZ(), 6);
                         }
@@ -4400,11 +4390,11 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
             return;
         }
-        if (p.getInventory().getItemInOffHand().getType() != Material.AIR) {
-            if (p.getInventory().getItemInOffHand().hasItemMeta()) {
-                if (p.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData()) {
+        if (player.getInventory().getItemInOffHand().getType() != Material.AIR) {
+            if (player.getInventory().getItemInOffHand().hasItemMeta()) {
+                if (player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData()) {
 
-                    if (p.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 205) {
+                    if (player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 205) {
                         //idea is once player hit thing 5 times, katana able do special attack by right click when in off hand
                         //do if cmd=1000002, set to 201
                         //if 201, then set to 202, then etc till 205
@@ -4414,52 +4404,67 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
                         //placeholder
                         double dmg = 0;
-                        if (p.getInventory().getItemInOffHand().getType().equals(Material.DIAMOND_SWORD)) {
+                        if (player.getInventory().getItemInOffHand().getType().equals(Material.DIAMOND_SWORD)) {
                             dmg = 8; //diamond katana dmg is 6, but wanted to make this do some bonus dmg too
                         }
                         if (!(event.getRightClicked() instanceof Damageable)) {
                             return;
                         }
-                        Damageable e = (Damageable) event.getRightClicked();
-                        ItemMeta meta = p.getInventory().getItemInOffHand().getItemMeta();
+                        Damageable clickedEntity = (Damageable) event.getRightClicked();
+                        ItemMeta meta = player.getInventory().getItemInOffHand().getItemMeta();
                         meta.setCustomModelData(2000002);
-                        p.swingOffHand();
-                        p.getInventory().getItemInOffHand().setItemMeta(meta);
-                        e.damage(dmg, p);
-                        e.setVelocity(p.getLocation().getDirection().setY(0.4).multiply(1.5));
-                        World world = p.getWorld();
+                        player.swingOffHand();
+                        player.getInventory().getItemInOffHand().setItemMeta(meta);
+                        clickedEntity.damage(dmg, player);
+                        clickedEntity.setVelocity(player.getLocation().getDirection().setY(0.4).multiply(1.5));
+                        World world = player.getWorld();
 
-                        world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                        e.getWorld().spawnParticle(Particle.CRIT, e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 10);
+                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
+                        clickedEntity.getWorld().spawnParticle(Particle.CRIT,
+                                clickedEntity.getLocation().getX(),
+                                clickedEntity.getLocation().getY(),
+                                clickedEntity.getLocation().getZ(), 10);
                         getServer().getScheduler().runTaskLater(this, new Runnable() {
                             public void run() {
-                                World world = p.getWorld();
-                                world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                e.getWorld().spawnParticle(Particle.EXPLOSION, e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 1);
+                                World world = player.getWorld();
+                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                clickedEntity.getWorld().spawnParticle(Particle.EXPLOSION,
+                                        clickedEntity.getLocation().getX(),
+                                        clickedEntity.getLocation().getY(),
+                                        clickedEntity.getLocation().getZ(), 1);
                             }
                         }, 2L); //the 2L is ticks, there are 20 ticks in a second so this is 1/10th of a second delay
 
                         getServer().getScheduler().runTaskLater(this, new Runnable() {
                             public void run() {
-                                World world = p.getWorld();
-                                world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                e.getWorld().spawnParticle(Particle.EXPLOSION, e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 1);
+                                World world = player.getWorld();
+                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                clickedEntity.getWorld().spawnParticle(Particle.EXPLOSION,
+                                        clickedEntity.getLocation().getX(),
+                                        clickedEntity.getLocation().getY(),
+                                        clickedEntity.getLocation().getZ(), 1);
                             }
                         }, 4L);
 
                         getServer().getScheduler().runTaskLater(this, new Runnable() {
                             public void run() {
-                                World world = p.getWorld();
-                                world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                e.getWorld().spawnParticle(Particle.EXPLOSION, e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 1);
+                                World world = player.getWorld();
+                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                clickedEntity.getWorld().spawnParticle(Particle.EXPLOSION,
+                                        clickedEntity.getLocation().getX(),
+                                        clickedEntity.getLocation().getY(),
+                                        clickedEntity.getLocation().getZ(), 1);
                             }
                         }, 6L);
 
                         getServer().getScheduler().runTaskLater(this, new Runnable() {
                             public void run() {
-                                World world = p.getWorld();
-                                world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                e.getWorld().spawnParticle(Particle.EXPLOSION, e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 1);
+                                World world = player.getWorld();
+                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                clickedEntity.getWorld().spawnParticle(Particle.EXPLOSION,
+                                        clickedEntity.getLocation().getX(),
+                                        clickedEntity.getLocation().getY(),
+                                        clickedEntity.getLocation().getZ(), 1);
                             }
                         }, 8L);
 
@@ -4526,42 +4531,50 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     @EventHandler
     public void onScytheRightClick(PlayerInteractEntityEvent event) {
         //scythe test ability
-        Player p = event.getPlayer();
-        if (p.hasCooldown(Material.DIAMOND_SWORD)) {
+        Player player = event.getPlayer();
+        if (player.hasCooldown(Material.DIAMOND_SWORD)) {
             return;
         }
-        if (p.getInventory().getItemInMainHand().getType() != Material.AIR) {
+        if (player.getInventory().getItemInMainHand().getType() != Material.AIR) {
             //if (p.getInventory().getItemInOffHand().getType() == Material.AIR) {
-            if (p.getInventory().getItemInMainHand().hasItemMeta()) {
-                if (p.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2000003) {
-                        Damageable e = (Damageable) event.getRightClicked();
-                        p.setCooldown(Material.DIAMOND_SWORD, 60);
-                        e.damage(5, p);
+            if (player.getInventory().getItemInMainHand().hasItemMeta()) {
+                if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                    if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2000003) {
+                        Damageable clickedEntity = (Damageable) event.getRightClicked();
+                        player.setCooldown(Material.DIAMOND_SWORD, 60);
+                        clickedEntity.damage(5, player);
 
-                        Vector direc = p.getLocation().getDirection().multiply(1);
-                        Location loc = p.getLocation().add(direc);
-                        Location loca = new Location(p.getWorld(), loc.getX(), loc.getY(), loc.getZ());
+                        Vector direction = player.getLocation().getDirection().multiply(1);
+                        Location playerLocation = player.getLocation().add(direction);
+                        Location location = new Location(player.getWorld(),
+                                playerLocation.getX(),
+                                playerLocation.getY(),
+                                playerLocation.getZ());
 
-                        if (e instanceof LivingEntity) {
-                            LivingEntity livingen = (LivingEntity) e;
+                        if (clickedEntity instanceof LivingEntity) {
+                            LivingEntity livingen = (LivingEntity) clickedEntity;
                             Location l = livingen.getLocation();
-                            double x = l.getX() - loca.getX();
-                            double y = l.getY() - loca.getY();
-                            double z = l.getZ() - loca.getZ();
+                            double x = l.getX() - location.getX();
+                            double y = l.getY() - location.getY();
+                            double z = l.getZ() - location.getZ();
                             Vector v = new Vector(x, y, z).normalize().multiply(-0.3).setY(0.5);
                             livingen.setVelocity(v);
 
                         }
 
-                        World world = p.getWorld();
-                        world.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 2);
-                        e.getWorld().spawnParticle(Particle.SWEEP_ATTACK, e.getLocation().getX(), e.getLocation().getY() + 1, e.getLocation().getZ(), 3);
-                        e.getWorld().spawnParticle(Particle.CRIT, e.getLocation().getX(), e.getLocation().getY() + 1, e.getLocation().getZ(), 6);
+                        World world = player.getWorld();
+                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 2);
+                        clickedEntity.getWorld().spawnParticle(Particle.SWEEP_ATTACK,
+                                clickedEntity.getLocation().getX(),
+                                clickedEntity.getLocation().getY() + 1,
+                                clickedEntity.getLocation().getZ(), 3);
+                        clickedEntity.getWorld().spawnParticle(Particle.CRIT,
+                                clickedEntity.getLocation().getX(),
+                                clickedEntity.getLocation().getY() + 1,
+                                clickedEntity.getLocation().getZ(), 6);
                     }
                 }
             }
-            //}
         }
     }
 
@@ -4578,24 +4591,22 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             return;
         }
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            Vector direc = player.getLocation().getDirection().multiply(3);
-            Location loc = player.getLocation().add(direc);
-            Location loca = new Location(player.getWorld(), loc.getX(), loc.getY(), loc.getZ());
-            player.getWorld().spawnParticle(Particle.EXPLOSION, loca.getX(), loca.getY() + 1.6, loca.getZ(), 1);
-            List<Entity> ee = player.getNearbyEntities(4, 4, 4);
-            for (int en = 0; en < ee.size(); en++) {
-                Entity entity = ee.get(en);
-
+            Vector direction = player.getLocation().getDirection().multiply(3);
+            Location playerLocation = player.getLocation().add(direction);
+            Location location = new Location(player.getWorld(), playerLocation.getX(), playerLocation.getY(), playerLocation.getZ());
+            player.getWorld().spawnParticle(Particle.EXPLOSION, location.getX(), location.getY() + 1.6, location.getZ(), 1);
+            List<Entity> nearbyEntities = player.getNearbyEntities(4, 4, 4);
+            for (Entity entity : nearbyEntities) {
                 if (entity instanceof LivingEntity) {
-                    LivingEntity livingen = (LivingEntity) entity;
-                    if (livingen != player) {
-                        Location l = livingen.getLocation();
-                        double x = l.getX() - loca.getX();
-                        double y = l.getY() - loca.getY();
-                        double z = l.getZ() - loca.getZ();
+                    LivingEntity livingEntity = (LivingEntity) entity;
+                    if (livingEntity != player) {
+                        Location livingEntity_location = livingEntity.getLocation();
+                        double x = livingEntity_location.getX() - location.getX();
+                        double y = livingEntity_location.getY() - location.getY();
+                        double z = livingEntity_location.getZ() - location.getZ();
                         Vector v = new Vector(x, y, z).normalize().multiply(-0.5);
-                        livingen.setVelocity(v);
-                        livingen.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 20, 5));
+                        livingEntity.setVelocity(v);
+                        livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 20, 5));
                     }
                 }
             }
@@ -4620,8 +4631,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             ItemMeta meta = p.getInventory().getItemInOffHand().getItemMeta();
             if (meta.getCustomModelData() == 45) {
                 if (event.getEntity() instanceof LivingEntity) {
-                    LivingEntity e = (LivingEntity) event.getEntity();
-                    e.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20, 0));
+                    LivingEntity entity = (LivingEntity) event.getEntity();
+                    entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20, 0));
                 }
             }
 
@@ -4652,23 +4663,21 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 return;
             }
             if (event.getEntity() instanceof Damageable) {
-                Damageable ent = (Damageable) event.getEntity();
+                Damageable entity = (Damageable) event.getEntity();
 
                 if (event.getEntity() instanceof LivingEntity) {
-                    LivingEntity e = (LivingEntity) event.getEntity();
-                    e.setFireTicks(100);
-                    player.getWorld().playSound(ent.getLocation(), Sound.ITEM_FIRECHARGE_USE, 10, 1);
+                    LivingEntity livingEntity = (LivingEntity) event.getEntity();
+                    livingEntity.setFireTicks(100);
+                    player.getWorld().playSound(entity.getLocation(), Sound.ITEM_FIRECHARGE_USE, 10, 1);
                     //below finds other entities 1 block near, except for the player
-                    List<Entity> ee = e.getNearbyEntities(1, 1, 1);
-                    for (int en = 0; en < ee.size(); en++) {
-                        Entity entity = ee.get(en);
-
-                        if (entity instanceof LivingEntity) {
-                            LivingEntity livingen = (LivingEntity) entity;
+                    List<Entity> nearbyEntities = livingEntity.getNearbyEntities(1, 1, 1);
+                    for (Entity nearbyEntity : nearbyEntities) {
+                        if (nearbyEntity instanceof LivingEntity) {
+                            LivingEntity livingen = (LivingEntity) nearbyEntity;
                             if (livingen != player) {
 
                                 livingen.damage(5);
-                                player.getWorld().playSound(ent.getLocation(), Sound.ITEM_FIRECHARGE_USE, 10, 1);
+                                player.getWorld().playSound(entity.getLocation(), Sound.ITEM_FIRECHARGE_USE, 10, 1);
                                 livingen.setFireTicks(60);
                             }
                         }
@@ -4693,18 +4702,22 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 ItemMeta meta = item.getItemMeta();
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5000) {
 
+                    assert meta != null;
                     meta.setCustomModelData(50);
                 }
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5001) {
 
+                    assert meta != null;
                     meta.setCustomModelData(51);
                 }
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5002) {
 
+                    assert meta != null;
                     meta.setCustomModelData(52);
                 }
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5003) {
 
+                    assert meta != null;
                     meta.setCustomModelData(53);
                 }
                 item.setItemMeta(meta);
@@ -4806,7 +4819,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     @EventHandler
     public void shieldParry(EntityDamageByEntityEvent event) {
 
-        if (this.getConfig().getString("ShieldParry") != "true") {
+        if (ConfigurationsBool.ShieldParry.getValue()) {
             return;
         }
 
@@ -4904,7 +4917,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     @EventHandler
     public void shieldBlock(PlayerInteractEvent event) {
 
-        if (this.getConfig().getString("ShieldParry") != "true") {
+        if (ConfigurationsBool.ShieldParry.getValue()) {
             return;
         }
 
@@ -5008,7 +5021,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                 Arrow arrow = (Arrow) hitEntity;
 
                                 // Spawn particles along the raycast path
-                                spawnParticlesAlongPath(player, start, 20, Particle.CRIT, 100, 0.1);
+                                spawnParticlesAlongPath(player, start, 20);
 
                                 // Spawn an explosion at the arrow's location
                                 arrow.getWorld().createExplosion(arrow.getLocation(), 2.0f, false, false); // Adjust the explosion parameters as needed
@@ -5033,7 +5046,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         } else {
                             Bukkit.getLogger().info("miss");
                             // No entity was hit, spawn different particles along the raycast path
-                            spawnParticlesAlongPath(player, start, 60, Particle.CRIT, 100, 0.1);
+                            spawnParticlesAlongPath(player, start, 60);
 
                         }
                     }
@@ -5043,15 +5056,15 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    private void spawnParticlesAlongPath(Player player, Vector start, double distance, Particle particle, int particleCount, double particleSpacing) {
+    private void spawnParticlesAlongPath(Player player, Vector start, double distance) {
         Vector direction = player.getLocation().getDirection().normalize();
         Vector end = start.clone().add(direction.multiply(distance));
 
-        Vector particleOffset = direction.clone().multiply(particleSpacing);
+        Vector particleOffset = direction.clone().multiply(0.1);
 
-        for (int i = 0; i < particleCount; i++) {
+        for (int i = 0; i < 100; i++) {
             Location particleLocation = start.toLocation(player.getWorld());
-            particleLocation.getWorld().spawnParticle(particle, particleLocation, 1);
+            particleLocation.getWorld().spawnParticle(Particle.CRIT, particleLocation, 1);
 
             // Detect nearby entities at the particle's location
             double detectionRadius = 1.0; // Adjust the detection radius as needed
@@ -5112,7 +5125,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }.runTaskLater(this, 40L); // Adjust the delay (in ticks) as needed
     }
 
-
+    //EXPLOSIVE STAFF
     public ShapedRecipe getExStaffRecipe() {
 
         //test
@@ -5162,17 +5175,17 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 // Check if the player is holding a crossbow
                 ItemStack item = player.getInventory().getItemInMainHand();
                 if (item.getType() == Material.CROSSBOW) {
-                    Vector direc = player.getLocation().getDirection().multiply(2.5);
-                    Location loc = player.getLocation().add(direc);
-                    Location loca = new Location(player.getWorld(), loc.getX(), loc.getY(), loc.getZ());
-                    player.getWorld().createExplosion(loca, 2.0f, false, false);
-                    Collection<Entity> nearent = player.getWorld().getNearbyEntities(loca, 3, 3, 3);
+                    Vector direction = player.getLocation().getDirection().multiply(2.5);
+                    Location playerLocation = player.getLocation().add(direction);
+                    Location location = new Location(player.getWorld(), playerLocation.getX(), playerLocation.getY(), playerLocation.getZ());
+                    player.getWorld().createExplosion(location, 2.0f, false, false);
+                    Collection<Entity> nearent = player.getWorld().getNearbyEntities(location, 3, 3, 3);
                     for (Entity entity : nearent) {
                         if (entity instanceof Arrow) {
                             Arrow nearbyArrow = (Arrow) entity;
 
                             // Apply a velocity to the nearby arrow
-                            Vector explosionDirection = nearbyArrow.getLocation().subtract(loca).toVector().normalize();
+                            Vector explosionDirection = nearbyArrow.getLocation().subtract(location).toVector().normalize();
                             double explosionForce = 4.0; // Adjust the explosion force as needed
                             Vector velocity = explosionDirection.multiply(explosionForce);
                             nearbyArrow.setVelocity(velocity.setY(0));
@@ -5180,8 +5193,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             //nearbyArrow.setVelocity(new Vector(0,0,0));
                             nearbyArrow.setDamage(nearbyArrow.getDamage() * 3);
 
-                            nearbyArrow.getWorld().playSound(loca, Sound.BLOCK_ANVIL_LAND, 10, 2);
-                            nearbyArrow.getWorld().spawnParticle(Particle.CRIT, loca, 10);
+                            nearbyArrow.getWorld().playSound(location, Sound.BLOCK_ANVIL_LAND, 10, 2);
+                            nearbyArrow.getWorld().spawnParticle(Particle.CRIT, location, 10);
 
                  		/*Bukkit.getScheduler().runTaskLater(this, () -> {
                  			nearbyArrow.setVelocity(velocity.setY(0));
@@ -5190,7 +5203,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                          */
                         } else {
                             // Apply a velocity to the nearby entity
-                            Vector explosionDirection = entity.getLocation().subtract(loca).toVector().normalize();
+                            Vector explosionDirection = entity.getLocation().subtract(location).toVector().normalize();
                             double explosionForce = 3.0; // Adjust the explosion force as needed
                             Vector velocity = explosionDirection.multiply(explosionForce);
                             entity.setVelocity(velocity);
@@ -5201,22 +5214,5 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
             }
         }
-    }
-
-
-
-    public ShapedRecipe realtestrecipe() {
-
-        //test
-        NamespacedKey key = new NamespacedKey(this, "rrrreal");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, Items.itemname());
-
-        recipe.shape(" B ", " B ", " A ");
-
-        recipe.setIngredient('B', Material.GOLD_INGOT);
-        recipe.setIngredient('A', Material.DIAMOND);
-
-        return recipe;
     }
 }
