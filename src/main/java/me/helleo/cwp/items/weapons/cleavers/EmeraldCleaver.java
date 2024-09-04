@@ -38,7 +38,7 @@ public class EmeraldCleaver extends BaseCleaver{
             dmg = ConfigurationsDouble.Cleavers_EmeraldCleaver_Damage.getValue();
             spd = ConfigurationsDouble.Cleavers_EmeraldCleaver_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack _speed"), spd,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
         AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,

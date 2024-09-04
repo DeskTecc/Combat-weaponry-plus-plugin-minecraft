@@ -1,10 +1,8 @@
 package me.helleo.cwp.listeners;
 
 import me.helleo.cwp.CombatWeaponryPlus;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.World;
+import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -12,12 +10,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.Random;
+import java.util.*;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -33,8 +32,9 @@ public class EntityDamage implements Listener {
         //KNIFE combo thing
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
+
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
-            if (itemInHand.hasItemMeta())
+            if (itemInHand.hasItemMeta()) {
                 if (itemInHand.getItemMeta().hasCustomModelData()) {
                     if (itemInHand.getItemMeta().getCustomModelData() == 1000006
                             || itemInHand.getItemMeta().getCustomModelData() == 1200006
@@ -84,6 +84,7 @@ public class EntityDamage implements Listener {
 
                     }
                 }
+            }
         }
         //saber dual wield thing
         //unused (made the sabers work a different way) i also dont really remember what this was specifically for
@@ -131,150 +132,43 @@ public class EntityDamage implements Listener {
                 }
             }
         }
-        if (event.getDamager().getType() == EntityType.PLAYER) {
-            Player damager = (Player) event.getDamager();
-            if (damager.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (damager.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (damager.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222224 ||
-                            damager.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222224) {
 
-                        LivingEntity entity = (LivingEntity) event.getEntity();
-                        entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 60, 1));
-
-                    }
-                }
-            }
-        }
-        if (event.getDamager().getType() == EntityType.PLAYER) {
-            Player damager = (Player) event.getDamager();
-            if (damager.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (damager.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (damager.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222225 ||
-                            damager.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222225) {
-                        event.setDamage(event.getDamage() * 1.5);
-                    }
-                }
-            }
-        }
-
-        //parry
-        World world1 = event.getEntity().getWorld();
-        if (event.getEntity().getType() == EntityType.PLAYER) {
-            Player player2 = (Player) event.getEntity();
-            //vessel
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222223);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-                    }
-                }
-            }
-            //infvessel
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222224) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222224);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-                    }
-                }
-            }
-            //cursvessel
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222225) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222225);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-
-                    }
-                }
-            }
-            //awak ves
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222226) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222226);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-
-
-                    }
-                }
-            }
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222227) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222227);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-                    }
-                }
-            }
-            //awakves 2
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222228) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222228);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-                    }
-                }
-            }
-            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222229) {
-                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
-                        meta.setCustomModelData(2222229);
-                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
-                        event.setCancelled(true);
-                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
-                    }
-                }
-            }
-        }
-
-
-        //	}
 
         if (event.getDamager().getType() == EntityType.PLAYER) {
             Player player = (Player) event.getDamager();
             if (player.getInventory().getItemInMainHand().getType() == Material.AIR) {
                 return;
             }
-            if (player.getInventory().getItemInMainHand().getItemMeta() != null)
+            if (player.getInventory().getItemInMainHand().getItemMeta() != null){
+                int itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
+                int[] bone_models = {4000002, 4000001, 4000003, 4000004, 4000005, 4000006};
+                boolean bone_weapon_validator = Arrays.stream(bone_models).anyMatch(x-> x==itemModelData);
+
+                int[] rapier_models = {1000005,1200005, 1000015,4000005};
+                boolean rapier_weapon_validator = Arrays.stream(rapier_models).anyMatch(x-> x==itemModelData);
+
+                int[] longsword_models = {1000001, 1200001, 1000011, 4000001};
+                boolean longsword_weapon_validator = Arrays.stream(longsword_models).anyMatch(x-> x==itemModelData);
+
+                int[] scythe_models = {1000003,1200003,1000013, 4000003};
+                boolean scythe_weapon_validator = Arrays.stream(scythe_models).anyMatch(x-> x==itemModelData);
+
+                int[] spear_models = {1000004,1200004,1000014,4000004};
+                boolean spear_weapon_validator = Arrays.stream(spear_models).anyMatch(x-> x==itemModelData);
+
+                int[] katana_models = {1000002,1200002,1000012,4000002};
+                boolean katana_weapon_validator = Arrays.stream(katana_models).anyMatch(x-> x==itemModelData);
+
+                int[] knife_models = {1000006,1200006,1000016,4000006};
+                boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
+
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                    Bukkit.getConsoleSender().sendMessage("DAMAGE: " + event.getDamage());
 
                     //bone weapon ability test (damage increases when durability gets lower)
                     if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000002
-                                || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000001
-                                || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000003
-                                || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000004
-                                || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000005
-                                || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000006) {
-                            //Player playerr = (Player) event.getDamager();
+                        if (bone_weapon_validator) {
+
                             double dmg = event.getDamage();
                             double multiplierr = getMultiplierr(player);
                             event.setDamage(dmg * multiplierr);
@@ -300,240 +194,267 @@ public class EntityDamage implements Listener {
 
                         }
 
-                    //rapeir
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000005 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200005 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000015 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000005) {
+                    // RAPIER
+                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
+                        if (rapier_weapon_validator) {
 
                             event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                         }
+                    }
+                    //LONGSWORD
+                    if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
+                        if (longsword_weapon_validator) {
 
-                    //spear
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000004 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200004 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000014 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000004) {
+                            //OK IT WORKS
+                            //ok i think i fixed it but im not sure, need test
+                            //before: if (player.getInventory().getItemInOffHand() == null) {
+                            //doesnt work because the is air in offhand and air counts as item, figure out way to detect the air
+                            double dmg1 = event.getDamage();
+                            double bonus = dmg1 * 1.3;
+                            event.setDamage(bonus);
+                            //RNG CRIT
+                            //int random = getRandomInt(2);
+                            ///if (random == 1) {
+                            //	double crit = bonus * 1.1;
+                            //	event.setDamage(crit);
+                            //	World world = (World) player.getWorld();
+
+                            //	world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
+                            //	event.getEntity().getWorld().spawnParticle(Particle.SWEEP_ATTACK, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY() + 1, event.getEntity().getLocation().getZ(), 5);
+
+                            //}
+
+                        }
+                        //SCYTHE
+                        if (scythe_weapon_validator) {
+
+                            double dmg1 = event.getDamage();
+                            event.setDamage(dmg1 * 1.3);
+
+                        }
+                        //SPEAR
+                        if (spear_weapon_validator) {
+
+                            double dmg1 = event.getDamage();
+                            event.setDamage(dmg1 * 1.3);
 
                             event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                         }
-                    //longsword
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000011 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000001)
-                            if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
-                                //OK IT WORKS
-                                //ok i think i fixed it but im not sure, need test
-                                //before: if (player.getInventory().getItemInOffHand() == null) {
-                                //doesnt work because the is air in offhand and air counts as item, figure out way to detect the air
-                                double dmg1 = event.getDamage();
-                                double bonus = dmg1 * 1.3;
-                                event.setDamage(bonus);
-                                //RNG CRIT
-                                //int random = getRandomInt(2);
-                                ///if (random == 1) {
-                                //	double crit = bonus * 1.1;
-                                //	event.setDamage(crit);
-                                //	World world = (World) player.getWorld();
+                        //KATANA
+                        if (katana_weapon_validator) {
+                            double dmg1 = event.getDamage();
+                            double bonus = dmg1 * 5.3; //CHANGE THAT
+                            event.setDamage(bonus);
+                            //RNG CRIT
+                            int random = getRandomInt(5);
+                            if (random == 1) {
+                                double crit = bonus * 1.1;
+                                event.setDamage(crit);
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                    public void run() {
+                                        World world = player.getWorld();
+                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                        event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                                    }
+                                }, 2L); //the 2L is ticks, there are 20 ticks in a second so this is 1/10th of a second delay
 
-                                //	world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                //	event.getEntity().getWorld().spawnParticle(Particle.SWEEP_ATTACK, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY() + 1, event.getEntity().getLocation().getZ(), 5);
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                    public void run() {
+                                        World world = player.getWorld();
+                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                        event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                                    }
+                                }, 4L);
 
-                                //}
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                    public void run() {
+                                        World world = player.getWorld();
+                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                        event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                                    }
+                                }, 6L);
+
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                    public void run() {
+                                        World world = player.getWorld();
+                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                        event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                                    }
+                                }, 8L);
                             }
-                    //scythe
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000003 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200003 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000013 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000003)
-                            if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
-                                double dmg1 = event.getDamage();
-                                event.setDamage(dmg1 * 1.3);
-                            }
-                    //spear
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000004 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200004 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000014 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000004)
-                            if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
-                                double dmg1 = event.getDamage();
-                                event.setDamage(dmg1 * 1.3);
-                            }
-                    //katana
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000002 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200002 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000012 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000002)
-                            if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
-                                double dmg1 = event.getDamage();
-                                double bonus = dmg1 * 1.3;
-                                event.setDamage(bonus);
-                                //RNG CRIT
-                                int random = getRandomInt(5);
-                                if (random == 1) {
-                                    double crit = bonus * 1.1;
-                                    event.setDamage(crit);
-                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
-                                        public void run() {
-                                            World world = player.getWorld();
-                                            world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                            event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
-                                        }
-                                    }, 2L); //the 2L is ticks, there are 20 ticks in a second so this is 1/10th of a second delay
-
-                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
-                                        public void run() {
-                                            World world = player.getWorld();
-                                            world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                            event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
-                                        }
-                                    }, 4L);
-
-                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
-                                        public void run() {
-                                            World world = player.getWorld();
-                                            world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                            event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
-                                        }
-                                    }, 6L);
-
-                                    getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
-                                        public void run() {
-                                            World world = player.getWorld();
-                                            world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
-                                            event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
-                                        }
-                                    }, 8L);
-
-
-                                }
-
-
-                            }
-
+                        }
+                    }
+                    //if PvP
                     if (event.getEntity() instanceof Player) {
 
                         if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
-                            //rapier
-                            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000005 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200005 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000015 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000005) {
+                            //RAPIER
+                            if (rapier_weapon_validator) {
 
-                                    //event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                                //event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
 
-                                    World world = player.getWorld();
-                                    Player player2 = (Player) event.getEntity();
-                                    if (player2.isBlocking()) {
-                                        //double dmg1 = event.getDamage();
-                                        //event.setDamage(dmg1 * 3);
-                                        if (player.getAttackCooldown() == 1.0) {
-                                            player2.setCooldown(Material.SHIELD, 40);
-                                        }
-
-                                        world.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 1);
-                                        return;
+                                World world = player.getWorld();
+                                Player player2 = (Player) event.getEntity();
+                                if (player2.isBlocking()) {
+                                    //double dmg1 = event.getDamage();
+                                    //event.setDamage(dmg1 * 3);
+                                    if (player.getAttackCooldown() == 1.0) {
+                                        player2.setCooldown(Material.SHIELD, 40);
                                     }
 
-                                    if (player2.getInventory().getHelmet() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-                                    if (player2.getInventory().getChestplate() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-                                    if (player2.getInventory().getLeggings() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-                                    if (player2.getInventory().getBoots() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-
-
+                                    world.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 1);
+                                    return;
                                 }
+                                event.setDamage(getPierceDamage(player2,world, event.getDamage()));
+                                return;
+                            }
                             //SPEAR
-                            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000004 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200004 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000014 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000004) {
+                            if (spear_weapon_validator) {
 
-                                    //event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                                //event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
 
-                                    World world = player.getWorld();
-                                    Player player2 = (Player) event.getEntity();
-                                    if (player2.isBlocking()) {
-                                        //double dmg1 = event.getDamage();
-                                        //event.setDamage(dmg1 * 3);
-                                        if (player.getAttackCooldown() == 1.0) {
-                                            player2.setCooldown(Material.SHIELD, 20);
-                                        }
-                                        world.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 1);
-                                        return;
+                                World world = player.getWorld();
+                                Player player2 = (Player) event.getEntity();
+                                if (player2.isBlocking()) {
+                                    //double dmg1 = event.getDamage();
+                                    //event.setDamage(dmg1 * 3);
+                                    if (player.getAttackCooldown() == 1.0) {
+                                        player2.setCooldown(Material.SHIELD, 20);
                                     }
-
-                                    if (player2.getInventory().getHelmet() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-                                    if (player2.getInventory().getChestplate() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-                                    if (player2.getInventory().getLeggings() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-                                    if (player2.getInventory().getBoots() != null) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.05);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-
-
+                                    world.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 1);
+                                    return;
                                 }
+
+                                event.setDamage(getPierceDamage(player2,world, event.getDamage()));
+                                return;
+                            }
                             //KNIFE
-                            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000006 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200006 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000016 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000006) {
-                                    World world = player.getWorld();
-                                    Player player2 = (Player) event.getEntity();
+                            if (knife_weapon_validator) {
+                                World world = player.getWorld();
+                                Player player2 = (Player) event.getEntity();
 
-
-                                    if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 2);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                        return;
-                                    }
-
-
+                                if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
+                                    double dmg1 = event.getDamage();
+                                    event.setDamage(dmg1 * 2);
+                                    world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
+                                    return;
                                 }
-                            //scythe
-                            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000003 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200003 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000013 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 4000003) {
-                                    World world = player.getWorld();
-                                    Player player2 = (Player) event.getEntity();
+                            }
+                            //SCYTHE
+                            if (scythe_weapon_validator) {
+                                World world = player.getWorld();
+                                Player player2 = (Player) event.getEntity();
 
-
-                                    if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
-                                        double dmg1 = event.getDamage();
-                                        event.setDamage(dmg1 * 1.5);
-                                        world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
-                                    }
-
-
+                                if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
+                                    double dmg1 = event.getDamage();
+                                    event.setDamage(dmg1 * 1.5);
+                                    world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
                                 }
-
-
+                            }
                         }
+                    }
+                }
+            }
+            if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+                if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                    //infused vessel
+                    if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222224 ||
+                            player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222224) {
+
+                        LivingEntity entity = (LivingEntity) event.getEntity();
+                        entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 60, 1));
+                    }
+
+                    //cursed vessel
+                    if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222225 ||
+                            player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222225) {
+                        event.setDamage(event.getDamage() * 1.5);
+                    }
+                }
+            }
+
+        }
+
+        //parry
+        World world1 = event.getEntity().getWorld();
+        if (event.getEntity().getType() == EntityType.PLAYER) {
+            Player player2 = (Player) event.getEntity();
+            //vessel
+            if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+                if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222223);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
+                    }
+
+                    //infvessel
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222224) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222224);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
+                    }
+
+                    //cursvessel
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222225) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222225);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
 
                     }
 
+                    //awak ves
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222226) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222226);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+                        //double dmg1 = event.getDamage();
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
+                    }
 
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222227) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222227);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+                        //double dmg1 = event.getDamage();
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
+                    }
+
+                    //awakves 2
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222228) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222228);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+                        //double dmg1 = event.getDamage();
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
+                    }
+
+                    if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222229) {
+                        ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
+                        meta.setCustomModelData(2222229);
+                        player2.getInventory().getItemInMainHand().setItemMeta(meta);
+                        //double dmg1 = event.getDamage();
+                        event.setCancelled(true);
+                        world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
+                    }
                 }
+            }
         }
+
+
+
     }
 
     private static double getMultiplierr(Player player) {
@@ -547,5 +468,18 @@ public class EntityDamage implements Listener {
         double q = 1;
         double multiplierr = multiplier + q;
         return multiplierr;
+    }
+
+    private static double getPierceDamage(Player player, World world, double damage){
+        //only one part missing is necessary to apply the critical, if player has a piece of armor
+        if (player.getInventory().getHelmet() != null ||
+                player.getInventory().getChestplate() != null ||
+                player.getInventory().getLeggings() != null ||
+                player.getInventory().getBoots() != null
+        ) {
+            world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
+            return damage * 1.05;
+        }
+        return damage;
     }
 }
