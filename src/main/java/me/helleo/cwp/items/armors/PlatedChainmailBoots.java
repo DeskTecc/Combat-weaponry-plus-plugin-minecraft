@@ -32,7 +32,7 @@ public class PlatedChainmailBoots extends BaseArmor {
             def = ConfigurationsDouble.Armors_PlateChainBoots_Armor.getValue();
         }
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Defense"), def,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 

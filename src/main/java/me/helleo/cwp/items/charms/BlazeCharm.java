@@ -11,10 +11,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -33,11 +30,11 @@ public class BlazeCharm extends BaseCharm{
             dmg = ConfigurationsDouble.Charms_BlazeCharm_BonusDamage.getValue();
             hp = ConfigurationsDouble.Charms_BlazeCharm_BonusHealth.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.max_health"), hp,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier2);
 
         List<String> lore = new ArrayList<String>();

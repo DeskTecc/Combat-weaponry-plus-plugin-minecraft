@@ -34,10 +34,10 @@ public class SwordBow extends BaseBow{
             speed = ConfigurationsDouble.Bows_SwordBow_Speed.getValue();
         }
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "attack_damage"), damage,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier( new NamespacedKey(CombatWeaponryPlus.plugin, "attack_speed"), speed,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 

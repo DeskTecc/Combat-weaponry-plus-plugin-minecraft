@@ -11,10 +11,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -33,11 +30,11 @@ public class GoldCharm extends BaseCharm{
             atkspd = ConfigurationsDouble.Charms_GoldCharm_BonusAttackSpeedPercent.getValue() / 100;
             mvspd = ConfigurationsDouble.Charms_GoldCharm_BonusMoveSpeedPercent.getValue() / 100;
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", atkspd,
-                AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), atkspd,
+                AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Move Speed", mvspd,
-                AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), mvspd,
+                AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier2);
 
 

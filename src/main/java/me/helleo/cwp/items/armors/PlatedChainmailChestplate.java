@@ -31,7 +31,7 @@ public class PlatedChainmailChestplate extends BaseArmor {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             def = ConfigurationsDouble.Armors_PlateChainChestplate_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Defense"), def,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 

@@ -528,11 +528,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             spd = ConfigurationsDouble.Swords_PrismarineSword_Speed.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "atack_damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.atack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "atack_speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.atack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();
@@ -593,8 +593,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Longswords_PrismarineLongsword_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
 
         List<String> lore = new ArrayList<>();
@@ -658,8 +658,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Scythes_PrismarineScythe_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineScythe_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line1.getValue()));
@@ -722,8 +722,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Rapiers_PrismarineRapier_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineRapier_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line1.getValue()));
@@ -790,8 +790,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Spears_PrismarineSpear_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSpear_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line1.getValue()));
@@ -857,8 +857,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Katanas_PrismarineKatana_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKatana_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line1.getValue()));
@@ -926,8 +926,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Knives_PrismarineKnife_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKnife_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line1.getValue()));
@@ -990,8 +990,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Sabers_PrismarineSaber_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSaber_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSaber_Line1.getValue()));
@@ -1052,8 +1052,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             dmg = ConfigurationsDouble.Cleavers_PrismarineCleaver_DamageAdded.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineCleaver_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line1.getValue()));
@@ -1128,11 +1128,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             spd = ConfigurationsDouble.Others_PrismarinePickaxe_Speed.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarinePickaxe_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();
@@ -1200,11 +1200,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             spd = ConfigurationsDouble.Others_PrismarineAxe_Speed.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineAxe_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Atackspeed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.atack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();
@@ -1272,11 +1272,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             spd = ConfigurationsDouble.Others_PrismarineShovel_Speed.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineShovel_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();
@@ -1344,11 +1344,11 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             spd = ConfigurationsDouble.Others_PrismarineHoe_Speed.getValue();
         }
         resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineHoe_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
 
@@ -1421,17 +1421,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             hp = ConfigurationsDouble.Armors_PrismarineHelmet_BonusHealth.getValue();
         }
         resultm.setDisplayName(ChatColor.GREEN + "Prismarine Helmet");
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "armor", arm,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), arm,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "armor_toughness", armt,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_toughness"), armt,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "armor_knockback_resistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_knockback_resistance"), kbr,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
         resultm.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "armor_max_health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        AttributeModifier modifier4 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_max_health"), hp,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
         resultm.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier4);
 
         result.setItemMeta(resultm);
@@ -1495,17 +1495,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             hp = ConfigurationsDouble.Armors_PrismarineChestplate_BonusHealth.getValue();
         }
         resultm.setDisplayName(ChatColor.GREEN + "Prismarine Chestplate");
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "armor", arm,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), arm,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "armor_toughness", armt,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_toughness"), armt,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "armor_knockback_resistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_knockback_resistance"), kbr,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         resultm.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "armor_max_health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier4 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_max_health"), hp,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         resultm.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier4);
         result.setItemMeta(resultm);
 
@@ -1568,17 +1568,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             hp = ConfigurationsDouble.Armors_PrismarineLeggings_BonusHealth.getValue();
         }
         resultm.setDisplayName(ChatColor.GREEN + "Prismarine Leggings");
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "armor", arm,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), arm,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "armor_toughness", armt,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_toughness"), armt,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "armor_knockback_resistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_knockback_resistance"), kbr,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "armor_max_health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier4 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_max_health"), hp,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         resultm.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier4);
         result.setItemMeta(resultm);
 
@@ -1641,17 +1641,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
             hp = ConfigurationsDouble.Armors_PrismarineBoots_BonusHealth.getValue();
         }
         resultm.setDisplayName(ChatColor.GREEN + "Prismarine Boots");
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "armor", arm,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), arm,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "armor_toughness", armt,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_toughness"), armt,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier2);
-        AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "armor_knockback_resistance", kbr,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_knockback_resistance"), kbr,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(UUID.randomUUID(), "armor_max_health", hp,
-                Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier4 = new AttributeModifier(NamespacedKey.minecraft("generic.armor_max_health"), hp,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         resultm.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier4);
         result.setItemMeta(resultm);
 
@@ -2179,11 +2179,11 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         //modifier
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -2.2,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), -2.2,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 3,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), 3,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
         meta.setDisplayName("Bone Katana");
@@ -2955,11 +2955,11 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         dmg = ConfigurationsDouble.Others_InfusedVessel_Damage.getValue();
                                         spd = ConfigurationsDouble.Others_InfusedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifier1a = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                                            Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                                    AttributeModifier modifier1a = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1a);
-                                    AttributeModifier modifier2a = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                                            Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                                    AttributeModifier modifier2a = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2a);
 
                                     List<String> lore2 = new ArrayList<>();
@@ -3011,11 +3011,11 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         dmg = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
                                         spd = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifier1e = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                                            Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                                    AttributeModifier modifier1e = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1e);
-                                    AttributeModifier modifier2e = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                                            Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                                    AttributeModifier modifier2e = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2e);
                                     //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,
                                     //		Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
@@ -3349,11 +3349,11 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             dmg = ConfigurationsDouble.Others_AwakenedVesselPurple_Damage.getValue();
             spd = ConfigurationsDouble.Others_AwakenedVesselPurple_Speed.getValue();
         }
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();
@@ -3428,52 +3428,40 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             dmg = ConfigurationsDouble.Others_AwakenedVesselWhite_Damage.getValue();
             spd = ConfigurationsDouble.Others_AwakenedVesselWhite_Speed.getValue();
         }
-        AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "attack_damage", dmg,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "attack_speed", spd,
-                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line4")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line5")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line6")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line7")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line8")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line9")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line10")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line11")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line12")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line13")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line14")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line15")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dAwakenedVesselWhite.line16")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line11.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line12.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line13.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line14.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line15.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line16.getValue()));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         item.setItemMeta(meta);
 
-        if (this.getConfig().getString("AwakenedVesselWhite") == "true") {
+        if (ConfigurationsBool.AwakenedVesselWhite.getValue()) {
             event.setResult(item);
         }
 
-    }
-
-    public SmithingRecipe getawakswordsrecipe() {
-        //this is important or else other recipe no work
-        SmithingRecipe recipe = new SmithingTransformRecipe(new NamespacedKey(this, "tesfergvergtt"),
-                new ItemStack(Material.AIR),
-                new RecipeChoice.MaterialChoice(Material.LAPIS_LAZULI),
-                new RecipeChoice.MaterialChoice(Material.NETHERITE_SWORD),
-                new RecipeChoice.MaterialChoice(Material.NETHERITE_SWORD)
-        );
-
-        return recipe;
     }
 
     @EventHandler()
@@ -4364,8 +4352,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                     //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
                     if (p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getValue() < 1.9) {
                         ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
-                        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", 0.25,
-                                Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), 0.25,
+                                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                         m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                         p.getInventory().getItemInMainHand().setItemMeta(m);
                     }
@@ -4374,8 +4362,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 if (p.getAttackCooldown() == 1) {
                     ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
                     m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED);
-                    AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -3.6,
-                            Operation.ADD_NUMBER, EquipmentSlot.HAND);
+                    AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), -3.6,
+                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                     m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                     p.getInventory().getItemInMainHand().setItemMeta(m);
 

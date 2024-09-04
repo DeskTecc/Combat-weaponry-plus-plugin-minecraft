@@ -31,10 +31,10 @@ public class EmeraldBoots extends BaseArmor{
             hp = ConfigurationsDouble.Armors_EmeraldBoots_BonusHealth.getValue();
             def = ConfigurationsDouble.Armors_EmeraldBoots_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Health"), hp,
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "Defense"), def,
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
 

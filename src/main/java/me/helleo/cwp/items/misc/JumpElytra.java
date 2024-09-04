@@ -9,6 +9,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -23,8 +24,8 @@ public class JumpElytra {
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getItem(){
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Armor", 3,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), 3,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
         meta.setDisplayName(ChatColor.YELLOW + "Jump Elytra");

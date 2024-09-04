@@ -10,10 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -40,8 +37,8 @@ public class RedstoneCore {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             arm = ConfigurationsDouble.Armors_RedstoneCore_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Armor", arm,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), arm,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRedstoneCore_Name.getValue()));

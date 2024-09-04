@@ -11,10 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.RecipeChoice;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -33,11 +30,11 @@ public class WitherBoots {
             kbr = ConfigurationsDouble.Armors_WitherBoots_KBResist.getValue() / 10;
             hp = ConfigurationsDouble.Armors_WitherBoots_BonusHealth.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Health", hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.max_health"), hp,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "KnockbackResistance", kbr,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.knockback_resistance"), kbr,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionWitheringBoots_Name.getValue()));
