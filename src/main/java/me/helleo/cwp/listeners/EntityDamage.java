@@ -3,6 +3,7 @@ package me.helleo.cwp.listeners;
 import me.helleo.cwp.CombatWeaponryPlus;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -17,6 +18,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -121,18 +123,6 @@ public class EntityDamage implements Listener {
         //	}
         //		}
         //}
-        if (event.getEntity().getType().equals(EntityType.PLAYER)) {
-            Player damaged = (Player) event.getEntity();
-            if (damaged.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                if (damaged.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (damaged.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222225 ||
-                            damaged.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222225) {
-                        event.setDamage(event.getDamage() * 1.5);
-                    }
-                }
-            }
-        }
-
 
         if (event.getDamager().getType() == EntityType.PLAYER) {
             Player player = (Player) event.getDamager();
@@ -140,39 +130,44 @@ public class EntityDamage implements Listener {
                 return;
             }
             if (player.getInventory().getItemInMainHand().getItemMeta() != null){
-                int itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
-                int[] bone_models = {4000002, 4000001, 4000003, 4000004, 4000005, 4000006};
-                boolean bone_weapon_validator = Arrays.stream(bone_models).anyMatch(x-> x==itemModelData);
-
-                int[] rapier_models = {1000005,1200005, 1000015,4000005};
-                boolean rapier_weapon_validator = Arrays.stream(rapier_models).anyMatch(x-> x==itemModelData);
-
-                int[] longsword_models = {1000001, 1200001, 1000011, 4000001};
-                boolean longsword_weapon_validator = Arrays.stream(longsword_models).anyMatch(x-> x==itemModelData);
-
-                int[] scythe_models = {1000003,1200003,1000013, 4000003};
-                boolean scythe_weapon_validator = Arrays.stream(scythe_models).anyMatch(x-> x==itemModelData);
-
-                int[] spear_models = {1000004,1200004,1000014,4000004};
-                boolean spear_weapon_validator = Arrays.stream(spear_models).anyMatch(x-> x==itemModelData);
-
-                int[] katana_models = {1000002,1200002,1000012,4000002};
-                boolean katana_weapon_validator = Arrays.stream(katana_models).anyMatch(x-> x==itemModelData);
-
-                int[] knife_models = {1000006,1200006,1000016,4000006};
-                boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
-
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    Bukkit.getConsoleSender().sendMessage("DAMAGE: " + event.getDamage());
+
+                    int itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
+                    /*int[] bone_models = {4000002, 4000001, 4000003, 4000004, 4000005, 4000006};
+                    boolean bone_weapon_validator = Arrays.stream(bone_models).anyMatch(x-> x==itemModelData);*/
+
+                    int[] rapier_models = {1000005,1200005, 1000015,4000005};
+                    boolean rapier_weapon_validator = Arrays.stream(rapier_models).anyMatch(x-> x==itemModelData);
+
+                    int[] longsword_models = {1000001, 1200001, 1000011, 4000001};
+                    boolean longsword_weapon_validator = Arrays.stream(longsword_models).anyMatch(x-> x==itemModelData);
+
+                    int[] scythe_models = {1000003,1200003,1000013, 4000003};
+                    boolean scythe_weapon_validator = Arrays.stream(scythe_models).anyMatch(x-> x==itemModelData);
+
+                    int[] spear_models = {1000004,1200004,1000014,4000004};
+                    boolean spear_weapon_validator = Arrays.stream(spear_models).anyMatch(x-> x==itemModelData);
+
+                    int[] katana_models = {1000002,1200002,1000012,4000002};
+                    boolean katana_weapon_validator = Arrays.stream(katana_models).anyMatch(x-> x==itemModelData);
+
+                    int[] knife_models = {1000006,1200006,1000016,4000006};
+                    boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
+
+
+                    double damage = player.getInventory().getItemInMainHand().getItemMeta().getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE).stream().filter(
+                            attributeModifier -> attributeModifier.getKey().equals(NamespacedKey.minecraft("generic.attack_damage"))).map(
+                            AttributeModifier::getAmount).collect(Collectors.toList()).get(0);
+
+                    Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // REMOVE THIS
 
                     //bone weapon ability test (damage increases when durability gets lower)
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
+                    /*if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
                         if (bone_weapon_validator) {
 
-                            double dmg = event.getDamage();
                             double multiplierr = getMultiplierr(player);
-                            event.setDamage(dmg * multiplierr);
-                            String string = String.valueOf(dmg * multiplierr);
+                            event.setDamage(damage * multiplierr);
+                            String string = String.valueOf(damage * multiplierr);
                             player.sendMessage(string);
 
                             //BELOW: older version of above, newer version doesn't use .getDurability()
@@ -193,6 +188,7 @@ public class EntityDamage implements Listener {
                             //	player.sendMessage(string);
 
                         }
+                    }*/
 
                     // RAPIER
                     if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
@@ -209,8 +205,7 @@ public class EntityDamage implements Listener {
                             //ok i think i fixed it but im not sure, need test
                             //before: if (player.getInventory().getItemInOffHand() == null) {
                             //doesnt work because the is air in offhand and air counts as item, figure out way to detect the air
-                            double dmg1 = event.getDamage();
-                            double bonus = dmg1 * 1.3;
+                            double bonus = damage * 1.3;
                             event.setDamage(bonus);
                             //RNG CRIT
                             //int random = getRandomInt(2);
@@ -228,22 +223,19 @@ public class EntityDamage implements Listener {
                         //SCYTHE
                         if (scythe_weapon_validator) {
 
-                            double dmg1 = event.getDamage();
-                            event.setDamage(dmg1 * 1.3);
+                            event.setDamage(damage * 1.3);
 
                         }
                         //SPEAR
                         if (spear_weapon_validator) {
 
-                            double dmg1 = event.getDamage();
-                            event.setDamage(dmg1 * 1.3);
+                            event.setDamage(damage * 1.3);
 
                             event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                         }
                         //KATANA
                         if (katana_weapon_validator) {
-                            double dmg1 = event.getDamage();
-                            double bonus = dmg1 * 5.3; //CHANGE THAT
+                            double bonus = damage * 1.3; //CHANGE THAT
                             event.setDamage(bonus);
                             //RNG CRIT
                             int random = getRandomInt(5);
@@ -305,7 +297,7 @@ public class EntityDamage implements Listener {
                                     world.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 1);
                                     return;
                                 }
-                                event.setDamage(getPierceDamage(player2,world, event.getDamage()));
+                                event.setDamage(getPierceDamage(player2,world, damage));
                                 return;
                             }
                             //SPEAR
@@ -325,7 +317,7 @@ public class EntityDamage implements Listener {
                                     return;
                                 }
 
-                                event.setDamage(getPierceDamage(player2,world, event.getDamage()));
+                                event.setDamage(getPierceDamage(player2,world, damage));
                                 return;
                             }
                             //KNIFE
@@ -334,8 +326,7 @@ public class EntityDamage implements Listener {
                                 Player player2 = (Player) event.getEntity();
 
                                 if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
-                                    double dmg1 = event.getDamage();
-                                    event.setDamage(dmg1 * 2);
+                                    event.setDamage(damage * 2);
                                     world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
                                     return;
                                 }
@@ -346,8 +337,7 @@ public class EntityDamage implements Listener {
                                 Player player2 = (Player) event.getEntity();
 
                                 if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
-                                    double dmg1 = event.getDamage();
-                                    event.setDamage(dmg1 * 1.5);
+                                    event.setDamage(damage * 1.5);
                                     world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
                                 }
                             }
@@ -457,7 +447,7 @@ public class EntityDamage implements Listener {
 
     }
 
-    private static double getMultiplierr(Player player) {
+    /*private static double getMultiplierr(Player player) {
         org.bukkit.inventory.meta.Damageable test = (org.bukkit.inventory.meta.Damageable) player.getInventory().getItemInMainHand().getItemMeta();
         short timesused = (short) test.getDamage();
         short e = 250;
@@ -468,7 +458,7 @@ public class EntityDamage implements Listener {
         double q = 1;
         double multiplierr = multiplier + q;
         return multiplierr;
-    }
+    }*/
 
     private static double getPierceDamage(Player player, World world, double damage){
         //only one part missing is necessary to apply the critical, if player has a piece of armor

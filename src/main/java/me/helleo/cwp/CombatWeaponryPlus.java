@@ -80,9 +80,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         plugin = this;
         Cooldown.setupCooldown();
 
-        this.getServer().getPluginManager().registerEvents(this, this);
-        this.getServer().getPluginManager().registerEvents(new PlayerClick(), this);
-        this.getServer().getPluginManager().registerEvents(new EntityDamage(), this);
+        Bukkit.getPluginManager().registerEvents(this, this);
+        Bukkit.getPluginManager().registerEvents(new PlayerClick(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.saveDefaultConfig();
 
 
