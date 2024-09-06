@@ -29,10 +29,10 @@ public class EmeraldHelmet extends BaseArmor {
             def = ConfigurationsDouble.Armors_EmeraldHelmet_Armor.getValue();
         }
 
-        AttributeModifier modifierHealth = new AttributeModifier(NamespacedKey.minecraft("generic.max_health"), hp,
+        AttributeModifier modifierHealth = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifierHealth);
-        AttributeModifier modifierDefense = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), def,
+        AttributeModifier modifierDefense = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifierDefense);
 

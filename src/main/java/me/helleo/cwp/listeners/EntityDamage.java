@@ -156,7 +156,7 @@ public class EntityDamage implements Listener {
 
 
                     double damage = player.getInventory().getItemInMainHand().getItemMeta().getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE).stream().filter(
-                            attributeModifier -> attributeModifier.getKey().equals(NamespacedKey.minecraft("generic.attack_damage"))).map(
+                            attributeModifier -> attributeModifier.getKey().equals(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"))).map(
                             AttributeModifier::getAmount).collect(Collectors.toList()).get(0);
 
                     Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // REMOVE THIS

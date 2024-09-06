@@ -32,10 +32,10 @@ public class WitherLeggings {
             kbr = ConfigurationsDouble.Armors_WitherLeggings_KBResist.getValue() / 10;
             hp = ConfigurationsDouble.Armors_WitherLeggings_BonusHealth.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.max_health"), hp,
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.knockback_resistance"), kbr,
+        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.knockback_resistance"), kbr,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
 

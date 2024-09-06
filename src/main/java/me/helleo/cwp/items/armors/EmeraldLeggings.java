@@ -31,10 +31,10 @@ public class EmeraldLeggings extends BaseArmor{
             hp = ConfigurationsDouble.Armors_EmeraldLeggings_BonusHealth.getValue();
             def = ConfigurationsDouble.Armors_EmeraldLeggings_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.max_health"), hp,
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), def,
+        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
 
