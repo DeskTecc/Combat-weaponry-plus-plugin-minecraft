@@ -136,22 +136,28 @@ public class EntityDamage implements Listener {
                     /*int[] bone_models = {4000002, 4000001, 4000003, 4000004, 4000005, 4000006};
                     boolean bone_weapon_validator = Arrays.stream(bone_models).anyMatch(x-> x==itemModelData);*/
 
-                    int[] rapier_models = {1000005,1200005, 1000015,4000005};
+                    int[] cleaver_models = {1000021, 1200021, 1000031};
+                    boolean cleaver_weapon_validator = Arrays.stream(cleaver_models).anyMatch(x-> x==itemModelData);
+
+                    int[] saber_models = {1000010, 1200010, 1000030};
+                    boolean saber_weapon_validator = Arrays.stream(saber_models).anyMatch(x-> x==itemModelData);
+
+                    int[] rapier_models = {1000005,1200005, 1000015};
                     boolean rapier_weapon_validator = Arrays.stream(rapier_models).anyMatch(x-> x==itemModelData);
 
-                    int[] longsword_models = {1000001, 1200001, 1000011, 4000001};
+                    int[] longsword_models = {1000001, 1200001, 1000011};
                     boolean longsword_weapon_validator = Arrays.stream(longsword_models).anyMatch(x-> x==itemModelData);
 
-                    int[] scythe_models = {1000003,1200003,1000013, 4000003};
+                    int[] scythe_models = {1000003,1200003,1000013};
                     boolean scythe_weapon_validator = Arrays.stream(scythe_models).anyMatch(x-> x==itemModelData);
 
-                    int[] spear_models = {1000004,1200004,1000014,4000004};
+                    int[] spear_models = {1000004,1200004,1000014};
                     boolean spear_weapon_validator = Arrays.stream(spear_models).anyMatch(x-> x==itemModelData);
 
-                    int[] katana_models = {1000002,1200002,1000012,4000002};
+                    int[] katana_models = {1000002,1200002,1000012};
                     boolean katana_weapon_validator = Arrays.stream(katana_models).anyMatch(x-> x==itemModelData);
 
-                    int[] knife_models = {1000006,1200006,1000016,4000006};
+                    int[] knife_models = {1000006,1200006,1000016};
                     boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
 
 
@@ -190,13 +196,27 @@ public class EntityDamage implements Listener {
                         }
                     }*/
 
-                    // RAPIER
-                    if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
-                        if (rapier_weapon_validator) {
-
-                            event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
-                        }
+                    // KNIFE
+                    if (knife_weapon_validator) {
+                        event.setDamage(damage*1.3);
                     }
+
+                    // CLEAVER
+                    if (cleaver_weapon_validator) {
+                        event.setDamage(damage*1.3);
+                    }
+
+                    // SABER
+                    if (saber_weapon_validator) {
+                        event.setDamage(damage*1.3);
+                    }
+
+                    // RAPIER
+                    if (rapier_weapon_validator) {
+                        event.setDamage(damage*1.3);
+                        event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
+                    }
+
                     //LONGSWORD
                     if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
                         if (longsword_weapon_validator) {
@@ -235,7 +255,7 @@ public class EntityDamage implements Listener {
                         }
                         //KATANA
                         if (katana_weapon_validator) {
-                            double bonus = damage * 1.3; //CHANGE THAT
+                            double bonus = damage * 1.3;
                             event.setDamage(bonus);
                             //RNG CRIT
                             int random = getRandomInt(5);
