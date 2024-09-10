@@ -17,7 +17,7 @@ public class StoneLongsword extends BaseLongsword{
     static ItemMeta meta = item.getItemMeta();
     static String material = "Stone";
 
-    public ItemStack getLongsword() {
+    public static ItemStack getLongsword() {
         double attack_damage = 5;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {

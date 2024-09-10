@@ -21,8 +21,8 @@ public class FeatherCharm extends BaseCharm{
     static ItemStack item = new ItemStack(Material.FEATHER);
     static ItemMeta meta = item.getItemMeta();
 
-    public ShapedRecipe getCharmRecipe(){
-        List<String> lore = new ArrayList<String>();
+    public static ItemStack getCharm(){
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionFeatherCharm_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionFeatherCharm_Line2.getValue()));
         meta.setLore(lore);
@@ -33,10 +33,14 @@ public class FeatherCharm extends BaseCharm{
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         item.setItemMeta(meta);
+        return item;
+    }
+
+    public ShapedRecipe getCharmRecipe(){
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "feather_charm");
         CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        ShapedRecipe recipe = new ShapedRecipe(key, getCharm());
 
         recipe.shape("dLd", "LFL", "dLd");
 

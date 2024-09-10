@@ -17,7 +17,8 @@ public class NetheriteLongsword extends BaseLongsword{
     static ItemMeta meta = item.getItemMeta();
     static String material = "Netherite";
 
-    public ItemStack getLongsword() {
+
+    public static ItemStack getLongsword() {
         double attack_damage = 8;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {

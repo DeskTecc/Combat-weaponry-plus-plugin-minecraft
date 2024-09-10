@@ -17,7 +17,7 @@ public class GoldenLongsword extends BaseLongsword{
     static ItemMeta meta = item.getItemMeta();
     static String material = "Golden";
 
-    public ItemStack getLongsword() {
+    public static ItemStack getLongsword() {
         double attack_damage = 4;
         double attack_speed = -2.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {

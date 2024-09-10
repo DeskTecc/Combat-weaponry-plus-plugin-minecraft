@@ -291,20 +291,19 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         //PRISMARINE ITEMS
         //temporary disabled
-        /*if (ConfigurationsBool.Prismarine.getValue()) {
+        if (ConfigurationsBool.Prismarine.getValue()) {
             PrismarineAlloy.setItemRecipe();
 
             Bukkit.addRecipe(getprisswordsrecipe());
-            Bukkit.addRecipe(getprispickrecipe());
+            /*Bukkit.addRecipe(getprispickrecipe());
             Bukkit.addRecipe(getprisaxerecipe());
             Bukkit.addRecipe(getprisshovelrecipe());
             Bukkit.addRecipe(getprishoerecipe());
             Bukkit.addRecipe(getprishelmetrecipe());
             Bukkit.addRecipe(getprischestrecipe());
             Bukkit.addRecipe(getprislegrecipe());
-            Bukkit.addRecipe(getprisbootsrecipe());
+            Bukkit.addRecipe(getprisbootsrecipe());*/
         }
-*/
         if (ConfigurationsBool.Eelytra.getValue()) {
             Eelytra.setItemRecipe();
         }
@@ -407,23 +406,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     //CHARMS
 
 
-    @EventHandler
-    public void onFall(EntityDamageEvent event) {
-        if (event.getEntity().getType() == EntityType.PLAYER) {
-            Player player = (Player) event.getEntity();
-            if (event.getCause() == DamageCause.FALL) {
-                if (player.getInventory().getItemInOffHand() != null) {
-                    if (player.getInventory().getItemInOffHand().getItemMeta() != null) {
-                        if (player.getInventory().getItemInOffHand().getItemMeta().getDisplayName().contains("Feather Charm")) {
-                            if (player.getInventory().getItemInOffHand().getItemMeta().hasLore()) {
-                                event.setCancelled(true);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+
 
     // below is test stuff, i dont remember what it was for
 
@@ -489,132 +472,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 //		return recipe;
 //	}
 
-    @EventHandler
-    void onSmithingTableEventSWORD(PrepareSmithingEvent event) {
-        SmithingInventory inventory = event.getInventory();
-
-        ItemStack templ = inventory.getItem(0); // new
-        ItemStack tool = inventory.getItem(1); // was 0
-        ItemStack modifier = inventory.getItem(2); // was 1
-
-        if (templ == null) {
-            return;
-        }
-        if (templ.getType() != Material.LAPIS_LAZULI) {
-            return;
-        }
-
-        if (tool == null || modifier == null) {
-            return;
-        }
-
-        if (tool.getType() != Material.NETHERITE_SWORD || modifier.getType() != Material.PRISMARINE_SHARD) {
-            return;
-        }
-
-        if (tool.getItemMeta().hasCustomModelData() || !modifier.getItemMeta().hasCustomModelData()) {
-            return;
-        }
-
-        ItemStack result = tool.clone();
-        ItemMeta resultm = result.getItemMeta();
-        assert resultm != null;
-        resultm.setCustomModelData(1210001);
-        double dmg = 8;
-        double spd = -2.4;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Swords_PrismarineSword_Damage.getValue();
-            spd = ConfigurationsDouble.Swords_PrismarineSword_Speed.getValue();
-        }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.atack_damage"), dmg,
-                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.atack_speed"), spd,
-                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
-
-        List<String> lore = new ArrayList<>();
-
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line4.getValue()));
-        resultm.setLore(lore);
-        //important:
-        resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        result.setItemMeta(resultm);
-
-        if (ConfigurationsBool.Prismarine.getValue()) {
-            event.setResult(result);
-        }
-
-    }
-
-    @EventHandler
-    void onSmithingTableEventLONGSWORD(PrepareSmithingEvent event) {
-        //LONGSWORD
-        SmithingInventory inventory = event.getInventory();
-
-        ItemStack templ = inventory.getItem(0); // new
-        ItemStack tool = inventory.getItem(1); // was 0
-        ItemStack modifier = inventory.getItem(2); // was 1
-
-        if (templ == null) {
-            return;
-        }
-        if (templ.getType() != Material.LAPIS_LAZULI) {
-            return;
-        }
-
-        if (tool == null || modifier == null) {
-            return;
-        }
-
-        if (tool.getType() != Material.NETHERITE_SWORD || modifier.getType() != Material.PRISMARINE_SHARD) {
-            return;
-        }
-
-        if (!tool.getItemMeta().hasCustomModelData()) {
-            return;
-        }
-
-        if (tool.getItemMeta().getCustomModelData() != 1000001 || !modifier.getItemMeta().hasCustomModelData()) {
-            return;
-        }
-
-        ItemStack result = tool.clone();
-        ItemMeta resultm = result.getItemMeta();
-        assert resultm != null;
-        resultm.setCustomModelData(1200001);
-        double dmg = 1;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Longswords_PrismarineLongsword_DamageAdded.getValue();
-        }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Name.getValue()));
-        AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
-                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Line8.getValue()));
-
-        resultm.setLore(lore);
-        //important:
-        resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        result.setItemMeta(resultm);
-
-        if (ConfigurationsBool.Prismarine.getValue()) {
-            event.setResult(result);
-        }
-    }
 
     @EventHandler
     void onSmithingTableEventSCYTHE(PrepareSmithingEvent event) {

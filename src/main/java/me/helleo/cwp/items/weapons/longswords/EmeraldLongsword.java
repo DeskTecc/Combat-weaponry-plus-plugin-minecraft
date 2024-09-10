@@ -18,7 +18,7 @@ public class EmeraldLongsword extends BaseLongsword{
     static ItemMeta meta = item.getItemMeta();
     static String material = "Emerald";
 
-    public ItemStack getLongsword() {
+    public static ItemStack getLongsword() {
         double attack_damage = 6;
         double attack_speed = -2.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {

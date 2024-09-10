@@ -1,6 +1,7 @@
 package me.helleo.cwp.listeners;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.items.charms.FeatherCharm;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -11,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
@@ -161,9 +161,14 @@ public class EntityDamage implements Listener {
                     boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
 
 
-                    double damage = player.getInventory().getItemInMainHand().getItemMeta().getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE).stream().filter(
-                            attributeModifier -> attributeModifier.getKey().equals(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"))).map(
-                            AttributeModifier::getAmount).collect(Collectors.toList()).get(0);
+                    double damage = player.getInventory().getItemInMainHand().getItemMeta().getAttributeModifiers(
+                            Attribute.GENERIC_ATTACK_DAMAGE).stream()
+                            .filter(attributeModifier -> attributeModifier.getKey().equals(
+                                    new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage")
+                                    ))
+                            .map(AttributeModifier::getAmount)
+                            .collect(Collectors.toList())
+                            .get(0);
 
                     Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // REMOVE THIS
 
@@ -382,7 +387,6 @@ public class EntityDamage implements Listener {
                     }
                 }
             }
-
         }
 
         //parry
@@ -396,7 +400,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222223);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
                     }
@@ -406,7 +409,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222224);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
                     }
@@ -416,7 +418,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222225);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
 
@@ -427,7 +428,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222226);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
                     }
@@ -436,7 +436,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222227);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
                     }
@@ -446,7 +445,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222228);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
                     }
@@ -455,7 +453,6 @@ public class EntityDamage implements Listener {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
                         meta.setCustomModelData(2222229);
                         player2.getInventory().getItemInMainHand().setItemMeta(meta);
-                        //double dmg1 = event.getDamage();
                         event.setCancelled(true);
                         world1.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BLOCK, 10, 1);
                     }
@@ -491,5 +488,18 @@ public class EntityDamage implements Listener {
             return damage * 1.05;
         }
         return damage;
+    }
+
+    @EventHandler
+    public void onFall(EntityDamageEvent event) {
+        if (event.getEntity().getType() == EntityType.PLAYER) {
+            Player player = (Player) event.getEntity();
+            if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {
+                //Feather Charm
+                if (player.getInventory().getItemInOffHand().isSimilar(FeatherCharm.getCharm())) {
+                    event.setCancelled(true);
+                }
+            }
+        }
     }
 }

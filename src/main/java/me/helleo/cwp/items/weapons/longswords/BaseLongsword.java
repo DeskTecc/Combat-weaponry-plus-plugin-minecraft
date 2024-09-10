@@ -14,19 +14,22 @@ import java.util.List;
 
 public abstract class BaseLongsword {
 
-    abstract ItemStack getLongsword();
+    static ItemStack getLongsword() {
+        return null;
+    }
+
     abstract ShapedRecipe getLongswordRecipe();
 
-    protected String setName(String material){
+    protected static String setName(String material){
         return material+" Longsword";
     }
 
-    protected AttributeModifier setModifier(String key, double value){
+    protected static AttributeModifier setModifier(String key, double value){
         return new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,key),
                 value, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
     }
 
-    public List<String> getLore(double attack_damage, double attack_speed) {
+    public static List<String> getLore(double attack_damage, double attack_speed) {
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line2.getValue()));
