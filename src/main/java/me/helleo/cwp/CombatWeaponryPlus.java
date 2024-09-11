@@ -280,7 +280,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         }
 
         //MISC
-
         if (ConfigurationsBool.ChorusBlade.getValue()) {
             ChorusBlade.setToolRecipe();
         }
@@ -1964,51 +1963,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
     }
 
-
-    @EventHandler()
-    public void onDamage(EntityDamageEvent event) {
-        if (event.getEntity().getType().equals(EntityType.PLAYER)) {
-            Player player = (Player) event.getEntity();
-
-            if (player.isDead()) {
-                return;
-            }
-            if (player.getInventory().getChestplate() != null)
-                if (player.getInventory().getChestplate().getItemMeta() != null)
-                    if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData())
-                        if (player.getInventory().getChestplate().getItemMeta().hasLore())
-                            if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560001 || player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560002) {
-                                double dmg = event.getDamage();
-                                int num = (int) dmg;
-                                String string = String.valueOf(num);
-                                player.sendMessage(string);
-                                event.setDamage(dmg * 0.5);
-                                if (event.getCause() == DamageCause.FALL && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560002) {
-                                    Location loc = player.getLocation();
-                                    if (player.isDead()) {
-                                        return;
-                                    }
-                                    //player.sendMessage("www");
-
-                                    player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 60, 2));
-
-                                    //for (int i = 1; i < 4; i++) {
-                                    //AreaEffectCloud aec = (AreaEffectCloud) ((World) loc).spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
-                                    //PotionEffect pe = new PotionEffect(PotionEffectType.HARM, 1, 0, true, true);
-                                    //aec.addCustomEffect(pe, true);
-                                    player.setVelocity(new Vector(0, 0.5, 0));
-                                    loc.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 2, false, false);
-
-                                    loc.getWorld().spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
-                                    //	loc.setX(loc.getX() + i);
-                                    //}
-                                }
-                            }
-        }
-
-
-    }
-
     //unused item
     public ShapedRecipe getbonekatRecipe() {
 
@@ -2740,188 +2694,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    @EventHandler
-    public void playerKillEntity(EntityDeathEvent event) {
-        Entity killed = event.getEntity();
-
-//	if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
-        //	Player player = (Player) event.getEntity().getKiller();
-        //	if (player.getInventory().getItemInMainHand().getType().equals(Material.ACACIA_BOAT)) {
-        //		if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-        //if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 0) {
-        //				ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-        //				meta.setCustomModelData(meta.getCustomModelData()+1);
-        //				String string = String.valueOf(meta.getCustomModelData());
-        //				List<String> lore = new ArrayList<String>();
-        //				lore.add("");
-        //				lore.add(ChatColor.translateAlternateColorCodes('&', "&6"+string));
-        //				meta.setLore(lore);
-        //				AttributeModifier modifier1 = new AttributeModifier(UUID.randomUUID(), "Damage", 0.1,
-        //						Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        //				meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-//					player.getInventory().getItemInMainHand().setItemMeta(meta);
-        //}
-        //		}
-        //	}
-        //}
-
-        if (killed.getType() == EntityType.WITHER_SKELETON) {
-            World world = killed.getWorld();
-
-            int random = getRandomInt(5);
-            if (random == 1) {
-                if (ConfigurationsBool.WitherBones.getValue()) {
-                    world.dropItemNaturally(killed.getLocation(), Items.witherBone());
-                }
-            }
-            if (random == 2) {
-                if (ConfigurationsBool.WitherBones.getValue()) {
-                    world.dropItemNaturally(killed.getLocation(), Items.witherBone());
-                    world.dropItemNaturally(killed.getLocation(), Items.witherBone());
-                }
-            }
-            int random2 = getRandomInt(100);
-            if (random2 == 1) {
-                if (ConfigurationsBool.Vessel.getValue()) {
-                    world.dropItemNaturally(killed.getLocation(), Items.vessel());
-                }
-            }
-        }
-        if (ConfigurationsBool.InfusedVessel.getValue()) {
-            if (killed.getType() == EntityType.WITHER) {
-                if (event.getEntity().getKiller() != null) {
-                    if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
-                        Player player = event.getEntity().getKiller();
-                        if (!player.getInventory().getItemInMainHand().hasItemMeta()) {
-                            return;
-                        } else {
-                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                return;
-                            } else {
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222223
-                                        || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
-                                    World world = player.getWorld();
-                                    world.spawnParticle(Particle.ENCHANT, player.getLocation().getX(), player.getLocation().getY() + 2, player.getLocation().getZ(), 500);
-                                    world.spawnParticle(Particle.CLOUD, player.getLocation(), 100);
-
-                                    ItemMeta meta2 = player.getInventory().getItemInMainHand().getItemMeta();
-                                    meta2.setCustomModelData(2222224);
-                                    meta2.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Name.getValue()));
-                                    double dmg = 9;
-                                    double spd = -2.4;
-                                    if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                        dmg = ConfigurationsDouble.Others_InfusedVessel_Damage.getValue();
-                                        spd = ConfigurationsDouble.Others_InfusedVessel_Speed.getValue();
-                                    }
-                                    AttributeModifier modifier1a = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
-                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1a);
-                                    AttributeModifier modifier2a = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
-                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2a);
-
-                                    List<String> lore2 = new ArrayList<>();
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line1.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line2.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line3.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line4.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line5.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line6.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line7.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line8.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line9.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line10.getValue()));
-                                    lore2.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line11.getValue()));
-                                    meta2.setLore(lore2);
-                                    //important:
-                                    meta2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-                                    player.getInventory().getItemInMainHand().setItemMeta(meta2);
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-        if (ConfigurationsBool.CursedVessel.getValue()) {
-            if (killed.getType() == EntityType.ENDER_DRAGON) {
-                if (event.getEntity().getKiller() != null) {
-                    if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
-                        Player player = event.getEntity().getKiller();
-                        if (!player.getInventory().getItemInMainHand().hasItemMeta()) {
-                            return;
-                        } else {
-                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                return;
-                            } else {
-                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222223
-                                        || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
-                                    World world = player.getWorld();
-                                    world.spawnParticle(Particle.ENCHANT, player.getLocation().getX(), player.getLocation().getY() + 2, player.getLocation().getZ(), 500);
-                                    world.spawnParticle(Particle.CLOUD, player.getLocation(), 100);
-                                    ItemMeta meta3 = player.getInventory().getItemInMainHand().getItemMeta();
-                                    meta3.setCustomModelData(2222225);
-                                    meta3.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Name.getValue()));
-                                    double dmg = 9;
-                                    double spd = -2.4;
-                                    if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                        dmg = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
-                                        spd = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
-                                    }
-                                    AttributeModifier modifier1e = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
-                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1e);
-                                    AttributeModifier modifier2e = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
-                                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2e);
-                                    //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,
-                                    //		Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-                                    //meta3.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier3e);
-
-                                    List<String> lore3 = new ArrayList<>();
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line1.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line2.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line3.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line4.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line5.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line6.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line7.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line8.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line9.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line10.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line11.getValue()));
-                                    meta3.setLore(lore3);
-                                    //important:
-                                    meta3.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-                                    player.getInventory().getItemInMainHand().setItemMeta(meta3);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (event.getEntity().getKiller() != null) {
-            if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
-                Player player = event.getEntity().getKiller();
-                if (player.getInventory().getItemInOffHand().getType().equals(Material.NETHER_STAR))
-                    if (player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData())
-                        if (player.getInventory().getItemInOffHand().getItemMeta().hasLore()) {
-
-                            if (player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 4920001) {
-
-                                World world = player.getWorld();
-                                ExperienceOrb orb = world.spawn(player.getLocation(), ExperienceOrb.class);
-                                orb.setExperience(orb.getExperience() + getRandomInt(10) + 10);
-                                //	orb.setExperience(100);
-                                //	player.sendMessage(String.valueOf(orb.getExperience()));
-                            }
-                        }
-            }
-        }
-    }
-
     @EventHandler()
     public void onParryClick(PlayerInteractEvent event) {
         if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_SWORD))
@@ -3355,7 +3127,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 					}
 				}
 			} */
-        if (event.getPlayer().getInventory().getItemInMainHand() == null) {
+        if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
             return;
         }
         if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
@@ -3472,7 +3244,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     public void onRightClickEntity(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
         if (event.getHand().equals(EquipmentSlot.HAND)) {
-            if (player.getInventory().getItemInOffHand() != null) {
+            if (!player.getInventory().getItemInOffHand().getType().equals(Material.AIR)) {
                 if (player.getInventory().getItemInOffHand().hasItemMeta()) {
                     if (player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData()) {
                         if (player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1000010
@@ -3482,7 +3254,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             //stops dual wielding 2 different weapon type:
                             if (ConfigurationsBool.DualWieldSaberOnly.getValue()) {
                                 //test the config thing, not sure if it works
-                                if (player.getInventory().getItemInMainHand() != null) {
+                                if (!player.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
                                     if (player.getInventory().getItemInMainHand().hasItemMeta()) {
                                         if (player.getInventory().getItemInMainHand().getType().equals(Material.WOODEN_SWORD)) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -4167,7 +3939,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
                     event.setCancelled(true);
 
-
                 }
                 if (player.isGliding()) {
                     //this is when elytra lands on ground and deactivates
@@ -4181,7 +3952,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     public void onCleaverDamageEntity(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
             Player p = (Player) event.getDamager();
-            if (p.getInventory().getItemInMainHand() == null) {
+            if (p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
                 return;
             }
             if (!p.getInventory().getItemInMainHand().hasItemMeta()) {
