@@ -15,7 +15,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class RedstoneCore {
 
@@ -37,7 +36,7 @@ public class RedstoneCore {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             arm = ConfigurationsDouble.Armors_RedstoneCore_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), arm,
+        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.armor"), arm,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
