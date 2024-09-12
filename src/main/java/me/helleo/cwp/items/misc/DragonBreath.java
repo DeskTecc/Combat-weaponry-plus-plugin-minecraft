@@ -11,7 +11,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class DragonBreath {
 
     public ItemStack getItem(){
-        return new ItemStack(Material.FIRE_CHARGE,4);
+        return new ItemStack(Material.DRAGON_BREATH,4);
     }
 
     public ShapedRecipe getItemRecipe(){
