@@ -33,6 +33,6 @@ public class DragonBreath {
     }
 
     public static void setItemRecipe(){
-        Bukkit.addRecipe(new RedstoneCore().getItemRecipe());
+        Bukkit.addRecipe(new DragonBreath().getItemRecipe());
     }
 }
