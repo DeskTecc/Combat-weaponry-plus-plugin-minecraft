@@ -292,19 +292,19 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         //PRISMARINE ITEMS
         //temporary disabled
-        if (ConfigurationsBool.Prismarine.getValue()) {
+       /* if (ConfigurationsBool.Prismarine.getValue()) {
             PrismarineAlloy.setItemRecipe();
 
             Bukkit.addRecipe(getprisswordsrecipe());
-            /*Bukkit.addRecipe(getprispickrecipe());
+            Bukkit.addRecipe(getprispickrecipe());
             Bukkit.addRecipe(getprisaxerecipe());
             Bukkit.addRecipe(getprisshovelrecipe());
             Bukkit.addRecipe(getprishoerecipe());
             Bukkit.addRecipe(getprishelmetrecipe());
             Bukkit.addRecipe(getprischestrecipe());
             Bukkit.addRecipe(getprislegrecipe());
-            Bukkit.addRecipe(getprisbootsrecipe());*/
-        }
+            Bukkit.addRecipe(getprisbootsrecipe());
+        }*/
         if (ConfigurationsBool.Eelytra.getValue()) {
             Eelytra.setItemRecipe();
         }
