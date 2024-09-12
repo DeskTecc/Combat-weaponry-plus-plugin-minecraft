@@ -45,13 +45,13 @@ public class ObsidianPickaxe extends BaseTool{
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
         recipe.shape(
-                "NON",
-                " S ",
-                " S ");
+                "OOO",
+                "DBD",
+                " B ");
 
-        recipe.setIngredient('S', Material.STICK);
+        recipe.setIngredient('B', Material.BLAZE_ROD);
         recipe.setIngredient('O', Material.CRYING_OBSIDIAN);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
+        recipe.setIngredient('D', Material.DIAMOND);
         return recipe;
     }
 

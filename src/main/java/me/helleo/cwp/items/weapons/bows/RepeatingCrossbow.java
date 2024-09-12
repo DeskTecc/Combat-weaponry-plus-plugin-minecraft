@@ -40,14 +40,13 @@ public class RepeatingCrossbow extends BaseBow{
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(
-                "SIS",
-                "sRs",
-                "rSr");
+                "III",
+                "rRr",
+                " H ");
 
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('r', Material.REDSTONE);
-        recipe.setIngredient('s', Material.STRING);
+        recipe.setIngredient('I', Material.IRON_NUGGET);
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('r', Material.REDSTONE_TORCH);
         recipe.setIngredient('R', Material.REPEATER);
 
         return recipe;

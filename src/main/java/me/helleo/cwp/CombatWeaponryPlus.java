@@ -86,6 +86,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         this.saveDefaultConfig();
 
 
+        DragonBreath.setItemRecipe();
+
         //ARMORS
         if (ConfigurationsBool.Chainmail.getValue()) {
             ChainmailHelmet.setArmorPieceRecipe();

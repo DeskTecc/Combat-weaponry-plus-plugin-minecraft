@@ -41,15 +41,16 @@ public class BurstCrossbow extends BaseBow{
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(
-                "SIS",
-                "sRs",
-                "rSr");
+                "IBI",
+                "TRT",
+                "rHr");
 
         recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.STICK);
+        recipe.setIngredient('B', Material.REDSTONE_BLOCK);
         recipe.setIngredient('r', Material.REDSTONE);
-        recipe.setIngredient('s', Material.STRING);
-        recipe.setIngredient('R', Material.COMPARATOR);
+        recipe.setIngredient('T', Material.REDSTONE_TORCH);
+        recipe.setIngredient('R', Material.REPEATER);
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
 
         return recipe;
     }

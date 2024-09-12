@@ -48,13 +48,13 @@ public class LongBow extends BaseBow{
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(
-                "LCL",
-                "CBC",
-                "LCL");
+                " SI",
+                "IBI",
+                " SI");
 
         recipe.setIngredient('B', Material.BOW);
-        recipe.setIngredient('L', Material.IRON_INGOT);
-        recipe.setIngredient('C', Material.STICK);
+        recipe.setIngredient('I', Material.IRON_NUGGET);
+        recipe.setIngredient('S', Material.STICK);
 
         return recipe;
     }
