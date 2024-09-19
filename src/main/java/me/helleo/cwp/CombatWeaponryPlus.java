@@ -68,13 +68,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     public static List<NamespacedKey> keys = new ArrayList<>();
 
-    //Random number thing for  crit
-    public static Integer getRandomInt(Integer max) {
-        Random ran = new Random();
-        return ran.nextInt(max);
-    }
-
-
     @Override
     public void onEnable() {
         plugin = this;
@@ -572,6 +565,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         ItemStack result = tool.clone();
         ItemMeta resultm = result.getItemMeta();
+        assert resultm != null;
         resultm.setCustomModelData(1200005);
 
         double dmg = 1;
@@ -1883,35 +1877,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 }
 */
 
-    @EventHandler()
-    public void oncccClick(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        if (player.getInventory().getChestplate() != null)
-            if (player.getInventory().getChestplate().getItemMeta() != null)
-                if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData())
-                    if (player.getInventory().getChestplate().getItemMeta().hasLore())
-                        if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560001) {
-
-                            if (event.getAction() == Action.RIGHT_CLICK_AIR && player.isGliding()) {
-                                //player.sendMessage("qqq");
-
-                                ItemMeta meta = player.getInventory().getChestplate().getItemMeta();
-                                meta.setCustomModelData(1560002);
-                                player.getInventory().getChestplate().setItemMeta(meta);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 10, 1);
-                                player.setVelocity(player.getLocation().getDirection().multiply(2));
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        //player.setVelocity(player.getLocation().getDirection().multiply(0.5));
-
-                                    }
-                                }, 10L);
-                            }
-                        }
-
-    }
-
     @EventHandler
     public void toggleGlideEvent(EntityToggleGlideEvent event) {
         Player player = (Player) event.getEntity();
@@ -1958,11 +1923,9 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             }
                         }, 5L);
                     }
-
                 }
             }
         }
-
     }
 
     //unused item
@@ -1986,6 +1949,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
         lore.add(ChatColor.translateAlternateColorCodes('&', "&9 4 Attack Damage"));
         lore.add(ChatColor.translateAlternateColorCodes('&', "&9 1.8 Attack Speed"));
+        assert meta != null;
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2061,7 +2025,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                     if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                                         if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                                             if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
-
                                                 return;
                                             }
                                         }
@@ -2132,6 +2095,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             }
                             return;
                         }
+
                         if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                             if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() != 1231234) {
 
@@ -2141,7 +2105,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                                             if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                                                 if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
-
                                                     return;
                                                 }
                                             }
@@ -2281,7 +2244,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                             if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                                 if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
-
                                     return;
                                 }
                             }
@@ -2354,7 +2316,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
             //burst crossbow
             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                if (player.getInventory().getChestplate() != null)
+                if (player.getInventory().getChestplate() != null) {
 
 
                     if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552002 && player.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE) {
@@ -2363,7 +2325,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         if (player.getInventory().getChestplate() != null) {
                             if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                                 if (!player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-
 
                                     if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552002 && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                         if (player.getInventory().getChestplate() != null) {
@@ -2406,7 +2367,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                                 world.playSound(player.getLocation(), Sound.ITEM_CROSSBOW_SHOOT, 10, 1);
                                             }
                                         }, 4L);
-
                                     }
                                     return;
                                 }
@@ -2419,7 +2379,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                                 if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                                                     if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                                                         if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
-
                                                             return;
                                                         }
                                                     }
@@ -2455,7 +2414,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                                     world.playSound(player.getLocation(), Sound.ITEM_CROSSBOW_SHOOT, 10, 1);
                                                 }
                                             }, 4L);
-
                                         }
                                         return;
                                     }
@@ -2491,6 +2449,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             }
                         }, 4L);
                     }
+                }
 
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 5552002 && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                     if (player.getInventory().getChestplate() != null) {
@@ -2564,7 +2523,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             world.playSound(player.getLocation(), Sound.ITEM_CROSSBOW_SHOOT, 10, 1);
                         }
                     }, 4L);
-
                 }
             }
 
@@ -2669,7 +2627,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
                             if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
                                 if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
-
                                     return;
                                 }
                             }
@@ -2692,250 +2649,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
                 }
             }
-
         }
-    }
-
-    @EventHandler()
-    public void onParryClick(PlayerInteractEvent event) {
-        if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_SWORD))
-            if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData())
-                if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasLore()) {
-                    Player player = event.getPlayer();
-
-                    if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                        //vessel
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222223) {
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222223);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
-                                                    meta.setCustomModelData(2222223);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-                                return;
-
-                            }
-
-                        }
-                        //infvessel
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222224) {
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222224);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222224) {
-                                                    meta.setCustomModelData(2222224);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-                                return;
-
-                            }
-
-                        }
-                        //cursvessel
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222225) {
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222225);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222225) {
-                                                    meta.setCustomModelData(2222225);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-                                return;
-
-                            }
-
-                        }
-                        //awak ves
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222226) {
-                            if (player.isSneaking()) {
-                                return;
-                            }
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222226);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222226) {
-                                                    meta.setCustomModelData(2222226);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-                                return;
-
-                            }
-
-                        }
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222227) {
-                            if (player.isSneaking()) {
-                                return;
-                            }
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222227);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222227) {
-                                                    meta.setCustomModelData(2222227);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-                                return;
-
-                            }
-
-                        }
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222228) {
-                            if (player.isSneaking()) {
-                                return;
-                            }
-
-
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-
-
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222228);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222228) {
-                                                    meta.setCustomModelData(2222228);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-                                return;
-
-                            }
-
-                        }
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222229) {
-                            if (player.isSneaking()) {
-                                return;
-                            }
-                            if (Cooldown.checkCooldown(event.getPlayer())) {
-                                player.setCooldown(Material.NETHERITE_SWORD, 20);
-                                World world = player.getWorld();
-                                world.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_GENERIC, 10, 1);
-                                ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-
-                                meta.setCustomModelData(1222229);
-                                player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                    public void run() {
-                                        if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222229) {
-                                                    meta.setCustomModelData(2222229);
-                                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                }, 10L);
-                                Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-
-                            }
-
-                        }
-                    }
-                }
-
     }
 
     @EventHandler
@@ -3245,6 +2959,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     @EventHandler
     public void onRightClickEntity(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
+        ItemStack itemInHand = player.getInventory().getItemInMainHand();
         if (event.getHand().equals(EquipmentSlot.HAND)) {
             if (!player.getInventory().getItemInOffHand().getType().equals(Material.AIR)) {
                 if (player.getInventory().getItemInOffHand().hasItemMeta()) {
@@ -3256,77 +2971,83 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             //stops dual wielding 2 different weapon type:
                             if (ConfigurationsBool.DualWieldSaberOnly.getValue()) {
                                 //test the config thing, not sure if it works
-                                if (!player.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
-                                    if (player.getInventory().getItemInMainHand().hasItemMeta()) {
-                                        if (player.getInventory().getItemInMainHand().getType().equals(Material.WOODEN_SWORD)) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1200010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000030) {
+                                if (!itemInHand.getType().equals(Material.AIR)) {
+                                    if (itemInHand.hasItemMeta()) {
+                                        if (itemInHand.getType().equals(Material.WOODEN_SWORD)) {
+                                            assert itemInHand.getItemMeta() != null;
+                                            if (itemInHand.getItemMeta().hasCustomModelData()) {
+                                                if (itemInHand.getItemMeta().getCustomModelData() != 1000010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1200010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1000030) {
                                                     return;
                                                 }
                                             }
-                                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                                            if (!itemInHand.getItemMeta().hasCustomModelData()) {
                                                 return;
                                             }
                                         }
-                                        if (player.getInventory().getItemInMainHand().getType().equals(Material.STONE_SWORD)) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1200010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000030) {
+                                        if (itemInHand.getType().equals(Material.STONE_SWORD)) {
+                                            assert itemInHand.getItemMeta() != null;
+                                            if (itemInHand.getItemMeta().hasCustomModelData()) {
+                                                if (itemInHand.getItemMeta().getCustomModelData() != 1000010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1200010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1000030) {
                                                     return;
                                                 }
                                             }
-                                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                                            if (!itemInHand.getItemMeta().hasCustomModelData()) {
                                                 return;
                                             }
                                         }
-                                        if (player.getInventory().getItemInMainHand().getType().equals(Material.GOLDEN_SWORD)) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1200010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000030) {
+                                        if (itemInHand.getType().equals(Material.GOLDEN_SWORD)) {
+                                            assert itemInHand.getItemMeta() != null;
+                                            if (itemInHand.getItemMeta().hasCustomModelData()) {
+                                                if (itemInHand.getItemMeta().getCustomModelData() != 1000010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1200010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1000030) {
                                                     return;
                                                 }
                                             }
-                                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                                            if (!itemInHand.getItemMeta().hasCustomModelData()) {
                                                 return;
                                             }
                                         }
-                                        if (player.getInventory().getItemInMainHand().getType().equals(Material.IRON_SWORD)) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1200010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000030) {
+                                        if (itemInHand.getType().equals(Material.IRON_SWORD)) {
+                                            assert itemInHand.getItemMeta() != null;
+                                            if (itemInHand.getItemMeta().hasCustomModelData()) {
+                                                if (itemInHand.getItemMeta().getCustomModelData() != 1000010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1200010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1000030) {
                                                     return;
                                                 }
                                             }
-                                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                                            if (!itemInHand.getItemMeta().hasCustomModelData()) {
                                                 return;
                                             }
                                         }
-                                        if (player.getInventory().getItemInMainHand().getType().equals(Material.DIAMOND_SWORD)) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1200010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000030) {
+                                        if (itemInHand.getType().equals(Material.DIAMOND_SWORD)) {
+                                            assert itemInHand.getItemMeta() != null;
+                                            if (itemInHand.getItemMeta().hasCustomModelData()) {
+                                                if (itemInHand.getItemMeta().getCustomModelData() != 1000010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1200010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1000030) {
                                                     return;
                                                 }
                                             }
-                                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                                            if (!itemInHand.getItemMeta().hasCustomModelData()) {
                                                 return;
                                             }
                                         }
-                                        if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_SWORD)) {
-                                            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1200010
-                                                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1000030) {
+                                        if (itemInHand.getType().equals(Material.NETHERITE_SWORD)) {
+                                            assert itemInHand.getItemMeta() != null;
+                                            if (itemInHand.getItemMeta().hasCustomModelData()) {
+                                                if (itemInHand.getItemMeta().getCustomModelData() != 1000010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1200010
+                                                        && itemInHand.getItemMeta().getCustomModelData() != 1000030) {
                                                     return;
                                                 }
                                             }
-                                            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                                            if (!itemInHand.getItemMeta().hasCustomModelData()) {
                                                 return;
                                             }
                                         }
@@ -3972,7 +3693,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                     //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
                     if (p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getValue() < 1.9) {
                         ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
-                        AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), 0.25,
+                        AttributeModifier modifier = new AttributeModifier(new NamespacedKey (this, "generic.attack_speed"), 0.25,
                                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                         m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                         p.getInventory().getItemInMainHand().setItemMeta(m);
@@ -3982,7 +3703,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 if (p.getAttackCooldown() == 1) {
                     ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
                     m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED);
-                    AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), -3.6,
+                    AttributeModifier modifier = new AttributeModifier(new NamespacedKey(this,"generic.attack_speed"), -3.6,
                             Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                     m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                     p.getInventory().getItemInMainHand().setItemMeta(m);
@@ -4116,45 +3837,44 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     @EventHandler
     public void onKatanaDamageEntity(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
-            Player p = (Player) event.getDamager();
-            if (p.getInventory().getItemInMainHand() == null) {
+            Player player = (Player) event.getDamager();
+            if (player.getInventory().getItemInMainHand() == null) {
                 return;
             }
-            if (!p.getInventory().getItemInMainHand().hasItemMeta()) {
+            if (!player.getInventory().getItemInMainHand().hasItemMeta()) {
                 return;
             }
-            if (!p.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+            if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                 return;
             }
 
-            ItemMeta meta = p.getInventory().getItemInMainHand().getItemMeta();
-            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2000002) {
+            ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
+            if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2000002) {
                 meta.setCustomModelData(201);
-                p.getInventory().getItemInMainHand().setItemMeta(meta);
+                player.getInventory().getItemInMainHand().setItemMeta(meta);
                 return;
             }
-            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 201) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 201) {
                 meta.setCustomModelData(202);
-                p.getInventory().getItemInMainHand().setItemMeta(meta);
+                player.getInventory().getItemInMainHand().setItemMeta(meta);
                 return;
             }
-            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 202) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 202) {
                 meta.setCustomModelData(203);
-                p.getInventory().getItemInMainHand().setItemMeta(meta);
+                player.getInventory().getItemInMainHand().setItemMeta(meta);
                 return;
             }
-            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 203) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 203) {
                 meta.setCustomModelData(204);
-                p.getInventory().getItemInMainHand().setItemMeta(meta);
+                player.getInventory().getItemInMainHand().setItemMeta(meta);
                 return;
             }
-            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 204) {
-                World world = p.getWorld();
-                world.playSound(p.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 2);
+            if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 204) {
+                World world = player.getWorld();
+                world.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 2);
                 meta.setCustomModelData(205);
-                p.getInventory().getItemInMainHand().setItemMeta(meta);
+                player.getInventory().getItemInMainHand().setItemMeta(meta);
             }
-
         }
     }
 
@@ -4189,7 +3909,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             double z = l.getZ() - location.getZ();
                             Vector v = new Vector(x, y, z).normalize().multiply(-0.3).setY(0.5);
                             livingen.setVelocity(v);
-
                         }
 
                         World world = player.getWorld();
@@ -4247,18 +3966,18 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     @EventHandler
     public void onFCharmDamageEntity(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
-            Player p = (Player) event.getDamager();
-            if (p.getInventory().getItemInOffHand() == null) {
+            Player player = (Player) event.getDamager();
+            if (player.getInventory().getItemInOffHand() == null) {
                 return;
             }
-            if (!p.getInventory().getItemInOffHand().hasItemMeta()) {
+            if (!player.getInventory().getItemInOffHand().hasItemMeta()) {
                 return;
             }
-            if (!p.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData()) {
+            if (!player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData()) {
                 return;
             }
 
-            ItemMeta meta = p.getInventory().getItemInOffHand().getItemMeta();
+            ItemMeta meta = player.getInventory().getItemInOffHand().getItemMeta();
             if (meta.getCustomModelData() == 45) {
                 if (event.getEntity() instanceof LivingEntity) {
                     LivingEntity entity = (LivingEntity) event.getEntity();
@@ -4455,42 +4174,42 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
 
         if (event.getEntity() instanceof Player) {
-            Player p = (Player) event.getEntity();
-            if (p.hasCooldown(Material.SHIELD)) {
-                //p.sendMessage("missed block");
+            Player player = (Player) event.getEntity();
+            if (player.hasCooldown(Material.SHIELD)) {
+                //player.sendMessage("missed block");
                 return;
             }
-            if (p.getInventory().getItemInOffHand().getType() != Material.SHIELD) {
+            if (player.getInventory().getItemInOffHand().getType() != Material.SHIELD) {
                 return;
             }
 
-            if (p.hasMetadata("test")) {
-                List<MetadataValue> values = p.getMetadata("test");
+            if (player.hasMetadata("test")) {
+                List<MetadataValue> values = player.getMetadata("test");
                 if (values.isEmpty()) {
                     return;
                 }
-                if (p.getMetadata("test").get(0).value().equals(1)) {
+                if (player.getMetadata("test").get(0).value().equals(1)) {
                     event.setCancelled(true);
                     //p.sendMessage("perfect parry");
-                    if (p.hasMetadata("test")) {
-                        p.removeMetadata("test", this);
+                    if (player.hasMetadata("test")) {
+                        player.removeMetadata("test", this);
                     }
-                    p.setNoDamageTicks(10);
-                    p.getWorld().playSound(p.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 2);
-                    p.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, 0));
-                    p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 0));
-                    p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 40, 0));
+                    player.setNoDamageTicks(10);
+                    player.getWorld().playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 2);
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, 0));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 0));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 40, 0));
 
-                    ItemStack item = p.getInventory().getItemInOffHand();
-                    if (p.hasCooldown(Material.SHIELD)) {
+                    ItemStack item = player.getInventory().getItemInOffHand();
+                    if (player.hasCooldown(Material.SHIELD)) {
                         return;
                     }
 
-                    p.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
+                    player.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
                     Bukkit.getScheduler().runTaskLater(this, () -> {
 
-                        p.getInventory().setItemInOffHand(item);
-                        p.setCooldown(Material.SHIELD, 2);
+                        player.getInventory().setItemInOffHand(item);
+                        player.setCooldown(Material.SHIELD, 2);
 
                     }, 1L); // Time in ticks (20 ticks = 1 second)
 
@@ -4499,48 +4218,47 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 if (values.isEmpty()) {
                     return;
                 }
-                if (p.getMetadata("test").get(0).value().equals(2)) {
+                if (player.getMetadata("test").get(0).value().equals(2)) {
                     event.setCancelled(true);
                     //p.sendMessage("late parry");
-                    if (p.hasMetadata("test")) {
-                        p.removeMetadata("test", this);
+                    if (player.hasMetadata("test")) {
+                        player.removeMetadata("test", this);
                     }
-                    p.getWorld().playSound(p.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 2);
-                    p.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, 20, 0));
-                    p.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20, 0));
-                    ItemStack item = p.getInventory().getItemInOffHand();
-                    if (p.hasCooldown(Material.SHIELD)) {
+                    player.getWorld().playSound(player.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 2);
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, 20, 0));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20, 0));
+                    ItemStack item = player.getInventory().getItemInOffHand();
+                    if (player.hasCooldown(Material.SHIELD)) {
                         return;
                     }
 
-                    p.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
+                    player.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
                     Bukkit.getScheduler().runTaskLater(this, () -> {
 
-                        p.getInventory().setItemInOffHand(item);
-                        p.setCooldown(Material.SHIELD, 15);
+                        player.getInventory().setItemInOffHand(item);
+                        player.setCooldown(Material.SHIELD, 15);
 
                     }, 1L); // Time in ticks (20 ticks = 1 second)
 
                     return;
                 }
             }
-            if (p.isBlocking()) {
+            if (player.isBlocking()) {
                 //p.sendMessage("blocked");
 
-                ItemStack item = p.getInventory().getItemInOffHand();
-                if (p.hasCooldown(Material.SHIELD)) {
+                ItemStack item = player.getInventory().getItemInOffHand();
+                if (player.hasCooldown(Material.SHIELD)) {
                     return;
                 }
 
-                p.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
+                player.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
                 Bukkit.getScheduler().runTaskLater(this, () -> {
 
-                    p.getInventory().setItemInOffHand(item);
-                    p.setCooldown(Material.SHIELD, 20);
+                    player.getInventory().setItemInOffHand(item);
+                    player.setCooldown(Material.SHIELD, 20);
 
                 }, 1L); // Time in ticks (20 ticks = 1 second)
             }
-
         }
     }
 
@@ -4604,7 +4322,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-
     //oh my god it finally works
     @EventHandler
     public void onEntityShootBow(EntityShootBowEvent event) {
@@ -4612,6 +4329,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         if (event.getEntityType() == EntityType.PLAYER) {
             // Check if the bow being used has the desired CustomModelData
             ItemStack bow = event.getBow();
+            assert bow != null;
             if (bow.getItemMeta() != null && bow.getItemMeta().hasCustomModelData() && bow.getItemMeta().getCustomModelData() == 6767676) {
 
                 //remove the arrow
@@ -4681,7 +4399,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         }
                     }
                 }
-
             }
         }
     }
@@ -4707,17 +4424,13 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         // ...
 
                         entity.getWorld().createExplosion(entity.getLocation(), 2.0f, false, false); // Adjust the explosion parameters as needed
-
                     }
                 }
             }
-
             start.add(particleOffset);
         }
-
         Bukkit.getLogger().info("End Position: " + end);
     }
-
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -4763,7 +4476,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         ItemStack item = new ItemStack(Material.CROSSBOW);
         ItemMeta meta = item.getItemMeta();
 
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ""));
         lore.add(ChatColor.translateAlternateColorCodes('&', "&6Explosion"));
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Right click to create an explosion in the"));
@@ -4771,6 +4484,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7- The created explosion is able to"));
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7  launch nearby entities, including arrows"));
         lore.add(ChatColor.translateAlternateColorCodes('&', ""));
+        assert meta != null;
         meta.setLore(lore);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Explosive Staff"));
@@ -4796,6 +4510,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         if (event.getEntityType() == EntityType.PLAYER) {
             // Check if the bow being used has the desired CustomModelData
             ItemStack bow = event.getBow();
+            assert bow != null;
             if (bow.getItemMeta() != null && bow.getItemMeta().hasCustomModelData() && bow.getItemMeta().getCustomModelData() == 22) {
 
                 //remove the arrow
@@ -4839,9 +4554,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             entity.setVelocity(velocity);
                         }
                     }
-
                 }
-
             }
         }
     }
