@@ -1,12 +1,10 @@
 package me.helleo.cwp.items.weapons.knives;
 
-import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
@@ -16,9 +14,8 @@ public class EmeraldKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String material = "Emerald";
 
-    public ItemStack getKnife() {
+    public static ItemStack getKnife() {
         double attack_damage = 2;
         double attack_speed = 0;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -33,7 +30,7 @@ public class EmeraldKnife extends BaseKnife{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', setName(material)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
 
         if (ConfigurationsBool.EmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
@@ -46,23 +43,11 @@ public class EmeraldKnife extends BaseKnife{
         return item;
     }
 
-    public ShapedRecipe getKnifeRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_knife");
-        CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getKnife());
-
-        recipe.shape(
-                "   ",
-                " C ",
-                " S ");
-
-        recipe.setIngredient('C', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
     public static void setKnifeRecipe(){
-        Bukkit.addRecipe(new EmeraldKnife().getKnifeRecipe());
+        Bukkit.addRecipe(getWeaponRecipe(
+                "knife",
+                "emerald_knife",
+                getKnife(),
+                Material.EMERALD));
     }
 }

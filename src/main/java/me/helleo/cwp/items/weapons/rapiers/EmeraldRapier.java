@@ -1,12 +1,10 @@
 package me.helleo.cwp.items.weapons.rapiers;
 
-import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
@@ -16,9 +14,8 @@ public class EmeraldRapier extends BaseRapier{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String material = "Emerald";
 
-    public ItemStack getRapier() {
+    public static ItemStack getRapier() {
         double attack_damage = 3;
         double attack_speed = -1.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -33,7 +30,7 @@ public class EmeraldRapier extends BaseRapier{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', setName(material)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
         meta.setCustomModelData(1000015);
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
@@ -45,23 +42,11 @@ public class EmeraldRapier extends BaseRapier{
         return item;
     }
 
-    public ShapedRecipe getRapierRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_rapier");
-        CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getRapier());
-
-        recipe.shape(
-                "  C",
-                "CC ",
-                "SC ");
-
-        recipe.setIngredient('C', Material.EMERALD);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
     public static void setRapierRecipe(){
-        Bukkit.addRecipe(new EmeraldRapier().getRapierRecipe());
+        Bukkit.addRecipe(getWeaponRecipe(
+                "rapier",
+                "emerald_rapier",
+                getRapier(),
+                Material.EMERALD));
     }
 }

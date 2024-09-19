@@ -1,12 +1,10 @@
 package me.helleo.cwp.items.weapons.knives;
 
-import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -15,9 +13,8 @@ public class GoldenKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String material = "Golden";
 
-    public ItemStack getKnife() {
+    public static ItemStack getKnife() {
         double attack_damage = 1;
         double attack_speed = 0;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -32,29 +29,17 @@ public class GoldenKnife extends BaseKnife{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', setName(material)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.GOLD_INGOT)));
         meta.setCustomModelData(1000006);
         item.setItemMeta(meta);
         return item;
     }
 
-    public ShapedRecipe getKnifeRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "golden_knife");
-        CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getKnife());
-
-        recipe.shape(
-                "   ",
-                " C ",
-                " S ");
-
-        recipe.setIngredient('C', Material.GOLD_INGOT);
-        recipe.setIngredient('S', Material.STICK);
-
-        return recipe;
-    }
-
     public static void setKnifeRecipe(){
-        Bukkit.addRecipe(new GoldenKnife().getKnifeRecipe());
+        Bukkit.addRecipe(getWeaponRecipe(
+                "knife",
+                "golden_knife",
+                getKnife(),
+                Material.GOLD_INGOT));
     }
 }

@@ -2,26 +2,22 @@ package me.helleo.cwp.items.weapons.longswords;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsString;
+import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseLongsword {
+public abstract class BaseLongsword extends WeaponBase {
 
-    static ItemStack getLongsword() {
-        return null;
-    }
+    final static String weapon = "Longsword";
 
-    abstract ShapedRecipe getLongswordRecipe();
-
-    protected static String setName(String material){
-        return material+" Longsword";
+    protected static String getName(Material material){
+        return setName(material, weapon);
     }
 
     protected static AttributeModifier setModifier(String key, double value){

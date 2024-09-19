@@ -1,12 +1,10 @@
 package me.helleo.cwp.items.weapons.scythes;
 
-import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
@@ -16,9 +14,8 @@ public class EmeraldScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String material = "Emerald";
 
-    public ItemStack getScythe() {
+    public static ItemStack getScythe() {
         double attack_damage = 7;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -40,29 +37,17 @@ public class EmeraldScythe extends BaseScythe{
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', setName(material)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
         meta.setCustomModelData(1000013);
         item.setItemMeta(meta);
         return item;
     }
 
-    public ShapedRecipe getScytheRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_scythe");
-        CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getScythe());
-
-        recipe.shape(
-                "EEE",
-                "  S",
-                "  S");
-
-        recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('E', Material.EMERALD);
-
-        return recipe;
-    }
-
     public static void setScytheRecipe(){
-        Bukkit.addRecipe(new EmeraldScythe().getScytheRecipe());
+        Bukkit.addRecipe(getWeaponRecipe(
+                "scythe",
+                "emerald_scythe",
+                getScythe(),
+                Material.EMERALD));
     }
 }
