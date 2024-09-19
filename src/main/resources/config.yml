@@ -850,41 +850,6 @@ DescriptionScythe:
   Line5: "&7- +50% damage to players"
   Line6: "&7  without a chestplate"
   Line7: ""
-DescriptionWoodenScythe:
-  Name: "Wooden Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 7 Attack Damage"
-  Line10: "&9 1 Attack Speed"
-DescriptionStoneScythe:
-  Name: "Stone Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 7.5 Attack Damage"
-  Line10: "&9 1 Attack Speed"
-DescriptionGoldenScythe:
-  Name: "Golden Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 7 Attack Damage"
-  Line10: "&9 1.2 Attack Speed"
-DescriptionEmeraldScythe:
-  Name: "&2Emerald Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 8 Attack Damage"
-  Line10: "&9 1.2 Attack Speed"
-DescriptionIronScythe:
-  Name: "Iron Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 8 Attack Damage"
-  Line10: "&9 1 Attack Speed"
-DescriptionDiamondScythe:
-  Name: "Diamond Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 9 Attack Damage"
-  Line10: "&9 1 Attack Speed"
-DescriptionNetheriteScythe:
-  Name: "Netherite Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 10 Attack Damage"
-  Line10: "&9 1 Attack Speed"
 DescriptionPrismarineScythe:
   Name: "&aPrismarine Scythe"
   Line8: "&7When in Main Hand:"
@@ -899,41 +864,6 @@ DescriptionRapier:
   Line5: "&7   (stacks multiplicatively)"
   Line6: "&7- Disables shields for 2 seconds"
   Line7: ""
-DescriptionWoodenRapier:
-  Name: "Wooden Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 3 Attack Damage"
-  Line10: "&9 1.9 Attack Speed"
-DescriptionStoneRapier:
-  Name: "Stone Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 3.5 Attack Damage"
-  Line10: "&9 1.9 Attack Speed"
-DescriptionGoldenRapier:
-  Name: "Golden Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 3 Attack Damage"
-  Line10: "&9 2.4 Attack Speed"
-DescriptionIronRapier:
-  Name: "Iron Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 4 Attack Damage"
-  Line10: "&9 1.9 Attack Speed"
-DescriptionEmeraldRapier:
-  Name: "&2Emerald Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 4 Attack Damage"
-  Line10: "&9 2.4 Attack Speed"
-DescriptionDiamondRapier:
-  Name: "Diamond Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 5 Attack Damage"
-  Line10: "&9 1.9 Attack Speed"
-DescriptionNetheriteRapier:
-  Name: "Netherite Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 6 Attack Damage"
-  Line10: "&9 1.9 Attack Speed"
 DescriptionPrismarineRapier:
   Name: "&aPrismarine Rapier"
   Line8: "&7When in Main Hand:"
@@ -946,41 +876,6 @@ DescriptionLongsword:
   Line3: "&7- +30% damage if there is"
   Line4: "&7  no item in your offhand"
   Line5: ""
-DescriptionWoodenLongsword:
-  Name: "Wooden Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 5 Attack Damage"
-  Line8: "&9 1.2 Attack Speed"
-DescriptionStoneLongsword:
-  Name: "Stone Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 6 Attack Damage"
-  Line8: "&9 1.2 Attack Speed"
-DescriptionGoldenLongsword:
-  Name: "Golden Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 5 Attack Damage"
-  Line8: "&9 1.4 Attack Speed"
-DescriptionIronLongsword:
-  Name: "Iron Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 7 Attack Damage"
-  Line8: "&9 1.2 Attack Speed"
-DescriptionEmeraldLongsword:
-  Name: "&2Emerald Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 7 Attack Damage"
-  Line8: "&9 1.4 Attack Speed"
-DescriptionDiamondLongsword:
-  Name: "Diamond Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 8 Attack Damage"
-  Line8: "&9 1.2 Attack Speed"
-DescriptionNetheriteLongsword:
-  Name: "Netherite Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 9 Attack Damage"
-  Line8: "&9 1.2 Attack Speed"
 DescriptionPrismarineLongsword:
   Name: "&aPrismarine Longsword"
   Line6: "&7When in Main Hand:"
@@ -994,41 +889,6 @@ DescriptionKnife:
   Line4: "&6Combo"
   Line5: "&7- Getting 2 consecutive hits gives Strength I"
   Line6: ""
-DescriptionWoodenKnife:
-  Name: "Wooden Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 2 Attack Damage"
-  Line9: "&9 3 Attack Speed"
-DescriptionStoneKnife:
-  Name: "Stone Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 2.5 Attack Damage"
-  Line9: "&9 3 Attack Speed"
-DescriptionGoldenKnife:
-  Name: "Golden Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 2 Attack Damage"
-  Line9: "&9 4 Attack Speed"
-DescriptionIronKnife:
-  Name: "Iron Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 3 Attack Damage"
-  Line9: "&9 3 Attack Speed"
-DescriptionEmeraldKnife:
-  Name: "&2Emerald Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 3 Attack Damage"
-  Line9: "&9 4 Attack Speed"
-DescriptionDiamondKnife:
-  Name: "Diamond Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 4 Attack Damage"
-  Line9: "&9 3 Attack Speed"
-DescriptionNetheriteKnife:
-  Name: "Netherite Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 5 Attack Damage"
-  Line9: "&9 3 Attack Speed"
 DescriptionPrismarineKnife:
   Name: "&aPrismarine Knife"
   Line7: "&7When in Main Hand:"
@@ -1045,41 +905,6 @@ DescriptionSpear:
   Line7: "&6Two Handed"
   Line8: "&7- +30% damage if there is no item in offhand"
   Line9: ""
-DescriptionWoodenSpear:
-  Name: "Wooden Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 2 Attack Damage"
-  Line12: "&9 2.5 Attack Speed"
-DescriptionStoneSpear:
-  Name: "Stone Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 2.5 Attack Damage"
-  Line12: "&9 2.5 Attack Speed"
-DescriptionGoldenSpear:
-  Name: "Golden Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 2 Attack Damage"
-  Line12: "&9 2.8 Attack Speed"
-DescriptionIronSpear:
-  Name: "Iron Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 3 Attack Damage"
-  Line12: "&9 2.5 Attack Speed"
-DescriptionEmeraldSpear:
-  Name: "&2Emerald Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 3 Attack Damage"
-  Line12: "&9 2.8 Attack Speed"
-DescriptionDiamondSpear:
-  Name: "Diamond Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 4 Attack Damage"
-  Line12: "&9 2.5 Attack Speed"
-DescriptionNetheriteSpear:
-  Name: "Netherite Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 5 Attack Damage"
-  Line12: "&9 2.5 Attack Speed"
 DescriptionPrismarineSpear:
   Name: "&aPrismarine Spear"
   Line10: "&7When in Main Hand:"
@@ -1098,41 +923,6 @@ DescriptionKatana:
   Line9: "&7- 20% chance to deal 10% more"
   Line10: "&7  damage when two handed"
   Line11: ""
-DescriptionWoodenKatana:
-  Name: "Wooden Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 3.5 Attack Damage"
-  Line14: "&9 1.7 Attack Speed"
-DescriptionStoneKatana:
-  Name: "Stone Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 4 Attack Damage"
-  Line14: "&9 1.7 Attack Speed"
-DescriptionGoldenKatana:
-  Name: "Golden Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 3.5 Attack Damage"
-  Line14: "&9 2 Attack Speed"
-DescriptionIronKatana:
-  Name: "Iron Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 5 Attack Damage"
-  Line14: "&9 1.7 Attack Speed"
-DescriptionEmeraldKatana:
-  Name: "&2Emerald Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 5 Attack Damage"
-  Line14: "&9 2 Attack Speed"
-DescriptionDiamondKatana:
-  Name: "Diamond Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 6 Attack Damage"
-  Line14: "&9 1.7 Attack Speed"
-DescriptionNetheriteKatana:
-  Name: "Netherite Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 7 Attack Damage"
-  Line14: "&9 1.7 Attack Speed"
 DescriptionPrismarineKatana:
   Name: "&aPrismarine Katana"
   Line12: "&7When in Main Hand:"
@@ -1144,41 +934,6 @@ DescriptionSaber:
   Line2: "&6Dual Wielding"
   Line3: "&7- Can be used in either hand"
   Line4: ""
-DescriptionWoodenSaber:
-  Name: "Wooden Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 4 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-DescriptionStoneSaber:
-  Name: "Stone Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 5 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-DescriptionGoldenSaber:
-  Name: "Golden Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 4 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-DescriptionIronSaber:
-  Name: "Iron Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 6 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-DescriptionEmeraldSaber:
-  Name: "&2Emerald Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 6 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-DescriptionDiamondSaber:
-  Name: "Diamond Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 7 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-DescriptionNetheriteSaber:
-  Name: "Netherite Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 8 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
 DescriptionPrismarineSaber:
   Name: "&aPrismarine Saber"
   Line5: "&7When in Main Hand:"
@@ -1195,41 +950,6 @@ DescriptionCleaver:
   Line7: "&7- Attack speed &2resets &7upon landing"
   Line8: "&7  a fully charged attack"
   Line9: ""
-DescriptionWoodenCleaver:
-  Name: "Wooden Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 9 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
-DescriptionStoneCleaver:
-  Name: "Stone Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 10 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
-DescriptionGoldenCleaver:
-  Name: "Golden Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 9 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
-DescriptionIronCleaver:
-  Name: "Iron Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 11 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
-DescriptionEmeraldCleaver:
-  Name: "&2Emerald Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 11 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
-DescriptionDiamondCleaver:
-  Name: "Diamond Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 12 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
-DescriptionNetheriteCleaver:
-  Name: "Netherite Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 13 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
 DescriptionPrismarineCleaver:
   Name: "&aPrismarine Cleaver"
   Line10: "&7When in Main Hand:"
