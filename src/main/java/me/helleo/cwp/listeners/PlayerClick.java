@@ -26,6 +26,7 @@ public class PlayerClick implements Listener {
     @EventHandler()
     public void onClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+
         //parry
         if (event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_SWORD)){
             if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -60,6 +61,7 @@ public class PlayerClick implements Listener {
                                 return;
                             }
                         }
+
                         //infvessel
                         if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222224) {
                             if (Cooldown.checkCooldown(event.getPlayer())) {
@@ -87,6 +89,7 @@ public class PlayerClick implements Listener {
                                 return;
                             }
                         }
+
                         //cursvessel
                         if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222225) {
                             if (Cooldown.checkCooldown(event.getPlayer())) {
@@ -115,6 +118,7 @@ public class PlayerClick implements Listener {
                                 return;
                             }
                         }
+
                         //awak ves
                         if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222226) {
                             if (player.isSneaking()) {
@@ -145,9 +149,7 @@ public class PlayerClick implements Listener {
 
                             } else {
                                 return;
-
                             }
-
                         }
                         if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222227) {
                             if (player.isSneaking()) {
@@ -178,18 +180,16 @@ public class PlayerClick implements Listener {
 
                             } else {
                                 return;
-
                             }
-
                         }
+
+                        //
                         if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222228) {
                             if (player.isSneaking()) {
                                 return;
                             }
 
-
                             if (Cooldown.checkCooldown(event.getPlayer())) {
-
 
                                 player.setCooldown(Material.NETHERITE_SWORD, 20);
                                 World world = player.getWorld();
@@ -215,10 +215,10 @@ public class PlayerClick implements Listener {
 
                             } else {
                                 return;
-
                             }
-
                         }
+
+                        //
                         if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222229) {
                             if (player.isSneaking()) {
                                 return;
@@ -245,11 +245,7 @@ public class PlayerClick implements Listener {
                                     }
                                 }, 10L);
                                 Cooldown.setCooldown(event.getPlayer(), 1);
-
-                            } else {
-
                             }
-
                         }
                     }
                 }
@@ -257,6 +253,7 @@ public class PlayerClick implements Listener {
         }
         //
 
+        //EELYTRA
         if (player.getInventory().getChestplate() != null) {
             if (player.getInventory().getChestplate().getItemMeta() != null) {
                 if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
@@ -284,6 +281,8 @@ public class PlayerClick implements Listener {
                 }
             }
         }
+
+        //CHORUS BLADE
         if (player.getInventory().getItemInMainHand().getType().equals(Material.IRON_SWORD)){
             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()){
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()
@@ -298,6 +297,7 @@ public class PlayerClick implements Listener {
                 }
             }
         }
+        //OBSIDIAN PICKAXE
         if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_PICKAXE)) {
             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
@@ -310,6 +310,7 @@ public class PlayerClick implements Listener {
                 }
             }
         }
+        //REALLY GOOD SWORD
         if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_HOE)){
             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {

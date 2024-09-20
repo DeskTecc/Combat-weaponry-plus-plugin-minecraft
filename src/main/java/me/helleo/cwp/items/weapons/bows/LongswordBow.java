@@ -15,7 +15,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class LongswordBow extends BaseBow{
 
@@ -34,18 +33,18 @@ public class LongswordBow extends BaseBow{
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        double dmg = 7;
-        double spd = -2.6;
+        double attack_damage = 7;
+        double attack_speed = -2.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Bows_LongSwordBow_Damage.getValue();
-            spd = ConfigurationsDouble.Bows_LongSwordBow_Speed.getValue();
+            attack_damage = ConfigurationsDouble.Bows_LongSwordBow_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Bows_LongSwordBow_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), dmg,
+        AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), spd,
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
+        AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
 
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongswordBow_Name.getValue()));

@@ -8,7 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -16,7 +15,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class RecurveBow extends BaseBow{
 
@@ -25,7 +23,7 @@ public class RecurveBow extends BaseBow{
 
     public ItemStack getBow() {
 
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRecurveBow_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRecurveBow_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRecurveBow_Line3.getValue()));

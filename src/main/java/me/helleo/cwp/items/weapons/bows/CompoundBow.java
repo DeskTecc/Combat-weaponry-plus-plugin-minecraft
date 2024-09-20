@@ -8,7 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -16,7 +15,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class CompoundBow extends BaseBow{
 
@@ -24,7 +22,7 @@ public class CompoundBow extends BaseBow{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getBow() {
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Line3.getValue()));
@@ -34,9 +32,9 @@ public class CompoundBow extends BaseBow{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Name.getValue()));
         meta.setCustomModelData(3330003);
-        AttributeModifier modifier3 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.03,
+        AttributeModifier modifierMoveSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.03,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
+        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierMoveSpeed);
         item.setItemMeta(meta);
         return item;
     }

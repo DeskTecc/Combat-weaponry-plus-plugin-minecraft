@@ -44,53 +44,26 @@ public class EntityDamage implements Listener {
 
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
             if (itemInHand.hasItemMeta()) {
+                assert itemInHand.getItemMeta() != null;
                 if (itemInHand.getItemMeta().hasCustomModelData()) {
                     if (itemInHand.getItemMeta().getCustomModelData() == 1000006
                             || itemInHand.getItemMeta().getCustomModelData() == 1200006
                             || itemInHand.getItemMeta().getCustomModelData() == 1000016
                             || itemInHand.getItemMeta().getCustomModelData() == 4000006) {
-                        if (!player.hasCooldown(Material.NETHERITE_SWORD)
-                                || !player.hasCooldown(Material.DIAMOND_SWORD)
-                                || !player.hasCooldown(Material.IRON_SWORD)
-                                || !player.hasCooldown(Material.GOLDEN_SWORD)
-                                || !player.hasCooldown(Material.STONE_SWORD)
-                                || !player.hasCooldown(Material.WOODEN_SWORD)) {
-                            player.setCooldown(Material.NETHERITE_SWORD, 15);
-                            player.setCooldown(Material.DIAMOND_SWORD, 15);
-                            player.setCooldown(Material.IRON_SWORD, 15);
-                            player.setCooldown(Material.GOLDEN_SWORD, 15);
-                            player.setCooldown(Material.STONE_SWORD, 15);
-                            player.setCooldown(Material.WOODEN_SWORD, 15);
-                        }
-                        if (player.hasCooldown(Material.NETHERITE_SWORD)
-                                || player.hasCooldown(Material.DIAMOND_SWORD)
-                                || player.hasCooldown(Material.IRON_SWORD)
-                                || player.hasCooldown(Material.GOLDEN_SWORD)
-                                || player.hasCooldown(Material.STONE_SWORD)
-                                || player.hasCooldown(Material.WOODEN_SWORD)) {
-
-                            if (player.getCooldown(Material.NETHERITE_SWORD) <= 14
-                                    || player.getCooldown(Material.DIAMOND_SWORD) <= 14
-                                    || player.getCooldown(Material.IRON_SWORD) <= 14
-                                    || player.getCooldown(Material.GOLDEN_SWORD) <= 14
-                                    || player.getCooldown(Material.STONE_SWORD) <= 14
-                                    || player.getCooldown(Material.WOODEN_SWORD) <= 14) {
-
-                                player.setCooldown(Material.NETHERITE_SWORD, 14);
-                                player.setCooldown(Material.DIAMOND_SWORD, 14);
-                                player.setCooldown(Material.IRON_SWORD, 14);
-                                player.setCooldown(Material.GOLDEN_SWORD, 14);
-                                player.setCooldown(Material.STONE_SWORD, 14);
-                                player.setCooldown(Material.WOODEN_SWORD, 14);
-
-                                if (player.getAttackCooldown() <= 0.9) {
-                                    return;
+                        if(itemInHand.getType().name().contains("SWORD")) {
+                            if (!player.hasCooldown(itemInHand.getType())) {
+                                player.setCooldown(itemInHand.getType(), 15);
+                            }
+                            if (player.hasCooldown(itemInHand.getType())) {
+                                if (player.getCooldown(itemInHand.getType()) <= 14) {
+                                    player.setCooldown(itemInHand.getType(), 14);
+                                    if (player.getAttackCooldown() <= 0.9) {
+                                        return;
+                                    }
+                                    player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 15, 0));
                                 }
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 15, 0));
-
                             }
                         }
-
                     }
                 }
             }
@@ -466,9 +439,6 @@ public class EntityDamage implements Listener {
                 }
             }
         }
-
-
-
     }
 
     /*private static double getMultiplierr(Player player) {
@@ -602,44 +572,45 @@ public class EntityDamage implements Listener {
                             if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                                 return;
                             } else {
+                                //INFUSED VESSEL
                                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222223
                                         || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
                                     World world = player.getWorld();
                                     world.spawnParticle(Particle.ENCHANT, player.getLocation().getX(), player.getLocation().getY() + 2, player.getLocation().getZ(), 500);
                                     world.spawnParticle(Particle.CLOUD, player.getLocation(), 100);
 
-                                    ItemMeta meta2 = player.getInventory().getItemInMainHand().getItemMeta();
-                                    meta2.setCustomModelData(2222224);
-                                    meta2.setDisplayName(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Name.getValue()));
-                                    double dmg = 9;
-                                    double spd = -2.4;
+                                    ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
+                                    meta.setCustomModelData(2222224);
+                                    meta.setDisplayName(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Name.getValue()));
+                                    double attack_damage = 9;
+                                    double attack_speed = -2.4;
                                     if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                        dmg = ConfigurationsDouble.Others_InfusedVessel_Damage.getValue();
-                                        spd = ConfigurationsDouble.Others_InfusedVessel_Speed.getValue();
+                                        attack_damage = ConfigurationsDouble.Others_InfusedVessel_Damage.getValue();
+                                        attack_speed = ConfigurationsDouble.Others_InfusedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifier1a = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                                    AttributeModifier modifierAttackDamage = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1a);
-                                    AttributeModifier modifier2a = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                                    meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
+                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta2.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2a);
+                                    meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
 
-                                    List<String> lore2 = new ArrayList<>();
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line1.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line2.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line3.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line4.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line5.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line6.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line7.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line8.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line9.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line10.getValue()));
-                                    lore2.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line11.getValue()));
-                                    meta2.setLore(lore2);
+                                    List<String> lore = new ArrayList<>();
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line1.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line2.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line3.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line4.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line5.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line6.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line7.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line8.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line9.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line10.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionInfusedVessel_Line11.getValue()));
+                                    meta.setLore(lore);
                                     //important:
-                                    meta2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-                                    player.getInventory().getItemInMainHand().setItemMeta(meta2);
+                                    meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
                                 }
                             }
                         }
@@ -659,46 +630,49 @@ public class EntityDamage implements Listener {
                             if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                                 return;
                             } else {
+                                //CURSED VESSEL
                                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222223
                                         || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
                                     World world = player.getWorld();
                                     world.spawnParticle(Particle.ENCHANT, player.getLocation().getX(), player.getLocation().getY() + 2, player.getLocation().getZ(), 500);
                                     world.spawnParticle(Particle.CLOUD, player.getLocation(), 100);
-                                    ItemMeta meta3 = player.getInventory().getItemInMainHand().getItemMeta();
-                                    meta3.setCustomModelData(2222225);
-                                    meta3.setDisplayName(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Name.getValue()));
-                                    double dmg = 9;
-                                    double spd = -2.4;
+
+                                    ItemMeta meta= player.getInventory().getItemInMainHand().getItemMeta();
+
+                                    meta.setCustomModelData(2222225);
+                                    meta.setDisplayName(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Name.getValue()));
+                                    double attack_damage = 9;
+                                    double attack_speed = -2.4;
                                     if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                        dmg = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
-                                        spd = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
+                                        attack_damage = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
+                                        attack_speed = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifier1e = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
+                                    AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1e);
-                                    AttributeModifier modifier2e = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
+                                    meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
+                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                    meta3.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2e);
+                                    meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
                                     //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,
                                     //		Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
                                     //meta3.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier3e);
 
-                                    List<String> lore3 = new ArrayList<>();
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line1.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line2.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line3.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line4.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line5.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line6.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line7.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line8.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line9.getValue()));
-                                    lore3.add(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line10.getValue()));
-                                    lore3.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line11.getValue()));
-                                    meta3.setLore(lore3);
+                                    List<String> lore = new ArrayList<>();
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line1.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line2.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line3.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line4.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line5.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line6.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line7.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line8.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line9.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line10.getValue()));
+                                    lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Line11.getValue()));
+                                    meta.setLore(lore);
                                     //important:
-                                    meta3.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-                                    player.getInventory().getItemInMainHand().setItemMeta(meta3);
+                                    meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                                    player.getInventory().getItemInMainHand().setItemMeta(meta);
                                 }
                             }
                         }

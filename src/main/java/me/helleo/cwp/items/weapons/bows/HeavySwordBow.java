@@ -26,19 +26,19 @@ public class HeavySwordBow extends BaseBow{
     public ItemStack getBow() {
 
         //modifier
-        double damage = 10;
-        double speed = -3.2;
-        double moveSpeed = -0.05;
-        double offHandMoveSpeed = -0.05;
-        double KBResist = 0.5;
-        double offHandKBResist = 0.5;
+        double attack_damage = 10;
+        double attack_speed = -3.2;
+        double move_speed = -0.05;
+        double offhand_move_speed = -0.05;
+        double knockback_resistance = 0.5;
+        double offhand_knockback_resistance = 0.5;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            damage = (int) ConfigurationsDouble.Bows_HeavySwordBow_Damage.getValue();
-            speed = (int) ConfigurationsDouble.Bows_HeavySwordBow_Speed.getValue();
-            moveSpeed = (int) ConfigurationsDouble.Bows_HeavySwordBow_MoveSpeed.getValue();
-            offHandMoveSpeed = (int) ConfigurationsDouble.Bows_HeavySwordBow_OffhandMoveSpeed.getValue();
-            KBResist = (int) ConfigurationsDouble.Bows_HeavySwordBow_KBResist.getValue();
-            offHandKBResist = (int) ConfigurationsDouble.Bows_HeavySwordBow_OffhandKBResist.getValue();
+            attack_damage = (int) ConfigurationsDouble.Bows_HeavySwordBow_Damage.getValue();
+            attack_speed = (int) ConfigurationsDouble.Bows_HeavySwordBow_Speed.getValue();
+            move_speed = (int) ConfigurationsDouble.Bows_HeavySwordBow_MoveSpeed.getValue();
+            offhand_move_speed = (int) ConfigurationsDouble.Bows_HeavySwordBow_OffhandMoveSpeed.getValue();
+            knockback_resistance = (int) ConfigurationsDouble.Bows_HeavySwordBow_KBResist.getValue();
+            offhand_knockback_resistance = (int) ConfigurationsDouble.Bows_HeavySwordBow_OffhandKBResist.getValue();
         }
 
 
@@ -53,35 +53,35 @@ public class HeavySwordBow extends BaseBow{
             meta.addEnchant(Enchantment.MENDING, enchantmentsMending, true);
         }
 
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Line3.getValue()));
         meta.setLore(lore);
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), damage,
+        AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), speed,
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
+        AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
 
 
         //speed
-        AttributeModifier modifier3 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), moveSpeed,
+        AttributeModifier modifierMoveSpeed = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
-        AttributeModifier modifier4 = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed_offhand"), offHandMoveSpeed,
+        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierMoveSpeed);
+        AttributeModifier modifierOffHandMoveSpeed = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed_offhand"), offhand_move_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier4);
+        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierOffHandMoveSpeed);
 
         //knockback res
-        AttributeModifier modifier5 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance"), KBResist,
+        AttributeModifier modifierKnockbackResistance = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance"), knockback_resistance,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier5);
-        AttributeModifier modifier6 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance_offhand"), offHandKBResist,
+        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifierKnockbackResistance);
+        AttributeModifier modifierOffHandKnockbackResistance = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance_offhand"), offhand_knockback_resistance,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier6);
+        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifierOffHandKnockbackResistance);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Name.getValue()));
         meta.setCustomModelData(1000002);

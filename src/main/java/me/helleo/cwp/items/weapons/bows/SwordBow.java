@@ -27,19 +27,19 @@ public class SwordBow extends BaseBow{
         //sword bow
 
         //modifier
-        double damage = 8;
-        double speed = -3;
+        double attack_damage = 8;
+        double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            damage = ConfigurationsDouble.Bows_SwordBow_Damage.getValue();
-            speed = ConfigurationsDouble.Bows_SwordBow_Speed.getValue();
+            attack_damage = ConfigurationsDouble.Bows_SwordBow_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Bows_SwordBow_Speed.getValue();
         }
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), damage,
+        AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), speed,
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
+        AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
 
         if (ConfigurationsBool.EnchantsSwordBow.getValue()) {
             int enchantmentSmite = (int) ConfigurationsDouble.SwordBowEnchantLevels_Smite.getValue();
@@ -51,7 +51,7 @@ public class SwordBow extends BaseBow{
             meta.addEnchant(Enchantment.MENDING, enchantmentMending, true);
         }
 
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Line3.getValue()));

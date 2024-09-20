@@ -22,7 +22,7 @@ public class ObsidianPickaxe extends BaseTool{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getTool() {
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Line3.getValue()));

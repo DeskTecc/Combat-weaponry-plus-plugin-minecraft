@@ -19,7 +19,7 @@ public class RepeatingCrossbow extends BaseBow{
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getBow() {
-        List<String> lore = new ArrayList<String>();
+        List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRepeatingCrossbow_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRepeatingCrossbow_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRepeatingCrossbow_Line3.getValue()));
