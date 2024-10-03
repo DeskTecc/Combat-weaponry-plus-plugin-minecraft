@@ -183,22 +183,43 @@ public class EntityDamage implements Listener {
 
                     // KNIFE
                     if (knife_weapon_validator) {
-                        event.setDamage(damage*1.3);
+                        event.setDamage(damage);
                     }
 
                     // CLEAVER
                     if (cleaver_weapon_validator) {
-                        event.setDamage(damage*1.3);
+                        event.setDamage(damage);
                     }
 
                     // SABER
                     if (saber_weapon_validator) {
-                        event.setDamage(damage*1.3);
+                        event.setDamage(damage);
                     }
 
                     // RAPIER
                     if (rapier_weapon_validator) {
-                        event.setDamage(damage*1.3);
+                        Player entity;
+                        double final_damage = damage;
+                        if(event.getEntity().getType()==EntityType.PLAYER){
+                            entity = (Player) event.getEntity();
+                            //if player not have chestplate
+                            if(entity.getInventory().getChestplate()==null){
+                                final_damage=final_damage*1.05;
+                            }
+                            //if player not have leggings
+                            if(entity.getInventory().getLeggings()==null){
+                                final_damage=final_damage*1.05;
+                            }
+                            //if player not have boots
+                            if(entity.getInventory().getBoots()==null){
+                                final_damage=final_damage*1.05;
+                            }
+                            //if player not have helmet
+                            if(entity.getInventory().getHelmet()==null){
+                                final_damage=final_damage*1.05;
+                            }
+                        }
+                        event.setDamage(final_damage);
                         event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                     }
 
@@ -227,25 +248,50 @@ public class EntityDamage implements Listener {
                         }
                         //SCYTHE
                         if (scythe_weapon_validator) {
-
-                            event.setDamage(damage * 1.3);
-
+                            Player entity;
+                            double final_damage = damage;
+                            if(event.getEntity().getType()==EntityType.PLAYER){
+                                entity = (Player) event.getEntity();
+                                if(entity.getInventory().getChestplate()==null){
+                                    final_damage = damage * 1.5;
+                                }
+                            }
+                            event.setDamage(final_damage * 1.3);
                         }
                         //SPEAR
                         if (spear_weapon_validator) {
-
-                            event.setDamage(damage * 1.3);
+                            Player entity;
+                            double final_damage = damage;
+                            if(event.getEntity().getType()==EntityType.PLAYER) {
+                                entity = (Player) event.getEntity();
+                                //if player not have chestplate
+                                if (entity.getInventory().getChestplate() == null) {
+                                    final_damage = final_damage * 1.05;
+                                }
+                                //if player not have leggings
+                                if (entity.getInventory().getLeggings() == null) {
+                                    final_damage = final_damage * 1.05;
+                                }
+                                //if player not have boots
+                                if (entity.getInventory().getBoots() == null) {
+                                    final_damage = final_damage * 1.05;
+                                }
+                                //if player not have helmet
+                                if (entity.getInventory().getHelmet() == null) {
+                                    final_damage = final_damage * 1.05;
+                                }
+                            }
+                            event.setDamage(final_damage*1.3);
 
                             event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                         }
                         //KATANA
                         if (katana_weapon_validator) {
-                            double bonus = damage * 1.3;
-                            event.setDamage(bonus);
+                            event.setDamage(damage);
                             //RNG CRIT
                             int random = getRandomInt(5);
                             if (random == 1) {
-                                double crit = bonus * 1.1;
+                                double crit = damage * 1.1;
                                 event.setDamage(crit);
                                 getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                     public void run() {
@@ -351,6 +397,7 @@ public class EntityDamage implements Listener {
                 }
             }
             if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+                assert player.getInventory().getItemInMainHand().getItemMeta() != null;
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                     //infused vessel
                     if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222224 ||
@@ -375,6 +422,7 @@ public class EntityDamage implements Listener {
             Player player2 = (Player) event.getEntity();
             //vessel
             if (player2.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+                assert player2.getInventory().getItemInMainHand().getItemMeta() != null;
                 if (player2.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                     if (player2.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1222223) {
                         ItemMeta meta = player2.getInventory().getItemInMainHand().getItemMeta();
@@ -569,6 +617,7 @@ public class EntityDamage implements Listener {
                         if (!player.getInventory().getItemInMainHand().hasItemMeta()) {
                             return;
                         } else {
+                            assert player.getInventory().getItemInMainHand().getItemMeta() != null;
                             if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                                 return;
                             } else {
@@ -627,6 +676,7 @@ public class EntityDamage implements Listener {
                         if (!player.getInventory().getItemInMainHand().hasItemMeta()) {
                             return;
                         } else {
+                            assert player.getInventory().getItemInMainHand().getItemMeta() != null;
                             if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                                 return;
                             } else {
@@ -683,8 +733,9 @@ public class EntityDamage implements Listener {
         if (event.getEntity().getKiller() != null) {
             if (event.getEntity().getKiller().getType() == EntityType.PLAYER) {
                 Player player = event.getEntity().getKiller();
-                if (player.getInventory().getItemInOffHand().getType().equals(Material.NETHER_STAR))
-                    if (player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData())
+                if (player.getInventory().getItemInOffHand().getType().equals(Material.NETHER_STAR)) {
+                    assert player.getInventory().getItemInOffHand().getItemMeta() != null;
+                    if (player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData()) {
                         if (player.getInventory().getItemInOffHand().getItemMeta().hasLore()) {
 
                             if (player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 4920001) {
@@ -692,10 +743,10 @@ public class EntityDamage implements Listener {
                                 World world = player.getWorld();
                                 ExperienceOrb orb = world.spawn(player.getLocation(), ExperienceOrb.class);
                                 orb.setExperience(orb.getExperience() + getRandomInt(10) + 10);
-                                //	orb.setExperience(100);
-                                //	player.sendMessage(String.valueOf(orb.getExperience()));
                             }
                         }
+                    }
+                }
             }
         }
     }

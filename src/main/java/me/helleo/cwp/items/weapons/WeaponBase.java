@@ -76,35 +76,59 @@ public abstract class WeaponBase {
     }
 
     private static String[] getCleaverShape(){
-        return new String[]{" MM", "MM ", "S  "};
+        return new String[]{
+                " MM",
+                "MM ",
+                "S  "};
     }
 
     private static String[] getKatanaShape(){
-        return new String[]{"  M", " M ", "S  "};
+        return new String[]{
+                "  M",
+                " M ",
+                "S  "};
     }
 
     private static String[] getKnifeShape(){
-        return new String[]{"   ", " M ", " S "};
+        return new String[]{
+                "   ",
+                " M ",
+                " S "};
     }
 
     private static String[] getLongswordShape(){
-        return new String[]{" M ", " M ", "MSM"};
+        return new String[]{
+                " M ",
+                " M ",
+                "MSM"};
     }
 
     private static String[] getRapierShape(){
-        return new String[]{"  M", "MM ", "SM "};
+        return new String[]{
+                "  M",
+                "MM ",
+                "SM "};
     }
 
     private static String[] getSaberShape(){
-        return new String[]{" MM", " M ", "S  "};
+        return new String[]{
+                " MM",
+                " M ",
+                "S  "};
     }
 
     private static String[] getScytheShape(){
-        return new String[]{"MMM", "  S", "  S"};
+        return new String[]{
+                "MMM",
+                "  S",
+                "  S"};
     }
 
     private static String[] getSpearShape(){
-        return new String[]{" MM", " SM", "S  "};
+        return new String[]{
+                " MM",
+                " SM",
+                "S  "};
     }
 
 }
