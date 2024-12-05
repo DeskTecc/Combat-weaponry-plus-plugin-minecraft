@@ -4088,7 +4088,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
         }
     }
-
+    /*
     @EventHandler
     public void damageMultipliers(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
@@ -4158,7 +4158,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 event.setDamage(dmg * m);
             }
         }
-    }
+    } */
 //IDEA:
 //theres 2 windows and then cooldown
 //first time window if player block then it 'perfect parry' and give like speed and haste or smthn

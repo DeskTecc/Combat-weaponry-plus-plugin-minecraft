@@ -144,14 +144,14 @@ public class EntityDamage implements Listener {
 
                     double damage = 1;
                     //analisys
-                    if(itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE).contains(Attribute.GENERIC_ATTACK_DAMAGE)){
-                        for(AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)){
-                            if(attributeModifier.getKey().equals(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"))){
-                                damage = attributeModifier.getAmount();
-                                break;
-                            }
+
+                    for(AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)){
+                        if(attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))){
+                            damage = attributeModifier.getAmount();
+                            break;
                         }
                     }
+
 
                         /*.stream()
                             .filter(attributeModifier -> attributeModifier.getKey().equals(
@@ -302,7 +302,7 @@ public class EntityDamage implements Listener {
                             //RNG CRIT
                             int random = getRandomInt(5);
                             if (random == 1) {
-                                double crit = damage * 1.1;
+                                double crit = damage * 1.25;
                                 event.setDamage(crit);
                                 getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                     public void run() {
@@ -514,7 +514,7 @@ public class EntityDamage implements Listener {
     }*/
 
     private static double getPierceDamage(Player player, World world, double damage){
-        //only one part missing is necessary to apply the critical, if player has a piece of armor
+        //only one part missing is necessary to apply the critical
         if (player.getInventory().getHelmet() != null ||
                 player.getInventory().getChestplate() != null ||
                 player.getInventory().getLeggings() != null ||
