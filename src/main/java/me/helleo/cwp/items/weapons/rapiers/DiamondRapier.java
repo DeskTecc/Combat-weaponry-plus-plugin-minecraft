@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.rapiers;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,13 +12,14 @@ public class DiamondRapier extends BaseRapier{
 
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String rapierType = "Diamond";
 
     public static ItemStack getRapier() {
         double attack_damage = 4;
         double attack_speed = -2.1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Rapiers_DiamondRapier_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Rapiers_DiamondRapier_Speed.getValue();
+            attack_damage = getCustomDamage(rapierType);
+            attack_speed = getCustomSpeed(rapierType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

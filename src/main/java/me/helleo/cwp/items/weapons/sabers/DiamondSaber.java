@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.sabers;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,13 +12,14 @@ public class DiamondSaber extends BaseSaber{
 
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String saberType = "Diamond";
 
     public static ItemStack getSaber() {
         double attack_damage = 6;
         double attack_speed = -2.4;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Sabers_DiamondSaber_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Sabers_DiamondSaber_Speed.getValue();
+            attack_damage = getCustomDamage(saberType);
+            attack_speed = getCustomSpeed(saberType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

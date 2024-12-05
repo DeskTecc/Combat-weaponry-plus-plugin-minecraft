@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.knives;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,6 +12,7 @@ public class NetheriteKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String knifeType = "Netherite";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -28,8 +28,8 @@ public class NetheriteKnife extends BaseKnife{
         double attack_damage = 4;
         double attack_speed = -1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Knives_NetheriteKnife_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Knives_NetheriteKnife_Speed.getValue();
+            attack_damage = getCustomDamage(knifeType);
+            attack_speed = getCustomSpeed(knifeType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

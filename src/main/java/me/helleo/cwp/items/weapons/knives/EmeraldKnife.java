@@ -14,13 +14,14 @@ public class EmeraldKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String knifeType = "Emerald";
 
     public static ItemStack getKnife() {
         double attack_damage = 2;
         double attack_speed = 0;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Knives_EmeraldKnife_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Knives_EmeraldKnife_Speed.getValue();
+            attack_damage = getCustomDamage(knifeType);
+            attack_speed = getCustomSpeed(knifeType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

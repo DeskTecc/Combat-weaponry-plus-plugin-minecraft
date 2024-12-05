@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.spears;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,13 +12,14 @@ public class GoldenSpear extends BaseSpear{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String spearType = "Golden";
 
     public static ItemStack getSpear() {
         double attack_damage = 1;
         double attack_speed = -1.2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Spears_GoldenSpear_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Spears_GoldenSpear_Speed.getValue();
+            attack_damage = getCustomDamage(spearType);
+            attack_speed = getCustomSpeed(spearType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

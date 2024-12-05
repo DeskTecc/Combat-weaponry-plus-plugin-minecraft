@@ -2,8 +2,6 @@ package me.helleo.cwp.items.weapons.longswords;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
-import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,7 +30,7 @@ public class PrismarineLongsword implements Listener {
         double attack_damage = 1;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Longswords_PrismarineLongsword_DamageAdded.getValue();
+            attack_damage = BaseLongsword.getCustomDamageAdded();
         }
 
         AttributeModifier modifier1 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
@@ -45,18 +43,18 @@ public class PrismarineLongsword implements Listener {
         itemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongsword_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword_Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword_Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword_Line8.getValue()));
 
         itemMeta.setLore(lore);
 
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineLongsword_Name.getValue()));
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword_Name.getValue()));
         //important:
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         itemMeta.setCustomModelData(1200001);

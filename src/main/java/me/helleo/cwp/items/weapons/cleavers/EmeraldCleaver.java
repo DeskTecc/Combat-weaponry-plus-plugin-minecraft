@@ -14,13 +14,14 @@ public class EmeraldCleaver extends BaseCleaver{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String cleaverType = "Emerald";
 
     public static ItemStack getCleaver() {
         double attack_damage = 10;
         double attack_speed = -3.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Cleavers_EmeraldCleaver_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Cleavers_EmeraldCleaver_Speed.getValue();
+            attack_damage = getCustomDamage(cleaverType);
+            attack_speed = getCustomSpeed(cleaverType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

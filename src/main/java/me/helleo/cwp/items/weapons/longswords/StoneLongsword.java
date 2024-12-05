@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.longswords;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,13 +12,14 @@ public class StoneLongsword extends BaseLongsword{
 
     static ItemStack item = new ItemStack(Material.STONE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String longswordType = "Stone";
 
     public static ItemStack getLongsword() {
         double attack_damage = 5;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Longswords_StoneLongsword_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Longswords_StoneLongsword_Speed.getValue();
+            attack_damage = getCustomDamage(longswordType);
+            attack_speed = getCustomSpeed(longswordType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

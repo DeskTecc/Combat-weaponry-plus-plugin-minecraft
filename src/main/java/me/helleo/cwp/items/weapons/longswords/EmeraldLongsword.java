@@ -14,13 +14,14 @@ public class EmeraldLongsword extends BaseLongsword{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String longswordType = "Emerald";
 
     public static ItemStack getLongsword() {
         double attack_damage = 6;
         double attack_speed = -2.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Longswords_EmeraldLongsword_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Longswords_EmeraldLongsword_Speed.getValue();
+            attack_damage = getCustomDamage(longswordType);
+            attack_speed = getCustomSpeed(longswordType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

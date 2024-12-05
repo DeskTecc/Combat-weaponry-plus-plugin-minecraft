@@ -14,13 +14,14 @@ public class EmeraldSpear extends BaseSpear{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String spearType = "Emerald";
 
     public static ItemStack getSpear() {
         double attack_damage = 2;
         double attack_speed = -1.2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Spears_EmeraldSpear_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Spears_EmeraldSpear_Speed.getValue();
+            attack_damage = getCustomDamage(spearType);
+            attack_speed = getCustomSpeed(spearType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

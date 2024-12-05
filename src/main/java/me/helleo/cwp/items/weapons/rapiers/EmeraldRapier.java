@@ -14,13 +14,14 @@ public class EmeraldRapier extends BaseRapier{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String rapierType = "Emerald";
 
     public static ItemStack getRapier() {
         double attack_damage = 3;
         double attack_speed = -1.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Rapiers_EmeraldRapier_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Rapiers_EmeraldRapier_Speed.getValue();
+            attack_damage = getCustomDamage(rapierType);
+            attack_speed = getCustomSpeed(rapierType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

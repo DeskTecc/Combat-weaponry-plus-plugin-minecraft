@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.knives;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,13 +12,14 @@ public class IronKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String knifeType = "Iron";
 
     public static ItemStack getKnife() {
         double attack_damage = 2;
         double attack_speed = -1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Knives_IronKnife_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Knives_IronKnife_Speed.getValue();
+            attack_damage = getCustomDamage(knifeType);
+            attack_speed = getCustomSpeed(knifeType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

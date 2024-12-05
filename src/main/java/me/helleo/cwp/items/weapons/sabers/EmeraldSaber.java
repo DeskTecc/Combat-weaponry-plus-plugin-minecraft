@@ -14,13 +14,14 @@ public class EmeraldSaber extends BaseSaber{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String saberType = "Emerald";
 
     public static ItemStack getSaber() {
         double attack_damage = 5;
         double attack_speed = -2.4;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Sabers_EmeraldSaber_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Sabers_EmeraldSaber_Speed.getValue();
+            attack_damage = getCustomDamage(saberType);
+            attack_speed = getCustomSpeed(saberType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

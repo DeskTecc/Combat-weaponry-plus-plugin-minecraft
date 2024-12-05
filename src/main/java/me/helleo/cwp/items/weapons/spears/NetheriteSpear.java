@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.spears;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,6 +12,7 @@ public class NetheriteSpear extends BaseSpear{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String spearType = "Netherite";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -25,8 +25,8 @@ public class NetheriteSpear extends BaseSpear{
         double attack_damage = 4;
         double attack_speed = -1.5;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Spears_NetheriteSpear_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Spears_NetheriteSpear_Speed.getValue();
+            attack_damage = getCustomDamage(spearType);
+            attack_speed = getCustomSpeed(spearType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

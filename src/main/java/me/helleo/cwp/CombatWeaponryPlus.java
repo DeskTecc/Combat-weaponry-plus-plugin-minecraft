@@ -505,23 +505,23 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         //added damage (default is +1)
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Scythes_PrismarineScythe_DamageAdded.getValue();
+            dmg = BaseScythe.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineScythe_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.PrismarineScythe_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionScythe_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineScythe_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineScythe_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineScythe_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.PrismarineScythe_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.PrismarineScythe_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.PrismarineScythe_Line10.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -570,23 +570,23 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Rapiers_PrismarineRapier_DamageAdded.getValue();
+            dmg = BaseRapier.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineRapier_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.PrismarineRapier_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRapier_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineRapier_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineRapier_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineRapier_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.PrismarineRapier_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.PrismarineRapier_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.PrismarineRapier_Line10.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -638,25 +638,25 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Spears_PrismarineSpear_DamageAdded.getValue();
+            dmg = BaseSpear.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSpear_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.PrismarineSpear_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSpear_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSpear_Line10.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSpear_Line11.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSpear_Line12.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.PrismarineSpear_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.PrismarineSpear_Line11.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.PrismarineSpear_Line12.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -705,27 +705,27 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Katanas_PrismarineKatana_DamageAdded.getValue();
+            dmg = BaseKatana.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKatana_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.PrismarineKatana_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line10.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKatana_Line11.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKatana_Line12.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKatana_Line13.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKatana_Line14.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.Line11.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.PrismarineKatana_Line12.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.PrismarineKatana_Line13.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.PrismarineKatana_Line14.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -774,22 +774,22 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Knives_PrismarineKnife_DamageAdded.getValue();
+            dmg = BaseKnife.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKnife_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.PrismarineKnife_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionKnife_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKnife_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKnife_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineKnife_Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.PrismarineKnife_Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.PrismarineKnife_Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.PrismarineKnife_Line9.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -838,20 +838,20 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Sabers_PrismarineSaber_DamageAdded.getValue();
+            dmg = BaseSaber.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSaber_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.PrismarineSaber_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSaber_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSaber_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSaber_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSaber_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSaber_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSaber_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSaber_Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.PrismarineSaber_Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.PrismarineSaber_Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.PrismarineSaber_Line7.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -900,25 +900,25 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Cleavers_PrismarineCleaver_DamageAdded.getValue();
+            dmg = BaseCleaver.getCustomDamageAdded();
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineCleaver_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.PrismarineCleaver_Name.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCleaver_Line9.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineCleaver_Line10.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineCleaver_Line11.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineCleaver_Line12.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line1.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line2.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line4.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line5.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line6.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line7.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line8.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.PrismarineCleaver_Line10.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.PrismarineCleaver_Line11.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.PrismarineCleaver_Line12.getValue()));
         resultm.setLore(lore);
         //important:
         resultm.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -3695,6 +3695,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
                         AttributeModifier modifier = new AttributeModifier(new NamespacedKey (this, "generic.attack_speed"), 0.25,
                                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                        m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                         m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                         p.getInventory().getItemInMainHand().setItemMeta(m);
                     }

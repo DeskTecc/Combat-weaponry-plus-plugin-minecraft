@@ -111,7 +111,7 @@ public class EntityDamage implements Listener {
             }
             if (player.getInventory().getItemInMainHand().getItemMeta() != null){
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-
+                    ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta();
                     int itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
                     /*int[] bone_models = {4000002, 4000001, 4000003, 4000004, 4000005, 4000006};
                     boolean bone_weapon_validator = Arrays.stream(bone_models).anyMatch(x-> x==itemModelData);*/
@@ -141,14 +141,26 @@ public class EntityDamage implements Listener {
                     boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
 
 
-                    double damage = player.getInventory().getItemInMainHand().getItemMeta().getAttributeModifiers(
-                            Attribute.GENERIC_ATTACK_DAMAGE).stream()
+                    double damage = 1;
+                    if(itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)
+                            .contains(Attribute.GENERIC_ATTACK_DAMAGE)){
+                        for(AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)){
+                            if(attributeModifier.getKey().equals(
+                                    new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage")
+                            )){
+                                damage = attributeModifier.getAmount();
+                                break;
+                            }
+                        }
+                    }
+
+                        /*.stream()
                             .filter(attributeModifier -> attributeModifier.getKey().equals(
                                     new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage")
                                     ))
                             .map(AttributeModifier::getAmount)
                             .collect(Collectors.toList())
-                            .get(0);
+                            .get(0);*/
 
                     Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // REMOVE THIS
 

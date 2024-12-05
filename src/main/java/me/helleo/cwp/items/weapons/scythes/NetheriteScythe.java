@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.scythes;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,6 +12,7 @@ public class NetheriteScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String scytheType = "Netherite";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -26,8 +26,8 @@ public class NetheriteScythe extends BaseScythe{
         double attack_damage = 9;
         double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Scythes_NetheriteScythe_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Scythes_NetheriteScythe_Speed.getValue();
+            attack_damage = getCustomDamage(scytheType);
+            attack_speed = getCustomSpeed(scytheType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

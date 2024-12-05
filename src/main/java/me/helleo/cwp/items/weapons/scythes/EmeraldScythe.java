@@ -14,13 +14,14 @@ public class EmeraldScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String scytheType = "Emerald";
 
     public static ItemStack getScythe() {
         double attack_damage = 7;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Scythes_EmeraldScythe_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Scythes_EmeraldScythe_Speed.getValue();
+            attack_damage = getCustomDamage(scytheType);
+            attack_speed = getCustomSpeed(scytheType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

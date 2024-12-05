@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.cleavers;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,6 +12,7 @@ public class NetheriteCleaver extends BaseCleaver{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String cleaverType = "Netherite";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -27,8 +27,8 @@ public class NetheriteCleaver extends BaseCleaver{
         double attack_damage = 12;
         double attack_speed = -3.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Cleavers_NetheriteCleaver_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Cleavers_NetheriteCleaver_Speed.getValue();
+            attack_damage = getCustomDamage(cleaverType);
+            attack_speed = getCustomSpeed(cleaverType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

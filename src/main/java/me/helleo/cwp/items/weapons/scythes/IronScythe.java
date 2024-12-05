@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.scythes;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,13 +12,14 @@ public class IronScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String scytheType = "Iron";
 
     public static ItemStack getScythe() {
         double attack_damage = 7;
         double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Scythes_IronScythe_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Scythes_IronScythe_Speed.getValue();
+            attack_damage = getCustomDamage(scytheType);
+            attack_speed = getCustomSpeed(scytheType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

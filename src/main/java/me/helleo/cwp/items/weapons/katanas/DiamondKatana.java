@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.katanas;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,15 +12,16 @@ public class DiamondKatana extends BaseKatana{
 
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String katanaType = "Diamond";
 
     public static ItemStack getKatana() {
         double attack_damage = 5;
         double attack_speed = -2.3;
         double move_speed = 0.02;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Katanas_DiamondKatana_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Katanas_DiamondKatana_Speed.getValue();
-            move_speed = ConfigurationsDouble.Katanas_DiamondKatana_MoveSpeed.getValue();
+            attack_damage = getCustomDamage(katanaType);
+            attack_speed = getCustomSpeed(katanaType);
+            move_speed = getCustomMoveSpeed(katanaType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));

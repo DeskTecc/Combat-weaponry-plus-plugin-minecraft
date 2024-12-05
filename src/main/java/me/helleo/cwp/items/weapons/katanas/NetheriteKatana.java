@@ -1,7 +1,6 @@
 package me.helleo.cwp.items.weapons.katanas;
 
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,6 +12,7 @@ public class NetheriteKatana extends BaseKatana{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String katanaType = "Netherite";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -28,9 +28,9 @@ public class NetheriteKatana extends BaseKatana{
         double attack_speed = -2.3;
         double move_speed = 0.02;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Katanas_NetheriteKatana_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Katanas_NetheriteKatana_Speed.getValue();
-            move_speed = ConfigurationsDouble.Katanas_NetheriteKatana_MoveSpeed.getValue();
+            attack_damage = getCustomDamage(katanaType);
+            attack_speed = getCustomSpeed(katanaType);
+            move_speed = getCustomMoveSpeed(katanaType);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
