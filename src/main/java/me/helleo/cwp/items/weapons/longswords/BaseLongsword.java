@@ -3,8 +3,6 @@ package me.helleo.cwp.items.weapons.longswords;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -12,19 +10,24 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
-
 public abstract class BaseLongsword extends WeaponBase {
     public enum description {
-        Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongsword.Line1")),
-        Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongsword.Line2")),
-        Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongsword.Line3")),
-        Line4(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongsword.Line4")),
-        Line5(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionLongsword.Line5")),
-        PrismarineLongsword_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineLongsword.Name")),
-        PrismarineLongsword_Line6(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineLongsword.Line6")),
-        PrismarineLongsword_Line7(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineLongsword.Line7")),
-        PrismarineLongsword_Line8(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineLongsword.Line8"));
+        Line1(getLang().getString("DescriptionLongsword.Line1")),
+        Line2(getLang().getString("DescriptionLongsword.Line2")),
+        Line3(getLang().getString("DescriptionLongsword.Line3")),
+        Line4(getLang().getString("DescriptionLongsword.Line4")),
+        Line5(getLang().getString("DescriptionLongsword.Line5")),
+        PrismarineLongsword_Line6(getLang().getString("DescriptionPrismarineLongsword.Line6")),
+        PrismarineLongsword_Line7(getLang().getString("DescriptionPrismarineLongsword.Line7")),
+        PrismarineLongsword_Line8(getLang().getString("DescriptionPrismarineLongsword.Line8")),
+        WoodenLongsword(getLang().getString("Wooden_Longsword")),
+        GoldenLongsword(getLang().getString("Golden_Longsword")),
+        StoneLongsword(getLang().getString("Stone_Longsword")),
+        IronLongsword(getLang().getString("Iron_Longsword")),
+        EmeraldLongsword(getLang().getString("Emerald_Longsword")),
+        DiamondLongsword(getLang().getString("Diamond_Longsword")),
+        NetheriteLongsword(getLang().getString("Netherite_Longsword")),
+        PrismarineLongsword(getLang().getString("Prismarine_Longsword"));
 
         private final String description_value;
 
@@ -34,26 +37,6 @@ public abstract class BaseLongsword extends WeaponBase {
         public String getValue(){
             return this.description_value;
         }
-    }
-    final static String weapon = "Longsword";
-
-    protected static Double getCustomDamage(String longswordType){
-        String path = "Longswords_"+longswordType+weapon+".Damage";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    public static Double getCustomDamageAdded(){
-        String path = "Longswords_Prismarine"+weapon+".DamageAdded";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static Double getCustomSpeed(String longswordType){
-        String path = "Longswords_"+longswordType+weapon+".Speed";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static String getName(Material material){
-        return setName(material, weapon);
     }
 
     protected static AttributeModifier setModifier(String key, double value){
@@ -68,9 +51,6 @@ public abstract class BaseLongsword extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line3.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line4.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
-        return lore;
+        return setLore(lore, attack_damage,attack_speed);
     }
 }

@@ -12,14 +12,14 @@ public class WoodenRapier extends BaseRapier{
 
     static ItemStack item = new ItemStack(Material.WOODEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String rapierType = "Wooden";
+    static String rapierPath = "WoodenRapier";
 
     public static ItemStack getRapier() {
         double attack_damage = 2;
         double attack_speed = -2.1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(rapierType);
-            attack_speed = getCustomSpeed(rapierType);
+            attack_damage = getCustomDamage(rapierPath);
+            attack_speed = getCustomSpeed(rapierPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,7 +29,7 @@ public class WoodenRapier extends BaseRapier{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.OAK_WOOD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.WoodenRapier.getValue()));
         meta.setCustomModelData(1000005);
         item.setItemMeta(meta);
         return item;

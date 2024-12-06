@@ -10,20 +10,18 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.UUID;
-
 public class DiamondScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String scytheType = "Diamond";
+    static String scythePath = "DiamondScythe";
 
     public static ItemStack getScythe() {
         double attack_damage = 8;
         double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scytheType);
-            attack_speed = getCustomSpeed(scytheType);
+            attack_damage = getCustomDamage(scythePath);
+            attack_speed = getCustomSpeed(scythePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -45,7 +43,7 @@ public class DiamondScythe extends BaseScythe{
                 )
         );
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.DIAMOND)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.DiamondScythe.getValue()));
         meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;

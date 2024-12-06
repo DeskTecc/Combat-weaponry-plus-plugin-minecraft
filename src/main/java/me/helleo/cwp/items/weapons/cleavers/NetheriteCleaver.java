@@ -12,7 +12,7 @@ public class NetheriteCleaver extends BaseCleaver{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String cleaverType = "Netherite";
+    static String cleaverPath = "NetheriteCleaver";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -27,8 +27,8 @@ public class NetheriteCleaver extends BaseCleaver{
         double attack_damage = 12;
         double attack_speed = -3.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(cleaverType);
-            attack_speed = getCustomSpeed(cleaverType);
+            attack_damage = getCustomDamage(cleaverPath);
+            attack_speed = getCustomSpeed(cleaverPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -38,7 +38,7 @@ public class NetheriteCleaver extends BaseCleaver{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed",attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(getNetherite())));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteCleaver.getValue()));
         meta.setCustomModelData(1000021);
         item.setItemMeta(meta);
         return item;

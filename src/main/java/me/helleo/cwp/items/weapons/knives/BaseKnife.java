@@ -3,8 +3,6 @@ package me.helleo.cwp.items.weapons.knives;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -12,20 +10,25 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
-
 public abstract class BaseKnife extends WeaponBase {
     public enum description {
-        Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKnife.Line1")),
-        Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKnife.Line2")),
-        Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKnife.Line3")),
-        Line4(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKnife.Line4")),
-        Line5(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKnife.Line5")),
-        Line6(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKnife.Line6")),
-        PrismarineKnife_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKnife.Name")),
-        PrismarineKnife_Line7(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKnife.Line7")),
-        PrismarineKnife_Line8(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKnife.Line8")),
-        PrismarineKnife_Line9(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKnife.Line9"));
+        Line1(getLang().getString("DescriptionKnife.Line1")),
+        Line2(getLang().getString("DescriptionKnife.Line2")),
+        Line3(getLang().getString("DescriptionKnife.Line3")),
+        Line4(getLang().getString("DescriptionKnife.Line4")),
+        Line5(getLang().getString("DescriptionKnife.Line5")),
+        Line6(getLang().getString("DescriptionKnife.Line6")),
+        PrismarineKnife_Line7(getLang().getString("DescriptionPrismarineKnife.Line7")),
+        PrismarineKnife_Line8(getLang().getString("DescriptionPrismarineKnife.Line8")),
+        PrismarineKnife_Line9(getLang().getString("DescriptionPrismarineKnife.Line9")),
+        WoodenKnife(getLang().getString("Wooden_Knife")),
+        GoldenKnife(getLang().getString("Golden_Knife")),
+        StoneKnife(getLang().getString("Stone_Knife")),
+        IronKnife(getLang().getString("Iron_Knife")),
+        EmeraldKnife(getLang().getString("Emerald_Knife")),
+        DiamondKnife(getLang().getString("Diamond_Knife")),
+        NetheriteKnife(getLang().getString("Netherite_Knife")),
+        PrismarineKnife(getLang().getString("Prismarine_Knife"));
 
         private final String description_value;
 
@@ -35,26 +38,6 @@ public abstract class BaseKnife extends WeaponBase {
         public String getValue(){
             return this.description_value;
         }
-    }
-    final static String weapon = "Knife";
-
-    protected static Double getCustomDamage(String knifeType){
-        String path = "Knives_"+knifeType+weapon+".Damage";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    public static Double getCustomDamageAdded(){
-        String path = "Knives_Prismarine"+weapon+".DamageAdded";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static Double getCustomSpeed(String knifeType){
-        String path = "Knives_"+knifeType+weapon+".Speed";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static String getName(Material material){
-        return setName(material, weapon);
     }
 
     protected static AttributeModifier setModifier(String key, double value){
@@ -70,9 +53,6 @@ public abstract class BaseKnife extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line4.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line5.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
-        return lore;
+        return setLore(lore, attack_damage,attack_speed);
     }
 }

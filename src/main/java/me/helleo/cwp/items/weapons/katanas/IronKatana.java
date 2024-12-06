@@ -12,16 +12,16 @@ public class IronKatana extends BaseKatana{
 
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String katanaType = "Iron";
+    static String katanaPath = "IronKatana";
 
     public static ItemStack getKatana() {
         double attack_damage = 4;
         double attack_speed = -2.3;
         double move_speed = 0.02;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(katanaType);
-            attack_speed = getCustomSpeed(katanaType);
-            move_speed = getCustomMoveSpeed(katanaType);
+            attack_damage = getCustomDamage(katanaPath);
+            attack_speed = getCustomSpeed(katanaPath);
+            move_speed = getCustomMoveSpeed(katanaPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -32,7 +32,7 @@ public class IronKatana extends BaseKatana{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, setModifier("generic.move_speed", move_speed));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.IRON_INGOT)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.IronKatana.getValue()));
         meta.setCustomModelData(1000002);
         item.setItemMeta(meta);
         return item;

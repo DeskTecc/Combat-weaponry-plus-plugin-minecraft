@@ -12,14 +12,14 @@ public class GoldenSaber extends BaseSaber{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String saberType = "Golden";
+    static String saberPath = "GoldenSaber";
 
     public static ItemStack getSaber() {
         double attack_damage = 3;
         double attack_speed = -2.4;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(saberType);
-            attack_speed = getCustomSpeed(saberType);
+            attack_damage = getCustomDamage(saberPath);
+            attack_speed = getCustomSpeed(saberPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,7 +29,7 @@ public class GoldenSaber extends BaseSaber{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.GOLD_INGOT)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.GoldenSaber.getValue()));
         meta.setCustomModelData(1000010);
         item.setItemMeta(meta);
         return item;

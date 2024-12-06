@@ -14,14 +14,14 @@ public class EmeraldCleaver extends BaseCleaver{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String cleaverType = "Emerald";
+    static String cleaverPath = "EmeraldCleaver";
 
     public static ItemStack getCleaver() {
         double attack_damage = 10;
         double attack_speed = -3.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(cleaverType);
-            attack_speed = getCustomSpeed(cleaverType);
+            attack_damage = getCustomDamage(cleaverPath);
+            attack_speed = getCustomSpeed(cleaverPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -31,7 +31,7 @@ public class EmeraldCleaver extends BaseCleaver{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed",attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldCleaver.getValue()));
         meta.setCustomModelData(1000031);
 
         //enchants

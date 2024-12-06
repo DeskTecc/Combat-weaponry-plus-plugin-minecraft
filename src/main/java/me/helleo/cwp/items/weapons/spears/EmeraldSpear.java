@@ -14,14 +14,14 @@ public class EmeraldSpear extends BaseSpear{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String spearType = "Emerald";
+    static String spearPath = "EmeraldSpear";
 
     public static ItemStack getSpear() {
         double attack_damage = 2;
         double attack_speed = -1.2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(spearType);
-            attack_speed = getCustomSpeed(spearType);
+            attack_damage = getCustomDamage(spearPath);
+            attack_speed = getCustomSpeed(spearPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -31,7 +31,7 @@ public class EmeraldSpear extends BaseSpear{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed",attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage",attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldSpear.getValue()));
         meta.setCustomModelData(1000014);
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

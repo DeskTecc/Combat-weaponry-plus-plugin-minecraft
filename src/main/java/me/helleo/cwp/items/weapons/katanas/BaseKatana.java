@@ -3,8 +3,6 @@ package me.helleo.cwp.items.weapons.katanas;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -12,25 +10,30 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
-
 public abstract class BaseKatana extends WeaponBase {
     public enum description {
-        Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line1")),
-        Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line2")),
-        Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line3")),
-        Line4(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line4")),
-        Line5(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line5")),
-        Line6(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line6")),
-        Line7(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line7")),
-        Line8(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line8")),
-        Line9(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line9")),
-        Line10(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line10")),
-        Line11(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionKatana.Line11")),
-        PrismarineKatana_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKatana.Name")),
-        PrismarineKatana_Line12(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKatana.Line12")),
-        PrismarineKatana_Line13(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKatana.Line13")),
-        PrismarineKatana_Line14(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineKatana.Line14"));
+        Line1(getLang().getString("DescriptionKatana.Line1")),
+        Line2(getLang().getString("DescriptionKatana.Line2")),
+        Line3(getLang().getString("DescriptionKatana.Line3")),
+        Line4(getLang().getString("DescriptionKatana.Line4")),
+        Line5(getLang().getString("DescriptionKatana.Line5")),
+        Line6(getLang().getString("DescriptionKatana.Line6")),
+        Line7(getLang().getString("DescriptionKatana.Line7")),
+        Line8(getLang().getString("DescriptionKatana.Line8")),
+        Line9(getLang().getString("DescriptionKatana.Line9")),
+        Line10(getLang().getString("DescriptionKatana.Line10")),
+        Line11(getLang().getString("DescriptionKatana.Line11")),
+        PrismarineKatana_Line12(getLang().getString("DescriptionPrismarineKatana.Line12")),
+        PrismarineKatana_Line13(getLang().getString("DescriptionPrismarineKatana.Line13")),
+        PrismarineKatana_Line14(getLang().getString("DescriptionPrismarineKatana.Line14")),
+        WoodenKatana(getLang().getString("Wooden_Katana")),
+        GoldenKatana(getLang().getString("Golden_Katana")),
+        StoneKatana(getLang().getString("Stone_Katana")),
+        IronKatana(getLang().getString("Iron_Katana")),
+        EmeraldKatana(getLang().getString("Emerald_Katana")),
+        DiamondKatana(getLang().getString("Diamond_Katana")),
+        NetheriteKatana(getLang().getString("Netherite_Katana")),
+        PrismarineKatana(getLang().getString("Prismarine_Katana"));
 
         private final String description_value;
 
@@ -40,32 +43,6 @@ public abstract class BaseKatana extends WeaponBase {
         public String getValue(){
             return this.description_value;
         }
-    }
-
-    final static String weapon = "Katana";
-
-    protected static Double getCustomDamage(String katanaType){
-        String path = "Katanas_"+katanaType+weapon+".Damage";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    public static Double getCustomDamageAdded(){
-        String path = "Katanas_Prismarine"+weapon+".DamageAdded";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static Double getCustomSpeed(String katanaType){
-        String path = "Katanas_"+katanaType+weapon+".Speed";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static Double getCustomMoveSpeed(String katanaType){
-        String path = "Katanas_"+katanaType+weapon+".MoveSpeed";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static String getName(Material material){
-        return setName(material, weapon);
     }
 
     protected static AttributeModifier setModifier(String key, double value){
@@ -86,9 +63,6 @@ public abstract class BaseKatana extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line9.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line10.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line11.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
-        return lore;
+        return setLore(lore, attack_damage,attack_speed);
     }
 }

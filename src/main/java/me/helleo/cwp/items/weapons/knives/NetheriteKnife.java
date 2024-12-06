@@ -12,7 +12,7 @@ public class NetheriteKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String knifeType = "Netherite";
+    static String knifePath = "NetheriteKnife";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -28,8 +28,8 @@ public class NetheriteKnife extends BaseKnife{
         double attack_damage = 4;
         double attack_speed = -1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(knifeType);
-            attack_speed = getCustomSpeed(knifeType);
+            attack_damage = getCustomDamage(knifePath);
+            attack_speed = getCustomSpeed(knifePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -39,7 +39,7 @@ public class NetheriteKnife extends BaseKnife{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(getNetherite())));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteKnife.getValue()));
         meta.setCustomModelData(1000006);
         item.setItemMeta(meta);
         return item;

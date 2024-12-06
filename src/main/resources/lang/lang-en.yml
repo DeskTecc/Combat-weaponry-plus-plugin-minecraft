@@ -1,0 +1,220 @@
+#SCYTHES
+Wooden_Scythe: "Wooden Scythe"
+Golden_Scythe: "Golden Scythe"
+Stone_Scythe: "Stone Scythe"
+Iron_Scythe: "Iron Scythe"
+Emerald_Scythe: "Emerald Scythe"
+Diamond_Scythe: "Diamond Scythe"
+Netherite_Scythe: "Netherite Scythe"
+Prismarine_Scythe: "Prismarine Scythe"
+
+#SCYTHE DESCRIPTION
+DescriptionScythe:
+  Line1: ""
+  Line2: "&6Two Handed"
+  Line3: "&7- +30% damage if there is no item in offhand"
+  Line4: "&6Cutting Edge"
+  Line5: "&7- +50% damage to players"
+  Line6: "&7  without a chestplate"
+  Line7: ""
+
+#PRISMARINE SCYTHE DESCRIPTION
+DescriptionPrismarineScythe:
+  Name: "&aPrismarine Scythe"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 11 Attack Damage"
+  Line10: "&9 1 Attack Speed"
+
+#RAPIERS
+Wooden_Rapier: "Wooden Rapier"
+Golden_Rapier: "Golden Rapier"
+Stone_Rapier: "Stone Rapier"
+Iron_Rapier: "Iron Rapier"
+Emerald_Rapier: "Emerald Rapier"
+Diamond_Rapier: "Diamond Rapier"
+Netherite_Rapier: "Netherite Rapier"
+Prismarine_Rapier: "Prismarine Rapier"
+
+#RAPIER DESCRIPTION
+DescriptionRapier:
+  Line1: ""
+  Line2: "&6Armor Piercing"
+  Line3: "&7- +5% damage for each piece of armor"
+  Line4: "&7   your opponent has"
+  Line5: "&7   (stacks multiplicatively)"
+  Line6: "&7- Disables shields for 2 seconds"
+  Line7: ""
+
+#PRISMARINE RAPIER DESCRIPTION
+DescriptionPrismarineRapier:
+  Name: "&aPrismarine Rapier"
+  Line8: "&7When in Main Hand:"
+  Line9: "&9 7 Attack Damage"
+  Line10: "&9 1.9 Attack Speed"
+
+#LONGSWORDS
+Wooden_Longsword: "Wooden Longsword"
+Golden_Longsword: "Golden Longsword"
+Stone_Longsword: "Stone Longsword"
+Iron_Longsword: "Iron Longsword"
+Emerald_Longsword: "Emerald Longsword"
+Diamond_Longsword: "Diamond Longsword"
+Netherite_Longsword: "Netherite Longsword"
+Prismarine_Longsword: "Prismarine Longsword"
+
+#LONGSWORD DESCRIPTION
+DescriptionLongsword:
+  Line1: ""
+  Line2: "&6Two Handed"
+  Line3: "&7- +30% damage if there is"
+  Line4: "&7  no item in your offhand"
+  Line5: ""
+
+#PRISMARINE LONGSWORD DESCRIPTION
+DescriptionPrismarineLongsword:
+  Name: "&aPrismarine Longsword"
+  Line6: "&7When in Main Hand:"
+  Line7: "&9 10 Attack Damage"
+  Line8: "&9 1.2 Attack Speed"
+
+#KNIVES
+Wooden_Knife: "Wooden Knife"
+Golden_Knife: "Golden Knife"
+Stone_Knife: "Stone Knife"
+Iron_Knife: "Iron Knife"
+Emerald_Knife: "Emerald Knife"
+Diamond_Knife: "Diamond Knife"
+Netherite_Knife: "Netherite Knife"
+Prismarine_Knife: "Prismarine Knife"
+
+#KNIFE DESCRIPTION
+DescriptionKnife:
+  Line1: ""
+  Line2: "&6Cutting Edge"
+  Line3: "&7- +100% damage to players without a chestplate"
+  Line4: "&6Combo"
+  Line5: "&7- Getting 2 consecutive hits gives Strength I"
+  Line6: ""
+
+#PRISMARINE KNIFE DESCRIPTION
+DescriptionPrismarineKnife:
+  Name: "&aPrismarine Knife"
+  Line7: "&7When in Main Hand:"
+  Line8: "&9 6 Attack Damage"
+  Line9: "&9 3 Attack Speed"
+
+#SPEARS
+Wooden_Spear: "Wooden Spear"
+Golden_Spear: "Golden Spear"
+Stone_Spear: "Stone Spear"
+Iron_Spear: "Iron Spear"
+Emerald_Spear: "Emerald Spear"
+Diamond_Spear: "Diamond Spear"
+Netherite_Spear: "Netherite Spear"
+Prismarine_Spear: "Prismarine Spear"
+
+#SPEAR DESCRIPTION
+DescriptionSpear:
+  Line1: ""
+  Line2: "&6Armor Piercing"
+  Line3: "&7- +5% damage for each piece of armor"
+  Line4: "&7   your opponent has"
+  Line5: "&7   (stacks multiplicatively)"
+  Line6: "&7- Disables shields for 1 second"
+  Line7: "&6Two Handed"
+  Line8: "&7- +30% damage if there is no item in offhand"
+  Line9: ""
+
+#PRISMARINE SPEAR DESCRIPTION
+DescriptionPrismarineSpear:
+  Name: "&aPrismarine Spear"
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 6 Attack Damage"
+  Line12: "&9 2.5 Attack Speed"
+
+#KATANAS
+Wooden_Katana: "Wooden Katana"
+Golden_Katana: "Golden Katana"
+Stone_Katana: "Stone Katana"
+Iron_Katana: "Iron Katana"
+Emerald_Katana: "Emerald Katana"
+Diamond_Katana: "Diamond Katana"
+Netherite_Katana: "Netherite Katana"
+Prismarine_Katana: "Prismarine Katana"
+
+#KATANA DESCRIPTION
+DescriptionKatana:
+  Line1: ""
+  Line2: "&6Lightweight"
+  Line3: "&7- Slightly increases"
+  Line4: "&7  movement speed"
+  Line5: "&6Two Handed"
+  Line6: "&7- +30% damage if there is"
+  Line7: "&7  no item in offhand"
+  Line8: "&6Critical Hit"
+  Line9: "&7- 20% chance to deal 10% more"
+  Line10: "&7  damage when two handed"
+  Line11: ""
+
+#PRISMARINE KATANA DESCRIPTION
+DescriptionPrismarineKatana:
+  Name: "&aPrismarine Katana"
+  Line12: "&7When in Main Hand:"
+  Line13: "&9 8 Attack Damage"
+  Line14: "&9 1.7 Attack Speed"
+
+#SABERS
+Wooden_Saber: "Wooden Saber"
+Golden_Saber: "Golden Saber"
+Stone_Saber: "Stone Saber"
+Iron_Saber: "Iron Saber"
+Emerald_Saber: "Emerald Saber"
+Diamond_Saber: "Diamond Saber"
+Netherite_Saber: "Netherite Saber"
+Prismarine_Saber: "Prismarine Saber"
+
+#SABER DESCRIPTION
+DescriptionSaber:
+  Line1: ""
+  Line2: "&6Dual Wielding"
+  Line3: "&7- Can be used in either hand"
+  Line4: ""
+
+#PRISMARINE SABER DESCRIPTION
+DescriptionPrismarineSaber:
+  Name: "&aPrismarine Saber"
+  Line5: "&7When in Main Hand:"
+  Line6: "&9 9 Attack Damage"
+  Line7: "&9 1.6 Attack Speed"
+
+#CLEAVERS
+Wooden_Cleaver: "Wooden Cleaver"
+Golden_Cleaver: "Golden Cleaver"
+Stone_Cleaver: "Stone Cleaver"
+Iron_Cleaver: "Iron Cleaver"
+Emerald_Cleaver: "Emerald Cleaver"
+Diamond_Cleaver: "Diamond Cleaver"
+Netherite_Cleaver: "Netherite Cleaver"
+Prismarine_Cleaver: "Prismarine Cleaver"
+
+#CLEAVER DESCRIPTION
+DescriptionCleaver:
+  Line1: ""
+  Line2: "&6Momentum"
+  Line3: "&7- When an attack hits an opponent"
+  Line4: "&7  while attack cooldown is between"
+  Line5: "&7  &260%-100% &7charged (not inclusive),"
+  Line6: "&7  gain &2+0.25 &7attack speed (max &26 &7stacks)"
+  Line7: "&7- Attack speed &2resets &7upon landing"
+  Line8: "&7  a fully charged attack"
+  Line9: ""
+#PRISMARINE CLEAVER DESCRIPTION
+DescriptionPrismarineCleaver:
+  Line10: "&7When in Main Hand:"
+  Line11: "&9 14 Attack Damage"
+  Line12: "&9 0.4 Attack Speed"
+
+#GENERAL DESCRIPTIONS
+When_In_Main_Hand:  "When in Main Hand"
+Attack_Damage: "Attack Damage";
+Attack_Speed: "Attack Speed";

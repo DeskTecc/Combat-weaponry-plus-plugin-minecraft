@@ -16,14 +16,14 @@ public class EmeraldScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String scytheType = "Emerald";
+    static String scythePath = "EmeraldScythe";
 
     public static ItemStack getScythe() {
         double attack_damage = 7;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scytheType);
-            attack_speed = getCustomSpeed(scytheType);
+            attack_damage = getCustomDamage(scythePath);
+            attack_speed = getCustomSpeed(scythePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -52,7 +52,7 @@ public class EmeraldScythe extends BaseScythe{
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldScythe.getValue()));
         meta.setCustomModelData(1000013);
         item.setItemMeta(meta);
         return item;

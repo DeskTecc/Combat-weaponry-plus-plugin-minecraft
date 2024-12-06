@@ -3,8 +3,6 @@ package me.helleo.cwp.items.weapons.scythes;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -12,21 +10,27 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
-
 public abstract class BaseScythe extends WeaponBase {
+
     public enum description {
-        Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line1")),
-        Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line2")),
-        Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line3")),
-        Line4(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line4")),
-        Line5(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line5")),
-        Line6(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line6")),
-        Line7(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionScythe.Line7")),
-        PrismarineScythe_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineScythe.Name")),
-        PrismarineScythe_Line8(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineScythe.Line8")),
-        PrismarineScythe_Line9(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineScythe.Line9")),
-        PrismarineScythe_Line10(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineScythe.Line10"));
+        Line1(getLang().getString("DescriptionScythe.Line1")),
+        Line2(getLang().getString("DescriptionScythe.Line2")),
+        Line3(getLang().getString("DescriptionScythe.Line3")),
+        Line4(getLang().getString("DescriptionScythe.Line4")),
+        Line5(getLang().getString("DescriptionScythe.Line5")),
+        Line6(getLang().getString("DescriptionScythe.Line6")),
+        Line7(getLang().getString("DescriptionScythe.Line7")),
+        PrismarineScythe_Line8(getLang().getString("DescriptionPrismarineScythe.Line8")),
+        PrismarineScythe_Line9(getLang().getString("DescriptionPrismarineScythe.Line9")),
+        PrismarineScythe_Line10(getLang().getString("DescriptionPrismarineScythe.Line10")),
+        WoodenScythe(getLang().getString("Wooden_Scythe")),
+        GoldenScythe(getLang().getString("Golden_Scythe")),
+        StoneScythe(getLang().getString("Stone_Scythe")),
+        IronScythe(getLang().getString("Iron_Scythe")),
+        EmeraldScythe(getLang().getString("Emerald_Scythe")),
+        DiamondScythe(getLang().getString("Diamond_Scythe")),
+        NetheriteScythe(getLang().getString("Netherite_Scythe")),
+        PrismarineScythe(getLang().getString("Prismarine_Scythe"));
 
         private final String description_value;
 
@@ -36,26 +40,6 @@ public abstract class BaseScythe extends WeaponBase {
         public String getValue(){
             return this.description_value;
         }
-    }
-    final static String weapon = "Scythe";
-
-    protected static Double getCustomDamage(String scytheType){
-        String path = "Scythes_"+scytheType+weapon+".Damage";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    public static Double getCustomDamageAdded(){
-        String path = "Scythes_Prismarine"+weapon+".DamageAdded";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static Double getCustomSpeed(String scytheType){
-        String path = "Scythes_"+scytheType+weapon+".Speed";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static String getName(Material material){
-        return setName(material, weapon);
     }
 
     protected static AttributeModifier setModifier(String key, double value){
@@ -72,9 +56,6 @@ public abstract class BaseScythe extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line5.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line6.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
-        return lore;
+        return setLore(lore, attack_damage,attack_speed);
     }
 }

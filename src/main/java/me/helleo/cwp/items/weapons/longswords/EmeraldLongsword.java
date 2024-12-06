@@ -14,14 +14,14 @@ public class EmeraldLongsword extends BaseLongsword{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String longswordType = "Emerald";
+    static String longswordPath = "EmeraldLongsword";
 
     public static ItemStack getLongsword() {
         double attack_damage = 6;
         double attack_speed = -2.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(longswordType);
-            attack_speed = getCustomSpeed(longswordType);
+            attack_damage = getCustomDamage(longswordPath);
+            attack_speed = getCustomSpeed(longswordPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -31,7 +31,7 @@ public class EmeraldLongsword extends BaseLongsword{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldLongsword.getValue()));
         meta.setCustomModelData(1000011);
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

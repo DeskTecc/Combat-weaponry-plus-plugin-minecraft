@@ -3,26 +3,29 @@ package me.helleo.cwp.items.weapons.sabers;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
-
 public abstract class BaseSaber extends WeaponBase {
     public enum description {
-        Line1(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionSaber.Line1")),
-        Line2(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionSaber.Line2")),
-        Line3(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionSaber.Line3")),
-        Line4(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionSaber.Line4")),
-        PrismarineSaber_Name(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineSaber.Name")),
-        PrismarineSaber_Line5(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineSaber.Line5")),
-        PrismarineSaber_Line6(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineSaber.Line6")),
-        PrismarineSaber_Line7(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getString("DescriptionPrismarineSaber.Line7"));
+        Line1(getLang().getString("DescriptionSaber.Line1")),
+        Line2(getLang().getString("DescriptionSaber.Line2")),
+        Line3(getLang().getString("DescriptionSaber.Line3")),
+        Line4(getLang().getString("DescriptionSaber.Line4")),
+        PrismarineSaber_Line5(getLang().getString("DescriptionPrismarineSaber.Line5")),
+        PrismarineSaber_Line6(getLang().getString("DescriptionPrismarineSaber.Line6")),
+        PrismarineSaber_Line7(getLang().getString("DescriptionPrismarineSaber.Line7")),
+        WoodenSaber(getLang().getString("Wooden_Saber")),
+        GoldenSaber(getLang().getString("Golden_Saber")),
+        StoneSaber(getLang().getString("Stone_Saber")),
+        IronSaber(getLang().getString("Iron_Saber")),
+        EmeraldSaber(getLang().getString("Emerald_Saber")),
+        DiamondSaber(getLang().getString("Diamond_Saber")),
+        NetheriteSaber(getLang().getString("Netherite_Saber")),
+        PrismarineSaber(getLang().getString("Prismarine_Saber"));
 
         private final String description_value;
 
@@ -32,26 +35,6 @@ public abstract class BaseSaber extends WeaponBase {
         public String getValue(){
             return this.description_value;
         }
-    }
-    final static String weapon = "Saber";
-
-    protected static Double getCustomDamage(String saberType){
-        String path = "Sabers_"+saberType+weapon+".Damage";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    public static Double getCustomDamageAdded(){
-        String path = "Sabers_Prismarine"+weapon+".DamageAdded";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static Double getCustomSpeed(String saberType){
-        String path = "Sabers_"+saberType+weapon+".Speed";
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getDouble(path);
-    }
-
-    protected static String getName(Material material){
-        return setName(material, weapon);
     }
 
     protected static AttributeModifier setModifier(String key, double value){
@@ -65,9 +48,6 @@ public abstract class BaseSaber extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line3.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', description.Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_damage+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
-        return lore;
+        return setLore(lore, attack_damage,attack_speed);
     }
 }

@@ -12,7 +12,7 @@ public class NetheriteSaber extends BaseSaber{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String saberType = "Netherite";
+    static String saberPath = "NetheriteSaber";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -26,8 +26,8 @@ public class NetheriteSaber extends BaseSaber{
         double attack_damage = 7;
         double attack_speed = -2.4;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(saberType);
-            attack_speed = getCustomSpeed(saberType);
+            attack_damage = getCustomDamage(saberPath);
+            attack_speed = getCustomSpeed(saberPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -37,7 +37,7 @@ public class NetheriteSaber extends BaseSaber{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(getNetherite())));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteSaber.getValue()));
         meta.setCustomModelData(1000010);
         item.setItemMeta(meta);
         return item;

@@ -14,14 +14,14 @@ public class EmeraldRapier extends BaseRapier{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String rapierType = "Emerald";
+    static String rapierPath = "EmeraldRapier";
 
     public static ItemStack getRapier() {
         double attack_damage = 3;
         double attack_speed = -1.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(rapierType);
-            attack_speed = getCustomSpeed(rapierType);
+            attack_damage = getCustomDamage(rapierPath);
+            attack_speed = getCustomSpeed(rapierPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -31,7 +31,7 @@ public class EmeraldRapier extends BaseRapier{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldRapier.getValue()));
         meta.setCustomModelData(1000015);
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

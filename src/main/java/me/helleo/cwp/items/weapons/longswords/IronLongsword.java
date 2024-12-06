@@ -12,14 +12,14 @@ public class IronLongsword extends BaseLongsword{
 
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String longswordType = "Iron";
+    static String longswordPath = "IronLongsword";
 
     public static ItemStack getLongsword() {
         double attack_damage = 6;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(longswordType);
-            attack_speed = getCustomSpeed(longswordType);
+            attack_damage = getCustomDamage(longswordPath);
+            attack_speed = getCustomSpeed(longswordPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,7 +29,7 @@ public class IronLongsword extends BaseLongsword{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.IRON_INGOT)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.IronLongsword.getValue()));
         meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;

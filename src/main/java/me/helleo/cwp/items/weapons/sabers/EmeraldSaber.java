@@ -14,14 +14,14 @@ public class EmeraldSaber extends BaseSaber{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String saberType = "Emerald";
+    static String saberPath = "EmeraldSaber";
 
     public static ItemStack getSaber() {
         double attack_damage = 5;
         double attack_speed = -2.4;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(saberType);
-            attack_speed = getCustomSpeed(saberType);
+            attack_damage = getCustomDamage(saberPath);
+            attack_speed = getCustomSpeed(saberPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -31,7 +31,7 @@ public class EmeraldSaber extends BaseSaber{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldSaber.getValue()));
         meta.setCustomModelData(1000030);
 
         //enchants

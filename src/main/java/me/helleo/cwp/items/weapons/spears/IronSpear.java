@@ -12,14 +12,14 @@ public class IronSpear extends BaseSpear{
 
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String spearType = "Iron";
+    static String spearPath = "IronSpear";
 
     public static ItemStack getSpear() {
         double attack_damage = 2;
         double attack_speed = -1.5;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(spearType);
-            attack_speed = getCustomSpeed(spearType);
+            attack_damage = getCustomDamage(spearPath);
+            attack_speed = getCustomSpeed(spearPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,7 +29,7 @@ public class IronSpear extends BaseSpear{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed",attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage",attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.IRON_INGOT)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.IronSpear.getValue()));
         meta.setCustomModelData(1000004);
         item.setItemMeta(meta);
         return item;

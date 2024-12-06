@@ -12,7 +12,7 @@ public class NetheriteSpear extends BaseSpear{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String spearType = "Netherite";
+    static String spearPath = "NetheriteSpear";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -25,8 +25,8 @@ public class NetheriteSpear extends BaseSpear{
         double attack_damage = 4;
         double attack_speed = -1.5;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(spearType);
-            attack_speed = getCustomSpeed(spearType);
+            attack_damage = getCustomDamage(spearPath);
+            attack_speed = getCustomSpeed(spearPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -36,7 +36,7 @@ public class NetheriteSpear extends BaseSpear{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed",attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage",attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(getNetherite())));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteSpear.getValue()));
         meta.setCustomModelData(1000004);
         item.setItemMeta(meta);
         return item;

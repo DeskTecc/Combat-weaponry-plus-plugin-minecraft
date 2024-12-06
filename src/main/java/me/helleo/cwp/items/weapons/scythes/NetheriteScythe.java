@@ -14,7 +14,7 @@ public class NetheriteScythe extends BaseScythe{
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String scytheType = "Netherite";
+    static String scythePath = "NetheriteScythe";
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -28,8 +28,8 @@ public class NetheriteScythe extends BaseScythe{
         double attack_damage = 9;
         double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scytheType);
-            attack_speed = getCustomSpeed(scytheType);
+            attack_damage = getCustomDamage(scythePath);
+            attack_speed = getCustomSpeed(scythePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -51,7 +51,7 @@ public class NetheriteScythe extends BaseScythe{
                 )
         );
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(getNetherite())));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteScythe.getValue()));
         meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;

@@ -8,6 +8,8 @@
 # ENABLE OR DISABLE THE RESOURCE PACK==================================================================================
 # PUT TRUE OR FALSE
 ResourcePack: true
+# LANGUAGE ON LANG FOLDER:
+lang: "en"
 #CHANGE THE RESOURCE PACK: (to change it, replace the link with your own link)
 PackLink: https://www.dropbox.com/scl/fi/dhgubahgx3z0phg4wnbw3/cwp-texture-pack-1.5.7.zip?rlkey=cxtqp9575bk28qr90vyxb2tdv&dl=1
 #Original pack link for if you change it and want to know what the original is:
@@ -328,25 +330,25 @@ Swords_PrismarineSword:
   Speed: 1.6
 #BASIC WEAPONS: ============================================================================================================
 #SCYTHES
-Scythes_WoodenScythe:
+WoodenScythe:
   Damage: 7
   Speed: 1
-Scythes_GoldenScythe:
+GoldenScythe:
   Damage: 7
   Speed: 1.2
-Scythes_StoneScythe:
+StoneScythe:
   Damage: 7.5
   Speed: 1
-Scythes_IronScythe:
+IronScythe:
   Damage: 8
   Speed: 1
-Scythes_EmeraldScythe:
+EmeraldScythe:
   Damage: 8
   Speed: 1.2
-Scythes_DiamondScythe:
+DiamondScythe:
   Damage: 9
   Speed: 1
-Scythes_NetheriteScythe:
+NetheriteScythe:
   Damage: 10
   Speed: 1
 #the amount of dmg added when netherite weapons are upgraded to pris can be customized below (default is +1)
@@ -354,176 +356,176 @@ Scythes_NetheriteScythe:
 Scythes_PrismarineScythe:
   DamageAdded: 1
 #RAPIERS
-Rapiers_WoodenRapier:
+WoodenRapier:
   Damage: 3
   Speed: 1.9
-Rapiers_GoldenRapier:
+GoldenRapier:
   Damage: 3
   Speed: 2.4
-Rapiers_StoneRapier:
+StoneRapier:
   Damage: 3.5
   Speed: 1.9
-Rapiers_IronRapier:
+IronRapier:
   Damage: 4
   Speed: 1.9
-Rapiers_EmeraldRapier:
+EmeraldRapier:
   Damage: 4
   Speed: 2.4
-Rapiers_DiamondRapier:
+DiamondRapier:
   Damage: 5
   Speed: 1.9
-Rapiers_NetheriteRapier:
+NetheriteRapier:
   Damage: 6
   Speed: 1.9
 Rapiers_PrismarineRapier:
   DamageAdded: 1
 #LONGSWORDS
-Longswords_WoodenLongsword:
+WoodenLongsword:
   Damage: 5
   Speed: 1.2
-Longswords_GoldenLongsword:
+GoldenLongsword:
   Damage: 5
   Speed: 1.4
-Longswords_StoneLongsword:
+StoneLongsword:
   Damage: 6
   Speed: 1.2
-Longswords_IronLongsword:
+IronLongsword:
   Damage: 7
   Speed: 1.2
-Longswords_EmeraldLongsword:
+EmeraldLongsword:
   Damage: 7
   Speed: 1.4
-Longswords_DiamondLongsword:
+DiamondLongsword:
   Damage: 8
   Speed: 1.2
-Longswords_NetheriteLongsword:
+NetheriteLongsword:
   Damage: 9
   Speed: 1.2
-Longswords_PrismarineLongsword:
+PrismarineLongsword:
   DamageAdded: 1
 #KNIVES
-Knives_WoodenKnife:
+WoodenKnife:
   Damage: 2
   Speed: 3
-Knives_GoldenKnife:
+GoldenKnife:
   Damage: 2
   Speed: 4
-Knives_StoneKnife:
+StoneKnife:
   Damage: 2.5
   Speed: 3
-Knives_IronKnife:
+IronKnife:
   Damage: 3
   Speed: 3
-Knives_EmeraldKnife:
+EmeraldKnife:
   Damage: 3
   Speed: 4
-Knives_DiamondKnife:
+DiamondKnife:
   Damage: 4
   Speed: 3
-Knives_NetheriteKnife:
+NetheriteKnife:
   Damage: 5
   Speed: 3
 Knives_PrismarineKnife:
   DamageAdded: 1
 #SPEARS
-Spears_WoodenSpear:
+WoodenSpear:
   Damage: 2
   Speed: 2.5
-Spears_GoldenSpear:
+GoldenSpear:
   Damage: 2
   Speed: 2.8
-Spears_StoneSpear:
+StoneSpear:
   Damage: 2.5
   Speed: 2.5
-Spears_IronSpear:
+IronSpear:
   Damage: 3
   Speed: 2.5
-Spears_EmeraldSpear:
+EmeraldSpear:
   Damage: 3
   Speed: 2.8
-Spears_DiamondSpear:
+DiamondSpear:
   Damage: 4
   Speed: 2.5
-Spears_NetheriteSpear:
+NetheriteSpear:
   Damage: 5
   Speed: 2.5
 Spears_PrismarineSpear:
   DamageAdded: 1
 #KATANAS
-Katanas_WoodenKatana:
+WoodenKatana:
   Damage: 3.5
   Speed: 1.7
   MoveSpeed: 0.02
-Katanas_GoldenKatana:
+GoldenKatana:
   Damage: 3.5
   Speed: 2
   MoveSpeed: 0.02
-Katanas_StoneKatana:
+StoneKatana:
   Damage: 4
   Speed: 1.7
   MoveSpeed: 0.02
-Katanas_IronKatana:
+IronKatana:
   Damage: 5
   Speed: 1.7
   MoveSpeed: 0.02
-Katanas_EmeraldKatana:
+EmeraldKatana:
   Damage: 5
   Speed: 2
   MoveSpeed: 0.02
-Katanas_DiamondKatana:
+DiamondKatana:
   Damage: 6
   Speed: 1.7
   MoveSpeed: 0.02
-Katanas_NetheriteKatana:
+NetheriteKatana:
   Damage: 7
   Speed: 1.7
   MoveSpeed: 0.02
 Katanas_PrismarineKatana:
   DamageAdded: 1
 #SABERS
-Sabers_WoodenSaber:
+WoodenSaber:
   Damage: 4
   Speed: 1.6
-Sabers_GoldenSaber:
+GoldenSaber:
   Damage: 4
   Speed: 1.6
-Sabers_StoneSaber:
+StoneSaber:
   Damage: 5
   Speed: 1.6
-Sabers_IronSaber:
+IronSaber:
   Damage: 6
   Speed: 1.6
-Sabers_EmeraldSaber:
+EmeraldSaber:
   Damage: 6
   Speed: 1.6
-Sabers_DiamondSaber:
+DiamondSaber:
   Damage: 7
   Speed: 1.6
-Sabers_NetheriteSaber:
+NetheriteSaber:
   Damage: 8
   Speed: 1.6
 Sabers_PrismarineSaber:
   DamageAdded: 1
 #CLEAVERS
-Cleavers_WoodenCleaver:
+WoodenCleaver:
   Damage: 9
   Speed: 0.4
-Cleavers_GoldenCleaver:
+GoldenCleaver:
   Damage: 9
   Speed: 0.4
-Cleavers_StoneCleaver:
+StoneCleaver:
   Damage: 10
   Speed: 0.4
-Cleavers_IronCleaver:
+IronCleaver:
   Damage: 11
   Speed: 0.4
-Cleavers_EmeraldCleaver:
+EmeraldCleaver:
   Damage: 11
   Speed: 0.4
-Cleavers_DiamondCleaver:
+DiamondCleaver:
   Damage: 12
   Speed: 0.4
-Cleavers_NetheriteCleaver:
+NetheriteCleaver:
   Damage: 13
   Speed: 0.4
 Cleavers_PrismarineCleaver:
@@ -840,119 +842,4 @@ DescriptionChorusBlade:
   Line7: "&7When in Main Hand:"
   Line8: "&9 4 Attack Damage"
   Line9: "&9 10 Attack Speed"
-#BASIC WEAPONS: ===============================================================================================
-#SCYTHES
-DescriptionScythe:
-  Line1: ""
-  Line2: "&6Two Handed"
-  Line3: "&7- +30% damage if there is no item in offhand"
-  Line4: "&6Cutting Edge"
-  Line5: "&7- +50% damage to players"
-  Line6: "&7  without a chestplate"
-  Line7: ""
-DescriptionPrismarineScythe:
-  Name: "&aPrismarine Scythe"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 11 Attack Damage"
-  Line10: "&9 1 Attack Speed"
-#RAPIERS
-DescriptionRapier:
-  Line1: ""
-  Line2: "&6Armor Piercing"
-  Line3: "&7- +5% damage for each piece of armor"
-  Line4: "&7   your opponent has"
-  Line5: "&7   (stacks multiplicatively)"
-  Line6: "&7- Disables shields for 2 seconds"
-  Line7: ""
-DescriptionPrismarineRapier:
-  Name: "&aPrismarine Rapier"
-  Line8: "&7When in Main Hand:"
-  Line9: "&9 7 Attack Damage"
-  Line10: "&9 1.9 Attack Speed"
-#LONGSWORDS
-DescriptionLongsword:
-  Line1: ""
-  Line2: "&6Two Handed"
-  Line3: "&7- +30% damage if there is"
-  Line4: "&7  no item in your offhand"
-  Line5: ""
-DescriptionPrismarineLongsword:
-  Name: "&aPrismarine Longsword"
-  Line6: "&7When in Main Hand:"
-  Line7: "&9 10 Attack Damage"
-  Line8: "&9 1.2 Attack Speed"
-#KNIVES
-DescriptionKnife:
-  Line1: ""
-  Line2: "&6Cutting Edge"
-  Line3: "&7- +100% damage to players without a chestplate"
-  Line4: "&6Combo"
-  Line5: "&7- Getting 2 consecutive hits gives Strength I"
-  Line6: ""
-DescriptionPrismarineKnife:
-  Name: "&aPrismarine Knife"
-  Line7: "&7When in Main Hand:"
-  Line8: "&9 6 Attack Damage"
-  Line9: "&9 3 Attack Speed"
-#SPEARS
-DescriptionSpear:
-  Line1: ""
-  Line2: "&6Armor Piercing"
-  Line3: "&7- +5% damage for each piece of armor"
-  Line4: "&7   your opponent has"
-  Line5: "&7   (stacks multiplicatively)"
-  Line6: "&7- Disables shields for 1 second"
-  Line7: "&6Two Handed"
-  Line8: "&7- +30% damage if there is no item in offhand"
-  Line9: ""
-DescriptionPrismarineSpear:
-  Name: "&aPrismarine Spear"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 6 Attack Damage"
-  Line12: "&9 2.5 Attack Speed"
-#KATANAS
-DescriptionKatana:
-  Line1: ""
-  Line2: "&6Lightweight"
-  Line3: "&7- Slightly increases"
-  Line4: "&7  movement speed"
-  Line5: "&6Two Handed"
-  Line6: "&7- +30% damage if there is"
-  Line7: "&7  no item in offhand"
-  Line8: "&6Critical Hit"
-  Line9: "&7- 20% chance to deal 10% more"
-  Line10: "&7  damage when two handed"
-  Line11: ""
-DescriptionPrismarineKatana:
-  Name: "&aPrismarine Katana"
-  Line12: "&7When in Main Hand:"
-  Line13: "&9 8 Attack Damage"
-  Line14: "&9 1.7 Attack Speed"
-#SABERS
-DescriptionSaber:
-  Line1: ""
-  Line2: "&6Dual Wielding"
-  Line3: "&7- Can be used in either hand"
-  Line4: ""
-DescriptionPrismarineSaber:
-  Name: "&aPrismarine Saber"
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 9 Attack Damage"
-  Line7: "&9 1.6 Attack Speed"
-#CLEAVERS
-DescriptionCleaver:
-  Line1: ""
-  Line2: "&6Momentum"
-  Line3: "&7- When an attack hits an opponent"
-  Line4: "&7  while attack cooldown is between"
-  Line5: "&7  &260%-100% &7charged (not inclusive),"
-  Line6: "&7  gain &2+0.25 &7attack speed (max &26 &7stacks)"
-  Line7: "&7- Attack speed &2resets &7upon landing"
-  Line8: "&7  a fully charged attack"
-  Line9: ""
-DescriptionPrismarineCleaver:
-  Name: "&aPrismarine Cleaver"
-  Line10: "&7When in Main Hand:"
-  Line11: "&9 14 Attack Damage"
-  Line12: "&9 0.4 Attack Speed"
 # BE SURE TO LET ME KNOW IF ANYTHING ISN'T WORKING RIGHT

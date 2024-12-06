@@ -12,14 +12,14 @@ public class WoodenSaber extends BaseSaber{
 
     static ItemStack item = new ItemStack(Material.WOODEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String saberType = "Wooden";
+    static String saberPath = "WoodenSaber";
 
     public static ItemStack getSaber(){
         double attack_damage = 3;
         double attack_speed = -2.4;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(saberType);
-            attack_speed = getCustomSpeed(saberType);
+            attack_damage = getCustomDamage(saberPath);
+            attack_speed = getCustomSpeed(saberPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,7 +29,7 @@ public class WoodenSaber extends BaseSaber{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.OAK_WOOD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.WoodenSaber.getValue()));
         meta.setCustomModelData(1000010);
         item.setItemMeta(meta);
         return item;

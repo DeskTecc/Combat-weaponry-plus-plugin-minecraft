@@ -14,16 +14,16 @@ public class EmeraldKatana extends BaseKatana{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String katanaType = "Emerald";
+    static String katanaPath = "EmeraldKatana";
 
     public static ItemStack getKatana() {
         double attack_damage = 4;
         double attack_speed = -2;
         double move_speed = 0.02;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(katanaType);
-            attack_speed = getCustomSpeed(katanaType);
-            move_speed = getCustomMoveSpeed(katanaType);
+            attack_damage = getCustomDamage(katanaPath);
+            attack_speed = getCustomSpeed(katanaPath);
+            move_speed = getCustomMoveSpeed(katanaPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -34,7 +34,7 @@ public class EmeraldKatana extends BaseKatana{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, setModifier("generic.move_speed", move_speed));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldKatana.getValue()));
         meta.setCustomModelData(1000012);
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

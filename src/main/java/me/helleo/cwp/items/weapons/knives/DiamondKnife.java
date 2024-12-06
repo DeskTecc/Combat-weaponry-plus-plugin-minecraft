@@ -12,14 +12,14 @@ public class DiamondKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String knifeType = "Diamond";
+    static String knifePath = "DiamondKnife";
 
     public static ItemStack getKnife() {
         double attack_damage = 3;
         double attack_speed = -1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(knifeType);
-            attack_speed = getCustomSpeed(knifeType);
+            attack_damage = getCustomDamage(knifePath);
+            attack_speed = getCustomSpeed(knifePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,7 +29,7 @@ public class DiamondKnife extends BaseKnife{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.DIAMOND)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.DiamondKnife.getValue()));
         meta.setCustomModelData(1000006);
         item.setItemMeta(meta);
         return item;

@@ -30,7 +30,7 @@ public class PrismarineLongsword implements Listener {
         double attack_damage = 1;
         double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = BaseLongsword.getCustomDamageAdded();
+            attack_damage = BaseLongsword.getCustomDamageAdded("PrismarineLongsword");
         }
 
         AttributeModifier modifier1 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
@@ -54,7 +54,7 @@ public class PrismarineLongsword implements Listener {
 
         itemMeta.setLore(lore);
 
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword_Name.getValue()));
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword.getValue()));
         //important:
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         itemMeta.setCustomModelData(1200001);

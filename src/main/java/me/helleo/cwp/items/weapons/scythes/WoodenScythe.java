@@ -13,14 +13,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class WoodenScythe extends BaseScythe {
     static ItemStack item = new ItemStack(Material.WOODEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String scytheType = "Wooden";
+    static String scythePath = "WoodenScythe";
 
     public static ItemStack getScythe(){
         double attack_damage = 6;
         double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scytheType);
-            attack_speed = getCustomSpeed(scytheType);
+            attack_damage = getCustomDamage(scythePath);
+            attack_speed = getCustomSpeed(scythePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -42,7 +42,7 @@ public class WoodenScythe extends BaseScythe {
                 )
         );
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.OAK_WOOD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.WoodenScythe.getValue()));
         meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;

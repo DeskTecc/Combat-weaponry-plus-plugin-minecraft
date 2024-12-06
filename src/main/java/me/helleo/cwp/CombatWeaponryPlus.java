@@ -14,6 +14,7 @@ import me.helleo.cwp.items.misc.*;
 import me.helleo.cwp.items.shields.DiamondShield;
 import me.helleo.cwp.items.shields.NetheriteShield;
 import me.helleo.cwp.items.tools.*;
+import me.helleo.cwp.items.weapons.WeaponBase;
 import me.helleo.cwp.items.weapons.bows.*;
 import me.helleo.cwp.items.weapons.cleavers.*;
 import me.helleo.cwp.items.weapons.katanas.*;
@@ -57,6 +58,8 @@ import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 import java.util.*;
+
+import static me.helleo.cwp.items.weapons.WeaponBase.getCustomDamageAdded;
 
 
 public class CombatWeaponryPlus extends JavaPlugin implements Listener {
@@ -505,9 +508,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         //added damage (default is +1)
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseScythe.getCustomDamageAdded();
+            dmg = WeaponBase.getCustomDamageAdded("Scythes_PrismarineScythe");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.PrismarineScythe_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseScythe.description.PrismarineScythe.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
@@ -570,9 +573,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseRapier.getCustomDamageAdded();
+            dmg = WeaponBase.getCustomDamageAdded("Rapiers_PrismarineRapier");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.PrismarineRapier_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseRapier.description.PrismarineRapier.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
@@ -638,9 +641,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseSpear.getCustomDamageAdded();
+            dmg = WeaponBase.getCustomDamageAdded("Spears_PrismarineSpear");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.PrismarineSpear_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseSpear.description.PrismarineSpear.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
@@ -705,9 +708,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseKatana.getCustomDamageAdded();
+            dmg = WeaponBase.getCustomDamageAdded("Katanas_PrismarineKatana");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.PrismarineKatana_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseKatana.description.PrismarineKatana.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
@@ -774,9 +777,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseKnife.getCustomDamageAdded();
+            dmg = WeaponBase.getCustomDamageAdded("Knives_PrismarineKnife");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.PrismarineKnife_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseKnife.description.PrismarineKnife.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
@@ -838,9 +841,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseSaber.getCustomDamageAdded();
+            dmg = WeaponBase.getCustomDamageAdded("Sabers_PrismarineSaber");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.PrismarineSaber_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseSaber.description.PrismarineSaber.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
@@ -900,9 +903,9 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         double dmg = 1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = BaseCleaver.getCustomDamageAdded();
+            dmg = getCustomDamageAdded("Cleaver_PrismarineCleaver");
         }
-        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.PrismarineCleaver_Name.getValue()));
+        resultm.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseCleaver.description.PrismarineCleaver.getValue()));
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         resultm.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);

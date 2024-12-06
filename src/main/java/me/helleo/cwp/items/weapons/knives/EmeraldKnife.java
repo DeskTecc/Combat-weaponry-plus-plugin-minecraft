@@ -14,14 +14,14 @@ public class EmeraldKnife extends BaseKnife{
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String knifeType = "Emerald";
+    static String knifePath = "EmeraldKnife";
 
     public static ItemStack getKnife() {
         double attack_damage = 2;
         double attack_speed = 0;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(knifeType);
-            attack_speed = getCustomSpeed(knifeType);
+            attack_damage = getCustomDamage(knifePath);
+            attack_speed = getCustomSpeed(knifePath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -31,7 +31,7 @@ public class EmeraldKnife extends BaseKnife{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed", attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.EMERALD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldKnife.getValue()));
 
         if (ConfigurationsBool.EmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

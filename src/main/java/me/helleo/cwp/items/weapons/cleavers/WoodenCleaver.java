@@ -12,14 +12,14 @@ public class WoodenCleaver extends BaseCleaver{
 
     static ItemStack item = new ItemStack(Material.WOODEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
-    static String cleaverType = "Wooden";
+    static String cleaverPath = "WoodenCleaver";
 
     public static ItemStack getCleaver() {
         double attack_damage = 8;
         double attack_speed = -3.6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(cleaverType);
-            attack_speed = getCustomSpeed(cleaverType);
+            attack_damage = getCustomDamage(cleaverPath);
+            attack_speed = getCustomSpeed(cleaverPath);
         }
 
         meta.setLore(getLore(attack_damage,attack_speed));
@@ -29,17 +29,13 @@ public class WoodenCleaver extends BaseCleaver{
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, setModifier("generic.attack_speed",attack_speed));
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, setModifier("generic.attack_damage", attack_damage));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', getName(Material.OAK_WOOD)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.WoodenCleaver.getValue()));
         meta.setCustomModelData(1000021);
         item.setItemMeta(meta);
         return item;
     }
 
     public static void setCleaverRecipe(){
-        Bukkit.addRecipe(getWeaponRecipe(
-                "cleaver",
-                "wooden_cleaver",
-                getCleaver(),
-                Material.STICK));
+        Bukkit.addRecipe(getWeaponRecipe("cleaver", "wooden_cleaver", getCleaver(), Material.STICK));
     }
 }
