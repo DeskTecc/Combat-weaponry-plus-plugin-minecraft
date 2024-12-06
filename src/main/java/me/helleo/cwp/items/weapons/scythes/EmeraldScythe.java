@@ -30,14 +30,14 @@ public class EmeraldScythe extends BaseScythe{
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        meta.getAttributeModifiers(Attribute.GENERIC_ATTACK_SPEED).add(
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,
                 new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
                         attack_speed,
                         AttributeModifier.Operation.ADD_NUMBER,
                         EquipmentSlotGroup.HAND
                 )
         );
-        meta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE).add(
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,
                 new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                         attack_damage,
                         AttributeModifier.Operation.ADD_NUMBER,
