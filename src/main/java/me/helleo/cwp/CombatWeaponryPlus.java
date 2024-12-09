@@ -81,6 +81,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.saveDefaultConfig();
 
+        new DataYAML().langFile();
 
         DragonBreath.setItemRecipe();
 
