@@ -113,37 +113,37 @@ public class EntityDamage implements Listener {
             if (player.getInventory().getItemInMainHand().getItemMeta() != null){
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                     ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta();
-                    int itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
+                    Integer itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
                     /*int[] bone_models = {4000002, 4000001, 4000003, 4000004, 4000005, 4000006};
                     boolean bone_weapon_validator = Arrays.stream(bone_models).anyMatch(x-> x==itemModelData);*/
 
                     Integer[] cleaver_models = {1000021, 1200021, 1000031};
-                    boolean cleaver_weapon_validator = Arrays.stream(cleaver_models).anyMatch(x-> x==itemModelData);
+                    boolean cleaver_weapon_validator = Arrays.asList(cleaver_models).contains(itemModelData);
 
                     Integer[] saber_models = {1000010, 1200010, 1000030};
-                    boolean saber_weapon_validator = Arrays.stream(saber_models).anyMatch(x-> x==itemModelData);
+                    boolean saber_weapon_validator = Arrays.asList(saber_models).contains(itemModelData);
 
                     Integer[] rapier_models = {1000005,1200005, 1000015};
-                    boolean rapier_weapon_validator = Arrays.stream(rapier_models).anyMatch(x-> x==itemModelData);
+                    boolean rapier_weapon_validator = Arrays.asList(rapier_models).contains(itemModelData);
 
                     Integer[] longsword_models = {1000001, 1200001, 1000011};
-                    boolean longsword_weapon_validator = Arrays.stream(longsword_models).anyMatch(x-> x==itemModelData);
+                    boolean longsword_weapon_validator = Arrays.asList(longsword_models).contains(itemModelData);
 
                     Integer[] scythe_models = {1000003,1200003,1000013};
-                    boolean scythe_weapon_validator = Arrays.stream(scythe_models).anyMatch(x-> x==itemModelData);
+                    boolean scythe_weapon_validator = Arrays.asList(scythe_models).contains(itemModelData);
 
                     Integer[] spear_models = {1000004,1200004,1000014};
-                    boolean spear_weapon_validator = Arrays.stream(spear_models).anyMatch(x-> x==itemModelData);
+                    boolean spear_weapon_validator = Arrays.asList(spear_models).contains(itemModelData);
 
                     Integer[] katana_models = {1000002,1200002,1000012};
-                    boolean katana_weapon_validator = Arrays.stream(katana_models).anyMatch(x-> x==itemModelData);
+                    boolean katana_weapon_validator = Arrays.asList(katana_models).contains(itemModelData);
 
                     Integer[] knife_models = {1000006,1200006,1000016};
-                    boolean knife_weapon_validator = Arrays.stream(knife_models).anyMatch(x-> x==itemModelData);
+                    boolean knife_weapon_validator = Arrays.asList(knife_models).contains(itemModelData);
 
 
                     double damage = 1;
-                    //analisys
+                    //analysis
 
                     for(AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)){
                         if(attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))){
@@ -152,16 +152,7 @@ public class EntityDamage implements Listener {
                         }
                     }
 
-
-                        /*.stream()
-                            .filter(attributeModifier -> attributeModifier.getKey().equals(
-                                    new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage")
-                                    ))
-                            .map(AttributeModifier::getAmount)
-                            .collect(Collectors.toList())
-                            .get(0);*/
-
-                    Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // REMOVE THIS
+                    Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // JUST FOR DEBUG HERE REMEMBER TO REMOVE
 
                     //bone weapon ability test (damage increases when durability gets lower)
                     /*if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
