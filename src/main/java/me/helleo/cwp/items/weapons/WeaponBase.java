@@ -2,14 +2,11 @@ package me.helleo.cwp.items.weapons;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-import java.io.File;
 import java.util.List;
 
 import static me.helleo.cwp.CombatWeaponryPlus.*;
