@@ -10,6 +10,8 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.helleo.cwp.ConfigLoader.getLang;
+
 public abstract class BaseScythe extends WeaponBase {
 
     public enum description {

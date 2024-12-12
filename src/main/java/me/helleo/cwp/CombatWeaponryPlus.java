@@ -68,6 +68,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     public static Plugin plugin;
 
+    public static String langDef = "en";
 
     public static List<NamespacedKey> keys = new ArrayList<>();
 
@@ -81,7 +82,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.saveDefaultConfig();
 
-        new DataYAML().langFile();
+        try{
+            langDef = getConfig().getString("lang");
+        }catch (Exception e){
+            langDef = "en";
+        }
+
+        boolean langFileLoad = new ConfigLoader().setLang(langDef);
+
+        if(!langFileLoad){
+            langDef= "en";
+        }
 
         DragonBreath.setItemRecipe();
 

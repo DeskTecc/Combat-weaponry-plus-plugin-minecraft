@@ -5,7 +5,6 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -13,7 +12,9 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.io.File;
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.pluginName;
+import static me.helleo.cwp.CombatWeaponryPlus.*;
+import static me.helleo.cwp.ConfigLoader.getConfig;
+import static me.helleo.cwp.ConfigLoader.getLang;
 
 public abstract class WeaponBase {
 
@@ -33,7 +34,7 @@ public abstract class WeaponBase {
     }
 
     public static ShapedRecipe getWeaponRecipe(String weapon, String namekey, ItemStack item, Material material){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, namekey);
+        NamespacedKey key = new NamespacedKey(plugin, namekey);
         CombatWeaponryPlus.keys.add(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
@@ -66,18 +67,6 @@ public abstract class WeaponBase {
             default:
                 return null;
         }
-    }
-
-    public static FileConfiguration getConfig(){
-        return Bukkit.getPluginManager().getPlugin(pluginName).getConfig();
-    }
-
-    public static YamlConfiguration getLang(){
-        String languageOption = getConfig().getString("lang");
-        File langYml = new File(
-                Bukkit.getPluginManager().getPlugin(pluginName).getDataFolder() + "/lang/lang-"+languageOption+".yml"
-        );
-        return YamlConfiguration.loadConfiguration(langYml);
     }
 
     protected static Double getCustomDamage(String path){
