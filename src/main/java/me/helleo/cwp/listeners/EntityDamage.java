@@ -225,8 +225,9 @@ public class EntityDamage implements Listener {
                         event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                     }
 
-                    //LONGSWORD
+
                     if (player.getInventory().getItemInOffHand().getType() == Material.AIR) {
+                        //LONGSWORD
                         if (longsword_weapon_validator) {
 
                             //OK IT WORKS
