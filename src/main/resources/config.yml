@@ -107,8 +107,6 @@ VolcanicCleaver: false
 #Those abilities will most likely not be added to the regular katanas since it was really complicated to make.
 #However, I might add the abilities to a new unique weapon in the future.
 TestKatana: false
-#The test scythe is a diamond scythe with different abilities.
-TestScythe: false
 #enable or disable wither skeleton bones (they will drop from wither skeletons)
 # wither skeleton bones are used to craft the wither armor
 WitherBones: false

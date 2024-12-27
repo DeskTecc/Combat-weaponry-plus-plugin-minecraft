@@ -56,7 +56,6 @@ public enum ConfigurationsBool {
     VolcanicAxe(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("VolcanicAxe")),
     VolcanicCleaver(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("VolcanicCleaver")),
     TestKatana(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("TestKatana")),
-    TestScythe(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("TestScythe")),
     WitherBones(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("WitherBones")),
     AwakenedVesselWhite(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("AwakenedVesselWhite")),
     AwakenedVesselPurple(Bukkit.getPluginManager().getPlugin(pluginName).getConfig().getBoolean("AwakenedVesselPurple")),
