@@ -10,8 +10,8 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.List;
 
 import static me.helleo.cwp.CombatWeaponryPlus.*;
-import static me.helleo.cwp.ConfigLoader.getConfig;
-import static me.helleo.cwp.ConfigLoader.getLang;
+import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+import static me.helleo.cwp.configurations.ConfigLoader.getLang;
 
 public abstract class WeaponBase {
 

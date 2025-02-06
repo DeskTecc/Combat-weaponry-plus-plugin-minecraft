@@ -10,7 +10,7 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.ConfigLoader.getLang;
+import static me.helleo.cwp.configurations.ConfigLoader.getLang;
 
 public abstract class BaseCleaver extends WeaponBase {
     public enum description {

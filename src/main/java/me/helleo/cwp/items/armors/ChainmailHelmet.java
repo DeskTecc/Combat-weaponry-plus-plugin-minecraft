@@ -10,7 +10,6 @@ import org.bukkit.inventory.ShapedRecipe;
 public class ChainmailHelmet extends BaseArmor {
 
     static ItemStack item = new ItemStack(Material.CHAINMAIL_HELMET);
-    //static ItemMeta meta = item.getItemMeta();
 
 
     public ItemStack getArmorPiece() {

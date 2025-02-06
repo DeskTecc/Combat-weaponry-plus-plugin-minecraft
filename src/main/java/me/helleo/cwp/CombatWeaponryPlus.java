@@ -5,6 +5,7 @@ package me.helleo.cwp;
 // ctrl + f is very useful for finding things
 
 
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.configurations.ConfigurationsString;
@@ -315,10 +316,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         }*/
         if (ConfigurationsBool.Eelytra.getValue()) {
             Eelytra.setItemRecipe();
-        }
-
-        if (ConfigurationsBool.ReallyGoodSword.getValue()) {
-            ReallyGoodSword.setItemRecipe();
         }
 
         if (ConfigurationsBool.RedstoneCore.getValue()) {

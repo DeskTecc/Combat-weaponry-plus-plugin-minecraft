@@ -10,7 +10,6 @@ import org.bukkit.inventory.ShapedRecipe;
 public class ChainmailLeggings extends BaseArmor {
 
     static ItemStack item = new ItemStack(Material.CHAINMAIL_LEGGINGS);
-    //static ItemMeta meta = item.getItemMeta();
 
 
     public ItemStack getArmorPiece() {

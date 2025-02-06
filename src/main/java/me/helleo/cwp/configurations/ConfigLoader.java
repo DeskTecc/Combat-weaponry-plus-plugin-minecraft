@@ -1,4 +1,4 @@
-package me.helleo.cwp;
+package me.helleo.cwp.configurations;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
