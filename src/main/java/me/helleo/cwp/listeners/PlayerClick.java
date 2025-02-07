@@ -304,7 +304,7 @@ public class PlayerClick implements Listener {
                     if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000001) {
                         //left click
                         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
-                            player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, -2));
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, 2));
                         }
                     }
                 }

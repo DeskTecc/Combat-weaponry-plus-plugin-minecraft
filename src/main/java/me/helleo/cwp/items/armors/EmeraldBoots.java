@@ -54,7 +54,7 @@ public class EmeraldBoots extends BaseArmor{
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_boots");
         CombatWeaponryPlus.keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
         recipe.shape(
                 "   ",
