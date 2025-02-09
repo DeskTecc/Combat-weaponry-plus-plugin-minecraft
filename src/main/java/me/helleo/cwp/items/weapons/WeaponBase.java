@@ -142,7 +142,7 @@ public abstract class WeaponBase {
     protected static List<String> setLore(List<String> lore,Double damage, Double speed){
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7"+weaponsGeneralDescriptions.WhenInMainHand.getValue()+":"));
         lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+damage+" "+weaponsGeneralDescriptions.AttackDamage.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+speed+" "+weaponsGeneralDescriptions.AttackSpeed.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+String.format("%.1f",speed+4).replace(',','.')+" "+weaponsGeneralDescriptions.AttackSpeed.getValue()));
         return lore;
     }
 }

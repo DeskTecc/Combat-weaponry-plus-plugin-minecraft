@@ -3677,48 +3677,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    @EventHandler
-    public void onCleaverDamageEntity(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof Player) {
-            Player p = (Player) event.getDamager();
-            if (p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
-                return;
-            }
-            if (!p.getInventory().getItemInMainHand().hasItemMeta()) {
-                return;
-            }
-            if (!p.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                return;
-            }
 
-            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000021
-                    || p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200021
-                    || p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000031) {
-                //if player has atk cooldown 60% or more but less than 100%
-                if (p.getAttackCooldown() >= 0.6 && p.getAttackCooldown() < 1) {
-                    //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
-                    if (p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getValue() < 1.9) {
-                        ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
-                        AttributeModifier modifier = new AttributeModifier(new NamespacedKey (this, "generic.attack_speed"), 0.25,
-                                Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                        m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-                        m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-                        p.getInventory().getItemInMainHand().setItemMeta(m);
-                    }
-                }
-                // if player has no atk cooldown (100% charged)
-                if (p.getAttackCooldown() == 1) {
-                    ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
-                    m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED);
-                    AttributeModifier modifier = new AttributeModifier(new NamespacedKey(this,"generic.attack_speed"), -3.6,
-                            Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                    m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-                    p.getInventory().getItemInMainHand().setItemMeta(m);
-
-                }
-            }
-        }
-    }
 
     @EventHandler
     public void wind(PlayerInteractEvent event) {

@@ -47,25 +47,75 @@ public class EntityDamage implements Listener {
                 assert itemInHand.getItemMeta() != null;
                 if (itemInHand.getItemMeta().hasCustomModelData()) {
 
-                    Integer[] models = {1000006,1200006,1000016,4000006};
+                    Integer[] models = {1000006, 1200006, 1000016, 4000006};
 
-                    if (Arrays.asList(models).contains(itemInHand.getItemMeta().getCustomModelData())){
+                    if (Arrays.asList(models).contains(itemInHand.getItemMeta().getCustomModelData())) {
                         // make sense compare the name when you have the models?
-                            if(itemInHand.getType().name().contains("SWORD")) {
-                                if (!player.hasCooldown(itemInHand.getType())) {
-                                    player.setCooldown(itemInHand.getType(), 15);
-                                }
-                                if (player.hasCooldown(itemInHand.getType())) {
-                                    if (player.getCooldown(itemInHand.getType()) <= 14) {
-                                        player.setCooldown(itemInHand.getType(), 14);
-                                        if (player.getAttackCooldown() <= 0.9) {
-                                            return;
-                                        }
-                                        player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 15, 0));
+                        if (itemInHand.getType().name().contains("SWORD")) {
+                            if (!player.hasCooldown(itemInHand.getType())) {
+                                player.setCooldown(itemInHand.getType(), 15);
+                            }
+                            if (player.hasCooldown(itemInHand.getType())) {
+                                if (player.getCooldown(itemInHand.getType()) <= 14) {
+                                    player.setCooldown(itemInHand.getType(), 14);
+                                    if (player.getAttackCooldown() <= 0.9) {
+                                        return;
                                     }
+                                    player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 15, 0));
                                 }
                             }
+                        }
                     }
+                }
+            }
+        }
+
+        //CLEAVER COOLDOWN
+        if (event.getDamager() instanceof Player) {
+            Player p = (Player) event.getDamager();
+            if (p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
+                return;
+            }
+            if (!p.getInventory().getItemInMainHand().hasItemMeta()) {
+                return;
+            }
+            if (!p.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                return;
+            }
+
+            if (p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000021
+                    || p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200021
+                    || p.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000031) {
+                //if player has atk cooldown 60% or more but less than 100%
+                if (p.getAttackCooldown() >= 0.6 && p.getAttackCooldown() < 1) {
+                    //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
+                    if (p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getValue() < 1.9) {
+                        ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
+                        double old_cooldown =  -3.6;
+                        for (AttributeModifier attributeModifier : m.getAttributeModifiers(Attribute.GENERIC_ATTACK_SPEED)) {
+                            if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_speed"))) {
+                                old_cooldown = attributeModifier.getAmount();
+                                break;
+                            }
+                        }
+                        AttributeModifier modifier = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), old_cooldown+0.25,
+                                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                        m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+                        m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+                        p.getInventory().getItemInMainHand().setItemMeta(m);
+                        // DEBUG
+                        //Bukkit.getConsoleSender().sendMessage("OLD COOLDOWN: "+old_cooldown);
+                        //Bukkit.getConsoleSender().sendMessage("NEW COOLDOWN: "+(old_cooldown+0.25));
+                    }
+                }
+                // if player has no atk cooldown (100% charged)
+                if (p.getAttackCooldown() == 1) {
+                    ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
+                    m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED);
+                    AttributeModifier modifier = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), -3.6,
+                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                    m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+                    p.getInventory().getItemInMainHand().setItemMeta(m);
                 }
             }
         }
@@ -110,7 +160,7 @@ public class EntityDamage implements Listener {
             if (player.getInventory().getItemInMainHand().getType() == Material.AIR) {
                 return;
             }
-            if (player.getInventory().getItemInMainHand().getItemMeta() != null){
+            if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                     ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta();
                     Integer itemModelData = player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
@@ -123,36 +173,37 @@ public class EntityDamage implements Listener {
                     Integer[] saber_models = {1000010, 1200010, 1000030};
                     boolean saber_weapon_validator = Arrays.asList(saber_models).contains(itemModelData);
 
-                    Integer[] rapier_models = {1000005,1200005, 1000015};
+                    Integer[] rapier_models = {1000005, 1200005, 1000015};
                     boolean rapier_weapon_validator = Arrays.asList(rapier_models).contains(itemModelData);
 
                     Integer[] longsword_models = {1000001, 1200001, 1000011};
                     boolean longsword_weapon_validator = Arrays.asList(longsword_models).contains(itemModelData);
 
-                    Integer[] scythe_models = {1000003,1200003,1000013};
+                    Integer[] scythe_models = {1000003, 1200003, 1000013};
                     boolean scythe_weapon_validator = Arrays.asList(scythe_models).contains(itemModelData);
 
-                    Integer[] spear_models = {1000004,1200004,1000014};
+                    Integer[] spear_models = {1000004, 1200004, 1000014};
                     boolean spear_weapon_validator = Arrays.asList(spear_models).contains(itemModelData);
 
-                    Integer[] katana_models = {1000002,1200002,1000012};
+                    Integer[] katana_models = {1000002, 1200002, 1000012};
                     boolean katana_weapon_validator = Arrays.asList(katana_models).contains(itemModelData);
 
-                    Integer[] knife_models = {1000006,1200006,1000016};
+                    Integer[] knife_models = {1000006, 1200006, 1000016};
                     boolean knife_weapon_validator = Arrays.asList(knife_models).contains(itemModelData);
 
 
-                    double damage = 1;
+                    double attack_damage = 1;
+                    double attack_speed = 1;
                     //analysis
 
-                    for(AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)){
-                        if(attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))){
-                            damage = attributeModifier.getAmount();
+                    for (AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)) {
+                        if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))) {
+                            attack_damage = attributeModifier.getAmount();
                             break;
                         }
                     }
 
-                    Bukkit.getConsoleSender().sendMessage("DAMAGE: " + damage); // JUST FOR DEBUG HERE REMEMBER TO REMOVE
+                    //Bukkit.getConsoleSender().sendMessage("DAMAGE: " + attack_damage); JUST FOR DEBUG HERE REMEMBER TO REMOVE
 
                     //bone weapon ability test (damage increases when durability gets lower)
                     /*if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
@@ -185,40 +236,40 @@ public class EntityDamage implements Listener {
 
                     // KNIFE
                     if (knife_weapon_validator) {
-                        event.setDamage(damage);
+                        event.setDamage(attack_damage);
                     }
 
                     // CLEAVER
                     if (cleaver_weapon_validator) {
-                        event.setDamage(damage);
+                        event.setDamage(attack_damage);
                     }
 
                     // SABER
                     if (saber_weapon_validator) {
-                        event.setDamage(damage);
+                        event.setDamage(attack_damage);
                     }
 
                     // RAPIER
                     if (rapier_weapon_validator) {
                         Player entity;
-                        double final_damage = damage;
-                        if(event.getEntity().getType()==EntityType.PLAYER){
+                        double final_damage = attack_damage;
+                        if (event.getEntity().getType() == EntityType.PLAYER) {
                             entity = (Player) event.getEntity();
                             //if player not have chestplate
-                            if(entity.getInventory().getChestplate()==null){
-                                final_damage=final_damage*1.05;
+                            if (entity.getInventory().getChestplate() == null) {
+                                final_damage = final_damage * 1.05;
                             }
                             //if player not have leggings
-                            if(entity.getInventory().getLeggings()==null){
-                                final_damage=final_damage*1.05;
+                            if (entity.getInventory().getLeggings() == null) {
+                                final_damage = final_damage * 1.05;
                             }
                             //if player not have boots
-                            if(entity.getInventory().getBoots()==null){
-                                final_damage=final_damage*1.05;
+                            if (entity.getInventory().getBoots() == null) {
+                                final_damage = final_damage * 1.05;
                             }
                             //if player not have helmet
-                            if(entity.getInventory().getHelmet()==null){
-                                final_damage=final_damage*1.05;
+                            if (entity.getInventory().getHelmet() == null) {
+                                final_damage = final_damage * 1.05;
                             }
                         }
                         event.setDamage(final_damage);
@@ -234,7 +285,7 @@ public class EntityDamage implements Listener {
                             //ok i think i fixed it but im not sure, need test
                             //before: if (player.getInventory().getItemInOffHand() == null) {
                             //doesnt work because the is air in offhand and air counts as item, figure out way to detect the air
-                            double bonus = damage * 1.3;
+                            double bonus = attack_damage * 1.3;
                             event.setDamage(bonus);
                             //RNG CRIT
                             //int random = getRandomInt(2);
@@ -252,20 +303,22 @@ public class EntityDamage implements Listener {
                         //SCYTHE
                         if (scythe_weapon_validator) {
                             Player entity;
-                            double final_damage = damage;
-                            if(event.getEntity().getType()==EntityType.PLAYER){
+                            double final_damage = attack_damage;
+                            if (event.getEntity().getType() == EntityType.PLAYER) {
                                 entity = (Player) event.getEntity();
-                                if(entity.getInventory().getChestplate()==null){
-                                    final_damage = damage * 1.5;
+
+                                if (entity.getInventory().getChestplate() == null) {
+                                    final_damage = attack_damage * 1.5;
                                 }
                             }
+
                             event.setDamage(final_damage * 1.3);
                         }
                         //SPEAR
                         if (spear_weapon_validator) {
                             Player entity;
-                            double final_damage = damage;
-                            if(event.getEntity().getType()==EntityType.PLAYER) {
+                            double final_damage = attack_damage;
+                            if (event.getEntity().getType() == EntityType.PLAYER) {
                                 entity = (Player) event.getEntity();
                                 //if player not have chestplate
                                 if (entity.getInventory().getChestplate() == null) {
@@ -284,17 +337,17 @@ public class EntityDamage implements Listener {
                                     final_damage = final_damage * 1.05;
                                 }
                             }
-                            event.setDamage(final_damage*1.3);
+                            event.setDamage(final_damage * 1.3);
 
                             event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), 1);
                         }
                         //KATANA
                         if (katana_weapon_validator) {
-                            event.setDamage(damage);
+                            event.setDamage(attack_damage);
                             //RNG CRIT
                             int random = getRandomInt(5);
                             if (random == 1) {
-                                double crit = damage * 1.25;
+                                double crit = attack_damage * 1.25;
                                 event.setDamage(crit);
                                 getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
                                     public void run() {
@@ -351,7 +404,7 @@ public class EntityDamage implements Listener {
                                     world.playSound(player2.getLocation(), Sound.ITEM_SHIELD_BREAK, 10, 1);
                                     return;
                                 }
-                                event.setDamage(getPierceDamage(player2,world, damage));
+                                event.setDamage(getPierceDamage(player2, world, attack_damage));
                                 return;
                             }
                             //SPEAR
@@ -371,7 +424,7 @@ public class EntityDamage implements Listener {
                                     return;
                                 }
 
-                                event.setDamage(getPierceDamage(player2,world, damage));
+                                event.setDamage(getPierceDamage(player2, world, attack_damage));
                                 return;
                             }
                             //KNIFE
@@ -380,7 +433,7 @@ public class EntityDamage implements Listener {
                                 Player player2 = (Player) event.getEntity();
 
                                 if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
-                                    event.setDamage(damage * 2);
+                                    event.setDamage(attack_damage * 2);
                                     world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
                                     return;
                                 }
@@ -391,7 +444,7 @@ public class EntityDamage implements Listener {
                                 Player player2 = (Player) event.getEntity();
 
                                 if (player2.getInventory().getChestplate() == null || player2.getInventory().getChestplate().getType() == Material.ELYTRA) {
-                                    event.setDamage(damage * 1.5);
+                                    event.setDamage(attack_damage * 1.5);
                                     world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 10, 1);
                                 }
                             }
@@ -505,7 +558,7 @@ public class EntityDamage implements Listener {
         return multiplierr;
     }*/
 
-    private static double getPierceDamage(Player player, World world, double damage){
+    private static double getPierceDamage(Player player, World world, double damage) {
         //only one part missing is necessary to apply the critical
         if (player.getInventory().getHelmet() != null ||
                 player.getInventory().getChestplate() != null ||
@@ -690,7 +743,7 @@ public class EntityDamage implements Listener {
                                     world.spawnParticle(Particle.ENCHANT, player.getLocation().getX(), player.getLocation().getY() + 2, player.getLocation().getZ(), 500);
                                     world.spawnParticle(Particle.CLOUD, player.getLocation(), 100);
 
-                                    ItemMeta meta= player.getInventory().getItemInMainHand().getItemMeta();
+                                    ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
 
                                     meta.setCustomModelData(2222225);
                                     meta.setDisplayName(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCursedVessel_Name.getValue()));
@@ -700,10 +753,10 @@ public class EntityDamage implements Listener {
                                         attack_damage = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
                                         attack_speed = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
+                                    AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.attack_damage"), attack_damage,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
+                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.attack_speed"), attack_speed,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
                                     //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,

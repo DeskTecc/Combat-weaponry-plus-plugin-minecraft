@@ -329,203 +329,203 @@ Swords_PrismarineSword:
 #BASIC WEAPONS: ============================================================================================================
 #SCYTHES
 WoodenScythe:
-  Damage: 7
-  Speed: 1
+  Damage: 6
+  Speed: -3.0
 GoldenScythe:
-  Damage: 7
-  Speed: 1.2
+  Damage: 6
+  Speed: -2.8
 StoneScythe:
-  Damage: 7.5
-  Speed: 1
+  Damage: 6.5
+  Speed: -3.0
 IronScythe:
   Damage: 8
-  Speed: 1
+  Speed: -3.0
 EmeraldScythe:
-  Damage: 8
-  Speed: 1.2
+  Damage: 7
+  Speed: -2.8
 DiamondScythe:
-  Damage: 9
-  Speed: 1
+  Damage: 8
+  Speed: -3.0
 NetheriteScythe:
-  Damage: 10
-  Speed: 1
+  Damage: 9
+  Speed: -3.0
 #the amount of dmg added when netherite weapons are upgraded to pris can be customized below (default is +1)
 #the speed will remain the same as the netherite version
 Scythes_PrismarineScythe:
   DamageAdded: 1
 #RAPIERS
 WoodenRapier:
-  Damage: 3
-  Speed: 1.9
+  Damage: 2
+  Speed: -2.1
 GoldenRapier:
-  Damage: 3
-  Speed: 2.4
+  Damage: 2
+  Speed: -1.6
 StoneRapier:
-  Damage: 3.5
-  Speed: 1.9
+  Damage: 2.5
+  Speed: -2.1
 IronRapier:
-  Damage: 4
-  Speed: 1.9
+  Damage: 3
+  Speed: -2.1
 EmeraldRapier:
-  Damage: 4
-  Speed: 2.4
+  Damage: 3
+  Speed: -1.6
 DiamondRapier:
-  Damage: 5
-  Speed: 1.9
+  Damage: 4
+  Speed: -2.1
 NetheriteRapier:
-  Damage: 6
-  Speed: 1.9
+  Damage: 5
+  Speed: -2.1
 Rapiers_PrismarineRapier:
   DamageAdded: 1
 #LONGSWORDS
 WoodenLongsword:
-  Damage: 5
-  Speed: 1.2
+  Damage: 4
+  Speed: -2.8
 GoldenLongsword:
-  Damage: 5
-  Speed: 1.4
+  Damage: 4
+  Speed: -2.6
 StoneLongsword:
-  Damage: 6
-  Speed: 1.2
+  Damage: 5
+  Speed: -2.8
 IronLongsword:
-  Damage: 7
-  Speed: 1.2
+  Damage: 6
+  Speed: -2.8
 EmeraldLongsword:
-  Damage: 7
-  Speed: 1.4
+  Damage: 6
+  Speed: -2.6
 DiamondLongsword:
-  Damage: 8
-  Speed: 1.2
+  Damage: 7
+  Speed: -2.8
 NetheriteLongsword:
-  Damage: 9
-  Speed: 1.2
+  Damage: 8
+  Speed: -2.8
 PrismarineLongsword:
   DamageAdded: 1
 #KNIVES
 WoodenKnife:
-  Damage: 2
-  Speed: 3
+  Damage: 1
+  Speed: -1.0
 GoldenKnife:
-  Damage: 2
-  Speed: 4
+  Damage: 1
+  Speed: 0.0
 StoneKnife:
-  Damage: 2.5
-  Speed: 3
+  Damage: 1.5
+  Speed: -1
 IronKnife:
-  Damage: 3
-  Speed: 3
+  Damage: 2
+  Speed: -1
 EmeraldKnife:
-  Damage: 3
-  Speed: 4
+  Damage: 2
+  Speed: 0.0
 DiamondKnife:
-  Damage: 4
-  Speed: 3
+  Damage: 3
+  Speed: -1
 NetheriteKnife:
-  Damage: 5
-  Speed: 3
+  Damage: 4
+  Speed: -1
 Knives_PrismarineKnife:
   DamageAdded: 1
 #SPEARS
 WoodenSpear:
-  Damage: 2
-  Speed: 2.5
+  Damage: 1
+  Speed: -1.5
 GoldenSpear:
-  Damage: 2
-  Speed: 2.8
+  Damage: 1
+  Speed: -1.2
 StoneSpear:
-  Damage: 2.5
-  Speed: 2.5
+  Damage: 1.5
+  Speed: -1.5
 IronSpear:
-  Damage: 3
-  Speed: 2.5
+  Damage: 2
+  Speed: -1.5
 EmeraldSpear:
-  Damage: 3
-  Speed: 2.8
+  Damage: 2
+  Speed: -1.2
 DiamondSpear:
-  Damage: 4
-  Speed: 2.5
+  Damage: 3
+  Speed: -1.5
 NetheriteSpear:
-  Damage: 5
-  Speed: 2.5
+  Damage: 4
+  Speed: -1.5
 Spears_PrismarineSpear:
   DamageAdded: 1
 #KATANAS
 WoodenKatana:
-  Damage: 3.5
-  Speed: 1.7
+  Damage: 2.5
+  Speed: -2.3
   MoveSpeed: 0.02
 GoldenKatana:
-  Damage: 3.5
-  Speed: 2
+  Damage: 2.5
+  Speed: -2.0
   MoveSpeed: 0.02
 StoneKatana:
-  Damage: 4
-  Speed: 1.7
+  Damage: 3
+  Speed: -2.3
   MoveSpeed: 0.02
 IronKatana:
-  Damage: 5
-  Speed: 1.7
+  Damage: 4
+  Speed: -2.3
   MoveSpeed: 0.02
 EmeraldKatana:
-  Damage: 5
-  Speed: 2
+  Damage: 4
+  Speed: -2.0
   MoveSpeed: 0.02
 DiamondKatana:
-  Damage: 6
-  Speed: 1.7
+  Damage: 5
+  Speed: -2.3
   MoveSpeed: 0.02
 NetheriteKatana:
-  Damage: 7
-  Speed: 1.7
+  Damage: 6
+  Speed: -2.3
   MoveSpeed: 0.02
 Katanas_PrismarineKatana:
   DamageAdded: 1
 #SABERS
 WoodenSaber:
-  Damage: 4
-  Speed: 1.6
+  Damage: 3
+  Speed: -2.4
 GoldenSaber:
-  Damage: 4
-  Speed: 1.6
+  Damage: 3
+  Speed: -2.4
 StoneSaber:
-  Damage: 5
-  Speed: 1.6
+  Damage: 4
+  Speed: -2.4
 IronSaber:
-  Damage: 6
-  Speed: 1.6
+  Damage: 5
+  Speed: -2.4
 EmeraldSaber:
-  Damage: 6
-  Speed: 1.6
+  Damage: 5
+  Speed: -2.4
 DiamondSaber:
-  Damage: 7
-  Speed: 1.6
+  Damage: 6
+  Speed: -2.4
 NetheriteSaber:
-  Damage: 8
-  Speed: 1.6
+  Damage: 7
+  Speed: -2.4
 Sabers_PrismarineSaber:
   DamageAdded: 1
 #CLEAVERS
 WoodenCleaver:
-  Damage: 9
-  Speed: 0.4
+  Damage: 8
+  Speed: -3.6
 GoldenCleaver:
-  Damage: 9
-  Speed: 0.4
+  Damage: 8
+  Speed: -3.6
 StoneCleaver:
-  Damage: 10
-  Speed: 0.4
+  Damage: 9
+  Speed: -3.6
 IronCleaver:
-  Damage: 11
-  Speed: 0.4
+  Damage: 10
+  Speed: -3.6
 EmeraldCleaver:
-  Damage: 11
-  Speed: 0.4
+  Damage: 10
+  Speed: -3.6
 DiamondCleaver:
-  Damage: 12
-  Speed: 0.4
+  Damage: 11
+  Speed: -3.6
 NetheriteCleaver:
-  Damage: 13
-  Speed: 0.4
+  Damage: 12
+  Speed: -3.6
 Cleavers_PrismarineCleaver:
   DamageAdded: 1
 #
