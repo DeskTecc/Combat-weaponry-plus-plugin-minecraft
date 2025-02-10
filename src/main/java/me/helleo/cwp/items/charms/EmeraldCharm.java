@@ -32,11 +32,11 @@ public class EmeraldCharm extends BaseCharm{
             def = ConfigurationsDouble.Charms_EmeraldCharm_BonusArmor.getValue();
 
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
+        AttributeModifier modifier = new AttributeModifier("generic.max_health", hp,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
+        AttributeModifier modifier2 = new AttributeModifier("generic.armor", def,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
 
         List<String> lore = new ArrayList<String>();

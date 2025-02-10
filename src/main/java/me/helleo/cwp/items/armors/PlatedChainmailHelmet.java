@@ -32,8 +32,8 @@ public class PlatedChainmailHelmet extends BaseArmor {
             def = ConfigurationsDouble.Armors_PlateChainHelmet_Armor.getValue();
         }
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
+        AttributeModifier modifier = new AttributeModifier("generic.armor", def,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
 

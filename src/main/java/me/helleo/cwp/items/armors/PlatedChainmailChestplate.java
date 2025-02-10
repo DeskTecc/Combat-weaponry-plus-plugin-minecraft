@@ -31,8 +31,8 @@ public class PlatedChainmailChestplate extends BaseArmor {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             def = ConfigurationsDouble.Armors_PlateChainChestplate_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
+        AttributeModifier modifier = new AttributeModifier("generic.armor", def,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
         meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Chestplate");

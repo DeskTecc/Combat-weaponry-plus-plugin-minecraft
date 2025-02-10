@@ -29,11 +29,11 @@ public class EmeraldHelmet extends BaseArmor {
             def = ConfigurationsDouble.Armors_EmeraldHelmet_Armor.getValue();
         }
 
-        AttributeModifier modifierHealth = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
+        AttributeModifier modifierHealth = new AttributeModifier("generic.max_health", hp,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifierHealth);
-        AttributeModifier modifierDefense = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
+        AttributeModifier modifierDefense = new AttributeModifier("generic.armor", def,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifierDefense);
 
         meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Helmet");

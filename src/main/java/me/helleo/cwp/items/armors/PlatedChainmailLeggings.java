@@ -31,8 +31,8 @@ public class PlatedChainmailLeggings extends BaseArmor {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             def = ConfigurationsDouble.Armors_PlateChainLeggings_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
+        AttributeModifier modifier = new AttributeModifier("generic.armor", def,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
         meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Leggings");

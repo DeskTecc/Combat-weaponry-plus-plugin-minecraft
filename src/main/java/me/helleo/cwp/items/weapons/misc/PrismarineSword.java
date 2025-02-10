@@ -35,11 +35,11 @@ public class PrismarineSword implements Listener {
             attack_speed = ConfigurationsDouble.Swords_PrismarineSword_Speed.getValue();
         }
 
-        AttributeModifier modifier1 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.atack_damage"), attack_damage,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        AttributeModifier modifier1 = new AttributeModifier("generic.atack_damage", attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER);
         itemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.atack_speed"), attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        AttributeModifier modifier2 = new AttributeModifier("generic.atack_speed", attack_speed,
+                AttributeModifier.Operation.ADD_NUMBER);
         itemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();

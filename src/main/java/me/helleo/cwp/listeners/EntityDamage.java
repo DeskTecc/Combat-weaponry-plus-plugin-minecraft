@@ -16,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -91,29 +92,18 @@ public class EntityDamage implements Listener {
                     //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
                     if (p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getValue() < 1.9) {
                         ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
-                        double old_cooldown =  -3.6;
-                        for (AttributeModifier attributeModifier : m.getAttributeModifiers(Attribute.GENERIC_ATTACK_SPEED)) {
-                            if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_speed"))) {
-                                old_cooldown = attributeModifier.getAmount();
-                                break;
-                            }
-                        }
-                        AttributeModifier modifier = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), old_cooldown+0.25,
-                                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                        m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+                        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", 0.25,
+                                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
                         m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                         p.getInventory().getItemInMainHand().setItemMeta(m);
-                        // DEBUG
-                        //Bukkit.getConsoleSender().sendMessage("OLD COOLDOWN: "+old_cooldown);
-                        //Bukkit.getConsoleSender().sendMessage("NEW COOLDOWN: "+(old_cooldown+0.25));
                     }
                 }
                 // if player has no atk cooldown (100% charged)
                 if (p.getAttackCooldown() == 1) {
                     ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
                     m.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED);
-                    AttributeModifier modifier = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), -3.6,
-                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                    AttributeModifier modifier = new AttributeModifier("generic.attack_speed", -3.6,
+                            AttributeModifier.Operation.ADD_NUMBER);
                     m.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
                     p.getInventory().getItemInMainHand().setItemMeta(m);
                 }
@@ -197,7 +187,7 @@ public class EntityDamage implements Listener {
                     //analysis
 
                     for (AttributeModifier attributeModifier : itemMeta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)) {
-                        if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))) {
+                        if (attributeModifier.getName().equals("generic.attack_damage")) {
                             attack_damage = attributeModifier.getAmount();
                             break;
                         }
@@ -693,11 +683,11 @@ public class EntityDamage implements Listener {
                                         attack_damage = ConfigurationsDouble.Others_InfusedVessel_Damage.getValue();
                                         attack_speed = ConfigurationsDouble.Others_InfusedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifierAttackDamage = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), attack_damage,
-                                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                    AttributeModifier modifierAttackDamage = new AttributeModifier("generic.attack_damage", attack_damage,
+                                            AttributeModifier.Operation.ADD_NUMBER);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), attack_speed,
-                                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                    AttributeModifier modifierAttackSpeed = new AttributeModifier("generic.attack_speed", attack_speed,
+                                            AttributeModifier.Operation.ADD_NUMBER);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
 
                                     List<String> lore = new ArrayList<>();
@@ -753,11 +743,11 @@ public class EntityDamage implements Listener {
                                         attack_damage = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
                                         attack_speed = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.attack_damage"), attack_damage,
-                                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                    AttributeModifier modifierAttackDamage = new AttributeModifier("generic.attack_damage", attack_damage,
+                                            AttributeModifier.Operation.ADD_NUMBER);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.attack_speed"), attack_speed,
-                                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                    AttributeModifier modifierAttackSpeed = new AttributeModifier("generic.attack_speed", attack_speed,
+                                            AttributeModifier.Operation.ADD_NUMBER);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
                                     //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,
                                     //		Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);

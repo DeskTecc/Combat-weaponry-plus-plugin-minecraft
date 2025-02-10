@@ -30,11 +30,11 @@ public class GoldCharm extends BaseCharm{
             atkspd = ConfigurationsDouble.Charms_GoldCharm_BonusAttackSpeedPercent.getValue() / 100;
             mvspd = ConfigurationsDouble.Charms_GoldCharm_BonusMoveSpeedPercent.getValue() / 100;
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), atkspd,
-                AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND);
+        AttributeModifier modifier = new AttributeModifier("generic.attack_speed", atkspd,
+                AttributeModifier.Operation.MULTIPLY_SCALAR_1);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), mvspd,
-                AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND);
+        AttributeModifier modifier2 = new AttributeModifier("generic.move_speed", mvspd,
+                AttributeModifier.Operation.MULTIPLY_SCALAR_1);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier2);
 
 

@@ -36,8 +36,8 @@ public class RedstoneCore {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             arm = ConfigurationsDouble.Armors_RedstoneCore_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.armor"), arm,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
+        AttributeModifier modifier = new AttributeModifier("generic.armor", arm,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRedstoneCore_Name.getValue()));

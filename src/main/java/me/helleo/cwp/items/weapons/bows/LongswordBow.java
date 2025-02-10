@@ -39,11 +39,11 @@ public class LongswordBow extends BaseBow{
             attack_damage = ConfigurationsDouble.Bows_LongSwordBow_Damage.getValue();
             attack_speed = ConfigurationsDouble.Bows_LongSwordBow_Speed.getValue();
         }
-        AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        AttributeModifier modifierAttackDamage = new AttributeModifier("generic.attack_damage", attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-        AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        AttributeModifier modifierAttackSpeed = new AttributeModifier("generic.attack_speed", attack_speed,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
 
 

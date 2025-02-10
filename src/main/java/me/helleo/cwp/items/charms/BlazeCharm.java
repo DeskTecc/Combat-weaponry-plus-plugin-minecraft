@@ -30,11 +30,11 @@ public class BlazeCharm extends BaseCharm{
             dmg = ConfigurationsDouble.Charms_BlazeCharm_BonusDamage.getValue();
             hp = ConfigurationsDouble.Charms_BlazeCharm_BonusHealth.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), dmg,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
+        AttributeModifier modifier = new AttributeModifier("generic.attack_damage", dmg,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
+        AttributeModifier modifier2 = new AttributeModifier("generic.max_health", hp,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier2);
 
         List<String> lore = new ArrayList<String>();

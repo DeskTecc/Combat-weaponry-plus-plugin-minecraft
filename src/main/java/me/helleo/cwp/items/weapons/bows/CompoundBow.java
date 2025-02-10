@@ -32,8 +32,8 @@ public class CompoundBow extends BaseBow{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Name.getValue()));
         meta.setCustomModelData(3330003);
-        AttributeModifier modifierMoveSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.03,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        AttributeModifier modifierMoveSpeed = new AttributeModifier("generic.move_speed", -0.03,
+                AttributeModifier.Operation.ADD_NUMBER);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierMoveSpeed);
         item.setItemMeta(meta);
         return item;

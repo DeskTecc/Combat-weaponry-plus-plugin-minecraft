@@ -40,8 +40,7 @@ public abstract class BaseSaber extends WeaponBase {
     }
 
     protected static AttributeModifier setModifier(String key, double value){
-        return new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,key),
-                value, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+        return new AttributeModifier(key, value, AttributeModifier.Operation.ADD_NUMBER);
     }
 
     public static List<String> getLore(double attack_damage, double attack_speed){
