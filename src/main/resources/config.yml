@@ -5,11 +5,11 @@
 #
 #This config file is quite lengthy, so using CTRL+F to find things is highly recommended.
 #
-# ENABLE OR DISABLE THE RESOURCE PACK==================================================================================
-# PUT TRUE OR FALSE
-ResourcePack: true
 # LANGUAGE ON LANG FOLDER:
 lang: "en"
+# ENABLE OR DISABLE THE RESOURCE PACK==================================================================================
+# PUT TRUE OR FALSE
+CustomResourcePack: false
 #CHANGE THE RESOURCE PACK: (to change it, replace the link with your own link)
 PackLink: https://www.dropbox.com/scl/fi/dhgubahgx3z0phg4wnbw3/cwp-texture-pack-1.5.7.zip?rlkey=cxtqp9575bk28qr90vyxb2tdv&dl=1
 #Original pack link for if you change it and want to know what the original is:
