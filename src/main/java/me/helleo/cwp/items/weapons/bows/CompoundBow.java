@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.weapons.bows;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
@@ -32,9 +34,11 @@ public class CompoundBow extends BaseBow{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Name.getValue()));
         meta.setCustomModelData(3330003);
-        AttributeModifier modifierMoveSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.03,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierMoveSpeed);
+
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.03,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        meta.setAttributeModifiers(modifiers);
         item.setItemMeta(meta);
         return item;
     }

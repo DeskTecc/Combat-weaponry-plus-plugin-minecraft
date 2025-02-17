@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.armors;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -29,12 +31,13 @@ public class EmeraldHelmet extends BaseArmor {
             def = ConfigurationsDouble.Armors_EmeraldHelmet_Armor.getValue();
         }
 
-        AttributeModifier modifierHealth = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifierHealth);
-        AttributeModifier modifierDefense = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifierDefense);
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.emerald_helmet.max_health"), hp,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
+        modifiers.put(Attribute.GENERIC_ARMOR, new AttributeModifier(NamespacedKey.fromString("generic.emerald_helmet.armor"), def,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
+
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Helmet");
 

@@ -2,3 +2,12 @@ name: CombatWeaponryPlus
 version: '${project.version}'
 main: me.helleo.cwp.CombatWeaponryPlus
 api-version: '1.21.1'
+commands:
+  cwp:
+    description: main prefix command
+    usage: /cwp
+    permission: cwp
+  cwp reload:
+    description: reload command
+    usage: /cwp reload
+    permission: cwp.reload

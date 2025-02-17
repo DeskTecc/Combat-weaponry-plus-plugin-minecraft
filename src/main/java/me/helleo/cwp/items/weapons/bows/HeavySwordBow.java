@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.weapons.bows;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -59,29 +61,21 @@ public class HeavySwordBow extends BaseBow{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Line3.getValue()));
         meta.setLore(lore);
 
-        AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-        AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.minecraft("generic.move_speed_offhand"), offhand_move_speed,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
+        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance"), knockback_resistance,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance_offhand"), offhand_knockback_resistance,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
 
-
-        //speed
-        AttributeModifier modifierMoveSpeed = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierMoveSpeed);
-        AttributeModifier modifierOffHandMoveSpeed = new AttributeModifier(NamespacedKey.minecraft("generic.move_speed_offhand"), offhand_move_speed,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifierOffHandMoveSpeed);
-
-        //knockback res
-        AttributeModifier modifierKnockbackResistance = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance"), knockback_resistance,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifierKnockbackResistance);
-        AttributeModifier modifierOffHandKnockbackResistance = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "knockback_resistance_offhand"), offhand_knockback_resistance,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifierOffHandKnockbackResistance);
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Name.getValue()));
         meta.setCustomModelData(1000002);

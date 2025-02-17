@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.weapons.misc;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -25,18 +27,25 @@ public class ChorusBlade {
     public ItemStack getTool(){
 
         //modifier
-        double dmg = 3;
-        double spd = 6;
+        double attack_damage = 3;
+        double attack_speed = 6;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Swords_ChorusBlade_Damage.getValue();
-            spd = ConfigurationsDouble.Swords_ChorusBlade_Speed.getValue();
+            attack_damage = ConfigurationsDouble.Swords_ChorusBlade_Damage.getValue();
+            attack_speed = ConfigurationsDouble.Swords_ChorusBlade_Speed.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), spd,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), dmg,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
+                attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+
+        meta.setAttributeModifiers(modifiers);
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -57,8 +66,8 @@ public class ChorusBlade {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionChorusBlade_Line5.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionChorusBlade_Line6.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionChorusBlade_Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&',"&9 "+dmg+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+spd+" Attack Speed"));
+        lore.add(ChatColor.translateAlternateColorCodes('&',"&9 "+attack_damage+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+attack_speed+" Attack Speed"));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);

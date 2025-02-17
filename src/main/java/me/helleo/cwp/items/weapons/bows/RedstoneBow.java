@@ -29,7 +29,6 @@ public class RedstoneBow extends BaseBow{
 
         meta.setLore(lore);
 
-
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRedstoneBow_Name.getValue()));
         meta.setCustomModelData(3330005);
         item.setItemMeta(meta);

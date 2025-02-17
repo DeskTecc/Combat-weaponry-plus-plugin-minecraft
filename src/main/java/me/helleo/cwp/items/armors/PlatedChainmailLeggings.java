@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.armors;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -31,9 +33,12 @@ public class PlatedChainmailLeggings extends BaseArmor {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             def = ConfigurationsDouble.Armors_PlateChainLeggings_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
+
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.plated_chainmail_leggings.armor"), def,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
+
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Leggings");
         if (ConfigurationsBool.EnchantsPlatedChainmail.getValue()) {

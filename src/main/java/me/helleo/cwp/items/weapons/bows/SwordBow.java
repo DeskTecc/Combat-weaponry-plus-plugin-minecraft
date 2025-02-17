@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.weapons.bows;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -34,12 +36,13 @@ public class SwordBow extends BaseBow{
             attack_speed = ConfigurationsDouble.Bows_SwordBow_Speed.getValue();
         }
 
-        AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-        AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+
+        meta.setAttributeModifiers(modifiers);
 
         if (ConfigurationsBool.EnchantsSwordBow.getValue()) {
             int enchantmentSmite = (int) ConfigurationsDouble.SwordBowEnchantLevels_Smite.getValue();

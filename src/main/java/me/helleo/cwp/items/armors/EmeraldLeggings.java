@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.armors;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -31,12 +33,14 @@ public class EmeraldLeggings extends BaseArmor{
             hp = ConfigurationsDouble.Armors_EmeraldLeggings_BonusHealth.getValue();
             def = ConfigurationsDouble.Armors_EmeraldLeggings_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
+
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.emerald_leggings.max_health"), hp,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.emerald_leggings.armor"), def,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
+
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Leggings");
         if (ConfigurationsBool.EnchantmentsOnEmeraldArmor.getValue()) {

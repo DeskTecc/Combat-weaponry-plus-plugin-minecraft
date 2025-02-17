@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.misc;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.Items;
 import me.helleo.cwp.configurations.ConfigurationsBool;
@@ -32,12 +34,12 @@ public class WitherHelmet {
             hp = ConfigurationsDouble.Armors_WitherHelmet_BonusHealth.getValue();
         }
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.knockback_resistance"), kbr,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier2);
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
+        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.knockback_resistance"), kbr,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionWitheringHelmet_Name.getValue()));
         meta.setCustomModelData(5553331);

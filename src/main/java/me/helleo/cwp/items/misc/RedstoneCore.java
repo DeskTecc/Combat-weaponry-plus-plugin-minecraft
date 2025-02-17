@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.misc;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -36,9 +38,11 @@ public class RedstoneCore {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             arm = ConfigurationsDouble.Armors_RedstoneCore_Armor.getValue();
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.armor"), arm,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
+
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.armor"), arm,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRedstoneCore_Name.getValue()));
         meta.setCustomModelData(1231234);

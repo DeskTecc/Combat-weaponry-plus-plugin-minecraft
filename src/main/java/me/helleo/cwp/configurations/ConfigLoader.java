@@ -6,13 +6,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 
 import static me.helleo.cwp.CombatWeaponryPlus.langDef;
 import static me.helleo.cwp.CombatWeaponryPlus.plugin;
 
 public class ConfigLoader {
 
-    public boolean setLang(String language) {
+    public boolean setLang(String language) throws IOException {
         File langFile = new File(plugin.getDataFolder(), "/lang/lang-" + language + ".yml");
         if(!langFile.exists()){
             try{
@@ -24,6 +25,8 @@ public class ConfigLoader {
                 return false;
             }
         }
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(langFile);
+        config.save(langFile);
         return true;
     }
 

@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.charms;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -32,12 +34,13 @@ public class EmeraldCharm extends BaseCharm{
             def = ConfigurationsDouble.Charms_EmeraldCharm_BonusArmor.getValue();
 
         }
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, modifier);
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier2);
+
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
+        meta.setAttributeModifiers(modifiers);
 
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldCharm_Line1.getValue()));

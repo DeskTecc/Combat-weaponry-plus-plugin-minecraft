@@ -218,3 +218,6 @@ DescriptionPrismarineCleaver:
 When_In_Main_Hand: "When in Main Hand"
 Attack_Damage: "Attack Damage"
 Attack_Speed: "Attack Speed"
+You_Dont_Have_Permission: "You don't have permission to do it!"
+Reload_Error: "Error on reload Combat Weaponry Plus config!"
+Reload_Success: "Combat Weaponry Plus config reloaded!"

@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.armors;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -16,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public class PlatedChainmailBoots extends BaseArmor {
@@ -31,10 +34,11 @@ public class PlatedChainmailBoots extends BaseArmor {
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             def = ConfigurationsDouble.Armors_PlateChainBoots_Armor.getValue();
         }
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.plated_chainmail_boots.armor"), def,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
 
-        AttributeModifier modifier = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Boots");
         if (ConfigurationsBool.EnchantsPlatedChainmail.getValue()) {

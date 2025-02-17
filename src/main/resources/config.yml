@@ -187,7 +187,7 @@ MultiplierCleavers: 1
 #CUSTOMIZE ITEM ATTRIBUTE NUMBERS (damage, attack speed, etc)==================================================================
 # (This is still a work in progress)
 # REMEMBER: after changing the attribute numbers, you will also have to change the numbers in the item descriptions (you might not have to do this with some items though)
-UseCustomValues: true
+UseCustomValues: false
 #set UseCustomValues to false to make the plugin use the default numbers instead of the numbers below
 #ARMOR: ==================================================================================================================================================================
 Armors_RedstoneCore:

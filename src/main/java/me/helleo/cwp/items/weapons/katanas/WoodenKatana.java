@@ -1,5 +1,7 @@
 package me.helleo.cwp.items.weapons.katanas;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -30,27 +32,24 @@ public class WoodenKatana extends BaseKatana{
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,
-                new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                        attack_speed,
-                        AttributeModifier.Operation.ADD_NUMBER,
-                        EquipmentSlotGroup.HAND
-                )
-        );
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,
-                new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                        attack_damage,
-                        AttributeModifier.Operation.ADD_NUMBER,
-                        EquipmentSlotGroup.HAND
-                )
-        );
-        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
-                new AttributeModifier(NamespacedKey.fromString("generic.move_speed"),
-                        move_speed,
-                        AttributeModifier.Operation.ADD_NUMBER,
-                        EquipmentSlotGroup.HAND
-                )
-        );
+        Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
+                attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.move_speed"),
+                move_speed,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+
+        meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.WoodenKatana.getValue()));
         meta.setCustomModelData(1000002);
