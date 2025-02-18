@@ -12,13 +12,10 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.UUID;
 
 public class PlatedChainmailLeggings extends BaseArmor {
 
@@ -55,8 +52,8 @@ public class PlatedChainmailLeggings extends BaseArmor {
 
         // plated chainmail leggings
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "plated_chainmail_leggings");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "plated_chainmail_leggings");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
         recipe.shape(

@@ -37,7 +37,7 @@ public class LongBow extends BaseBow{
         meta.setCustomModelData(3330001);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.01,
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.01,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
         meta.setAttributeModifiers(modifiers);
         item.setItemMeta(meta);
@@ -45,8 +45,8 @@ public class LongBow extends BaseBow{
     }
 
     public ShapedRecipe getBowRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "longbow");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "longbow");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(

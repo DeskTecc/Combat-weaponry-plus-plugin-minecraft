@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.sabers;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
@@ -46,7 +47,8 @@ public class EmeraldSaber extends BaseSaber{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldSaber.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.EmeraldSaber.getValue())));
         meta.setCustomModelData(1000030);
 
         //enchants

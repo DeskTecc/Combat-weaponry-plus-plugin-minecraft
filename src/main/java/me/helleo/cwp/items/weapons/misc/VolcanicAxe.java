@@ -17,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class VolcanicAxe {
 
@@ -46,7 +45,7 @@ public class VolcanicAxe {
         double attack_speed = -3;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
             attack_damage = ConfigurationsDouble.Others_VolcanicAxe_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Others_VolcanicAxe_Speed.getValue();;
+            attack_speed = ConfigurationsDouble.Others_VolcanicAxe_Speed.getValue();
         }
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
@@ -69,8 +68,8 @@ public class VolcanicAxe {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "fire_axe");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "fire_axe");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
         recipe.shape(

@@ -38,8 +38,8 @@ public class Eelytra {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "eelytra");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "eelytra");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
         recipe.shape(

@@ -43,7 +43,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222223);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -72,7 +72,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222224);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -100,7 +100,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222225);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -132,7 +132,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222226);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -163,7 +163,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222227);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -198,7 +198,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222228);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -231,7 +231,7 @@ public class PlayerClick implements Listener {
 
                                 meta.setCustomModelData(1222229);
                                 player.getInventory().getItemInMainHand().setItemMeta(meta);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         if (player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                                             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
@@ -269,7 +269,7 @@ public class PlayerClick implements Listener {
                                 World world = player.getWorld();
                                 world.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 10, 1);
                                 player.setVelocity(player.getLocation().getDirection().multiply(2));
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         //player.setVelocity(player.getLocation().getDirection().multiply(0.5));
 

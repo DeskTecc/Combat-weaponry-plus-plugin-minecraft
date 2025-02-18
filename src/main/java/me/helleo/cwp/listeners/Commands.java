@@ -2,10 +2,9 @@ package me.helleo.cwp.listeners;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigLoader;
+import me.helleo.cwp.configurations.ConfigurationsRecipes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,10 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-import static me.helleo.cwp.CombatWeaponryPlus.langDef;
-import static me.helleo.cwp.CombatWeaponryPlus.plugin;
 import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
-import static me.helleo.cwp.configurations.ConfigurationsRecipes.loadRecipes;
 
 public class Commands implements CommandExecutor {
 
@@ -27,25 +23,19 @@ public class Commands implements CommandExecutor {
             if (player.hasPermission("cwp.reload")) {
                 if (Objects.equals(args[0], "reload")) {
                     try {
-                        plugin.reloadConfig();
-                        plugin.saveConfig();
-                        //reload lang file
-                        try{
-                            langDef = getConfig().getString("lang");
-                        }catch (Exception e){
-                            langDef = "en";
-                        }
-                        boolean langFileLoad = new ConfigLoader().setLang(langDef);
+                        ConfigLoader.reloadConfig();
+                        ConfigLoader.setLang(getConfig().getString("lang"));
 
-                        if(!langFileLoad){
-                            langDef= "en";
-                        }
-                        CombatWeaponryPlus.keys.clear();
                         Bukkit.clearRecipes();
                         Bukkit.resetRecipes();
-                        loadRecipes();
+
+                        ConfigurationsRecipes recipes = CombatWeaponryPlus.getRecipes();
+                        recipes.clearRecipes();
+                        recipes.loadRecipes();
                         player.sendMessage(ChatColor.GREEN + ConfigLoader.getLang().getString("Reload_Success") + ChatColor.RESET);
+                        player.sendMessage(ChatColor.YELLOW + ConfigLoader.getLang().getString("Reload_Advice") + ChatColor.RESET);
                         Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + ConfigLoader.getLang().getString("Reload_Success") + ChatColor.RESET);
+                        Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + ConfigLoader.getLang().getString("Reload_Advice") + ChatColor.RESET);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                         //player.sendMessage(ChatColor.RED + ConfigLoader.getLang().getString("Reload_Error") + ChatColor.RESET);
@@ -57,31 +47,25 @@ public class Commands implements CommandExecutor {
             }
         }else{
             try{
-                plugin.reloadConfig();
-                plugin.saveConfig();
-                //reload lang file
-                try{
-                    langDef = getConfig().getString("lang");
-                }catch (Exception e){
-                    langDef = "en";
-                }
-                boolean langFileLoad = new ConfigLoader().setLang(langDef);
+                ConfigLoader.reloadConfig();
+                ConfigLoader.setLang(getConfig().getString("lang"));
 
-                if(!langFileLoad){
-                    langDef= "en";
-                }
-                CombatWeaponryPlus.keys.clear();
                 Bukkit.clearRecipes();
                 Bukkit.resetRecipes();
-                loadRecipes();
+
+                ConfigurationsRecipes recipes = CombatWeaponryPlus.getRecipes();
+                recipes.clearRecipes();
+                recipes.loadRecipes();
+
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + ConfigLoader.getLang().getString("Reload_Success") + ChatColor.RESET);
-                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + ConfigLoader.getConfig().getString("lang") + ChatColor.RESET);
+                Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + ConfigLoader.getLang().getString("Reload_Advice") + ChatColor.RESET);
 
             }catch (Exception e){
                 throw new RuntimeException(e);
                 //Bukkit.getConsoleSender().sendMessage(ChatColor.RED + ConfigLoader.getLang().getString("Reload_Error") + ChatColor.RESET);
             }
         }
+
         return true;
     }
 }

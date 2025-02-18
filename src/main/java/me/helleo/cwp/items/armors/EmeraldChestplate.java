@@ -55,8 +55,8 @@ public class EmeraldChestplate extends BaseArmor{
     }
 
     public ShapedRecipe getArmorPieceRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_chestplate");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_chestplate");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
         recipe.shape(

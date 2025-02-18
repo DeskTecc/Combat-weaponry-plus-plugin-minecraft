@@ -21,8 +21,8 @@ public class ChainmailChestplate extends BaseArmor {
 
         //chainmail chestplate
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chainmail_chestplate");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "chainmail_chestplate");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

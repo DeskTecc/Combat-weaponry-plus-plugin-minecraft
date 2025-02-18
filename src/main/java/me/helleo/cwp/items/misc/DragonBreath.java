@@ -15,8 +15,8 @@ public class DragonBreath {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "dragon_breath");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "dragon_breath");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
         recipe.shape(

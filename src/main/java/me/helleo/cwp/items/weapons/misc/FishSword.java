@@ -9,13 +9,11 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.entity.Fish;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class FishSword {
 
@@ -63,8 +61,8 @@ public class FishSword {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "fish_test");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "fish_test");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
         recipe.shape(

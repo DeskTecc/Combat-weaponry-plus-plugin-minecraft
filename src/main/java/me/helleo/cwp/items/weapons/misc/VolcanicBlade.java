@@ -17,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class VolcanicBlade {
 
@@ -70,8 +69,8 @@ public class VolcanicBlade {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "fire_sword");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "fire_sword");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
         recipe.shape(

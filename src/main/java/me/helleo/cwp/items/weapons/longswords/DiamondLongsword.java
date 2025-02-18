@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.longswords;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -44,7 +45,8 @@ public class DiamondLongsword extends BaseLongsword{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.DiamondLongsword.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.DiamondLongsword.getValue())));
         meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;

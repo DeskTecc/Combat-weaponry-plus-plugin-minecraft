@@ -25,7 +25,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -349,7 +348,7 @@ public class EntityDamage implements Listener {
                             if (random == 1) {
                                 double crit = attack_damage * 1.25;
                                 event.setDamage(crit);
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         World world = player.getWorld();
                                         world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -357,7 +356,7 @@ public class EntityDamage implements Listener {
                                     }
                                 }, 2L); //the 2L is ticks, there are 20 ticks in a second so this is 1/10th of a second delay
 
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         World world = player.getWorld();
                                         world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -365,7 +364,7 @@ public class EntityDamage implements Listener {
                                     }
                                 }, 4L);
 
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         World world = player.getWorld();
                                         world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -373,7 +372,7 @@ public class EntityDamage implements Listener {
                                     }
                                 }, 6L);
 
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.plugin, new Runnable() {
+                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
                                     public void run() {
                                         World world = player.getWorld();
                                         world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
@@ -753,10 +752,10 @@ public class EntityDamage implements Listener {
                                         attack_damage = ConfigurationsDouble.Others_CursedVessel_Damage.getValue();
                                         attack_speed = ConfigurationsDouble.Others_CursedVessel_Speed.getValue();
                                     }
-                                    AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.attack_damage"), attack_damage,
+                                    AttributeModifier modifierAttackDamage = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "generic.attack_damage"), attack_damage,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifierAttackDamage);
-                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.attack_speed"), attack_speed,
+                                    AttributeModifier modifierAttackSpeed = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "generic.attack_speed"), attack_speed,
                                             AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                                     meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifierAttackSpeed);
                                     //AttributeModifier modifier3e = new AttributeModifier(UUID.randomUUID(), "Health", -0.5,

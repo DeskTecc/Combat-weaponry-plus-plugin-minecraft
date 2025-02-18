@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.scythes;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -44,7 +45,8 @@ public class DiamondScythe extends BaseScythe{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.DiamondScythe.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.DiamondScythe.getValue())));
         meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;

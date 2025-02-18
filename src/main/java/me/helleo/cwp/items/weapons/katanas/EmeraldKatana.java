@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.katanas;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
@@ -53,7 +54,8 @@ public class EmeraldKatana extends BaseKatana{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldKatana.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.EmeraldKatana.getValue())));
         meta.setCustomModelData(1000012);
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

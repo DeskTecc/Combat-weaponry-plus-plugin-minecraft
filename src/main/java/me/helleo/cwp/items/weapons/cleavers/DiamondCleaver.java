@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.cleavers;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -43,7 +44,8 @@ public class DiamondCleaver extends BaseCleaver{
         ));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.DiamondCleaver.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.DiamondCleaver.getValue())));
         meta.setCustomModelData(1000021);
         item.setItemMeta(meta);
         return item;

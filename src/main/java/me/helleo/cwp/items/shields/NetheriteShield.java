@@ -30,8 +30,8 @@ public class NetheriteShield {
     }
 
     public ShapedRecipe getShieldRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "netheriteshield");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "netheriteshield");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getShield());
 
         recipe.shape(

@@ -31,8 +31,8 @@ public class DiamondShield {
     }
 
     public ShapedRecipe getShieldRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "diamondshield");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "diamondshield");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getShield());
 
         recipe.shape(

@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.weapons.longswords;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
@@ -33,12 +34,12 @@ public class PrismarineLongsword implements Listener {
             attack_damage = BaseLongsword.getCustomDamageAdded("PrismarineLongsword");
         }
 
-        AttributeModifier modifier1 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
+        AttributeModifier modifier1 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
 
         itemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
 
-        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
+        AttributeModifier modifier2 = new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
         itemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
 
@@ -54,7 +55,8 @@ public class PrismarineLongsword implements Listener {
 
         itemMeta.setLore(lore);
 
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', BaseLongsword.description.PrismarineLongsword.getValue()));
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(BaseLongsword.description.PrismarineLongsword.getValue())));
         //important:
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         itemMeta.setCustomModelData(1200001);

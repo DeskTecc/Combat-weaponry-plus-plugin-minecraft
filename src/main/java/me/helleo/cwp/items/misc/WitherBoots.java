@@ -18,7 +18,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class WitherBoots {
 
@@ -34,9 +33,9 @@ public class WitherBoots {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
-        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.knockback_resistance"), kbr,
+        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.knockback_resistance"), kbr,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.setAttributeModifiers(modifiers);
 
@@ -59,8 +58,8 @@ public class WitherBoots {
     }
 
     public ShapedRecipe getArmorRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "wither_bone_boots");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "wither_bone_boots");
+        CombatWeaponryPlus.getRecipes().setKey(key);
 
         ItemStack wbone = new ItemStack(Material.BONE);
         ItemMeta meta2 = wbone.getItemMeta();

@@ -5,23 +5,11 @@ package me.helleo.cwp;
 // ctrl + f is very useful for finding things
 
 
-import me.helleo.cwp.configurations.ConfigLoader;
-import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
-import me.helleo.cwp.configurations.ConfigurationsString;
-import me.helleo.cwp.items.armors.*;
-import me.helleo.cwp.items.charms.*;
-import me.helleo.cwp.items.misc.*;
-import me.helleo.cwp.items.shields.DiamondShield;
-import me.helleo.cwp.items.shields.NetheriteShield;
-import me.helleo.cwp.items.tools.*;
+import me.helleo.cwp.configurations.*;
 import me.helleo.cwp.items.weapons.WeaponBase;
-import me.helleo.cwp.items.weapons.bows.*;
 import me.helleo.cwp.items.weapons.cleavers.*;
 import me.helleo.cwp.items.weapons.katanas.*;
 import me.helleo.cwp.items.weapons.knives.*;
-import me.helleo.cwp.items.weapons.longswords.*;
-import me.helleo.cwp.items.weapons.misc.*;
 import me.helleo.cwp.items.weapons.rapiers.*;
 import me.helleo.cwp.items.weapons.sabers.*;
 import me.helleo.cwp.items.weapons.scythes.*;
@@ -29,6 +17,7 @@ import me.helleo.cwp.items.weapons.spears.*;
 import me.helleo.cwp.listeners.Commands;
 import me.helleo.cwp.listeners.EntityDamage;
 import me.helleo.cwp.listeners.PlayerClick;
+import me.helleo.cwp.listeners.PlayerEvents;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -45,7 +34,6 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.CrossbowMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -59,10 +47,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
-import java.io.IOException;
 import java.util.*;
 
-import static me.helleo.cwp.configurations.ConfigurationsRecipes.loadRecipes;
 import static me.helleo.cwp.items.weapons.WeaponBase.getCustomDamageAdded;
 
 
@@ -70,11 +56,17 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     public static String pluginName = "CombatWeaponryPlus";
 
-    public static Plugin plugin;
+    private static Plugin plugin;
 
-    public static String langDef = "en";
+    private static final ConfigurationsRecipes recipes = new ConfigurationsRecipes();
 
-    public static List<NamespacedKey> keys = new ArrayList<>();
+    public static Plugin getPlugin(){
+        return plugin;
+    }
+
+    public static ConfigurationsRecipes getRecipes(){
+        return recipes;
+    }
 
     @Override
     public void onEnable() {
@@ -83,28 +75,12 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         Bukkit.getPluginManager().registerEvents(this, this);
         Bukkit.getPluginManager().registerEvents(new PlayerClick(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.getCommand("cwp").setExecutor(new Commands());
         this.saveDefaultConfig();
 
-        try{
-            langDef = getConfig().getString("lang");
-        }catch (Exception e){
-            langDef = "en";
-        }
-
-        boolean langFileLoad;
-        try {
-            langFileLoad = new ConfigLoader().setLang(langDef);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        if(!langFileLoad){
-            langDef= "en";
-        }
-
-        loadRecipes();
+        recipes.loadRecipes();
     }
 
     @Override
@@ -112,23 +88,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
 
-        if (ConfigurationsBool.CustomResourcePack.getValue()) {
-            player.setResourcePack(ConfigurationsString.PackLink.getValue());
-        }else{
-            if(Bukkit.getVersion().contains("1.21.2") || Bukkit.getVersion().contains("1.21.3")){
-                player.setResourcePack("https://download.mc-packs.net/pack/c458ca435b4bc36ce1e0094fb8c4c07d60c2ba85.zip");
-            }else if (Bukkit.getVersion().contains("1.21") || Bukkit.getVersion().contains("1.21.1")){
-                player.setResourcePack("https://download.mc-packs.net/pack/74b6ef9eb3a726b6ce7469c4d316457a2c5c4f1d.zip");
-            }else{
-                player.setResourcePack("https://www.dropbox.com/scl/fi/dhgubahgx3z0phg4wnbw3/cwp-texture-pack-1.5.7.zip?rlkey=cxtqp9575bk28qr90vyxb2tdv&dl=1");
-            }
-        }
-        player.discoverRecipes(keys);
-    }
 
     //longsword dash ability
     //unused
@@ -1694,7 +1654,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     }
 
     //unused item
-    public ShapedRecipe getbonekatRecipe() {
+    /*public ShapedRecipe getbonekatRecipe() {
 
         //bone
 
@@ -1741,7 +1701,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         recipe.setIngredient('S', Material.BEDROCK);
 
         return recipe;
-    }
+    }*/
 
 
     @EventHandler
@@ -3980,7 +3940,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     }
 
     //EXPLOSIVE STAFF
-    public ShapedRecipe getExStaffRecipe() {
+    /*public ShapedRecipe getExStaffRecipe() {
 
         //test
 
@@ -4013,7 +3973,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         recipe.setIngredient('S', Material.BEDROCK);
 
         return recipe;
-    }
+    }*/
 
     @EventHandler
     public void explosion(EntityShootBowEvent event) {

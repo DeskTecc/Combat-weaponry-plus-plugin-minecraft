@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.knives;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -54,7 +55,8 @@ public class NetheriteKnife extends BaseKnife{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteKnife.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.NetheriteKnife.getValue())));
         meta.setCustomModelData(1000006);
         item.setItemMeta(meta);
         return item;

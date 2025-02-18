@@ -34,8 +34,8 @@ public class EmeraldShovel extends BaseTool{
     }
 
     public ShapedRecipe getToolRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_shovel");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_shovel");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
         recipe.shape(" E ", " S ", " S ");

@@ -34,8 +34,8 @@ public class TridentBow{
     }
 
     public ShapedRecipe getBowRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "trident_bow");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "trident_bow");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(

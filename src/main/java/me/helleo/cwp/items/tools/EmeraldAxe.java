@@ -34,8 +34,8 @@ public class EmeraldAxe extends BaseTool{
 
     public ShapedRecipe getToolRecipe(){
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_axe");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_axe");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
         recipe.shape(

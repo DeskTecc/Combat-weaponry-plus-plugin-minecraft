@@ -18,7 +18,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class BlazeCharm extends BaseCharm{
 
@@ -34,9 +33,9 @@ public class BlazeCharm extends BaseCharm{
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), dmg,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), dmg,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
 
         meta.setAttributeModifiers(modifiers);
@@ -54,8 +53,8 @@ public class BlazeCharm extends BaseCharm{
 
         item.setItemMeta(meta);
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "blaze_charm");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "blaze_charm");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

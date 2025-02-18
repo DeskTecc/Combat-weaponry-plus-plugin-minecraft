@@ -33,9 +33,9 @@ public class EmeraldSword extends BaseTool {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), speed,
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), speed,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), damage,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), damage,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
 
         meta.setAttributeModifiers(modifiers);
@@ -65,8 +65,8 @@ public class EmeraldSword extends BaseTool {
 
     public ShapedRecipe getToolRecipe(){
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_sword");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_sword");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
         recipe.shape(" E ", " E ", " S ");

@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.katanas;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -60,7 +61,8 @@ public class NetheriteKatana extends BaseKatana{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteKatana.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.NetheriteKatana.getValue())));
         meta.setCustomModelData(1000002);
         item.setItemMeta(meta);
         return item;

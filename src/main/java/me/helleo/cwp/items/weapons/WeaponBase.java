@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.weapons;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -9,16 +10,14 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import java.util.List;
 
-import static me.helleo.cwp.CombatWeaponryPlus.*;
 import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
-import static me.helleo.cwp.configurations.ConfigLoader.getLang;
 
 public abstract class WeaponBase {
 
     protected enum weaponsGeneralDescriptions{
-        WhenInMainHand(getLang().getString("When_In_Main_Hand")),
-        AttackDamage(getLang().getString("Attack_Damage")),
-        AttackSpeed(getLang().getString("Attack_Speed"));
+        WhenInMainHand(ConfigLoader.getLang().getString("When_In_Main_Hand")),
+        AttackDamage(ConfigLoader.getLang().getString("Attack_Damage")),
+        AttackSpeed(ConfigLoader.getLang().getString("Attack_Speed"));
 
         private final String description_value;
 
@@ -31,8 +30,8 @@ public abstract class WeaponBase {
     }
 
     public static ShapedRecipe getWeaponRecipe(String weapon, String namekey, ItemStack item, Material material){
-        NamespacedKey key = new NamespacedKey(plugin, namekey);
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), namekey);
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(getWeaponShape(weapon));

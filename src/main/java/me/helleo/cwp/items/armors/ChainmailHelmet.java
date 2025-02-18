@@ -21,8 +21,8 @@ public class ChainmailHelmet extends BaseArmor {
 
         //chainmail helmet
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chainmail_helmet");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "chainmail_helmet");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

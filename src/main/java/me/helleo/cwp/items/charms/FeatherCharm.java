@@ -2,7 +2,6 @@ package me.helleo.cwp.items.charms;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsString;
-import me.helleo.cwp.items.armors.PlatedChainmailBoots;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -38,8 +37,8 @@ public class FeatherCharm extends BaseCharm{
 
     public ShapedRecipe getCharmRecipe(){
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "feather_charm");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "feather_charm");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getCharm());
 
         recipe.shape("dLd", "LFL", "dLd");

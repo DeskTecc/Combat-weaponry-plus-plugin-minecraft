@@ -18,7 +18,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class EmeraldCharm extends BaseCharm{
 
@@ -36,9 +35,9 @@ public class EmeraldCharm extends BaseCharm{
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.max_health"), hp,
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.armor"), def,
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.armor"), def,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
         meta.setAttributeModifiers(modifiers);
 
@@ -55,8 +54,8 @@ public class EmeraldCharm extends BaseCharm{
 
         item.setItemMeta(meta);
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_charm");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_charm");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

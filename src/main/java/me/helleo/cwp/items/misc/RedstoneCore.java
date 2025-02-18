@@ -40,7 +40,7 @@ public class RedstoneCore {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin, "generic.armor"), arm,
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "generic.armor"), arm,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.setAttributeModifiers(modifiers);
 
@@ -51,8 +51,8 @@ public class RedstoneCore {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "redstone_core");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "redstone_core");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
         recipe.shape(

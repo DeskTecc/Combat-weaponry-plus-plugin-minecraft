@@ -16,11 +16,27 @@ import me.helleo.cwp.items.weapons.rapiers.*;
 import me.helleo.cwp.items.weapons.sabers.*;
 import me.helleo.cwp.items.weapons.scythes.*;
 import me.helleo.cwp.items.weapons.spears.*;
-import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigurationsRecipes {
 
-    public static void loadRecipes() {
+    private List<NamespacedKey> keys = new ArrayList<>();
+
+    public void setKey(NamespacedKey key){
+        keys.add(key);
+    }
+    public List<NamespacedKey> getKeys(){
+        return keys;
+    }
+
+    public void clearRecipes(){
+        keys.clear();
+    }
+
+    public void loadRecipes() {
         DragonBreath.setItemRecipe();
 
         //ARMORS

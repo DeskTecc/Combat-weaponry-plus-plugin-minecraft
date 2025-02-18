@@ -22,8 +22,8 @@ public class ChainmailLeggings extends BaseArmor {
         //chainmail leggings
 
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chainmail_leggings");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "chainmail_leggings");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

@@ -34,8 +34,8 @@ public class EmeraldPickaxe extends BaseTool{
     }
 
     public ShapedRecipe getToolRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_pickaxe");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_pickaxe");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
         recipe.shape(

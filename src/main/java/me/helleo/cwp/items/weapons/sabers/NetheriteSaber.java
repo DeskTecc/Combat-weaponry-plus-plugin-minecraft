@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.sabers;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -52,7 +53,8 @@ public class NetheriteSaber extends BaseSaber{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.NetheriteSaber.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.NetheriteSaber.getValue())));
         meta.setCustomModelData(1000010);
         item.setItemMeta(meta);
         return item;

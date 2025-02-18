@@ -20,8 +20,8 @@ public class ChainmailBoots extends BaseArmor {
 
         //chainmail boots
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "chainmail_boots");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "chainmail_boots");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

@@ -1,39 +1,34 @@
 package me.helleo.cwp.items.weapons.spears;
 
-import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.NamespacedKey;
-import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.EquipmentSlotGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.helleo.cwp.configurations.ConfigLoader.getLang;
-
 public abstract class BaseSpear extends WeaponBase {
     public enum description {
-        Line1(getLang().getString("DescriptionSpear.Line1")),
-        Line2(getLang().getString("DescriptionSpear.Line2")),
-        Line3(getLang().getString("DescriptionSpear.Line3")),
-        Line4(getLang().getString("DescriptionSpear.Line4")),
-        Line5(getLang().getString("DescriptionSpear.Line5")),
-        Line6(getLang().getString("DescriptionSpear.Line6")),
-        Line7(getLang().getString("DescriptionSpear.Line7")),
-        Line8(getLang().getString("DescriptionSpear.Line8")),
-        Line9(getLang().getString("DescriptionSpear.Line9")),
-        PrismarineSpear_Line10(getLang().getString("DescriptionPrismarineSpear.Line10")),
-        PrismarineSpear_Line11(getLang().getString("DescriptionPrismarineSpear.Line11")),
-        PrismarineSpear_Line12(getLang().getString("DescriptionPrismarineSpear.Line12")),
-        WoodenSpear(getLang().getString("Wooden_Spear")),
-        GoldenSpear(getLang().getString("Golden_Spear")),
-        StoneSpear(getLang().getString("Stone_Spear")),
-        IronSpear(getLang().getString("Iron_Spear")),
-        EmeraldSpear(getLang().getString("Emerald_Spear")),
-        DiamondSpear(getLang().getString("Diamond_Spear")),
-        NetheriteSpear(getLang().getString("Netherite_Spear")),
-        PrismarineSpear(getLang().getString("Prismarine_Spear"));
+        Line1("DescriptionSpear.Line1"),
+        Line2("DescriptionSpear.Line2"),
+        Line3("DescriptionSpear.Line3"),
+        Line4("DescriptionSpear.Line4"),
+        Line5("DescriptionSpear.Line5"),
+        Line6("DescriptionSpear.Line6"),
+        Line7("DescriptionSpear.Line7"),
+        Line8("DescriptionSpear.Line8"),
+        Line9("DescriptionSpear.Line9"),
+        PrismarineSpear_Line10("DescriptionPrismarineSpear.Line10"),
+        PrismarineSpear_Line11("DescriptionPrismarineSpear.Line11"),
+        PrismarineSpear_Line12("DescriptionPrismarineSpear.Line12"),
+        WoodenSpear("Wooden_Spear"),
+        GoldenSpear("Golden_Spear"),
+        StoneSpear("Stone_Spear"),
+        IronSpear("Iron_Spear"),
+        EmeraldSpear("Emerald_Spear"),
+        DiamondSpear("Diamond_Spear"),
+        NetheriteSpear("Netherite_Spear"),
+        PrismarineSpear("Prismarine_Spear");
 
         private final String description_value;
 
@@ -45,22 +40,17 @@ public abstract class BaseSpear extends WeaponBase {
         }
     }
 
-    protected static AttributeModifier setModifier(String key, double value){
-        return new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,key),
-                value, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-    }
-
     public static List<String> getLore(double attack_damage, double attack_speed){
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line4.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line5.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line6.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line7.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line8.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', description.Line9.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line1.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line2.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line3.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line4.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line5.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line6.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line7.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line8.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line9.getValue())));
         return setLore(lore, attack_damage,attack_speed);
     }
 }

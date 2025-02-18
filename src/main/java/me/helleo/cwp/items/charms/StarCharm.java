@@ -29,8 +29,8 @@ public class StarCharm extends BaseCharm{
         meta.setCustomModelData(4920001);
         item.setItemMeta(meta);
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "star_charm");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "star_charm");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

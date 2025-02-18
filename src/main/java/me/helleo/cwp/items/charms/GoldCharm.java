@@ -18,7 +18,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class GoldCharm extends BaseCharm{
 
@@ -34,9 +33,9 @@ public class GoldCharm extends BaseCharm{
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), atkspd,
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), atkspd,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), mvspd,
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), mvspd,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND));
         meta.setAttributeModifiers(modifiers);
 
@@ -54,8 +53,8 @@ public class GoldCharm extends BaseCharm{
 
         item.setItemMeta(meta);
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "gold_charm");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "gold_charm");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

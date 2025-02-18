@@ -40,8 +40,8 @@ public class ObsidianPickaxe extends BaseTool{
     }
 
     public ShapedRecipe getToolRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "obsidian_pickaxe");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "obsidian_pickaxe");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
         recipe.shape(

@@ -36,8 +36,8 @@ public class BurstCrossbow extends BaseBow{
     }
 
     public ShapedRecipe getBowRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "burst_crossbow");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "burst_crossbow");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(

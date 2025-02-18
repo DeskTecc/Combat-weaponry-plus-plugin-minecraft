@@ -34,7 +34,7 @@ public class RecurveBow extends BaseBow{
         meta.setLore(lore);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.move_speed"), -0.02,
+        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.02,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
 
         meta.setAttributeModifiers(modifiers);
@@ -45,8 +45,8 @@ public class RecurveBow extends BaseBow{
     }
 
     public ShapedRecipe getBowRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "recurvebow");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "recurvebow");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(

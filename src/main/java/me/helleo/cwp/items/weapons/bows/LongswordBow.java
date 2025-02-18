@@ -43,9 +43,9 @@ public class LongswordBow extends BaseBow{
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), attack_damage,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), attack_damage,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), attack_speed,
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), attack_speed,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
         meta.setAttributeModifiers(modifiers);
 
@@ -57,8 +57,8 @@ public class LongswordBow extends BaseBow{
     }
 
     public ShapedRecipe getBowRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "longsword_bow");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "longsword_bow");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getBow());
 
         recipe.shape(

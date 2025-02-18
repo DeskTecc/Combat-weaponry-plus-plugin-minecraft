@@ -16,7 +16,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class FrostCharm extends BaseCharm{
 
@@ -37,9 +36,9 @@ public class FrostCharm extends BaseCharm{
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_speed"), 0,
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), 0,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.plugin,"generic.attack_damage"), 0,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), 0,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
         meta.setAttributeModifiers(modifiers);
 
@@ -48,8 +47,8 @@ public class FrostCharm extends BaseCharm{
 
         item.setItemMeta(meta);
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "frost_charm");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "frost_charm");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
         recipe.shape(

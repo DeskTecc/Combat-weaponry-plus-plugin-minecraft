@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -56,8 +55,8 @@ public class EmeraldHelmet extends BaseArmor {
     public ShapedRecipe getArmorPieceRecipe() {
         //emerald helmet
 
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_helmet");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_helmet");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
         recipe.shape(

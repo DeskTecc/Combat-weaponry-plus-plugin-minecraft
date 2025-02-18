@@ -2,6 +2,7 @@ package me.helleo.cwp.items.weapons.scythes;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
@@ -53,7 +54,8 @@ public class EmeraldScythe extends BaseScythe{
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', description.EmeraldScythe.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                ConfigLoader.getLang().getString(description.EmeraldScythe.getValue())));
         meta.setCustomModelData(1000013);
         item.setItemMeta(meta);
         return item;

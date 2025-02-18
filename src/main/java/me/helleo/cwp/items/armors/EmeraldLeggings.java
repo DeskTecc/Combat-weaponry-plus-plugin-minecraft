@@ -55,8 +55,8 @@ public class EmeraldLeggings extends BaseArmor{
     }
 
     public ShapedRecipe getArmorPieceRecipe() {
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.plugin, "emerald_leggings");
-        CombatWeaponryPlus.keys.add(key);
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_leggings");
+        CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getArmorPiece());
 
         recipe.shape(
