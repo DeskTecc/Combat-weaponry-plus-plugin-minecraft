@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WitherChestplate {
-    static ItemStack item = new ItemStack(Material.IRON_HELMET);
+    static ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getArmorPiece(){
@@ -34,9 +34,9 @@ public class WitherChestplate {
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.knockback_resistance"), kbr,
-                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionWitheringChestplate_Name.getValue()));

@@ -47,8 +47,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
+import java.io.IOException;
 import java.util.*;
 
+import static me.helleo.cwp.configurations.ConfigLoader.setLang;
 import static me.helleo.cwp.items.weapons.WeaponBase.getCustomDamageAdded;
 
 
@@ -79,6 +81,15 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.getCommand("cwp").setExecutor(new Commands());
         this.saveDefaultConfig();
+        String lang = "en";
+        if(!ConfigLoader.getConfig().contains("lang")){
+            lang = ConfigLoader.getConfig().getString("lang");
+        }
+        try {
+            setLang(lang);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         recipes.loadRecipes();
     }
@@ -1601,57 +1612,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
     }
 }
 */
-
-    @EventHandler
-    public void toggleGlideEvent(EntityToggleGlideEvent event) {
-        Player player = (Player) event.getEntity();
-        if (player.getInventory().getChestplate().getType() == Material.ELYTRA) {
-            if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560001 || player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560002) {
-
-                    if (player.isGliding()) {
-                        //gliding end
-                        ///player.sendMessage("eee");
-                        if (!player.isDead()) {
-                            getServer().getScheduler().runTaskLater(this, new Runnable() {
-                                public void run() {
-                                    if (player.getInventory().getChestplate() != null) {
-                                        ItemMeta meta = player.getInventory().getChestplate().getItemMeta();
-                                        meta.setCustomModelData(1560001);
-                                        player.getInventory().getChestplate().setItemMeta(meta);
-                                    }
-
-
-                                }
-                            }, 10L);
-                        }
-
-
-                    } else {
-                        //gliding start
-                        ///player.sendMessage("aaa");
-
-                        //player.setVelocity(player.getLocation().getDirection().multiply(1.1));
-
-                        //Vector vector = player.getLocation().getDirection();
-                        //player.setVelocity(new Vector
-                        //		(vector.getX() * 0.5,
-                        //		vector.getY() * 10,
-                        //		vector.getZ() * 0.5));
-
-                        player.setVelocity(new Vector(0, 1, 0));
-
-                        getServer().getScheduler().runTaskLater(this, new Runnable() {
-                            public void run() {
-                                //player.setVelocity(player.getLocation().getDirection().multiply(0.5));
-
-                            }
-                        }, 5L);
-                    }
-                }
-            }
-        }
-    }
 
     //unused item
     /*public ShapedRecipe getbonekatRecipe() {

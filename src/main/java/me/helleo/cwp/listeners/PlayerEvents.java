@@ -4,10 +4,17 @@ import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsString;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
+
+import static me.helleo.cwp.CombatWeaponryPlus.getPlugin;
+import static org.bukkit.Bukkit.getServer;
 
 public class PlayerEvents implements Listener {
 
@@ -28,5 +35,48 @@ public class PlayerEvents implements Listener {
         }
 
         player.discoverRecipes(CombatWeaponryPlus.getRecipes().getKeys());
+    }
+
+    // Event modified by TinkyWinky
+    @EventHandler
+    public void toggleGlideEvent(EntityToggleGlideEvent event) {
+        Player player = (Player) event.getEntity();
+
+        // Ensure the player has a chestplate equipped
+        if (player.getInventory().getChestplate() == null) {
+            return; // Exit the method to prevent NullPointerException
+        }
+
+        if (player.getInventory().getChestplate().getType() == Material.ELYTRA) {
+            ItemMeta meta = player.getInventory().getChestplate().getItemMeta();
+
+            if (meta != null && meta.hasCustomModelData()) {
+                int modelData = meta.getCustomModelData();
+                if (modelData == 1560001 || modelData == 1560002) {
+
+                    if (player.isGliding()) {
+
+                        if (!player.isDead()) {
+                            getServer().getScheduler().runTaskLater(getPlugin(), () -> {
+                                if (player.getInventory().getChestplate() != null) {
+                                    ItemMeta updatedMeta = player.getInventory().getChestplate().getItemMeta();
+                                    if (updatedMeta != null) {
+                                        updatedMeta.setCustomModelData(1560001);
+                                        player.getInventory().getChestplate().setItemMeta(updatedMeta);
+                                    }
+                                }
+                            }, 10L);
+                        }
+                    } else {
+
+                        player.setVelocity(new Vector(0, 1, 0));
+
+                        getServer().getScheduler().runTaskLater(getPlugin(), () -> {
+
+                        }, 5L);
+                    }
+                }
+            }
+        }
     }
 }
