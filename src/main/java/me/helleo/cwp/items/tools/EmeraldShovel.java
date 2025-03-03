@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.tools;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
@@ -21,7 +22,7 @@ public class EmeraldShovel extends BaseTool{
 
         //emerald shovel
 
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Shovel");
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionEmeraldShovel.Name")));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()){
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();

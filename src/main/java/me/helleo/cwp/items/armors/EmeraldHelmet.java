@@ -3,10 +3,11 @@ package me.helleo.cwp.items.armors;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -38,7 +39,7 @@ public class EmeraldHelmet extends BaseArmor {
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Helmet");
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionEmeraldHelmet.Name"))));
 
         if (ConfigurationsBool.EnchantmentsOnEmeraldArmor.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Unbreaking.getValue();

@@ -1,8 +1,10 @@
 package me.helleo.cwp.items.shields;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -24,7 +26,7 @@ public class DiamondShield {
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
         }
 
-        meta.setDisplayName("Diamond Shield");
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionDiamondShield.Name")));
         meta.setCustomModelData(5430001);
         item.setItemMeta(meta);
         return item;

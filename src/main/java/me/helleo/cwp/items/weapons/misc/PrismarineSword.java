@@ -3,32 +3,27 @@ package me.helleo.cwp.items.weapons.misc;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
-import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.PrepareSmithingEvent;
-import org.bukkit.inventory.EquipmentSlotGroup;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.SmithingInventory;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrismarineSword implements Listener {
+public class PrismarineSword {
 
-    public ItemStack getItem(ItemStack item){
-        ItemMeta itemMeta = item.getItemMeta();
+    static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
+    static ItemMeta meta = item.getItemMeta();
 
-        assert itemMeta != null;
+    public static ItemStack getItem(){
 
         double attack_damage = 8;
         double attack_speed = -2.4;
@@ -38,56 +33,44 @@ public class PrismarineSword implements Listener {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_sword.attack_speed"),
                 attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_sword.attack_damage"),
                 attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
 
-        itemMeta.setAttributeModifiers(modifiers);
+        meta.setAttributeModifiers(modifiers);
 
         List<String> lore = new ArrayList<>();
 
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line3.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Line4.getValue()));
-        itemMeta.setLore(lore);
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineSword.Line1")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineSword.Line2")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineSword.Line3")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineSword.Line4")));
+        meta.setLore(lore);
 
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionPrismarineSword_Name.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineSword.Name")));
         //important:
-        itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        itemMeta.setCustomModelData(1210001);
-        item.setItemMeta(itemMeta);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setCustomModelData(1210001);
+        item.setItemMeta(meta);
         return item;
     }
 
-    @EventHandler
-    void onSmithingTableEventSWORD(PrepareSmithingEvent event) {
-        SmithingInventory inventory = event.getInventory();
-
-        //CRAFTING ON SMITHING TABLE:
-        // LAPIS_LAZULI + NETHERITE_SWORD + PRISMARINE_SHARD
-
-        ItemStack templ = inventory.getItem(0); // needs to be Lapis Lazuli
-        ItemStack tool = inventory.getItem(1); // needs to be a Netherite Sword
-        ItemStack modifier = inventory.getItem(2); // needs to be a Prismarine Shard
-        if(templ!=null && tool!=null && modifier!=null){
-            if(templ.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.getType().equals(Material.NETHERITE_SWORD) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = getItem(tool.clone());
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-        }
+    public static void setPrismarineSwordRecipe() {
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "prismarine_sword");
+        CombatWeaponryPlus.getRecipes().setKey(key);
+        SmithingRecipe recipe = new SmithingTransformRecipe(key,
+                new ItemStack(getItem()),
+                new RecipeChoice.MaterialChoice(Material.LAPIS_LAZULI), // template
+                new RecipeChoice.MaterialChoice(Material.NETHERITE_SWORD), // base
+                new RecipeChoice.MaterialChoice(Material.PRISMARINE_SHARD) // add
+        );
+        Bukkit.addRecipe(recipe);
     }
 }

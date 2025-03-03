@@ -3,6 +3,7 @@ package me.helleo.cwp.items.armors;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
@@ -36,7 +37,7 @@ public class PlatedChainmailBoots extends BaseArmor {
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName(ChatColor.BOLD + "Plated Chainmail Boots");
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPlatedChainmailBoots.Name"))));
         if (ConfigurationsBool.EnchantsPlatedChainmail.getValue()) {
             int num = (int) ConfigurationsDouble.PlatedChainmailEnchantLevels_Unbreaking.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, num, true);

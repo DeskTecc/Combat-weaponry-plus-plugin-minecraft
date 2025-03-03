@@ -543,31 +543,6 @@ NetheriteIngots: false
 #
 #The ones below are the ones I've gotten done so far
 #(This is still a work in progress)
-#ARMOR: ==========================================================================
-DescriptionRedstoneCore:
-  Name: "Redstone Core"
-  Line1: ""
-  Line2: "&6Power Source"
-  Line3: "&7- While equipped, redstone powered"
-  Line4: "&7  weapons will no longer require"
-  Line5: "&7  holding redstone in the offhand"
-DescriptionWitheringArmorSet:
-  Line1: ""
-  Line2: "&6Full Set Bonus"
-  Line3: "&7- Fully charged melee attacks"
-  Line4: "&7  heal 50% of the damage dealt"
-  Line5: "&7- When damage is taken, "
-  Line6: "&7  get Wither III for 2 seconds"
-  Line7: "&7  if your health is less than half"
-  Line8: ""
-DescriptionWitheringHelmet:
-  Name: "&eWithering Helmet"
-DescriptionWitheringChestplate:
-  Name: "&eWithering Chestplate"
-DescriptionWitheringLeggings:
-  Name: "&eWithering Leggings"
-DescriptionWitheringBoots:
-  Name: "&eWithering Boots"
 #BOWS: ============================================================================================================
 DescriptionSwordBow:
   Name: "Sword Bow"
@@ -658,18 +633,6 @@ DescriptionFrostCharm:
   Line3: "&7- When this item is held in offhand,"
   Line4: "&7  attacks will inflict slowness for 1 second"
 #OTHER: ============================================================================================================
-DescriptionPrismarineAlloy:
-  Name: "&aPrismarine Alloy"
-  Line1: ""
-  Line2: "&7Use in a smithing table to upgrade"
-  Line3: "&7netherite armor or tools."
-  Line4: "&7Uses &bLapis Lazuli &7as a template."
-  Line5: ""
-DescriptionObsidianPickaxe:
-  Name: "&5Obsidian Pickaxe"
-  Line1: ""
-  Line2: "&7Gives user Haste III"
-  Line3: ""
 DescriptionReallyGoodSword:
   Name: "Really Really Good Sword"
   Line1: ""
@@ -798,37 +761,8 @@ DescriptionVolcanicCleaver:
   Line9: "&7When in Main Hand:"
   Line10: "&9 13 Attack Damage"
   Line11: "&9 0.4 Attack Speed"
-DescriptionPrismarinePickaxe:
-  Name: "&aPrismarine Pickaxe"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 7 Attack Damage"
-  Line4: "&9 1.2 Attack Speed"
-DescriptionPrismarineAxe:
-  Name: "&aPrismarine Axe"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 11 Attack Damage"
-  Line4: "&9 1 Attack Speed"
-DescriptionPrismarineShovel:
-  Name: "&aPrismarine Shovel"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 7.5 Attack Damage"
-  Line4: "&9 1 Attack Speed"
-DescriptionPrismarineHoe:
-  Name: "&aPrismarine Hoe"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 2 Attack Damage"
-  Line4: "&9 4 Attack Speed"
+
 #SWORDS: ============================================================================================================
-DescriptionPrismarineSword:
-  Name: "&aPrismarine Sword"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 9 Attack Damage"
-  Line4: "&9 1.6 Attack Speed"
 DescriptionChorusBlade:
   Name: "Chorus Blade"
   Line1: ""

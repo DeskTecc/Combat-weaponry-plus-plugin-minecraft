@@ -3,6 +3,7 @@ package me.helleo.cwp.items.tools;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
 import net.md_5.bungee.api.ChatColor;
@@ -43,14 +44,14 @@ public class EmeraldSword extends BaseTool {
         List<String> lore = new ArrayList<String>();
 
         lore.add("");
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Main Hand:"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+damage+" Attack Damage"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+speed+" Attack Speed"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7"+ConfigLoader.getLang().getString("When_In_Main_Hand")+":"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+damage+" "+ConfigLoader.getLang().getString("Attack_Damage")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+speed+" "+ConfigLoader.getLang().getString("Attack_Speed")));
         meta.setLore(lore);
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        meta.setDisplayName(ChatColor.DARK_GREEN + "Emerald Sword");
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionEmeraldSword.Name")));
         meta.setCustomModelData(1000017);
 
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {

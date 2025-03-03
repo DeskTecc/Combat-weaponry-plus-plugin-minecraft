@@ -214,6 +214,182 @@ DescriptionPrismarineCleaver:
   Line11: "&9 14 Attack Damage"
   Line12: "&9 0.4 Attack Speed"
 
+#EMERALD SWORD
+DescriptionEmeraldSword:
+  Name: "&2Emerald Sword"
+
+#EMERALD AXE
+DescriptionEmeraldAxe:
+  Name: "&2Emerald Axe"
+
+#EMERALD SHOVEL
+DescriptionEmeraldShovel:
+  Name: "&2Emerald Shovel"
+
+#EMERALD PICKAXE
+DescriptionEmeraldPickaxe:
+  Name: "&2Emerald Pickaxe"
+
+#EMERALD HOE
+DescriptionEmeraldHoe:
+  Name: "&2Emerald Hoe"
+
+#DIAMOND SHIELD
+DescriptionDiamondShield:
+  Name: "Diamond Shield"
+
+#NETHERITE SHIELD
+DescriptionNetheriteShield:
+  Name: "Netherite Shield"
+
+#PRISMARINE ITEMS
+
+#PRISMARINE SWORD
+DescriptionPrismarineSword:
+  Name: "&aPrismarine Sword"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 9 Attack Damage"
+  Line4: "&9 1.6 Attack Speed"
+
+#PRISMARINE HOE
+DescriptionPrismarineHoe:
+  Name: "&aPrismarine Hoe"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 2 Attack Damage"
+  Line4: "&9 4 Attack Speed"
+
+#PRISMARINE PICKAXE
+DescriptionPrismarinePickaxe:
+  Name: "&aPrismarine Pickaxe"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 7 Attack Damage"
+  Line4: "&9 1.2 Attack Speed"
+
+#PRISMARINE AXE
+DescriptionPrismarineAxe:
+  Name: "&aPrismarine Axe"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 11 Attack Damage"
+  Line4: "&9 1 Attack Speed"
+
+#PRISMARINE SHOVEL
+DescriptionPrismarineShovel:
+  Name: "&aPrismarine Shovel"
+  Line1: ""
+  Line2: "&7When in Main Hand:"
+  Line3: "&9 7.5 Attack Damage"
+  Line4: "&9 1 Attack Speed"
+
+#PRISMARINE HELMET
+DescriptionPrismarineHelmet:
+  Name: "&lPrismarine Helmet"
+
+#PRISMARINE CHESTPLATE
+DescriptionPrismarineChestplate:
+  Name: "&lPrismarine Chestplate"
+
+#PRISMARINE LEGGINGS
+DescriptionPrismarineLeggings:
+  Name: "&lPrismarine Leggings"
+
+#PRISMARINE BOOTS
+DescriptionPrismarineBoots:
+  Name: "&lPrismarine Boots"
+
+#GENERAL ARMORS
+
+#PLATED CHAINMAIL HELMET
+DescriptionPlatedChainmailHelmet:
+  Name: "&lPlated Chainmail Helmet"
+
+#PLATED CHAINMAIL CHESTPLATE
+DescriptionPlatedChainmailChestplate:
+  Name: "&lPlated Chainmail Chestplate"
+
+#PLATED CHAINMAIL LEGGINGS
+DescriptionPlatedChainmailLeggings:
+  Name: "&lPlated Chainmail Leggings"
+
+#PLATED CHAINMAIL BOOTS
+DescriptionPlatedChainmailBoots:
+  Name: "&lPlated Chainmail Boots"
+
+#EMERALD HELMET
+DescriptionEmeraldHelmet:
+  Name: "&2Emerald Helmet"
+
+#EMERALD CHESTPLATE
+DescriptionEmeraldChestplate:
+  Name: "&2Emerald Chestplate"
+
+#EMERALD LEGGINGS
+DescriptionEmeraldLeggings:
+  Name: "&2Emerald Leggings"
+
+#EMERALD Boots
+DescriptionEmeraldBoots:
+  Name: "&2Emerald Boots"
+
+DescriptionRedstoneCore:
+  Name: "Redstone Core"
+  Line1: ""
+  Line2: "&6Power Source"
+  Line3: "&7- While equipped, redstone powered"
+  Line4: "&7  weapons will no longer require"
+  Line5: "&7  holding redstone in the offhand"
+
+#WHITER ARMOR
+
+#WITHERING HELMET
+DescriptionWitheringHelmet:
+  Name: "&eWithering Helmet"
+
+#WITHERING CHESTPLATE
+DescriptionWitheringChestplate:
+  Name: "&eWithering Chestplate"
+
+#WITHERING LEGGINGS
+DescriptionWitheringLeggings:
+  Name: "&eWithering Leggings"
+
+#WITHERING BOOTS
+DescriptionWitheringBoots:
+  Name: "&eWithering Boots"
+
+DescriptionWitheringArmorSet:
+  Line1: ""
+  Line2: "&6Full Set Bonus"
+  Line3: "&7- Fully charged melee attacks"
+  Line4: "&7  heal 50% of the damage dealt"
+  Line5: "&7- When damage is taken, "
+  Line6: "&7  get Wither III for 2 seconds"
+  Line7: "&7  if your health is less than half"
+  Line8: ""
+
+#ITEMS
+
+#PRISMARINE ALLOY
+DescriptionPrismarineAlloy:
+  Name: "&aPrismarine Alloy"
+  Line1: ""
+  Line2: "&7Use in a smithing table to upgrade"
+  Line3: "&7netherite armor or tools."
+  Line4: "&7Uses &bLapis Lazuli &7as a template."
+  Line5: ""
+
+#OTHERS
+
+#OBSIDIAN PICKAXE
+DescriptionObsidianPickaxe:
+  Name: "&5Obsidian Pickaxe"
+  Line1: ""
+  Line2: "&7Gives user Haste III"
+  Line3: ""
+
 #GENERAL DESCRIPTIONS
 When_In_Main_Hand: "When in Main Hand"
 Attack_Damage: "Attack Damage"

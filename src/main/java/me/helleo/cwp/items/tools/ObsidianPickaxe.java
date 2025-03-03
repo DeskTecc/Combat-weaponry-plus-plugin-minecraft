@@ -1,9 +1,9 @@
 package me.helleo.cwp.items.tools;
 
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
-import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -23,9 +23,9 @@ public class ObsidianPickaxe extends BaseTool{
 
     public ItemStack getTool() {
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Line1.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Line2.getValue()));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Line3.getValue()));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionObsidianPickaxe.Line1")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionObsidianPickaxe.Line2")));
+        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionObsidianPickaxe.Line3")));
         meta.setLore(lore);
 
         if (ConfigurationsBool.EnchantsObsidianPickaxe.getValue()) {
@@ -33,7 +33,7 @@ public class ObsidianPickaxe extends BaseTool{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
         }
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionObsidianPickaxe_Name.getValue()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionObsidianPickaxe.Name")));
         meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;

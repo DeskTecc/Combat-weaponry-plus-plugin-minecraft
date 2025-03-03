@@ -242,20 +242,26 @@ public class ConfigurationsRecipes {
         }
 
         //PRISMARINE ITEMS
-        //temporary disabled
-       /* if (ConfigurationsBool.Prismarine.getValue()) {
+        if (ConfigurationsBool.Prismarine.getValue()) {
             PrismarineAlloy.setItemRecipe();
-
-            Bukkit.addRecipe(getprisswordsrecipe());
-            Bukkit.addRecipe(getprispickrecipe());
-            Bukkit.addRecipe(getprisaxerecipe());
-            Bukkit.addRecipe(getprisshovelrecipe());
-            Bukkit.addRecipe(getprishoerecipe());
-            Bukkit.addRecipe(getprishelmetrecipe());
-            Bukkit.addRecipe(getprischestrecipe());
-            Bukkit.addRecipe(getprislegrecipe());
-            Bukkit.addRecipe(getprisbootsrecipe());
-        }*/
+            PrismarineSword.setPrismarineSwordRecipe();
+            PrismarinePickaxe.setPrismarinePickaxeRecipe();
+            PrismarineAxe.setPrismarineAxeRecipe();
+            PrismarineShovel.setPrismarineShovelRecipe();
+            PrismarineHoe.setPrismarineHoeRecipe();
+            PrismarineHelmet.setArmorPieceRecipe();
+            PrismarineChestplate.setArmorPieceRecipe();
+            PrismarineLeggings.setArmorPieceRecipe();
+            PrismarineBoots.setArmorPieceRecipe();
+            PrismarineLongsword.setPrismarineLongSwordRecipe();
+            PrismarineCleaver.setPrismarineCleaverRecipe();
+            PrismarineSaber.setPrismarineSaberRecipe();
+            PrismarineKnife.setPrismarineKnifeRecipe();
+            PrismarineKatana.setPrismarineKatanaRecipe();
+            PrismarineSpear.setPrismarineSpearRecipe();
+            PrismarineRapier.setPrismarineRapierRecipe();
+            PrismarineScythe.setPrismarineScytheRecipe();
+        }
         if (ConfigurationsBool.Eelytra.getValue()) {
             Eelytra.setItemRecipe();
         }
