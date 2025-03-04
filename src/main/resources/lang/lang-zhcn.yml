@@ -1,0 +1,400 @@
+# 镰刀
+Wooden_Scythe: "木镰刀"
+Golden_Scythe: "金镰刀"
+Stone_Scythe: "石镰刀"
+Iron_Scythe: "铁镰刀"
+Emerald_Scythe: "绿宝石镰刀"
+Diamond_Scythe: "钻石镰刀"
+Netherite_Scythe: "下界合金镰刀"
+Prismarine_Scythe: "海晶石镰刀"
+
+# 镰刀描述
+DescriptionScythe:
+  Line1: ""
+  Line2: "&6双持武器"
+  Line3: "&7- +30% 副手无物品时的伤害"
+  Line4: "&6锋利刀刃"
+  Line5: "&7- +50% 对无胸甲的玩家伤害"
+  Line6: "&7"
+  Line7: ""
+
+# 海晶石镰刀描述
+DescriptionPrismarineScythe:
+  Name: "&a海晶石镰刀"
+  Line8: "&7在主手时:"
+  Line9: "&9 11 攻击伤害"
+  Line10: "&9 1 攻击速度"
+
+# 佩剑
+Wooden_Rapier: "木佩剑"
+Golden_Rapier: "金佩剑"
+Stone_Rapier: "石佩剑"
+Iron_Rapier: "铁佩剑"
+Emerald_Rapier: "绿宝石佩剑"
+Diamond_Rapier: "钻石佩剑"
+Netherite_Rapier: "下界合金佩剑"
+Prismarine_Rapier: "海晶石佩剑"
+
+# 佩剑描述
+DescriptionRapier:
+  Line1: ""
+  Line2: "&6盔甲穿透"
+  Line3: "&7- +5% 对每件盔甲增幅伤害"
+  Line4: "&7   "
+  Line5: "&7   (叠加计算)"
+  Line6: "&7- 两秒内无法使用盾"
+  Line7: ""
+
+# 海晶石佩剑
+DescriptionPrismarineRapier:
+  Name: "&a海晶石佩剑"
+  Line8: "&7在主手时:"
+  Line9: "&9 7 攻击伤害"
+  Line10: "&9 1.9 攻击速度"
+
+# 长剑
+Wooden_Longsword: "木长剑"
+Golden_Longsword: "金长剑"
+Stone_Longsword: "石长剑"
+Iron_Longsword: "铁长剑"
+Emerald_Longsword: "绿宝石长剑"
+Diamond_Longsword: "钻石长剑"
+Netherite_Longsword: "下界合金长剑"
+Prismarine_Longsword: "海晶石长剑"
+
+# 长剑描述
+DescriptionLongsword:
+  Line1: ""
+  Line2: "&6双持武器"
+  Line3: "&7- +30% 副手无物品时的伤害"
+  Line4: "&7"
+  Line5: ""
+
+# 海晶石长剑描述
+DescriptionPrismarineLongsword:
+  Name: "&a海晶石长剑"
+  Line6: "&7在主手时:"
+  Line7: "&9 10 攻击伤害"
+  Line8: "&9 1.2 攻击速度"
+
+# 匕首
+Wooden_Knife: "木匕首"
+Golden_Knife: "金匕首"
+Stone_Knife: "石匕首"
+Iron_Knife: "铁匕首"
+Emerald_Knife: "绿宝石匕首"
+Diamond_Knife: "钻石匕首"
+Netherite_Knife: "下界合金匕首"
+Prismarine_Knife: "海晶石匕首"
+
+# 匕首描述
+DescriptionKnife:
+  Line1: ""
+  Line2: "&6锋利刀刃"
+  Line3: "&7- +100% 对无胸甲的玩家伤害"
+  Line4: "&6连击"
+  Line5: "&7- 成功两次命中敌人可获得力量 I"
+  Line6: ""
+
+# 海晶石匕首
+DescriptionPrismarineKnife:
+  Name: "&a海晶石匕首"
+  Line7: "&7在主手时:"
+  Line8: "&9 6 攻击伤害"
+  Line9: "&9 3 攻击速度"
+
+# 长矛
+Wooden_Spear: "木矛"
+Golden_Spear: "金矛"
+Stone_Spear: "石矛"
+Iron_Spear: "铁矛"
+Emerald_Spear: "绿宝石矛"
+Diamond_Spear: "钻石矛"
+Netherite_Spear: "下界合金矛"
+Prismarine_Spear: "海晶石矛"
+
+# 矛描述
+DescriptionSpear:
+  Line1: ""
+  Line2: "&6穿透盔甲"
+  Line3: "&7- +5% 对每件盔甲增幅伤害"
+  Line4: "&7   "
+  Line5: "&7   (叠加计算)"
+  Line6: "&7- 两秒内无法使用盾"
+  Line7: "&6双持武器"
+  Line8: "&7- +30% 副手无物品时的伤害"
+  Line9: ""
+
+# 海晶石矛描述
+DescriptionPrismarineSpear:
+  Name: "&a海晶石矛"
+  Line10: "&7在主手时:"
+  Line11: "&9 6 攻击伤害"
+  Line12: "&9 2.5 攻击速度"
+
+# 武士刀
+Wooden_Katana: "木武士刀"
+Golden_Katana: "金武士刀"
+Stone_Katana: "石武士刀"
+Iron_Katana: "铁武士刀"
+Emerald_Katana: "绿宝石武士刀"
+Diamond_Katana: "钻石武士刀"
+Netherite_Katana: "下界合金武士刀"
+Prismarine_Katana: "海晶石武士刀"
+
+# 武士刀
+DescriptionKatana:
+  Line1: ""
+  Line2: "&6轻量化"
+  Line3: "&7- 略微增加移速"
+  Line4: "&7"
+  Line5: "&6双持武器"
+  Line6: "&7- +30% 副手无物品时的伤害"
+  Line7: "&7"
+  Line8: "&6暴击"
+  Line9: "&7- 20% 处于双持状态下造成额外 10% 伤害"
+  Line10: "&7"
+  Line11: ""
+
+# 海晶石武士刀描述
+DescriptionPrismarineKatana:
+  Name: "&a海晶石武士刀"
+  Line12: "&7在主手时:"
+  Line13: "&9 8 攻击伤害"
+  Line14: "&9 1.7 攻击速度"
+
+# 军刀
+Wooden_Saber: "木军刀"
+Golden_Saber: "金军刀"
+Stone_Saber: "石军刀"
+Iron_Saber: "铁军刀"
+Emerald_Saber: "绿宝石军刀"
+Diamond_Saber: "钻石军刀"
+Netherite_Saber: "下界合金军刀"
+Prismarine_Saber: "海晶石军刀"
+
+# 军刀描述
+DescriptionSaber:
+  Line1: ""
+  Line2: "&6双持战备"
+  Line3: "&7- 双手均可使用"
+  Line4: ""
+
+# 海晶石军刀描述
+DescriptionPrismarineSaber:
+  Name: "&a海晶石军刀"
+  Line5: "&7在主手时:"
+  Line6: "&9 9 攻击伤害"
+  Line7: "&9 1.6 攻击速度"
+
+# 劈刀
+Wooden_Cleaver: "木劈刀"
+Golden_Cleaver: "金劈刀"
+Stone_Cleaver: "石劈刀"
+Iron_Cleaver: "铁劈刀"
+Emerald_Cleaver: "绿宝石劈刀"
+Diamond_Cleaver: "钻石劈刀"
+Netherite_Cleaver: "下界合金劈刀"
+Prismarine_Cleaver: "海晶石劈刀"
+
+# 劈刀描述
+DescriptionCleaver:
+  Line1: ""
+  Line2: "&6动量打击"
+  Line3: "&7- 在冷却处于 &260%-100% &7(不含)时"
+  Line4: "&7  获得 &2+0.25 &7攻速提升(最高叠加 &26 次)"
+  Line5: "&7"
+  Line6: "&7"
+  Line7: "&7- 完全冷却后攻击 &2重置"
+  Line8: "&7"
+  Line9: ""
+# 海晶石劈刀
+DescriptionPrismarineCleaver:
+  Line10: "&7在主手时:"
+  Line11: "&9 14 攻击伤害"
+  Line12: "&9 0.4 攻击速度"
+
+# 绿宝石剑
+DescriptionEmeraldSword:
+  Name: "&2绿宝石剑"
+
+# 绿宝石斧
+DescriptionEmeraldAxe:
+  Name: "&2绿宝石斧"
+
+# 绿宝石锹
+DescriptionEmeraldShovel:
+  Name: "&2绿宝石锹"
+
+# 绿宝石镐
+DescriptionEmeraldPickaxe:
+  Name: "&2绿宝石镐"
+
+# 绿宝石锄
+DescriptionEmeraldHoe:
+  Name: "&2绿宝石锄"
+
+# 钻石盾
+DescriptionDiamondShield:
+  Name: "钻石盾"
+
+# 下界合金盾
+DescriptionNetheriteShield:
+  Name: "下界合金盾"
+
+# 海晶石物品
+
+# 海晶石剑
+DescriptionPrismarineSword:
+  Name: "&a海晶石剑"
+  Line1: ""
+  Line2: "&7在主手时:"
+  Line3: "&9 9 攻击伤害"
+  Line4: "&9 1.6 攻击速度"
+
+# 海晶石锄
+DescriptionPrismarineHoe:
+  Name: "&a海晶石锄"
+  Line1: ""
+  Line2: "&7在主手时:"
+  Line3: "&9 2 攻击伤害"
+  Line4: "&9 4 攻击速度"
+
+# 海晶石镐
+DescriptionPrismarinePickaxe:
+  Name: "&a海晶石镐"
+  Line1: ""
+  Line2: "&7在主手时:"
+  Line3: "&9 7 攻击伤害"
+  Line4: "&9 1.2 攻击速度"
+
+# 海晶石斧
+DescriptionPrismarineAxe:
+  Name: "&a海晶石斧"
+  Line1: ""
+  Line2: "&7在主手时:"
+  Line3: "&9 11 攻击伤害"
+  Line4: "&9 1 攻击速度"
+
+# 海晶石锹
+DescriptionPrismarineShovel:
+  Name: "&a海晶石锹"
+  Line1: ""
+  Line2: "&7在主手时:"
+  Line3: "&9 7.5 攻击伤害"
+  Line4: "&9 1 攻击速度"
+
+# 海晶石头盔
+DescriptionPrismarineHelmet:
+  Name: "&l海晶石头盔"
+
+# 海晶石胸甲
+DescriptionPrismarineChestplate:
+  Name: "&l海晶石胸甲"
+
+# 海晶石护腿
+DescriptionPrismarineLeggings:
+  Name: "&l海晶石护腿"
+
+# 海晶石靴子
+DescriptionPrismarineBoots:
+  Name: "&l海晶石靴子"
+
+# 通用盔甲
+
+# 镶板锁链头盔
+DescriptionPlatedChainmailHelmet:
+  Name: "&l镶板锁链头盔"
+
+# 镶板锁链胸甲
+DescriptionPlatedChainmailChestplate:
+  Name: "&l镶板锁链胸甲"
+
+# 镶板锁链护腿
+DescriptionPlatedChainmailLeggings:
+  Name: "&l镶板锁链护腿"
+
+# 镶板锁链靴子
+DescriptionPlatedChainmailBoots:
+  Name: "&l镶板锁链靴子"
+
+# 绿宝石头盔
+DescriptionEmeraldHelmet:
+  Name: "&2绿宝石头盔"
+
+# 绿宝石胸甲
+DescriptionEmeraldChestplate:
+  Name: "&2绿宝石胸甲"
+
+# 绿宝石护腿
+DescriptionEmeraldLeggings:
+  Name: "&2绿宝石护腿"
+
+# 绿宝石靴子
+DescriptionEmeraldBoots:
+  Name: "&2绿宝石靴子"
+
+DescriptionRedstoneCore:
+  Name: "红石核心"
+  Line1: ""
+  Line2: "&6动力能源"
+  Line3: "&7- 装备时, 需要红石能源的武器"
+  Line4: "&7  不再需要副手持有红石才可启动"
+  Line5: "&7"
+
+# 凋灵盔甲
+
+# 凋灵头盔
+DescriptionWitheringHelmet:
+  Name: "&e凋灵头盔"
+
+# 凋灵 胸甲
+DescriptionWitheringChestplate:
+  Name: "&e凋灵胸甲"
+
+# 凋灵 护腿
+DescriptionWitheringLeggings:
+  Name: "&e凋灵护腿"
+
+# 凋灵靴子
+DescriptionWitheringBoots:
+  Name: "&e凋灵靴子"
+
+DescriptionWitheringArmorSet:
+  Line1: ""
+  Line2: "&6套装奖励"
+  Line3: "&7- 完全冷却的攻击可为自己"
+  Line4: "&7  回复等同于 50% 伤害的生命值"
+  Line5: "&7- 受伤时若血量低于一半,"
+  Line6: "&7  则获得持续 2 秒的凋零 III"
+  Line7: "&7"
+  Line8: ""
+
+# 物品
+
+# 海晶石合金
+DescriptionPrismarineAlloy:
+  Name: "&a海晶石合金"
+  Line1: ""
+  Line2: "&7将其放置于锻造台"
+  Line3: "&7用于升级下界合金装备活动机."
+  Line4: "&7以&b青金石&7为升级模板."
+  Line5: ""
+
+# 杂项
+
+# 黑曜石镐
+DescriptionObsidianPickaxe:
+  Name: "&5黑曜石镐"
+  Line1: ""
+  Line2: "&7获得急迫 III"
+  Line3: ""
+
+# 通用描述
+When_In_Main_Hand: "在主手时"
+Attack_Damage: "攻击伤害"
+Attack_Speed: "攻击速度"
+You_Dont_Have_Permission: "你没有权限这么做!"
+Reload_Error: "重载 Combat Weaponry Plus 配置时出现错误!"
+Reload_Success: "Combat Weaponry Plus 配置文件已重载!"
+Reload_Advice: "玩家需要重新进入服务器才可看见修改后的配方"
