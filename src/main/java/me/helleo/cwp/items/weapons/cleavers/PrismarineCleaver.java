@@ -20,14 +20,22 @@ import java.util.List;
 
 public class PrismarineCleaver implements Listener {
 
-    static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
+    //The prismarine items are based on upgrade of netherite items
+    static ItemStack item = NetheriteCleaver.getCleaver();
     static ItemMeta meta = item.getItemMeta();
 
     public static ItemStack getItem(){
 
         double attack_damage = 1;
+        //get the attack_damage of netherite cleaver and apply plus 1
+        for (AttributeModifier attributeModifier : meta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)) {
+            if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))) {
+                attack_damage += attributeModifier.getAmount();
+                break;
+            }
+        }
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = BaseCleaver.getCustomDamageAdded("PrismarineCleaver");
+            attack_damage += BaseCleaver.getCustomDamageAdded("PrismarineCleaver");
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();

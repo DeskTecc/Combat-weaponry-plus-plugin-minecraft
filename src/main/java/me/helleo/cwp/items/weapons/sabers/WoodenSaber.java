@@ -55,5 +55,4 @@ public class WoodenSaber extends BaseSaber{
     public static void setSaberRecipe(){
         Bukkit.addRecipe(getWeaponRecipe("saber","wooden_saber",getSaber(),Material.STICK));
     }
-
 }

@@ -43,7 +43,6 @@ import java.io.IOException;
 import java.util.*;
 
 import static me.helleo.cwp.configurations.ConfigLoader.setLang;
-import static me.helleo.cwp.items.weapons.WeaponBase.getCustomDamageAdded;
 
 
 public class CombatWeaponryPlus extends JavaPlugin implements Listener {

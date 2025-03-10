@@ -208,6 +208,7 @@ DescriptionCleaver:
   Line7: "&7- Attack speed &2resets &7upon landing"
   Line8: "&7  a fully charged attack"
   Line9: ""
+
 #PRISMARINE CLEAVER DESCRIPTION
 DescriptionPrismarineCleaver:
   Line10: "&7When in Main Hand:"
