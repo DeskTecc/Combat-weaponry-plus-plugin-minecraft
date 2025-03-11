@@ -18,13 +18,6 @@ DescriptionScythe:
   Line6: "&7"
   Line7: ""
 
-# 海晶石镰刀描述
-DescriptionPrismarineScythe:
-  Name: "&a海晶石镰刀"
-  Line8: "&7在主手时:"
-  Line9: "&9 11 攻击伤害"
-  Line10: "&9 1 攻击速度"
-
 # 佩剑
 Wooden_Rapier: "木佩剑"
 Golden_Rapier: "金佩剑"
@@ -45,13 +38,6 @@ DescriptionRapier:
   Line6: "&7- 两秒内无法使用盾"
   Line7: ""
 
-# 海晶石佩剑
-DescriptionPrismarineRapier:
-  Name: "&a海晶石佩剑"
-  Line8: "&7在主手时:"
-  Line9: "&9 7 攻击伤害"
-  Line10: "&9 1.9 攻击速度"
-
 # 长剑
 Wooden_Longsword: "木长剑"
 Golden_Longsword: "金长剑"
@@ -69,13 +55,6 @@ DescriptionLongsword:
   Line3: "&7- +30% 副手无物品时的伤害"
   Line4: "&7"
   Line5: ""
-
-# 海晶石长剑描述
-DescriptionPrismarineLongsword:
-  Name: "&a海晶石长剑"
-  Line6: "&7在主手时:"
-  Line7: "&9 10 攻击伤害"
-  Line8: "&9 1.2 攻击速度"
 
 # 匕首
 Wooden_Knife: "木匕首"
@@ -95,13 +74,6 @@ DescriptionKnife:
   Line4: "&6连击"
   Line5: "&7- 成功两次命中敌人可获得力量 I"
   Line6: ""
-
-# 海晶石匕首
-DescriptionPrismarineKnife:
-  Name: "&a海晶石匕首"
-  Line7: "&7在主手时:"
-  Line8: "&9 6 攻击伤害"
-  Line9: "&9 3 攻击速度"
 
 # 长矛
 Wooden_Spear: "木矛"
@@ -124,13 +96,6 @@ DescriptionSpear:
   Line7: "&6双持武器"
   Line8: "&7- +30% 副手无物品时的伤害"
   Line9: ""
-
-# 海晶石矛描述
-DescriptionPrismarineSpear:
-  Name: "&a海晶石矛"
-  Line10: "&7在主手时:"
-  Line11: "&9 6 攻击伤害"
-  Line12: "&9 2.5 攻击速度"
 
 # 武士刀
 Wooden_Katana: "木武士刀"
@@ -156,13 +121,6 @@ DescriptionKatana:
   Line10: "&7"
   Line11: ""
 
-# 海晶石武士刀描述
-DescriptionPrismarineKatana:
-  Name: "&a海晶石武士刀"
-  Line12: "&7在主手时:"
-  Line13: "&9 8 攻击伤害"
-  Line14: "&9 1.7 攻击速度"
-
 # 军刀
 Wooden_Saber: "木军刀"
 Golden_Saber: "金军刀"
@@ -179,13 +137,6 @@ DescriptionSaber:
   Line2: "&6双持战备"
   Line3: "&7- 双手均可使用"
   Line4: ""
-
-# 海晶石军刀描述
-DescriptionPrismarineSaber:
-  Name: "&a海晶石军刀"
-  Line5: "&7在主手时:"
-  Line6: "&9 9 攻击伤害"
-  Line7: "&9 1.6 攻击速度"
 
 # 劈刀
 Wooden_Cleaver: "木劈刀"
@@ -208,11 +159,6 @@ DescriptionCleaver:
   Line7: "&7- 完全冷却后攻击 &2重置"
   Line8: "&7"
   Line9: ""
-# 海晶石劈刀
-DescriptionPrismarineCleaver:
-  Line10: "&7在主手时:"
-  Line11: "&9 14 攻击伤害"
-  Line12: "&9 0.4 攻击速度"
 
 # 绿宝石剑
 DescriptionEmeraldSword:

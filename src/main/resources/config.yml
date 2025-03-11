@@ -163,19 +163,6 @@ DiamondShieldEnchantLevels:
 EnchantsNetheriteShield: true
 NetheriteShieldEnchantLevels:
   Unbreaking: 10
-#ADJUST DAMAGE MULTIPLIERS=====================================================================================================
-# An easy way to customize damage of basic weapons (knifes, longswords, spears, rapiers, etc.)
-# Damage dealt by these weapons will be multiplied by the numbers below. (default multiplier is 1 for all)
-# These multipliers affect both newly crafted and preexisting weapons.
-# NOTE: the adjusted damage will not show up in the item descriptions. You will have to go and change those item descriptions yourself.
-MultiplierKnives: 1
-MultiplierRapiers: 1
-MultiplierKatanas: 1
-MultiplierScythes: 1
-MultiplierLongswords: 1
-MultiplierSpears: 1
-MultiplierSabers: 1
-MultiplierCleavers: 1
 #
 #==============================================================================================================================
 #READ THIS:
@@ -191,59 +178,59 @@ UseCustomValues: false
 #set UseCustomValues to false to make the plugin use the default numbers instead of the numbers below
 #ARMOR: ==================================================================================================================================================================
 Armors_RedstoneCore:
-  Armor: 2
+  Armor: 2.0
 Armors_EmeraldHelmet:
-  Armor: 2
-  BonusHealth: 1
+  Armor: 2.0
+  BonusHealth: 1.0
 Armors_EmeraldChestplate:
-  Armor: 6
-  BonusHealth: 1
+  Armor: 6.0
+  BonusHealth: 1.0
 Armors_EmeraldLeggings:
-  Armor: 5
-  BonusHealth: 1
+  Armor: 5.0
+  BonusHealth: 1.0
 Armors_EmeraldBoots:
-  Armor: 2
-  BonusHealth: 1
+  Armor: 2.0
+  BonusHealth: 1.0
 Armors_PlateChainHelmet:
-  Armor: 4
+  Armor: 4.0
 Armors_PlateChainChestplate:
-  Armor: 6
+  Armor: 6.0
 Armors_PlateChainLeggings:
-  Armor: 6
+  Armor: 6.0
 Armors_PlateChainBoots:
-  Armor: 4
+  Armor: 4.0
 Armors_PrismarineHelmet:
-  Armor: 4
-  ArmorToughness: 3
-  KBResist: 1
-  BonusHealth: 1
+  Armor: 4.0
+  ArmorToughness: 3.0
+  KBResist: 1.0
+  BonusHealth: 1.0
 Armors_PrismarineChestplate:
-  Armor: 9
-  ArmorToughness: 3
-  KBResist: 1
-  BonusHealth: 2
+  Armor: 9.0
+  ArmorToughness: 3.0
+  KBResist: 1.0
+  BonusHealth: 2.0
 Armors_PrismarineLeggings:
-  Armor: 7
-  ArmorToughness: 3
-  KBResist: 1
-  BonusHealth: 2
+  Armor: 7.0
+  ArmorToughness: 3.0
+  KBResist: 1.0
+  BonusHealth: 2.0
 Armors_PrismarineBoots:
-  Armor: 4
-  ArmorToughness: 3
-  KBResist: 1
-  BonusHealth: 1
+  Armor: 4.0
+  ArmorToughness: 3.0
+  KBResist: 1.0
+  BonusHealth: 1.0
 Armors_WitherHelmet:
-  KBResist: 2
-  BonusHealth: 5
+  KBResist: 2.0
+  BonusHealth: 5.0
 Armors_WitherChestplate:
-  KBResist: 2
-  BonusHealth: 5
+  KBResist: 2.0
+  BonusHealth: 5.0
 Armors_WitherLeggings:
-  KBResist: 2
-  BonusHealth: 5
+  KBResist: 2.0
+  BonusHealth: 5.0
 Armors_WitherBoots:
-  KBResist: 2
-  BonusHealth: 5
+  KBResist: 2.0
+  BonusHealth: 5.0
 #BOWS: ============================================================================================================
 Bows_SwordBow:
   Damage: 9
@@ -281,174 +268,177 @@ Charms_GoldCharm:
   BonusMoveSpeedPercent: -15
 #OTHER: ============================================================================================================
 Others_InfusedVessel:
-  Damage: 10
+  Damage: 10.0
   Speed: 1.6
 Others_CursedVessel:
-  Damage: 10
+  Damage: 10.0
   Speed: 1.6
 Others_AwakenedVesselPurple:
-  Damage: 12
+  Damage: 12.0
   Speed: 1.4
 Others_AwakenedVesselWhite:
-  Damage: 12
+  Damage: 12.0
   Speed: 1.4
 Others_VolcanicBlade:
-  Damage: 8
+  Damage: 8.0
   Speed: 1.6
 Others_VolcanicSpear:
-  Damage: 5
+  Damage: 5.0
   Speed: 2.5
 Others_VolcanicAxe:
-  Damage: 10
-  Speed: 1
+  Damage: 10.0
+  Speed: 1.0
 Others_VolcanicCleaver:
-  Damage: 13
+  Damage: 13.0
   Speed: 0.4
 Others_PrismarinePickaxe:
-  Damage: 7
+  Damage: 7.0
   Speed: 1.2
 Others_PrismarineAxe:
-  Damage: 11
-  Speed: 1
+  Damage: 11.0
+  Speed: 1.0
 Others_PrismarineShovel:
   Damage: 7.5
-  Speed: 1
+  Speed: 1.0
 Others_PrismarineHoe:
-  Damage: 2
-  Speed: 4
+  Damage: 2.0
+  Speed: 4.0
 #SWORDS: ============================================================================================================
 Swords_EmeraldSword:
-  Damage: 6
+  Damage: 6.0
   Speed: 1.8
 Swords_ChorusBlade:
-  Damage: 4
-  Speed: 10
+  Damage: 4.0
+  Speed: 10.0
 Swords_PrismarineSword:
-  Damage: 9
+  Damage: 9.0
   Speed: 1.6
 #BASIC WEAPONS: ============================================================================================================
 #SCYTHES
 WoodenScythe:
-  Damage: 6
+  Damage: 6.0
   Speed: -3.0
 GoldenScythe:
-  Damage: 6
+  Damage: 6.0
   Speed: -2.8
 StoneScythe:
   Damage: 6.5
   Speed: -3.0
 IronScythe:
-  Damage: 8
+  Damage: 8.0
   Speed: -3.0
 EmeraldScythe:
-  Damage: 7
+  Damage: 7.0
   Speed: -2.8
 DiamondScythe:
-  Damage: 8
+  Damage: 8.0
   Speed: -3.0
 NetheriteScythe:
-  Damage: 9
+  Damage: 9.0
   Speed: -3.0
-#the amount of dmg added when netherite weapons are upgraded to pris can be customized below (default is +1)
-#the speed will remain the same as the netherite version
-Scythes_PrismarineScythe:
-  DamageAdded: 1
+PrismarineScythe:
+  Damage: 11
+  Speed: -2.8
 #RAPIERS
 WoodenRapier:
-  Damage: 2
+  Damage: 2.0
   Speed: -2.1
 GoldenRapier:
-  Damage: 2
+  Damage: 2.0
   Speed: -1.6
 StoneRapier:
   Damage: 2.5
   Speed: -2.1
 IronRapier:
-  Damage: 3
+  Damage: 3.0
   Speed: -2.1
 EmeraldRapier:
-  Damage: 3
+  Damage: 3.0
   Speed: -1.6
 DiamondRapier:
-  Damage: 4
+  Damage: 4.0
   Speed: -2.1
 NetheriteRapier:
-  Damage: 5
+  Damage: 5.0
   Speed: -2.1
-Rapiers_PrismarineRapier:
-  DamageAdded: 1
+PrismarineRapier:
+  Damage: 7.0
+  Speed: -2.0
 #LONGSWORDS
 WoodenLongsword:
-  Damage: 4
+  Damage: 4.0
   Speed: -2.8
 GoldenLongsword:
-  Damage: 4
+  Damage: 4.0
   Speed: -2.6
 StoneLongsword:
-  Damage: 5
+  Damage: 5.0
   Speed: -2.8
 IronLongsword:
-  Damage: 6
+  Damage: 6.0
   Speed: -2.8
 EmeraldLongsword:
-  Damage: 6
+  Damage: 6.0
   Speed: -2.6
 DiamondLongsword:
-  Damage: 7
+  Damage: 7.0
   Speed: -2.8
 NetheriteLongsword:
-  Damage: 8
+  Damage: 8.0
   Speed: -2.8
 PrismarineLongsword:
-  DamageAdded: 1
+  Damage: 10.0
+  Speed: -2.7
 #KNIVES
 WoodenKnife:
-  Damage: 1
+  Damage: 1.0
   Speed: -1.0
 GoldenKnife:
-  Damage: 1
+  Damage: 1.0
   Speed: 0.0
 StoneKnife:
   Damage: 1.5
-  Speed: -1
+  Speed: -1.0
 IronKnife:
-  Damage: 2
-  Speed: -1
+  Damage: 2.0
+  Speed: -1.0
 EmeraldKnife:
-  Damage: 2
+  Damage: 2.0
   Speed: 0.0
 DiamondKnife:
-  Damage: 3
-  Speed: -1
+  Damage: 3.0
+  Speed: -1.0
 NetheriteKnife:
-  Damage: 4
-  Speed: -1
-Knives_PrismarineKnife:
-  DamageAdded: 1
+  Damage: 4.0
+  Speed: -1.0
+PrismarineKnife:
+  Damage: 6.0
+  Speed: -1.0
 #SPEARS
 WoodenSpear:
-  Damage: 1
+  Damage: 1.0
   Speed: -1.5
 GoldenSpear:
-  Damage: 1
+  Damage: 1.0
   Speed: -1.2
 StoneSpear:
   Damage: 1.5
   Speed: -1.5
 IronSpear:
-  Damage: 2
+  Damage: 2.0
   Speed: -1.5
 EmeraldSpear:
-  Damage: 2
+  Damage: 2.0
   Speed: -1.2
 DiamondSpear:
-  Damage: 3
+  Damage: 3.0
   Speed: -1.5
 NetheriteSpear:
-  Damage: 4
+  Damage: 4.0
   Speed: -1.5
-Spears_PrismarineSpear:
-  DamageAdded: 1
+PrismarineSpear:
+  Damage: 6.0
+  Speed: -1.4
 #KATANAS
 WoodenKatana:
   Damage: 2.5
@@ -459,76 +449,79 @@ GoldenKatana:
   Speed: -2.0
   MoveSpeed: 0.02
 StoneKatana:
-  Damage: 3
+  Damage: 3.0
   Speed: -2.3
   MoveSpeed: 0.02
 IronKatana:
-  Damage: 4
+  Damage: 4.0
   Speed: -2.3
   MoveSpeed: 0.02
 EmeraldKatana:
-  Damage: 4
+  Damage: 4.0
   Speed: -2.0
   MoveSpeed: 0.02
 DiamondKatana:
-  Damage: 5
+  Damage: 5.0
   Speed: -2.3
   MoveSpeed: 0.02
 NetheriteKatana:
-  Damage: 6
+  Damage: 6.0
   Speed: -2.3
   MoveSpeed: 0.02
-Katanas_PrismarineKatana:
-  DamageAdded: 1
+PrismarineKatana:
+  Damage: 8.0
+  Speed: -2.2
+  MoveSpeed: 0.03
 #SABERS
 WoodenSaber:
-  Damage: 3
+  Damage: 3.0
   Speed: -2.4
 GoldenSaber:
-  Damage: 3
+  Damage: 3.0
   Speed: -2.4
 StoneSaber:
-  Damage: 4
+  Damage: 4.0
   Speed: -2.4
 IronSaber:
-  Damage: 5
+  Damage: 5.0
   Speed: -2.4
 EmeraldSaber:
-  Damage: 5
+  Damage: 5.0
   Speed: -2.4
 DiamondSaber:
-  Damage: 6
+  Damage: 6.0
   Speed: -2.4
 NetheriteSaber:
-  Damage: 7
+  Damage: 7.0
   Speed: -2.4
-Sabers_PrismarineSaber:
-  DamageAdded: 1
+PrismarineSaber:
+  Damage: 9.0
+  Speed: -2.3
 #CLEAVERS
 WoodenCleaver:
-  Damage: 8
+  Damage: 8.0
   Speed: -3.6
 GoldenCleaver:
-  Damage: 8
+  Damage: 8.0
   Speed: -3.6
 StoneCleaver:
-  Damage: 9
+  Damage: 9.0
   Speed: -3.6
 IronCleaver:
-  Damage: 10
+  Damage: 10.0
   Speed: -3.6
 EmeraldCleaver:
-  Damage: 10
+  Damage: 10.0
   Speed: -3.6
 DiamondCleaver:
-  Damage: 11
+  Damage: 11.0
   Speed: -3.6
 NetheriteCleaver:
-  Damage: 12
+  Damage: 12.0
   Speed: -3.6
 PrismarineCleaver:
-  DamageAdded: 14.0
-  SpeedAdded: -3.5
+  Damage: 14.0
+  Speed: -3.5
 #
 #======================================================================================================================================================
 # MAKE NETHERITE WEAPONS REQUIRE INGOTS INSTEAD OF SCRAP TO CRAFT (in the crafting table recipe)

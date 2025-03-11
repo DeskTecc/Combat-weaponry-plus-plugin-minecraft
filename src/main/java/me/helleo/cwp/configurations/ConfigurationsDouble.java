@@ -21,15 +21,6 @@ public enum ConfigurationsDouble {
     ObsidianEnchantLevels_Unbreaking(getConfig().getDouble("ObsidianEnchantLevels.Unbreaking")),
     DiamondShieldEnchantLevels_Unbreaking(getConfig().getDouble("DiamondShieldEnchantLevels.Unbreaking")),
     NetheriteShieldEnchantLevels_Unbreaking(getConfig().getDouble("NetheriteShieldEnchantLevels.Unbreaking")),
-    // MULTIPLIERS
-    /*MultiplierKnives(getConfig().getDouble("MultiplierKnives")),
-    MultiplierRapiers(getConfig().getDouble("MultiplierRapiers")),
-    MultiplierKatanas(getConfig().getDouble("MultiplierKatanas")),
-    MultiplierScythes(getConfig().getDouble("MultiplierScythes")),
-    MultiplierLongswords(getConfig().getDouble("MultiplierLongswords")),
-    MultiplierSpears(getConfig().getDouble("MultiplierSpears")),
-    MultiplierSabers(getConfig().getDouble("MultiplierSabers")),
-    MultiplierCleavers(getConfig().getDouble("MultiplierCleavers")),*/
     // ARMORS
     Armors_RedstoneCore_Armor(getConfig().getDouble("Armors_RedstoneCore.Armor")),
     Armors_EmeraldHelmet_Armor(getConfig().getDouble("Armors_EmeraldHelmet.Armor")),

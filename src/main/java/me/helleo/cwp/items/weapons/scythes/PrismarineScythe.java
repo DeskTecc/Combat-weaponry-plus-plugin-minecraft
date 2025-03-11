@@ -15,43 +15,36 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PrismarineScythe implements Listener {
+public class PrismarineScythe extends BaseScythe implements Listener {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String scythePath = "PrismarineScythe";
 
     public static ItemStack getItem(){
 
-        double attack_damage = 1;
+        double attack_damage = 11;
+        double attack_speed = -2.8;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = BaseScythe.getCustomDamageAdded("PrismarineScythe");
+            attack_damage = getCustomDamage(scythePath);
+            attack_speed = getCustomSpeed(scythePath);
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_scythe.attack_damage"),
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                 attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line1.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line2.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line3.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line4.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line5.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line6.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.Line7.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.PrismarineScythe_Line8.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.PrismarineScythe_Line9.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseScythe.description.PrismarineScythe_Line10.getValue())));
-
-        meta.setLore(lore);
+        meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(BaseScythe.description.PrismarineScythe.getValue())));

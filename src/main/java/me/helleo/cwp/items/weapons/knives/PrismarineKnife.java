@@ -15,42 +15,36 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PrismarineKnife implements Listener {
+public class PrismarineKnife extends BaseKnife implements Listener {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String knifePath = "PrismarineKnife";
 
     public static ItemStack getItem(){
 
-        double attack_damage = 1;
+        double attack_damage = 6;
+        double attack_speed = -1;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = BaseKnife.getCustomDamageAdded("PrismarineKnife");
+            attack_damage = getCustomDamage(knifePath);
+            attack_speed = getCustomSpeed(knifePath);
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_knife.attack_damage"),
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                 attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.Line1.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.Line2.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.Line3.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.Line4.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.Line5.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.Line6.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.PrismarineKnife_Line7.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.PrismarineKnife_Line8.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseKnife.description.PrismarineKnife_Line9.getValue())));
-
-        meta.setLore(lore);
+        meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(BaseKnife.description.PrismarineKnife.getValue())));

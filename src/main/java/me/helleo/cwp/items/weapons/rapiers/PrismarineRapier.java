@@ -15,43 +15,34 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PrismarineRapier implements Listener {
+public class PrismarineRapier extends BaseRapier implements Listener {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String rapierPath = "PrismarineRapier";
 
     public static ItemStack getItem(){
 
-        double attack_damage = 1;
+        double attack_damage = 7;
+        double attack_speed = -2.0;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = BaseRapier.getCustomDamageAdded("PrismarineRapier");
+            attack_damage = getCustomDamage(rapierPath);
+            attack_speed = getCustomSpeed(rapierPath);
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_rapier.attack_damage"),
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                 attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
 
-        meta.setAttributeModifiers(modifiers);
-
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line1.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line2.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line3.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line4.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line5.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line6.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.Line7.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.PrismarineRapier_Line8.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.PrismarineRapier_Line9.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseRapier.description.PrismarineRapier_Line10.getValue())));
-
-        meta.setLore(lore);
+        meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(BaseRapier.description.PrismarineRapier.getValue())));

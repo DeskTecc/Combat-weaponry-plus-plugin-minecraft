@@ -15,47 +15,36 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PrismarineLongsword implements Listener {
+public class PrismarineLongsword extends BaseLongsword implements Listener {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String longswordPath = "PrismarineLongsword";
 
     public static ItemStack getItem(){
 
-        double attack_damage = 1;
-        double attack_speed = -2.8;
+        double attack_damage = 10;
+        double attack_speed = -2.7;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = BaseLongsword.getCustomDamageAdded("PrismarineLongsword");
+            attack_damage = getCustomDamage(longswordPath);
+            attack_speed = getCustomSpeed(longswordPath);
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_longsword.attack_speed"),
-                attack_speed,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
+                attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_longsword.attack_damage"),
-                attack_damage,
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.Line1.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.Line2.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.Line3.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.Line4.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.Line5.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.PrismarineLongsword_Line6.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.PrismarineLongsword_Line7.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseLongsword.description.PrismarineLongsword_Line8.getValue())));
-
-        meta.setLore(lore);
+        meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(BaseLongsword.description.PrismarineLongsword.getValue())));
