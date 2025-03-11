@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,29 +19,32 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrismarineCleaver implements Listener {
+public class PrismarineCleaver extends WeaponBase implements Listener {
 
     //The prismarine items are based on upgrade of netherite items
-    static ItemStack item = NetheriteCleaver.getCleaver();
+    static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    static String cleaverPath = "PrismarineCleaver";
+
 
     public static ItemStack getItem(){
 
-        double attack_damage = 1;
-        //get the attack_damage of netherite cleaver and apply plus 1
-        for (AttributeModifier attributeModifier : meta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE)) {
-            if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_damage"))) {
-                attack_damage += attributeModifier.getAmount();
-                break;
-            }
-        }
+        double attack_damage = 14;
+        double attack_speed = -3.5;
+
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage += BaseCleaver.getCustomDamageAdded("PrismarineCleaver");
+            attack_damage = getCustomDamage(cleaverPath);
+            attack_speed = getCustomSpeed(cleaverPath);
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_cleaver.attack_damage"),
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                 attack_damage,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -59,8 +63,8 @@ public class PrismarineCleaver implements Listener {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseCleaver.description.Line8.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseCleaver.description.Line9.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseCleaver.description.PrismarineCleaver_Line10.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseCleaver.description.PrismarineCleaver_Line11.getValue())));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(BaseCleaver.description.PrismarineCleaver_Line12.getValue())));
+        lore.add(ChatColor.translateAlternateColorCodes('&', String.format("&9 %f %s", attack_damage, ConfigLoader.getLang().getString("Attack_Damage"))));
+        lore.add(ChatColor.translateAlternateColorCodes('&', String.format("&9 %f %s", attack_speed, ConfigLoader.getLang().getString("Attack_Speed"))));
 
         meta.setLore(lore);
 

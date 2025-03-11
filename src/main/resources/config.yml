@@ -526,8 +526,9 @@ DiamondCleaver:
 NetheriteCleaver:
   Damage: 12
   Speed: -3.6
-Cleavers_PrismarineCleaver:
-  DamageAdded: 1
+PrismarineCleaver:
+  DamageAdded: 14.0
+  SpeedAdded: -3.5
 #
 #======================================================================================================================================================
 # MAKE NETHERITE WEAPONS REQUIRE INGOTS INSTEAD OF SCRAP TO CRAFT (in the crafting table recipe)

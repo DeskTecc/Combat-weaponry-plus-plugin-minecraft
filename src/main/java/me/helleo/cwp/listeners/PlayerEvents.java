@@ -120,214 +120,212 @@ public class PlayerEvents implements Listener {
         ItemStack tool = inventory.getItem(1); // needs to be a Netherite Sword
         ItemStack modifier = inventory.getItem(2); // needs to be a Prismarine Shard
         if(template!=null && tool!=null && modifier!=null){
-            //Prismarine Sword
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.getType().equals(Material.NETHERITE_SWORD) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineSword.getItem();
 
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
+            if(tool.hasItemMeta()){
+                //Prismarine Longsword
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteLongsword.getLongsword()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineLongsword.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Cleaver
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteCleaver.getCleaver()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineCleaver.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Saber
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteSaber.getSaber()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineSaber.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Knife
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteKnife.getKnife()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineKnife.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Katana
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteKatana.getKatana()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineKatana.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Spear
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteSpear.getSpear()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineSpear.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Rapier
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteRapier.getRapier()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineRapier.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Scythe
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(NetheriteScythe.getScythe()) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineScythe.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+            }else{
+                //Prismarine Sword
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.getType().equals(Material.NETHERITE_SWORD) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineSword.getItem();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Pickaxe
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_PICKAXE)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarinePickaxe.getTool();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Axe
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_AXE)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineAxe.getTool();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine Shovel
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_SHOVEL)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineShovel.getTool();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine hoe
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_HOE)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineHoe.getTool();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine helmet
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_HELMET)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineHelmet.getArmorPiece();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine chestplate
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_CHESTPLATE)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineChestplate.getArmorPiece();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine leggings
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_LEGGINGS)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineLeggings.getArmorPiece();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
+                }
+
+                //Prismarine boots
+                if(template.getType().equals(Material.LAPIS_LAZULI) &&
+                        tool.isSimilar(new ItemStack(Material.NETHERITE_BOOTS)) &&
+                        modifier.getType().equals(Material.PRISMARINE_SHARD)
+                ){
+                    ItemStack item = PrismarineBoots.getArmorPiece();
+
+                    if (ConfigurationsBool.Prismarine.getValue()) {
+                        event.setResult(item);
+                    }
                 }
             }
-
-            //Prismarine Pickaxe
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_PICKAXE)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarinePickaxe.getTool();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Axe
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_AXE)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineAxe.getTool();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Shovel
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_SHOVEL)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineShovel.getTool();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine hoe
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_HOE)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineHoe.getTool();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine helmet
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_HELMET)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineHelmet.getArmorPiece();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine chestplate
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_CHESTPLATE)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineChestplate.getArmorPiece();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine leggings
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_LEGGINGS)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineLeggings.getArmorPiece();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine boots
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(new ItemStack(Material.NETHERITE_BOOTS)) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineBoots.getArmorPiece();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-
-            //Prismarine Longsword
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteLongsword.getLongsword()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineLongsword.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Cleaver
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteCleaver.getCleaver()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineCleaver.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Saber
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteSaber.getSaber()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineSaber.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Knife
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteKnife.getKnife()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineKnife.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Katana
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteKatana.getKatana()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineKatana.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Spear
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteSpear.getSpear()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineSpear.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Rapier
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteRapier.getRapier()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineRapier.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
-            //Prismarine Scythe
-            if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                    tool.isSimilar(NetheriteScythe.getScythe()) &&
-                    modifier.getType().equals(Material.PRISMARINE_SHARD)
-            ){
-                ItemStack item = PrismarineScythe.getItem();
-
-                if (ConfigurationsBool.Prismarine.getValue()) {
-                    event.setResult(item);
-                }
-            }
-
         }
-
-
-
     }
 }
