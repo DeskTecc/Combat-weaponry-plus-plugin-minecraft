@@ -19,6 +19,9 @@ public class NetheriteCleaver extends BaseCleaver{
     static ItemMeta meta = item.getItemMeta();
     static String cleaverPath = "NetheriteCleaver";
 
+    private static double attack_damage = 12;
+    private static double attack_speed = -3.6;
+
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
             return Material.NETHERITE_INGOT;
@@ -29,25 +32,19 @@ public class NetheriteCleaver extends BaseCleaver{
 
 
     public static ItemStack getCleaver() {
-        double attack_damage = 12;
-        double attack_speed = -3.6;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(cleaverPath);
-            attack_speed = getCustomSpeed(cleaverPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
+                getAttackDamage(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                getAttackSpeed(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -59,6 +56,20 @@ public class NetheriteCleaver extends BaseCleaver{
         meta.setCustomModelData(1000021);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(cleaverPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(cleaverPath);
+        }
+        return attack_speed;
     }
 
     public static void setCleaverRecipe(){

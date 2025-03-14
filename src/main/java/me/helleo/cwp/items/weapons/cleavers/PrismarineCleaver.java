@@ -21,33 +21,26 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String cleaverPath = "PrismarineCleaver";
+    private static double attack_damage = 14;
+    private static double attack_speed = -3.5;
 
-
-    public static ItemStack getItem(){
-
-        double attack_damage = 14;
-        double attack_speed = -3.5;
-
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(cleaverPath);
-            attack_speed = getCustomSpeed(cleaverPath);
-        }
+    public static ItemStack getCleaver(){
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(BaseCleaver.description.PrismarineCleaver.getValue())));
@@ -58,11 +51,25 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
         return item;
     }
 
+    public static double getAttackDamage(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(cleaverPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(cleaverPath);
+        }
+        return attack_speed;
+    }
+
     public static void setPrismarineCleaverRecipe() {
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "prismarine_cleaver");
         CombatWeaponryPlus.getRecipes().setKey(key);
         SmithingRecipe recipe = new SmithingTransformRecipe(key,
-                new ItemStack(getItem()),
+                new ItemStack(getCleaver()),
                 new RecipeChoice.MaterialChoice(Material.LAPIS_LAZULI), // template
                 new RecipeChoice.ExactChoice(NetheriteCleaver.getCleaver()), // base
                 new RecipeChoice.MaterialChoice(Material.PRISMARINE_SHARD) // add
