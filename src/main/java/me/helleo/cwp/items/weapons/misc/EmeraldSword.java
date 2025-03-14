@@ -1,8 +1,9 @@
-package me.helleo.cwp.items.tools;
+package me.helleo.cwp.items.weapons.misc;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.items.weapons.WeaponBase;
 import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.configurations.ConfigurationsDouble;
@@ -19,39 +20,34 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmeraldSword extends BaseTool {
+public class EmeraldSword extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
+    private static final String swordPath = "EmeraldSword";
+    private static double attack_damage = 5;
+    private static double attack_speed = -2.2;
 
-    public ItemStack getTool(){
+
+    public ItemStack getSword(){
         //modifier
-        double damage = 5;
-        double speed = -2.2;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            damage = ConfigurationsDouble.Swords_EmeraldSword_Damage.getValue();
-            speed = ConfigurationsDouble.Swords_EmeraldSword_Speed.getValue();
-        }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), speed,
-                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), damage,
-                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), getAttackDamage(),
+                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), getAttackSpeed(),
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
 
         meta.setAttributeModifiers(modifiers);
 
         List<String> lore = new ArrayList<String>();
 
-        lore.add("");
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7"+ConfigLoader.getLang().getString("When_In_Main_Hand")+":"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+damage+" "+ConfigLoader.getLang().getString("Attack_Damage")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+speed+" "+ConfigLoader.getLang().getString("Attack_Speed")));
-        meta.setLore(lore);
+        meta.setLore(WeaponBase.setLore(lore, getAttackDamage(), getAttackSpeed()));
+
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionEmeraldSword.Name")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Sword")));
         meta.setCustomModelData(1000017);
 
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
@@ -64,13 +60,30 @@ public class EmeraldSword extends BaseTool {
         return item;
     }
 
+    public static double getAttackDamage(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(swordPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(swordPath);
+        }
+        return attack_speed;
+    }
+
     public ShapedRecipe getToolRecipe(){
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "emerald_sword");
         CombatWeaponryPlus.getRecipes().setKey(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, getTool());
+        ShapedRecipe recipe = new ShapedRecipe(key, getSword());
 
-        recipe.shape(" E ", " E ", " S ");
+        recipe.shape(
+                " E ",
+                " E ",
+                " S ");
 
         recipe.setIngredient('E', Material.EMERALD);
         recipe.setIngredient('S', Material.STICK);

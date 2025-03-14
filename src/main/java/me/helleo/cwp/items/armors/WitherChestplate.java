@@ -39,7 +39,7 @@ public class WitherChestplate {
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringChestplate.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Withering_Chestplate"))));
         meta.setCustomModelData(5553332);
 
         List<String> lore = new ArrayList<>();

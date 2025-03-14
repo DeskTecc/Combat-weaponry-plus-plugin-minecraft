@@ -44,7 +44,7 @@ public class PlatedChainmailHelmet extends BaseArmor {
             meta.addEnchant(Enchantment.UNBREAKING, num, true);
         }
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPlatedChainmailHelmet.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PlatedChainmail_Helmet"))));
         item.setItemMeta(meta);
         return item;
     }

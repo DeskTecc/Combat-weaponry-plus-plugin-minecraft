@@ -22,7 +22,7 @@ public class EmeraldShovel extends BaseTool{
 
         //emerald shovel
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionEmeraldShovel.Name")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Shovel")));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()){
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();

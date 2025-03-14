@@ -38,7 +38,7 @@ public class PlatedChainmailLeggings extends BaseArmor {
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPlatedChainmailLeggings.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PlatedChainmail_Leggings"))));
         if (ConfigurationsBool.EnchantsPlatedChainmail.getValue()) {
             int num = (int) ConfigurationsDouble.PlatedChainmailEnchantLevels_Unbreaking.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, num, true);

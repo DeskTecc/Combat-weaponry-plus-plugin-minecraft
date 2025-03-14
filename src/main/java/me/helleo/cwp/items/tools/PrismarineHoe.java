@@ -5,7 +5,7 @@ import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
+import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,44 +18,54 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrismarineHoe {
+public class PrismarineHoe extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_HOE);
     static ItemMeta meta = item.getItemMeta();
+    private static final String hoePath = "PrismarineHoe";
+    private static double attack_damage = 1;
+    private static double attack_speed = 0;
 
     public static ItemStack getTool(){
 
-        double attack_damage = 1;
-        double attack_speed = 0;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Others_PrismarineHoe_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Others_PrismarineHoe_Speed.getValue();
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
-        ));
         modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                getAttackSpeed(),
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+
         meta.setAttributeModifiers(modifiers);
 
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineHoe.Line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineHoe.Line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineHoe.Line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineHoe.Line4")));
-        meta.setLore(lore);
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineHoe.Name")));
+
+        meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
+
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Hoe")));
+
         meta.setCustomModelData(1210005);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(hoePath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(hoePath);
+        }
+        return attack_speed;
     }
 
     public static void setPrismarineHoeRecipe() {

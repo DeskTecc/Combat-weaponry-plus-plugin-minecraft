@@ -49,7 +49,7 @@ public class PrismarineLeggings {
         meta.setCustomModelData(1220003);
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineLeggings.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Leggings"))));
         item.setItemMeta(meta);
         return item;
     }

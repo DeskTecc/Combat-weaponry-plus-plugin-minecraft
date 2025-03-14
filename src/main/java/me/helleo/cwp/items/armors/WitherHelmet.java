@@ -40,7 +40,7 @@ public class WitherHelmet {
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringHelmet.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Withering_Helmet"))));
         meta.setCustomModelData(5553331);
 
         List<String> lore = new ArrayList<>();

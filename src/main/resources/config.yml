@@ -294,7 +294,7 @@ Others_VolcanicCleaver:
 Others_PrismarinePickaxe:
   Damage: 7.0
   Speed: 1.2
-Others_PrismarineAxe:
+PrismarineAxe:
   Damage: 11.0
   Speed: 1.0
 Others_PrismarineShovel:
@@ -304,13 +304,13 @@ Others_PrismarineHoe:
   Damage: 2.0
   Speed: 4.0
 #SWORDS: ============================================================================================================
-Swords_EmeraldSword:
+EmeraldSword:
   Damage: 6.0
   Speed: 1.8
 Swords_ChorusBlade:
   Damage: 4.0
   Speed: 10.0
-Swords_PrismarineSword:
+PrismarineSword:
   Damage: 9.0
   Speed: 1.6
 #BASIC WEAPONS: ============================================================================================================

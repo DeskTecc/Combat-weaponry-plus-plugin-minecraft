@@ -14,14 +14,14 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class EmeraldAxe extends BaseTool{
-    static ItemStack item = new ItemStack(Material.GOLDEN_AXE);
+    static  ItemStack item = new ItemStack(Material.GOLDEN_AXE);
     static ItemMeta meta = item.getItemMeta();
 
     public ItemStack getTool(){
 
         //emerald Axe
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionEmeraldAxe.Name")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Axe")));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();

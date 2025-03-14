@@ -139,7 +139,7 @@ public class PlayerEvents implements Listener {
                         tool.isSimilar(NetheriteCleaver.getCleaver()) &&
                         modifier.getType().equals(Material.PRISMARINE_SHARD)
                 ){
-                    ItemStack item = PrismarineCleaver.getItem();
+                    ItemStack item = PrismarineCleaver.getCleaver();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
                         event.setResult(item);
@@ -223,7 +223,7 @@ public class PlayerEvents implements Listener {
                         tool.getType().equals(Material.NETHERITE_SWORD) &&
                         modifier.getType().equals(Material.PRISMARINE_SHARD)
                 ){
-                    ItemStack item = PrismarineSword.getItem();
+                    ItemStack item = PrismarineSword.getSword();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
                         event.setResult(item);
@@ -247,7 +247,7 @@ public class PlayerEvents implements Listener {
                         tool.isSimilar(new ItemStack(Material.NETHERITE_AXE)) &&
                         modifier.getType().equals(Material.PRISMARINE_SHARD)
                 ){
-                    ItemStack item = PrismarineAxe.getTool();
+                    ItemStack item = PrismarineAxe.getAxe();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
                         event.setResult(item);

@@ -25,7 +25,7 @@ public class NetheriteShield {
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
 
         }
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionNetheriteShield.Name")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Netherite_Shield")));
         meta.setCustomModelData(5430002);
         item.setItemMeta(meta);
         return item;

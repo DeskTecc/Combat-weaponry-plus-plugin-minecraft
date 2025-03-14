@@ -37,7 +37,7 @@ public class PlatedChainmailChestplate extends BaseArmor {
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPlatedChainmailChestplate.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PlatedChainmail_Chestplate"))));
         if (ConfigurationsBool.EnchantsPlatedChainmail.getValue()) {
             int num = (int) ConfigurationsDouble.PlatedChainmailEnchantLevels_Unbreaking.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, num, true);

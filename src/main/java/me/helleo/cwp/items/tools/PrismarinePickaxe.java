@@ -3,9 +3,8 @@ package me.helleo.cwp.items.tools;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
-import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
-import me.helleo.cwp.configurations.ConfigurationsDouble;
+import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,44 +17,53 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrismarinePickaxe{
+public class PrismarinePickaxe extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_PICKAXE);
     static ItemMeta meta = item.getItemMeta();
+    private static String pickaxePath = "PrismarinePickaxe";
+    private static double attack_damage = 6;
+    private static double attack_speed = -2.8;
 
     public static ItemStack getTool(){
 
-        double attack_damage = 6;
-        double attack_speed = -2.8;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = ConfigurationsDouble.Others_PrismarinePickaxe_Damage.getValue();
-            attack_speed = ConfigurationsDouble.Others_PrismarinePickaxe_Speed.getValue();
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
-        ));
         modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                getAttackSpeed(),
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+
         meta.setAttributeModifiers(modifiers);
 
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarinePickaxe.Line1")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarinePickaxe.Line2")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarinePickaxe.Line3")));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarinePickaxe.Line4")));
-        meta.setLore(lore);
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarinePickaxe.Name")));
+
+        meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
+
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',"Prismarine_Pickaxe"));
         meta.setCustomModelData(1210002);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(pickaxePath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(pickaxePath);
+        }
+        return attack_speed;
     }
 
     public static void setPrismarinePickaxeRecipe() {

@@ -160,125 +160,41 @@ DescriptionCleaver:
   Line8: "&7  a fully charged attack"
   Line9: ""
 
-#EMERALD SWORD
-DescriptionEmeraldSword:
-  Name: "&2Emerald Sword"
+#EMERALD ITEMS
+Emerald_Sword: "&2Emerald Sword"
+Emerald_Axe: "&2Emerald Axe"
+Emerald_Shovel: "&2Emerald Shovel"
+Emerald_Pickaxe: "&2Emerald Pickaxe"
+Emerald_Hoe: "&2Emerald Hoe"
 
-#EMERALD AXE
-DescriptionEmeraldAxe:
-  Name: "&2Emerald Axe"
-
-#EMERALD SHOVEL
-DescriptionEmeraldShovel:
-  Name: "&2Emerald Shovel"
-
-#EMERALD PICKAXE
-DescriptionEmeraldPickaxe:
-  Name: "&2Emerald Pickaxe"
-
-#EMERALD HOE
-DescriptionEmeraldHoe:
-  Name: "&2Emerald Hoe"
-
-#DIAMOND SHIELD
-DescriptionDiamondShield:
-  Name: "Diamond Shield"
-
-#NETHERITE SHIELD
-DescriptionNetheriteShield:
-  Name: "Netherite Shield"
+#SHIELDS
+Diamond_Shield: "Diamond Shield"
+Netherite_Shield: "Netherite Shield"
 
 #PRISMARINE ITEMS
-
-#PRISMARINE SWORD
-DescriptionPrismarineSword:
-  Name: "&aPrismarine Sword"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 9 Attack Damage"
-  Line4: "&9 1.6 Attack Speed"
-
-#PRISMARINE HOE
-DescriptionPrismarineHoe:
-  Name: "&aPrismarine Hoe"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 2 Attack Damage"
-  Line4: "&9 4 Attack Speed"
-
-#PRISMARINE PICKAXE
-DescriptionPrismarinePickaxe:
-  Name: "&aPrismarine Pickaxe"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 7 Attack Damage"
-  Line4: "&9 1.2 Attack Speed"
-
-#PRISMARINE AXE
-DescriptionPrismarineAxe:
-  Name: "&aPrismarine Axe"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 11 Attack Damage"
-  Line4: "&9 1 Attack Speed"
-
-#PRISMARINE SHOVEL
-DescriptionPrismarineShovel:
-  Name: "&aPrismarine Shovel"
-  Line1: ""
-  Line2: "&7When in Main Hand:"
-  Line3: "&9 7.5 Attack Damage"
-  Line4: "&9 1 Attack Speed"
-
-#PRISMARINE HELMET
-DescriptionPrismarineHelmet:
-  Name: "&lPrismarine Helmet"
-
-#PRISMARINE CHESTPLATE
-DescriptionPrismarineChestplate:
-  Name: "&lPrismarine Chestplate"
-
-#PRISMARINE LEGGINGS
-DescriptionPrismarineLeggings:
-  Name: "&lPrismarine Leggings"
-
-#PRISMARINE BOOTS
-DescriptionPrismarineBoots:
-  Name: "&lPrismarine Boots"
+Prismarine_Sword: "&aPrismarine Sword"
+Prismarine_Hoe: "&aPrismarine Hoe"
+Prismarine_Pickaxe: "&aPrismarine Pickaxe"
+Prismarine_Axe: "&aPrismarine Axe"
+Prismarine_Shovel: "&aPrismarine Shovel"
+Prismarine_Helmet: "&lPrismarine Helmet"
+Prismarine_Chestplate: "&lPrismarine Chestplate"
+Prismarine_Leggings: "&lPrismarine Leggings"
+Prismarine_Boots: "&lPrismarine Boots"
 
 #GENERAL ARMORS
 
-#PLATED CHAINMAIL HELMET
-DescriptionPlatedChainmailHelmet:
-  Name: "&lPlated Chainmail Helmet"
+#PLATED CHAINMAIL
+PlatedChainmail_Helmet: "&lPlated Chainmail Helmet"
+PlatedChainmail_Chestplate: "&lPlated Chainmail Chestplate"
+PlatedChainmail_Leggings: "&lPlated Chainmail Leggings"
+PlatedChainmail_Boots: "&lPlated Chainmail Boots"
 
-#PLATED CHAINMAIL CHESTPLATE
-DescriptionPlatedChainmailChestplate:
-  Name: "&lPlated Chainmail Chestplate"
-
-#PLATED CHAINMAIL LEGGINGS
-DescriptionPlatedChainmailLeggings:
-  Name: "&lPlated Chainmail Leggings"
-
-#PLATED CHAINMAIL BOOTS
-DescriptionPlatedChainmailBoots:
-  Name: "&lPlated Chainmail Boots"
-
-#EMERALD HELMET
-DescriptionEmeraldHelmet:
-  Name: "&2Emerald Helmet"
-
-#EMERALD CHESTPLATE
-DescriptionEmeraldChestplate:
-  Name: "&2Emerald Chestplate"
-
-#EMERALD LEGGINGS
-DescriptionEmeraldLeggings:
-  Name: "&2Emerald Leggings"
-
-#EMERALD Boots
-DescriptionEmeraldBoots:
-  Name: "&2Emerald Boots"
+#EMERALD ARMOR
+Emerald_Helmet: "&2Emerald Helmet"
+Emerald_Chestplate: "&2Emerald Chestplate"
+Emerald_Leggings: "&2Emerald Leggings"
+Emerald_Boots: "&2Emerald Boots"
 
 DescriptionRedstoneCore:
   Name: "Redstone Core"
@@ -289,22 +205,10 @@ DescriptionRedstoneCore:
   Line5: "&7  holding redstone in the offhand"
 
 #WHITER ARMOR
-
-#WITHERING HELMET
-DescriptionWitheringHelmet:
-  Name: "&eWithering Helmet"
-
-#WITHERING CHESTPLATE
-DescriptionWitheringChestplate:
-  Name: "&eWithering Chestplate"
-
-#WITHERING LEGGINGS
-DescriptionWitheringLeggings:
-  Name: "&eWithering Leggings"
-
-#WITHERING BOOTS
-DescriptionWitheringBoots:
-  Name: "&eWithering Boots"
+Withering_Helmet: "&eWithering Helmet"
+Withering_Chestplate: "&eWithering Chestplate"
+Withering_Leggings: "&eWithering Leggings"
+Withering_Boots: "&eWithering Boots"
 
 DescriptionWitheringArmorSet:
   Line1: ""

@@ -48,7 +48,7 @@ public class PrismarineHelmet {
         meta.setCustomModelData(1220001);
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineHelmet.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Helmet"))));
         item.setItemMeta(meta);
         return item;
     }

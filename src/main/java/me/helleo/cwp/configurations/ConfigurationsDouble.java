@@ -100,21 +100,9 @@ public enum ConfigurationsDouble {
     Others_VolcanicAxe_Speed(getConfig().getDouble("Others_VolcanicAxe.Speed")),
     Others_VolcanicCleaver_Damage(getConfig().getDouble("Others_VolcanicCleaver.Damage")),
     Others_VolcanicCleaver_Speed(getConfig().getDouble("Others_VolcanicCleaver.Speed")),
-    Others_PrismarinePickaxe_Damage(getConfig().getDouble("Others_PrismarinePickaxe.Damage")),
-    Others_PrismarinePickaxe_Speed(getConfig().getDouble("Others_PrismarinePickaxe.Speed")),
-    Others_PrismarineAxe_Damage(getConfig().getDouble("Others_PrismarineAxe.Damage")),
-    Others_PrismarineAxe_Speed(getConfig().getDouble("Others_PrismarineAxe.Speed")),
-    Others_PrismarineShovel_Damage(getConfig().getDouble("Others_PrismarineShovel.Damage")),
-    Others_PrismarineShovel_Speed(getConfig().getDouble("Others_PrismarineShovel.Speed")),
-    Others_PrismarineHoe_Damage(getConfig().getDouble("Others_PrismarineHoe.Damage")),
-    Others_PrismarineHoe_Speed(getConfig().getDouble("Others_PrismarineHoe.Speed")),
     // SWORDS
-    Swords_EmeraldSword_Damage(getConfig().getDouble("Swords_EmeraldSword.Damage")),
-    Swords_EmeraldSword_Speed(getConfig().getDouble("Swords_EmeraldSword.Speed")),
     Swords_ChorusBlade_Damage(getConfig().getDouble("Swords_ChorusBlade.Damage")),
-    Swords_ChorusBlade_Speed(getConfig().getDouble("Swords_ChorusBlade.Speed")),
-    Swords_PrismarineSword_Damage(getConfig().getDouble("Swords_PrismarineSword.Damage")),
-    Swords_PrismarineSword_Speed(getConfig().getDouble("Swords_PrismarineSword.Speed"));
+    Swords_ChorusBlade_Speed(getConfig().getDouble("Swords_ChorusBlade.Speed"));
 
 
     private final double value;

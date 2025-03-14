@@ -348,25 +348,13 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                                                 vector.getY() * speed * aspd,
                                                 vector.getZ() * speed * aspd));
                                 arrow.setDamage(arrow.getDamage() * x);
-                                return;
                             }
-                            return;
                         }
-                        return;
                     }
-
-
-                    return;
                 }
-                return;
             }
-
-
-        } else {
         }
-
     }
-
 
     /*
 @EventHandler
@@ -624,12 +612,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             //		playerDirection.getZ()* speed * 100));
             //arrow.setDamage(arrow.getDamage()*0.05);
             //^^^that works to make damage less
-            if (player.getInventory().getItemInMainHand() == null) {
-                return;
-            }
-            if (!player.getInventory().getItemInMainHand().hasItemMeta()) {
-                return;
-            }
+
             //repeating crossbow
             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                 if (player.getInventory().getChestplate() != null)

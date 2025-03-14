@@ -49,7 +49,7 @@ public class PrismarineChestplate {
         meta.setCustomModelData(1220002);
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionPrismarineChestplate.Name"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Chestplate"))));
         item.setItemMeta(meta);
         return item;
     }
