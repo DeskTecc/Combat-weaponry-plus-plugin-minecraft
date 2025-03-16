@@ -37,7 +37,7 @@ public class LongBow extends BaseBow{
         meta.setCustomModelData(3330001);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.01,
+        modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.01,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
         meta.setAttributeModifiers(modifiers);
         item.setItemMeta(meta);

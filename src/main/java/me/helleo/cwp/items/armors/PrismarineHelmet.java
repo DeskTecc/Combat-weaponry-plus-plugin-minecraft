@@ -36,13 +36,13 @@ public class PrismarineHelmet {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.armor"), def,
+        modifiers.put(Attribute.ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
-        modifiers.put(Attribute.GENERIC_ARMOR_TOUGHNESS,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.armor_toughness"), toughness,
+        modifiers.put(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.armor_toughness"), toughness,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
-        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.knockback_resistance"), KBResistance,
+        modifiers.put(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.knockback_resistance"), KBResistance,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.max_health"), hp,
+        modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
 
         meta.setCustomModelData(1220001);

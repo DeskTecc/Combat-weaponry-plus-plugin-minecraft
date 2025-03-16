@@ -33,7 +33,7 @@ public class PlatedChainmailLeggings extends BaseArmor {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.plated_chainmail_leggings.armor"), def,
+        modifiers.put(Attribute.ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.plated_chainmail_leggings.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
 
         meta.setAttributeModifiers(modifiers);

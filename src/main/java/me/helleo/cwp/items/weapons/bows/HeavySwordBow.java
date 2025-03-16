@@ -62,17 +62,17 @@ public class HeavySwordBow extends BaseBow{
         meta.setLore(lore);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), attack_damage,
+        modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), attack_damage,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), attack_speed,
+        modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), attack_speed,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
+        modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.minecraft("generic.move_speed"), move_speed,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.minecraft("generic.move_speed_offhand"), offhand_move_speed,
+        modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.minecraft("generic.move_speed_offhand"), offhand_move_speed,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "knockback_resistance"), knockback_resistance,
+        modifiers.put(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "knockback_resistance"), knockback_resistance,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "knockback_resistance_offhand"), offhand_knockback_resistance,
+        modifiers.put(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "knockback_resistance_offhand"), offhand_knockback_resistance,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
 
         meta.setAttributeModifiers(modifiers);

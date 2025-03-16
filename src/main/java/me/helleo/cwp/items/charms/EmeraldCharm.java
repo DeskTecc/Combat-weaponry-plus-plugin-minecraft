@@ -35,9 +35,9 @@ public class EmeraldCharm extends BaseCharm{
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
+        modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.armor"), def,
+        modifiers.put(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.armor"), def,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
         meta.setAttributeModifiers(modifiers);
 

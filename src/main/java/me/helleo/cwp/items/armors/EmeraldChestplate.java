@@ -36,9 +36,9 @@ public class EmeraldChestplate extends BaseArmor{
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.emerald_chestplate.max_health"), hp,
+        modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.emerald_chestplate.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.emerald_chestplate.armor"), def,
+        modifiers.put(Attribute.ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.emerald_chestplate.armor"), def,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
 
         meta.setAttributeModifiers(modifiers);

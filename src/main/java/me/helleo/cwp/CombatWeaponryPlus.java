@@ -210,10 +210,10 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     //modifier
     //AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -3,
     //				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-    //meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+    //meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier);
     //AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 8,
     //				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-    //meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
+    //meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier2);
 
 
 //meta.setCustomModelData(1069691);
@@ -393,7 +393,7 @@ public void onCraftingLbowevent(PrepareItemCraftEvent event) {
     	meta2.setLore(lore);
     	AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", -0.01,
 				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-		meta2.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
+		meta2.addAttributeModifier(Attribute.MOVEMENT_SPEED, modifier3);
     	item.setItemMeta(meta2);
     	}
     	if (this.getConfig().getString("Longbow") == "true") {
@@ -452,7 +452,7 @@ public void onCraftingRbowevent(PrepareItemCraftEvent event) {
 
     	AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", -0.01,
 				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-		meta2.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
+		meta2.addAttributeModifier(Attribute.MOVEMENT_SPEED, modifier3);
     	item.setItemMeta(meta2);
     	}
     	if (this.getConfig().getString("Recurvebow") == "true") {
@@ -511,7 +511,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 
     	AttributeModifier modifier3 = new AttributeModifier(UUID.randomUUID(), "Speed", -0.01,
 				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-		meta2.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, modifier3);
+		meta2.addAttributeModifier(Attribute.MOVEMENT_SPEED, modifier3);
     	item.setItemMeta(meta2);
     	}
     	if (this.getConfig().getString("Compoundbow") == "true") {
@@ -561,10 +561,10 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         //modifier
         AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), -2.2,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+        meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier);
         AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), 3,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier2);
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier2);
 
         meta.setDisplayName("Bone Katana");
         meta.setCustomModelData(4000002);
@@ -1296,10 +1296,10 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier1);
         AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
+        meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselPurple_Line1.getValue()));
@@ -1375,10 +1375,10 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
         AttributeModifier modifier1 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_damage"), dmg,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier1);
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier1);
         AttributeModifier modifier2 = new AttributeModifier(NamespacedKey.minecraft("generic.attack_speed"), spd,
                 Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier2);
+        meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier2);
 
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionAwakenedVesselWhite_Line1.getValue()));
@@ -1972,10 +1972,10 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 //					  double dmg = num * 0.083;
 //					  player.sendMessage(String.valueOf(dmg));
 
-//					  arrow.setDamage(player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue()/100*dmg);
+//					  arrow.setDamage(player.getAttribute(Attribute.ATTACK_DAMAGE).getValue()/100*dmg);
 //				  } else {
 //					  if (player.hasCooldown(player.getInventory().getItemInOffHand().getType()) != true) {
-//						  arrow.setDamage(player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue()/100);
+//						  arrow.setDamage(player.getAttribute(Attribute.ATTACK_DAMAGE).getValue()/100);
 //					  }
 //				  }
 
@@ -1992,10 +1992,10 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
 //		int num = 12-player.getCooldown(player.getInventory().getItemInOffHand().getType());
 //		  double dmg = num * 0.083;
 //		  player.sendMessage(String.valueOf(dmg));
-//		  arrow.setDamage(player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue()/50*dmg);
+//		  arrow.setDamage(player.getAttribute(Attribute.ATTACK_DAMAGE).getValue()/50*dmg);
 //	  } else {
 //		  if (player.hasCooldown(player.getInventory().getItemInOffHand().getType()) != true) {
-//			  arrow.setDamage(player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue()/50);
+//			  arrow.setDamage(player.getAttribute(Attribute.ATTACK_DAMAGE).getValue()/50);
 //		  }
 //	  }
                         }
@@ -2170,7 +2170,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             if (player.getAttackCooldown() == 1) {
                 double damage = event.getFinalDamage();
                 double health = (0.5 * damage) + player.getHealth();
-                if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() >= health) {
+                if (player.getAttribute(Attribute.MAX_HEALTH).getValue() >= health) {
                     player.setHealth(health);
                 }
             }
@@ -2226,7 +2226,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 }
                 world.playSound(player.getLocation(), Sound.ENTITY_WITHER_SKELETON_HURT, 4, 1);
 
-                if (player.getHealth() < (0.5 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue())) {
+                if (player.getHealth() < (0.5 * player.getAttribute(Attribute.MAX_HEALTH).getValue())) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 40, 2));
                 }
             }

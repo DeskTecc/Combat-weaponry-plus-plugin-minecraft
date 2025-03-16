@@ -34,7 +34,7 @@ public class RecurveBow extends BaseBow{
         meta.setLore(lore);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.02,
+        modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.02,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
 
         meta.setAttributeModifiers(modifiers);

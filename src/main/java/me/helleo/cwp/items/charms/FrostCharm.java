@@ -36,9 +36,9 @@ public class FrostCharm extends BaseCharm{
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), 0,
+        modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), 0,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), 0,
+        modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), 0,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
         meta.setAttributeModifiers(modifiers);
 

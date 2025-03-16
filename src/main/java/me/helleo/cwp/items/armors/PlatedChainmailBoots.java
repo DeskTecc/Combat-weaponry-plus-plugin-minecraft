@@ -32,7 +32,7 @@ public class PlatedChainmailBoots extends BaseArmor {
             def = ConfigurationsDouble.Armors_PlateChainBoots_Armor.getValue();
         }
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.plated_chainmail_boots.armor"), def,
+        modifiers.put(Attribute.ARMOR,new AttributeModifier(NamespacedKey.fromString("generic.plated_chainmail_boots.armor"), def,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
 
         meta.setAttributeModifiers(modifiers);

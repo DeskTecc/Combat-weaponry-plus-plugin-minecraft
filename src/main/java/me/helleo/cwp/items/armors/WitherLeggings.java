@@ -34,9 +34,9 @@ public class WitherLeggings {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
+        modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
-        modifiers.put(Attribute.GENERIC_KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.knockback_resistance"), kbr,
+        modifiers.put(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.knockback_resistance"), kbr,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
         meta.setAttributeModifiers(modifiers);
 

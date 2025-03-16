@@ -32,9 +32,9 @@ public class EmeraldHelmet extends BaseArmor {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.emerald_helmet.max_health"), hp,
+        modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.emerald_helmet.max_health"), hp,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
-        modifiers.put(Attribute.GENERIC_ARMOR, new AttributeModifier(NamespacedKey.fromString("generic.emerald_helmet.armor"), def,
+        modifiers.put(Attribute.ARMOR, new AttributeModifier(NamespacedKey.fromString("generic.emerald_helmet.armor"), def,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
 
         meta.setAttributeModifiers(modifiers);

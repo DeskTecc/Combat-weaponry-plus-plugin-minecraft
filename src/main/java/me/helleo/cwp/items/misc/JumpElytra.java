@@ -26,7 +26,7 @@ public class JumpElytra {
     public ItemStack getItem(){
         AttributeModifier modifier = new AttributeModifier(NamespacedKey.minecraft("generic.armor"), 3,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST);
-        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
+        meta.addAttributeModifier(Attribute.ARMOR, modifier);
 
         meta.setDisplayName(ChatColor.YELLOW + "Jump Elytra");
         meta.setCustomModelData(1212121);

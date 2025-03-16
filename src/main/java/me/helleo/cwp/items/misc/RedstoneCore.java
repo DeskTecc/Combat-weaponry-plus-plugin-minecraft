@@ -40,7 +40,7 @@ public class RedstoneCore {
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "generic.armor"), arm,
+        modifiers.put(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(), "generic.armor"), arm,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.setAttributeModifiers(modifiers);
 
