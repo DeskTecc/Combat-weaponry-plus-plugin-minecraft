@@ -47,7 +47,7 @@ public class WoodenSpear extends BaseSpear {
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.WoodenSpear.getValue())));
-        meta.setCustomModelData(1000004);
+        meta.setItemModel(new NamespacedKey("cwp","wood/wooden_spear"));
         item.setItemMeta(meta);
         return item;
     }

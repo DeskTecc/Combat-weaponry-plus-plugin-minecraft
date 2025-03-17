@@ -283,10 +283,6 @@ public class ConfigurationsRecipes {
         if (ConfigurationsBool.JumpElytra.getValue()) {
             JumpElytra.setItemRecipe();
         }
-
-        if (ConfigurationsBool.FishSword.getValue()) {
-            FishSword.setItemRecipe();
-        }
         if (ConfigurationsBool.WindBlade.getValue()) {
             WindBlade.setItemRecipe();
         }

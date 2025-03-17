@@ -115,7 +115,7 @@ public class EntityDamage implements Listener {
                     }
 
                     //if player has atk cooldown 60% or more but less than 100%
-                    if (p.getAttackCooldown() >= 0.6 && p.getAttackCooldown() < 1) {
+                    if (p.getAttackCooldown() >= 0.6) {
                         //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
                         if (p.getAttribute(Attribute.ATTACK_SPEED).getValue() < 1.9) {
                             ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
@@ -127,12 +127,13 @@ public class EntityDamage implements Listener {
                                     break;
                                 }
                             }
-
-                            AttributeModifier attack_speed = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), last_cooldown+0.25,
-                                    AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                            m.removeAttributeModifier(Attribute.ATTACK_SPEED);
-                            m.addAttributeModifier(Attribute.ATTACK_SPEED, attack_speed);
-
+                            //if less than 100% cooldown attack_speed will increase
+                            if(p.getAttackCooldown() < 1) {
+                                AttributeModifier attack_speed = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), last_cooldown + 0.25,
+                                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                m.removeAttributeModifier(Attribute.ATTACK_SPEED);
+                                m.addAttributeModifier(Attribute.ATTACK_SPEED, attack_speed);
+                            }
                             AttributeModifier attack_damage = new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"), old_attack_damage,
                                     AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                             m.removeAttributeModifier(Attribute.ATTACK_DAMAGE);

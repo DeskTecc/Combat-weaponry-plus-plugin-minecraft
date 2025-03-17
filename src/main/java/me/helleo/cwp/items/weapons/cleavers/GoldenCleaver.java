@@ -42,7 +42,7 @@ public class GoldenCleaver extends BaseCleaver{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.GoldenCleaver.getValue())));
-        meta.setCustomModelData(1000021);
+        meta.setItemModel(new NamespacedKey("cwp","gold/golden_cleaver"));
         item.setItemMeta(meta);
         return item;
     }

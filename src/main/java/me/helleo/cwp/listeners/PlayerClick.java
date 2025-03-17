@@ -2,26 +2,206 @@ package me.helleo.cwp.listeners;
 
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.Cooldown;
-import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
-import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.Player;
+import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.items.weapons.sabers.*;
+import org.bukkit.*;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerClick implements Listener {
+
+
+    //DUAL WIELDING
+    @EventHandler
+    public void onRightClickEntity(PlayerInteractEntityEvent event) {
+        Player player = event.getPlayer();
+        ItemStack itemInHand = player.getInventory().getItemInMainHand();
+        ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
+
+        if (event.getHand().equals(EquipmentSlot.HAND)) {
+            if (!itemInOffHand.getType().equals(Material.AIR)) {
+                if (itemInOffHand.hasItemMeta()) {
+                    ItemMeta itemMeta = player.getInventory().getItemInOffHand().getItemMeta();
+                    assert itemMeta != null;
+                    if (itemMeta.hasItemModel()) {
+                        if (itemMeta.getItemModel().getKey().contains("saber")) {
+                            //stops dual wielding 2 different weapon type:
+                            if (ConfigurationsBool.DualWieldSaberOnly.getValue()) {
+                                //test the config thing, not sure if it works
+                                //check if exist saber in main hand
+                                if (itemInHand.hasItemMeta()) {
+                                    assert itemInHand.getItemMeta() != null;
+                                    if(itemInHand.getItemMeta().hasItemModel()){
+                                        if(!itemInHand.getItemMeta().getItemModel().getKey().contains("saber")){
+                                            return;
+                                        }
+                                    }else{
+                                        return;
+                                    }
+                                }else{
+                                    return;
+                                }
+
+                            }
+                            player.swingOffHand();
+
+                            if (event.getRightClicked() instanceof Damageable) {
+                                Damageable e = (Damageable) event.getRightClicked();
+                                if (itemMeta.getItemModel().getKey().contains("saber")) {
+                                    double attack_damage;
+                                    double cooldown;
+
+                                    switch(itemInOffHand.getType()){
+                                        case WOODEN_SWORD:
+                                            attack_damage = WoodenSaber.getAttackDamage();
+                                            cooldown = player.getCooldown(Material.WOODEN_SWORD);
+                                            if (player.hasCooldown(Material.WOODEN_SWORD)) {
+                                                e.damage(cooldownSaberScaleDamage(cooldown, attack_damage),player);
+                                            }
+                                            else{
+                                                e.damage(attack_damage, player);
+
+                                                World world = player.getWorld();
+                                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                            }
+                                            break;
+                                        case STONE_SWORD:
+                                            attack_damage = StoneSaber.getAttackDamage();
+                                            cooldown = player.getCooldown(Material.STONE_SWORD);
+                                            if (player.hasCooldown(Material.STONE_SWORD)) {
+                                                e.damage(cooldownSaberScaleDamage(cooldown, attack_damage),player);
+                                            }
+                                            else {
+                                                e.damage(attack_damage, player);
+
+                                                World world = player.getWorld();
+                                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                            }
+                                            break;
+                                        case GOLDEN_SWORD:
+                                            //if is a Emerald Saber
+                                            if(itemInOffHand.isSimilar(EmeraldSaber.getSaber())){
+                                                attack_damage = EmeraldSaber.getAttackDamage();
+                                                cooldown = player.getCooldown(Material.GOLDEN_SWORD);
+                                                if (player.hasCooldown(Material.GOLDEN_SWORD)) {
+                                                    e.damage(cooldownSaberScaleDamage(cooldown, attack_damage), player);
+                                                }else{
+                                                    e.damage(attack_damage, player);
+
+                                                    World world = player.getWorld();
+                                                    world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                                }
+                                            } else{
+                                                attack_damage = GoldenSaber.getAttackDamage();
+                                                cooldown = player.getCooldown(Material.GOLDEN_SWORD);
+                                                if (player.hasCooldown(Material.GOLDEN_SWORD)) {
+                                                    e.damage(cooldownSaberScaleDamage(cooldown, attack_damage), player);
+                                                }else{
+                                                    e.damage(attack_damage, player);
+
+                                                    World world = player.getWorld();
+                                                    world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                                }
+                                            }
+                                            break;
+                                        case IRON_SWORD:
+                                            attack_damage = IronSaber.getAttackDamage();
+                                            cooldown = player.getCooldown(Material.IRON_SWORD);
+                                            if (player.hasCooldown(Material.IRON_SWORD)) {
+                                                e.damage(cooldownSaberScaleDamage(cooldown, attack_damage),player);
+                                            }
+                                            else {
+                                                e.damage(attack_damage, player);
+
+                                                World world = player.getWorld();
+                                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                            }
+                                            break;
+                                        case DIAMOND_SWORD:
+                                            attack_damage = DiamondSaber.getAttackDamage();
+                                            cooldown = player.getCooldown(Material.DIAMOND_SWORD);
+                                            if (player.hasCooldown(Material.DIAMOND_SWORD)) {
+                                                e.damage(cooldownSaberScaleDamage(cooldown, attack_damage),player);
+                                            }
+                                            else {
+                                                e.damage(attack_damage, player);
+
+                                                World world = player.getWorld();
+                                                world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                            }
+                                            break;
+                                        //Prismarine Cleaver is also a Netherite Sword
+                                        case NETHERITE_SWORD:
+                                            //if is a Prismarine Saber
+                                            if(itemInOffHand.isSimilar(PrismarineSaber.getItem())){
+                                                attack_damage = PrismarineSaber.getAttackDamage();
+                                                cooldown = player.getCooldown(Material.NETHERITE_SWORD);
+                                                if (player.hasCooldown(Material.NETHERITE_SWORD)) {
+                                                    e.damage(cooldownSaberScaleDamage(cooldown, attack_damage), player);
+                                                }else{
+                                                    e.damage(attack_damage, player);
+
+                                                    World world = player.getWorld();
+                                                    world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                                }
+                                            } else{
+                                                attack_damage = NetheriteSaber.getAttackDamage();
+                                                cooldown = player.getCooldown(Material.NETHERITE_SWORD);
+                                                if (player.hasCooldown(Material.NETHERITE_SWORD)) {
+                                                    e.damage(cooldownSaberScaleDamage(cooldown, attack_damage), player);
+                                                }else{
+                                                    e.damage(attack_damage, player);
+
+                                                    World world = player.getWorld();
+                                                    world.playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
+                                                }
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                player.setCooldown(player.getInventory().getItemInOffHand().getType(), 12);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private double cooldownSaberScaleDamage(double cooldown, double saber_damage){
+        //12 is number of ticks left of the cooldown
+        //less cooldown = more damage
+        double attack_damage;
+        if (cooldown <= 12 * 0.2) {
+            attack_damage = saber_damage * 0.8;
+        }
+        else if (cooldown <= 12 * 0.4) {
+            attack_damage = saber_damage * 0.6;
+        }
+        else if (cooldown <= 12 * 0.6) {
+            attack_damage = saber_damage * 0.4;
+        }
+        else if (cooldown <= 12 * 0.8) {
+            attack_damage = saber_damage * 0.2;
+        }
+        else{
+            attack_damage = saber_damage * 0.1;
+        }
+        return attack_damage;
+    }
 
     @EventHandler()
     public void onClick(PlayerInteractEvent event) {
@@ -305,28 +485,6 @@ public class PlayerClick implements Listener {
                         //left click
                         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
                             player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, 2));
-                        }
-                    }
-                }
-            }
-        }
-        //REALLY GOOD SWORD
-        if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_HOE)){
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
-                    if (event.getAction() == Action.RIGHT_CLICK_AIR) {
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1234567) {
-                            World world = player.getWorld();
-                            world.playSound(player.getLocation(), Sound.MUSIC_DISC_CAT, 10, 1);
-                            ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-                            meta.setDisplayName("GOTTEM");
-                            List<String> lore = new ArrayList<>();
-                            lore.add("");
-                            lore.add(ChatColor.translateAlternateColorCodes('&', "&6im sorry"));
-                            lore.add("");
-                            meta.setLore(lore);
-                            meta.setCustomModelData(6969420);
-                            player.getInventory().getItemInMainHand().setItemMeta(meta);
                         }
                     }
                 }

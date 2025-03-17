@@ -47,7 +47,7 @@ public class GoldenKnife extends BaseKnife{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.GoldenKnife.getValue())));
-        meta.setCustomModelData(1000006);
+        meta.setItemModel(new NamespacedKey("cwp","gold/golden_knife"));
         item.setItemMeta(meta);
         return item;
     }

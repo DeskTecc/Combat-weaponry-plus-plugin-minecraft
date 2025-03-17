@@ -47,7 +47,7 @@ public class StoneKnife extends BaseKnife{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.StoneKnife.getValue())));
-        meta.setCustomModelData(1000006);
+        meta.setItemModel(new NamespacedKey("cwp","stone/stone_knife"));
         item.setItemMeta(meta);
         return item;
     }

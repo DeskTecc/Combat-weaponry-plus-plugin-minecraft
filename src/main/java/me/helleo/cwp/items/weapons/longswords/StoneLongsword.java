@@ -47,7 +47,7 @@ public class StoneLongsword extends BaseLongsword{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.StoneLongsword.getValue())));
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","stone/stone_longsword"));
         item.setItemMeta(meta);
         return item;
     }

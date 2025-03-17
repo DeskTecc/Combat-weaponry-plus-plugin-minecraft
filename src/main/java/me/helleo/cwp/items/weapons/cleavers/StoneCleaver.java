@@ -44,7 +44,7 @@ public class StoneCleaver extends BaseCleaver{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.StoneCleaver.getValue())));
-        meta.setCustomModelData(1000021);
+        meta.setItemModel(new NamespacedKey("cwp","stone/stone_cleaver"));
         item.setItemMeta(meta);
         return item;
     }

@@ -47,7 +47,7 @@ public class GoldenSpear extends BaseSpear{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.GoldenSpear.getValue())));
-        meta.setCustomModelData(1000004);
+        meta.setItemModel(new NamespacedKey("cwp","gold/golden_spear"));
         item.setItemMeta(meta);
         return item;
     }

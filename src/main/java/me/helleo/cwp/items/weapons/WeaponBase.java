@@ -65,13 +65,7 @@ public abstract class WeaponBase {
         }
     }
 
-    protected static Double getCustomDamage(String path){
-        return getConfig().getDouble(path+".Damage");
-    }
-
-    public static Double getCustomDamageAdded(String path){
-        return getConfig().getDouble(path+".DamageAdded");
-    }
+    protected static Double getCustomDamage(String path){return getConfig().getDouble(path+".Damage");}
 
     protected static Double getCustomSpeed(String path){
         return getConfig().getDouble(path+".Speed");

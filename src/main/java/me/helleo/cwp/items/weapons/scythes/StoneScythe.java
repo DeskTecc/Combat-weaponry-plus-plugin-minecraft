@@ -47,7 +47,7 @@ public class StoneScythe extends BaseScythe{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.StoneScythe.getValue())));
-        meta.setCustomModelData(1000003);
+        meta.setItemModel(new NamespacedKey("cwp","stone/stone_scythe"));
         item.setItemMeta(meta);
         return item;
     }

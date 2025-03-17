@@ -47,7 +47,7 @@ public class StoneRapier extends BaseRapier{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.StoneRapier.getValue())));
-        meta.setCustomModelData(1000005);
+        meta.setItemModel(new NamespacedKey("cwp","stone/stone_rapier"));
         item.setItemMeta(meta);
         return item;
     }

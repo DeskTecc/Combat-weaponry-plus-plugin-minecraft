@@ -47,7 +47,7 @@ public class GoldenRapier extends BaseRapier{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.GoldenRapier.getValue())));
-        meta.setCustomModelData(1000005);
+        meta.setItemModel(new NamespacedKey("cwp","gold/golden_rapier"));
         item.setItemMeta(meta);
         return item;
     }

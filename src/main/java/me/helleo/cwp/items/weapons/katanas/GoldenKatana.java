@@ -54,7 +54,7 @@ public class GoldenKatana extends BaseKatana{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.GoldenKatana.getValue())));
-        meta.setCustomModelData(1000002);
+        meta.setItemModel(new NamespacedKey("cwp","gold/golden_katana"));
         item.setItemMeta(meta);
         return item;
     }

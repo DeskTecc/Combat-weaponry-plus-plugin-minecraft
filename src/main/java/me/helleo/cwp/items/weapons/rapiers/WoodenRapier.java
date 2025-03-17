@@ -47,7 +47,7 @@ public class WoodenRapier extends BaseRapier{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.WoodenRapier.getValue())));
-        meta.setCustomModelData(1000005);
+        meta.setItemModel(new NamespacedKey("cwp","wood/wooden_rapier"));
         item.setItemMeta(meta);
         return item;
     }

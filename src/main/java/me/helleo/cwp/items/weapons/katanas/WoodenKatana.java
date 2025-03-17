@@ -54,7 +54,7 @@ public class WoodenKatana extends BaseKatana{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(description.WoodenKatana.getValue())));
-        meta.setCustomModelData(1000002);
+        meta.setItemModel(new NamespacedKey("cwp","wood/wooden_katana"));
         item.setItemMeta(meta);
         return item;
     }
