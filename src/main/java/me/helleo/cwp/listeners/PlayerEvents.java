@@ -114,19 +114,20 @@ public class PlayerEvents implements Listener {
         SmithingInventory inventory = event.getInventory();
 
         //CRAFTING ON SMITHING TABLE:
-        // LAPIS_LAZULI + NETHERITE_SWORD + PRISMARINE_SHARD
+        // LAPIS_LAZULI + NETHERITE_TOOL + PRISMARINE_ALLOY
 
         ItemStack template = inventory.getItem(0); // needs to be Lapis Lazuli
-        ItemStack tool = inventory.getItem(1); // needs to be a Netherite Sword
-        ItemStack modifier = inventory.getItem(2); // needs to be a Prismarine Shard
-        if(template!=null && tool!=null && modifier!=null){
+        ItemStack tool = inventory.getItem(1); // needs to be a Netherite tool
+        ItemStack modifier = inventory.getItem(2); // needs to be a Prismarine alloy
+        assert template != null;
+        assert modifier != null;
+        if(template.getType().equals(Material.LAPIS_LAZULI)
+                && tool!=null
+                && modifier.getType().equals(Material.PRISMARINE_SHARD)){
 
             if(tool.hasItemMeta()){
                 //Prismarine Longsword
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteLongsword.getLongsword()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteLongsword.getLongsword())){
                     ItemStack item = PrismarineLongsword.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -135,10 +136,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Cleaver
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteCleaver.getCleaver()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteCleaver.getCleaver())){
                     ItemStack item = PrismarineCleaver.getCleaver();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -147,10 +145,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Saber
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteSaber.getSaber()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteSaber.getSaber())){
                     ItemStack item = PrismarineSaber.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -159,10 +154,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Knife
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteKnife.getKnife()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteKnife.getKnife())){
                     ItemStack item = PrismarineKnife.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -171,10 +163,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Katana
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteKatana.getKatana()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteKatana.getKatana())){
                     ItemStack item = PrismarineKatana.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -183,10 +172,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Spear
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteSpear.getSpear()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteSpear.getSpear())){
                     ItemStack item = PrismarineSpear.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -195,10 +181,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Rapier
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteRapier.getRapier()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteRapier.getRapier())){
                     ItemStack item = PrismarineRapier.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -207,10 +190,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Scythe
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(NetheriteScythe.getScythe()) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.isSimilar(NetheriteScythe.getScythe())){
                     ItemStack item = PrismarineScythe.getItem();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -219,10 +199,7 @@ public class PlayerEvents implements Listener {
                 }
             }else{
                 //Prismarine Sword
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.getType().equals(Material.NETHERITE_SWORD) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_SWORD)){
                     ItemStack item = PrismarineSword.getSword();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -231,10 +208,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Pickaxe
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_PICKAXE)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_PICKAXE)){
                     ItemStack item = PrismarinePickaxe.getTool();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -243,10 +217,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Axe
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_AXE)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_AXE)){
                     ItemStack item = PrismarineAxe.getAxe();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -255,10 +226,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine Shovel
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_SHOVEL)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_SHOVEL)){
                     ItemStack item = PrismarineShovel.getTool();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -267,10 +235,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine hoe
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_HOE)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_HOE)){
                     ItemStack item = PrismarineHoe.getTool();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -279,10 +244,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine helmet
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_HELMET)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_HELMET)){
                     ItemStack item = PrismarineHelmet.getArmorPiece();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -291,10 +253,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine chestplate
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_CHESTPLATE)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_CHESTPLATE)){
                     ItemStack item = PrismarineChestplate.getArmorPiece();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -303,10 +262,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine leggings
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_LEGGINGS)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_LEGGINGS)){
                     ItemStack item = PrismarineLeggings.getArmorPiece();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {
@@ -315,10 +271,7 @@ public class PlayerEvents implements Listener {
                 }
 
                 //Prismarine boots
-                if(template.getType().equals(Material.LAPIS_LAZULI) &&
-                        tool.isSimilar(new ItemStack(Material.NETHERITE_BOOTS)) &&
-                        modifier.getType().equals(Material.PRISMARINE_SHARD)
-                ){
+                if(tool.getType().equals(Material.NETHERITE_BOOTS)){
                     ItemStack item = PrismarineBoots.getArmorPiece();
 
                     if (ConfigurationsBool.Prismarine.getValue()) {

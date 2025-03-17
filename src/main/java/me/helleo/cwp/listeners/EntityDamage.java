@@ -160,41 +160,6 @@ public class EntityDamage implements Listener {
                 }
             }
         }
-        //saber dual wield thing
-        //unused (made the sabers work a different way) i also dont really remember what this was specifically for
-        //if (event.getDamager().getType().equals(EntityType.PLAYER)) {
-        //if (player.getInventory().getItemInMainHand().hasItemMeta()) {
-        //	if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-        //		if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000010
-        //				|| player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200010) {
-        //			if (player.getInventory().getItemInOffHand() != null)
-        //			if (player.getInventory().getItemInOffHand().hasItemMeta())
-        //				if (player.getInventory().getItemInOffHand().getItemMeta().hasCustomModelData())
-        //					if (player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1000010
-        //							|| player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1200010) {
-        //			if (player.getAttackCooldown() == 1.0) {
-        //				event.setDamage(event.getDamage()/2);
-        //			}
-        //			if (player.getAttackCooldown() < 1.0 && player.getAttackCooldown() >= 0.9) {
-        //				event.setDamage(event.getDamage()/1.8);
-        //			}
-        //			if (player.getAttackCooldown() < 0.9 && player.getAttackCooldown() >= 0.8) {
-        //				event.setDamage(event.getDamage()/1.6);
-        //			}
-        //			if (player.getAttackCooldown() < 0.8 && player.getAttackCooldown() >= 0.7) {
-        //				event.setDamage(event.getDamage()/1.4);
-        //			}
-        //			if (player.getAttackCooldown() < 0.7 && player.getAttackCooldown() >= 0.6) {
-        //				event.setDamage(event.getDamage()/1.2);
-        //			}
-        //			if (player.getAttackCooldown() < 0.6 && player.getAttackCooldown() >= 0.5) {
-        //				event.setDamage(event.getDamage()/1);
-        //			}
-        //					}
-        //		}
-        //	}
-        //		}
-        //}
 
         if (event.getDamager().getType() == EntityType.PLAYER) {
             Player player = (Player) event.getDamager();
@@ -581,19 +546,6 @@ public class EntityDamage implements Listener {
             }
         }
     }
-
-    /*private static double getMultiplierr(Player player) {
-        org.bukkit.inventory.meta.Damageable test = (org.bukkit.inventory.meta.Damageable) player.getInventory().getItemInMainHand().getItemMeta();
-        short timesused = (short) test.getDamage();
-        short e = 250;
-        short dur = (short) (e - timesused);
-
-        double perc = (double) dur / e;
-        double multiplier = 1 - perc;
-        double q = 1;
-        double multiplierr = multiplier + q;
-        return multiplierr;
-    }*/
 
     private static double getPierceDamage(Player player, World world, double damage) {
         //only one part missing is necessary to apply the critical
