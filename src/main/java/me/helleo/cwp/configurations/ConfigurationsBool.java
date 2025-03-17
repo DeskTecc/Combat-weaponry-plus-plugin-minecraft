@@ -46,8 +46,6 @@ public enum ConfigurationsBool {
     Eelytra(getConfig().getBoolean("Eelytra")),
     TridentBow(getConfig().getBoolean("TridentBow")),
     JumpElytra(getConfig().getBoolean("JumpElytra")),
-    FishSword(getConfig().getBoolean("FishSword")),
-    WindBlade(getConfig().getBoolean("WindBlade")),
     VolcanicBlade(getConfig().getBoolean("VolcanicBlade")),
     VolcanicSpear(getConfig().getBoolean("VolcanicSpear")),
     VolcanicAxe(getConfig().getBoolean("VolcanicAxe")),

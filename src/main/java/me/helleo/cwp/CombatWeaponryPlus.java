@@ -1457,7 +1457,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                         //if (Cooldown.checkCooldown(event.getPlayer())) {
                         if (player.getAttackCooldown() == 1.0) {
 
-
+                            //awakened vessel and awakened vessel 2
                             if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222226 ||
                                     player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 2222228) {
                                 List<Entity> nearbyEntities = player.getNearbyEntities(5, 5, 5);
@@ -1692,44 +1692,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                     //player.sendMessage("end");
                 }
             }
-        }
-    }
-
-
-
-    @EventHandler
-    public void wind(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        if (player.getInventory().getItemInMainHand().getType() != Material.IRON_SWORD) {
-            return;
-        }
-        if (!player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-            return;
-        }
-        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 21) {
-            return;
-        }
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            Vector direction = player.getLocation().getDirection().multiply(3);
-            Location playerLocation = player.getLocation().add(direction);
-            Location location = new Location(player.getWorld(), playerLocation.getX(), playerLocation.getY(), playerLocation.getZ());
-            player.getWorld().spawnParticle(Particle.EXPLOSION, location.getX(), location.getY() + 1.6, location.getZ(), 1);
-            List<Entity> nearbyEntities = player.getNearbyEntities(4, 4, 4);
-            for (Entity entity : nearbyEntities) {
-                if (entity instanceof LivingEntity) {
-                    LivingEntity livingEntity = (LivingEntity) entity;
-                    if (livingEntity != player) {
-                        Location livingEntity_location = livingEntity.getLocation();
-                        double x = livingEntity_location.getX() - location.getX();
-                        double y = livingEntity_location.getY() - location.getY();
-                        double z = livingEntity_location.getZ() - location.getZ();
-                        Vector v = new Vector(x, y, z).normalize().multiply(-0.5);
-                        livingEntity.setVelocity(v);
-                        livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 20, 5));
-                    }
-                }
-            }
-
         }
     }
 

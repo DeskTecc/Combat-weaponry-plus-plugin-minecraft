@@ -89,16 +89,12 @@ InfusedVessel: false
 # changing this setting to false will stop it from being gained
 CursedVessel: false
 #
-#really good sword is disabled on default because it is really good (it is a joke item)
-ReallyGoodSword: false
 # EXPERIMENTAL ITEMS (these recipes will be disabled on default, put true to enable)===================================
 # The wither armor works but I am unsure if it is balanced or not
 WitherArmor: false
 Eelytra: false
 TridentBow: false
 JumpElytra: false
-FishSword: false
-WindBlade: false
 VolcanicBlade: false
 VolcanicSpear: false
 VolcanicAxe: false
@@ -172,6 +168,9 @@ NetheriteShieldEnchantLevels:
 #==============================================================================================================================
 #
 #CUSTOMIZE ITEM ATTRIBUTE NUMBERS (damage, attack speed, etc)==================================================================
+#DESCRIPTION:
+#Damage: player have 20HP and 10 hearts, this option will affect HP (1 heart = 2HP)
+#Speed: attack speed, higher = more fast (be careful with negative, higher value is more near to 0)
 # (This is still a work in progress)
 # REMEMBER: after changing the attribute numbers, you will also have to change the numbers in the item descriptions (you might not have to do this with some items though)
 UseCustomValues: false
@@ -291,16 +290,16 @@ Others_VolcanicAxe:
 Others_VolcanicCleaver:
   Damage: 13.0
   Speed: 0.4
-Others_PrismarinePickaxe:
+PrismarinePickaxe:
   Damage: 7.0
   Speed: 1.2
 PrismarineAxe:
   Damage: 11.0
   Speed: 1.0
-Others_PrismarineShovel:
+PrismarineShovel:
   Damage: 7.5
   Speed: 1.0
-Others_PrismarineHoe:
+PrismarineHoe:
   Damage: 2.0
   Speed: 4.0
 #SWORDS: ============================================================================================================
@@ -627,14 +626,6 @@ DescriptionFrostCharm:
   Line3: "&7- When this item is held in offhand,"
   Line4: "&7  attacks will inflict slowness for 1 second"
 #OTHER: ============================================================================================================
-DescriptionReallyGoodSword:
-  Name: "Really Really Good Sword"
-  Line1: ""
-  Line2: "&6ULTIMATE SWORD"
-  Line3: "&7- Right click to kill everything"
-  Line4: ""
-  Line5: "&7When in Main Hand:"
-  Line6: "&9 69696969 Attack Damage"
 DescriptionVessel:
   Name: "&eVessel"
   Line1: ""
