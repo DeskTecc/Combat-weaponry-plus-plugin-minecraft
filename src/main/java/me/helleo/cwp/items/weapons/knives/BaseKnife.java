@@ -14,15 +14,7 @@ public abstract class BaseKnife extends WeaponBase {
         Line3("DescriptionKnife.Line3"),
         Line4("DescriptionKnife.Line4"),
         Line5("DescriptionKnife.Line5"),
-        Line6("DescriptionKnife.Line6"),
-        WoodenKnife("Wooden_Knife"),
-        GoldenKnife("Golden_Knife"),
-        StoneKnife("Stone_Knife"),
-        IronKnife("Iron_Knife"),
-        EmeraldKnife("Emerald_Knife"),
-        DiamondKnife("Diamond_Knife"),
-        NetheriteKnife("Netherite_Knife"),
-        PrismarineKnife("Prismarine_Knife");
+        Line6("DescriptionKnife.Line6");
 
         private final String description_value;
 

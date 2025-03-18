@@ -42,8 +42,8 @@ public class DiamondCleaver extends BaseCleaver{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondCleaver.getValue())));
-        meta.setCustomModelData(1000021);
+                ConfigLoader.getLang().getString(cleaverPath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_cleaver"));
         item.setItemMeta(meta);
         return item;
     }

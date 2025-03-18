@@ -50,7 +50,7 @@ public class PrismarineSword extends WeaponBase {
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Sword")));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1210001);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_sword"));
         item.setItemMeta(meta);
         return item;
     }

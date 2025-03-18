@@ -48,7 +48,7 @@ public class EmeraldKnife extends BaseKnife{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.EmeraldKnife.getValue())));
+                ConfigLoader.getLang().getString(knifePath)));
 
         if (ConfigurationsBool.EmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
@@ -56,7 +56,7 @@ public class EmeraldKnife extends BaseKnife{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
-        meta.setCustomModelData(1000016);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_knife"));
         item.setItemMeta(meta);
         return item;
     }

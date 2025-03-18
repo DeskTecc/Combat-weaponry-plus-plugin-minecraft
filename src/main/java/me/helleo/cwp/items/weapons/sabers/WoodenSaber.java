@@ -44,7 +44,7 @@ public class WoodenSaber extends BaseSaber{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.WoodenSaber.getValue())));
+                ConfigLoader.getLang().getString(saberPath)));
         meta.setItemModel(new NamespacedKey("cwp","wood/wooden_saber"));
         item.setItemMeta(meta);
         return item;

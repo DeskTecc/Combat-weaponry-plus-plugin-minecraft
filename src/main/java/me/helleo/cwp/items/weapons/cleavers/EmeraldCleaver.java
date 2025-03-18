@@ -44,8 +44,8 @@ public class EmeraldCleaver extends BaseCleaver{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.EmeraldCleaver.getValue())));
-        meta.setCustomModelData(1000031);
+                ConfigLoader.getLang().getString(cleaverPath)));
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_cleaver"));
 
         //enchants
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {

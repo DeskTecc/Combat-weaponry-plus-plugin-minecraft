@@ -11,15 +11,7 @@ public abstract class BaseSaber extends WeaponBase {
         Line1("DescriptionSaber.Line1"),
         Line2("DescriptionSaber.Line2"),
         Line3("DescriptionSaber.Line3"),
-        Line4("DescriptionSaber.Line4"),
-        WoodenSaber("Wooden_Saber"),
-        GoldenSaber("Golden_Saber"),
-        StoneSaber("Stone_Saber"),
-        IronSaber("Iron_Saber"),
-        EmeraldSaber("Emerald_Saber"),
-        DiamondSaber("Diamond_Saber"),
-        NetheriteSaber("Netherite_Saber"),
-        PrismarineSaber("Prismarine_Saber");
+        Line4("DescriptionSaber.Line4");
 
         private final String description_value;
 

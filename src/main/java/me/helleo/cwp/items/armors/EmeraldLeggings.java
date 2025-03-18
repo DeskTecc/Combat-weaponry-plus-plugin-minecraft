@@ -43,14 +43,14 @@ public class EmeraldLeggings extends BaseArmor{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Leggings"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("EmeraldLeggings"))));
         if (ConfigurationsBool.EnchantmentsOnEmeraldArmor.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Mending.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingLevel, true);
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_leggings"));
         item.setItemMeta(meta);
         return item;
     }

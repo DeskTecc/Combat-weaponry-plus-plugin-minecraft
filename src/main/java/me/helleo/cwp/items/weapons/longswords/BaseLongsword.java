@@ -13,15 +13,7 @@ public abstract class BaseLongsword extends WeaponBase {
         Line2("DescriptionLongsword.Line2"),
         Line3("DescriptionLongsword.Line3"),
         Line4("DescriptionLongsword.Line4"),
-        Line5("DescriptionLongsword.Line5"),
-        WoodenLongsword("Wooden_Longsword"),
-        GoldenLongsword("Golden_Longsword"),
-        StoneLongsword("Stone_Longsword"),
-        IronLongsword("Iron_Longsword"),
-        EmeraldLongsword("Emerald_Longsword"),
-        DiamondLongsword("Diamond_Longsword"),
-        NetheriteLongsword("Netherite_Longsword"),
-        PrismarineLongsword("Prismarine_Longsword");
+        Line5("DescriptionLongsword.Line5");
 
         private final String description_value;
 

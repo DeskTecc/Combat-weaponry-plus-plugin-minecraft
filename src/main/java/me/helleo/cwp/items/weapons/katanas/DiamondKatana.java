@@ -53,8 +53,8 @@ public class DiamondKatana extends BaseKatana{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondKatana.getValue())));
-        meta.setCustomModelData(1000002);
+                ConfigLoader.getLang().getString(katanaPath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_katana"));
         item.setItemMeta(meta);
         return item;
     }

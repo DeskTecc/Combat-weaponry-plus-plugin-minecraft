@@ -15,15 +15,7 @@ public abstract class BaseRapier extends WeaponBase {
         Line4("DescriptionRapier.Line4"),
         Line5("DescriptionRapier.Line5"),
         Line6("DescriptionRapier.Line6"),
-        Line7("DescriptionRapier.Line7"),
-        WoodenRapier("Wooden_Rapier"),
-        GoldenRapier("Golden_Rapier"),
-        StoneRapier("Stone_Rapier"),
-        IronRapier("Iron_Rapier"),
-        EmeraldRapier("Emerald_Rapier"),
-        DiamondRapier("Diamond_Rapier"),
-        NetheriteRapier("Netherite_Rapier"),
-        PrismarineRapier("Prismarine_Rapier");
+        Line7("DescriptionRapier.Line7");
 
         private final String description_value;
 

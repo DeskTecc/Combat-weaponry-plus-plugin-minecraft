@@ -35,7 +35,7 @@ public class PrismarineAlloy {
         meta.addEnchant(Enchantment.UNBREAKING, 5, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(9999901);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_alloy"));
         item.setItemMeta(meta);
         return item;
     }

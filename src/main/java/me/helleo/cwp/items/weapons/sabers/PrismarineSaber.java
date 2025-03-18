@@ -47,10 +47,10 @@ public class PrismarineSaber extends WeaponBase implements Listener {
         meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseSaber.description.PrismarineSaber.getValue())));
+                ConfigLoader.getLang().getString(saberPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200010);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_saber"));
         item.setItemMeta(meta);
         return item;
     }

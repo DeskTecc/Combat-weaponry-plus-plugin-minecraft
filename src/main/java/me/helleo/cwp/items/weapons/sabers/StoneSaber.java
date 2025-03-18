@@ -44,7 +44,7 @@ public class StoneSaber extends BaseSaber{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.StoneSaber.getValue())));
+                ConfigLoader.getLang().getString(saberPath)));
         meta.setItemModel(new NamespacedKey("cwp","stone/stone_saber"));
         item.setItemMeta(meta);
         return item;

@@ -48,8 +48,8 @@ public class EmeraldRapier extends BaseRapier{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.EmeraldRapier.getValue())));
-        meta.setCustomModelData(1000015);
+                ConfigLoader.getLang().getString(rapierPath)));
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_rapier"));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();

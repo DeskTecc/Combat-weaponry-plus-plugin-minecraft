@@ -46,7 +46,7 @@ public class GoldenLongsword extends BaseLongsword{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.GoldenLongsword.getValue())));
+                ConfigLoader.getLang().getString(longswordPath)));
         meta.setItemModel(new NamespacedKey("cwp","gold/golden_longsword"));
         item.setItemMeta(meta);
         return item;

@@ -56,10 +56,10 @@ public class PrismarineKatana extends BaseKatana implements Listener {
         meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseKatana.description.PrismarineKatana.getValue())));
+                ConfigLoader.getLang().getString(katanaPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200002);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_katana"));
         item.setItemMeta(meta);
         return item;
     }

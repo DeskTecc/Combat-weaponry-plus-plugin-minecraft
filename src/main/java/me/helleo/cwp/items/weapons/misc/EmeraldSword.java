@@ -48,7 +48,7 @@ public class EmeraldSword extends WeaponBase {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Sword")));
-        meta.setCustomModelData(1000017);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_sword"));
 
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();

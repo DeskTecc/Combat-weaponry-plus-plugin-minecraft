@@ -47,10 +47,10 @@ public class PrismarineLongsword extends BaseLongsword implements Listener {
         meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseLongsword.description.PrismarineLongsword.getValue())));
+                ConfigLoader.getLang().getString(longswordPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200001);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_longsword"));
         item.setItemMeta(meta);
         return item;
     }

@@ -39,7 +39,7 @@ public class EmeraldHelmet extends BaseArmor {
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Helmet"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("EmeraldHelmet"))));
 
         if (ConfigurationsBool.EnchantmentsOnEmeraldArmor.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Unbreaking.getValue();
@@ -47,7 +47,7 @@ public class EmeraldHelmet extends BaseArmor {
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingLevel, true);
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_helmet"));
         item.setItemMeta(meta);
         return item;
     }

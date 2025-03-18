@@ -53,8 +53,8 @@ public class NetheriteSpear extends BaseSpear{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.NetheriteSpear.getValue())));
-        meta.setCustomModelData(1000004);
+                ConfigLoader.getLang().getString(spearPath)));
+        meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_spear"));
         item.setItemMeta(meta);
         return item;
     }

@@ -46,7 +46,7 @@ public class WoodenLongsword extends BaseLongsword{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.WoodenLongsword.getValue())));
+                ConfigLoader.getLang().getString(longswordPath)));
         meta.setItemModel(new NamespacedKey("cwp","wood/wooden_longsword"));
         item.setItemMeta(meta);
         return item;

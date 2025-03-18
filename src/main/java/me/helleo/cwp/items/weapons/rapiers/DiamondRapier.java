@@ -46,8 +46,8 @@ public class DiamondRapier extends BaseRapier{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondRapier.getValue())));
-        meta.setCustomModelData(1000005);
+                ConfigLoader.getLang().getString(rapierPath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_rapier"));
         item.setItemMeta(meta);
         return item;
     }

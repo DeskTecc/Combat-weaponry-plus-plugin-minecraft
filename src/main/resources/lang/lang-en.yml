@@ -1,12 +1,12 @@
 #SCYTHES
-Wooden_Scythe: "Wooden Scythe"
-Golden_Scythe: "Golden Scythe"
-Stone_Scythe: "Stone Scythe"
-Iron_Scythe: "Iron Scythe"
-Emerald_Scythe: "Emerald Scythe"
-Diamond_Scythe: "Diamond Scythe"
-Netherite_Scythe: "Netherite Scythe"
-Prismarine_Scythe: "&aPrismarine Scythe"
+WoodenScythe: "Wooden Scythe"
+GoldenScythe: "Golden Scythe"
+StoneScythe: "Stone Scythe"
+IronScythe: "Iron Scythe"
+EmeraldScythe: "Emerald Scythe"
+DiamondScythe: "Diamond Scythe"
+NetheriteScythe: "Netherite Scythe"
+PrismarineScythe: "&aPrismarine Scythe"
 
 #SCYTHE DESCRIPTION
 DescriptionScythe:
@@ -19,14 +19,14 @@ DescriptionScythe:
   Line7: ""
 
 #RAPIERS
-Wooden_Rapier: "Wooden Rapier"
-Golden_Rapier: "Golden Rapier"
-Stone_Rapier: "Stone Rapier"
-Iron_Rapier: "Iron Rapier"
-Emerald_Rapier: "Emerald Rapier"
-Diamond_Rapier: "Diamond Rapier"
-Netherite_Rapier: "Netherite Rapier"
-Prismarine_Rapier: "&aPrismarine Rapier"
+WoodenRapier: "Wooden Rapier"
+GoldenRapier: "Golden Rapier"
+StoneRapier: "Stone Rapier"
+IronRapier: "Iron Rapier"
+EmeraldRapier: "Emerald Rapier"
+DiamondRapier: "Diamond Rapier"
+NetheriteRapier: "Netherite Rapier"
+PrismarineRapier: "&aPrismarine Rapier"
 
 #RAPIER DESCRIPTION
 DescriptionRapier:
@@ -39,14 +39,14 @@ DescriptionRapier:
   Line7: ""
 
 #LONGSWORDS
-Wooden_Longsword: "Wooden Longsword"
-Golden_Longsword: "Golden Longsword"
-Stone_Longsword: "Stone Longsword"
-Iron_Longsword: "Iron Longsword"
-Emerald_Longsword: "Emerald Longsword"
-Diamond_Longsword: "Diamond Longsword"
-Netherite_Longsword: "Netherite Longsword"
-Prismarine_Longsword: "&aPrismarine Longsword"
+WoodenLongsword: "Wooden Longsword"
+GoldenLongsword: "Golden Longsword"
+StoneLongsword: "Stone Longsword"
+IronLongsword: "Iron Longsword"
+EmeraldLongsword: "Emerald Longsword"
+DiamondLongsword: "Diamond Longsword"
+NetheriteLongsword: "Netherite Longsword"
+PrismarineLongsword: "&aPrismarine Longsword"
 
 #LONGSWORD DESCRIPTION
 DescriptionLongsword:
@@ -57,14 +57,14 @@ DescriptionLongsword:
   Line5: ""
 
 #KNIVES
-Wooden_Knife: "Wooden Knife"
-Golden_Knife: "Golden Knife"
-Stone_Knife: "Stone Knife"
-Iron_Knife: "Iron Knife"
-Emerald_Knife: "Emerald Knife"
-Diamond_Knife: "Diamond Knife"
-Netherite_Knife: "Netherite Knife"
-Prismarine_Knife: "&aPrismarine Knife"
+WoodenKnife: "Wooden Knife"
+GoldenKnife: "Golden Knife"
+StoneKnife: "Stone Knife"
+IronKnife: "Iron Knife"
+EmeraldKnife: "Emerald Knife"
+DiamondKnife: "Diamond Knife"
+NetheriteKnife: "Netherite Knife"
+PrismarineKnife: "&aPrismarine Knife"
 
 #KNIFE DESCRIPTION
 DescriptionKnife:
@@ -76,14 +76,14 @@ DescriptionKnife:
   Line6: ""
 
 #SPEARS
-Wooden_Spear: "Wooden Spear"
-Golden_Spear: "Golden Spear"
-Stone_Spear: "Stone Spear"
-Iron_Spear: "Iron Spear"
-Emerald_Spear: "Emerald Spear"
-Diamond_Spear: "Diamond Spear"
-Netherite_Spear: "Netherite Spear"
-Prismarine_Spear: "&aPrismarine Spear"
+WoodenSpear: "Wooden Spear"
+GoldenSpear: "Golden Spear"
+StoneSpear: "Stone Spear"
+IronSpear: "Iron Spear"
+EmeraldSpear: "Emerald Spear"
+DiamondSpear: "Diamond Spear"
+NetheriteSpear: "Netherite Spear"
+PrismarineSpear: "&aPrismarine Spear"
 
 #SPEAR DESCRIPTION
 DescriptionSpear:
@@ -98,14 +98,14 @@ DescriptionSpear:
   Line9: ""
 
 #KATANAS
-Wooden_Katana: "Wooden Katana"
-Golden_Katana: "Golden Katana"
-Stone_Katana: "Stone Katana"
-Iron_Katana: "Iron Katana"
-Emerald_Katana: "Emerald Katana"
-Diamond_Katana: "Diamond Katana"
-Netherite_Katana: "Netherite Katana"
-Prismarine_Katana: "&aPrismarine Katana"
+WoodenKatana: "Wooden Katana"
+GoldenKatana: "Golden Katana"
+StoneKatana: "Stone Katana"
+IronKatana: "Iron Katana"
+EmeraldKatana: "Emerald Katana"
+DiamondKatana: "Diamond Katana"
+NetheriteKatana: "Netherite Katana"
+PrismarineKatana: "&aPrismarine Katana"
 
 #KATANA DESCRIPTION
 DescriptionKatana:
@@ -122,14 +122,14 @@ DescriptionKatana:
   Line11: ""
 
 #SABERS
-Wooden_Saber: "Wooden Saber"
-Golden_Saber: "Golden Saber"
-Stone_Saber: "Stone Saber"
-Iron_Saber: "Iron Saber"
-Emerald_Saber: "Emerald Saber"
-Diamond_Saber: "Diamond Saber"
-Netherite_Saber: "Netherite Saber"
-Prismarine_Saber: "&aPrismarine Saber"
+WoodenSaber: "Wooden Saber"
+GoldenSaber: "Golden Saber"
+StoneSaber: "Stone Saber"
+IronSaber: "Iron Saber"
+EmeraldSaber: "Emerald Saber"
+DiamondSaber: "Diamond Saber"
+NetheriteSaber: "Netherite Saber"
+PrismarineSaber: "&aPrismarine Saber"
 
 #SABER DESCRIPTION
 DescriptionSaber:
@@ -139,14 +139,14 @@ DescriptionSaber:
   Line4: ""
 
 #CLEAVERS
-Wooden_Cleaver: "Wooden Cleaver"
-Golden_Cleaver: "Golden Cleaver"
-Stone_Cleaver: "Stone Cleaver"
-Iron_Cleaver: "Iron Cleaver"
-Emerald_Cleaver: "Emerald Cleaver"
-Diamond_Cleaver: "Diamond Cleaver"
-Netherite_Cleaver: "Netherite Cleaver"
-Prismarine_Cleaver: "&aPrismarine Cleaver"
+WoodenCleaver: "Wooden Cleaver"
+GoldenCleaver: "Golden Cleaver"
+StoneCleaver: "Stone Cleaver"
+IronCleaver: "Iron Cleaver"
+EmeraldCleaver: "Emerald Cleaver"
+DiamondCleaver: "Diamond Cleaver"
+NetheriteCleaver: "Netherite Cleaver"
+PrismarineCleaver: "&aPrismarine Cleaver"
 
 #CLEAVER DESCRIPTION
 DescriptionCleaver:
@@ -161,26 +161,26 @@ DescriptionCleaver:
   Line9: ""
 
 #EMERALD ITEMS
-Emerald_Sword: "&2Emerald Sword"
-Emerald_Axe: "&2Emerald Axe"
-Emerald_Shovel: "&2Emerald Shovel"
-Emerald_Pickaxe: "&2Emerald Pickaxe"
-Emerald_Hoe: "&2Emerald Hoe"
+EmeraldSword: "&2Emerald Sword"
+EmeraldAxe: "&2Emerald Axe"
+EmeraldShovel: "&2Emerald Shovel"
+EmeraldPickaxe: "&2Emerald Pickaxe"
+EmeraldHoe: "&2Emerald Hoe"
 
 #SHIELDS
-Diamond_Shield: "Diamond Shield"
-Netherite_Shield: "Netherite Shield"
+DiamondShield: "Diamond Shield"
+NetheriteShield: "Netherite Shield"
 
 #PRISMARINE ITEMS
-Prismarine_Sword: "&aPrismarine Sword"
-Prismarine_Hoe: "&aPrismarine Hoe"
-Prismarine_Pickaxe: "&aPrismarine Pickaxe"
-Prismarine_Axe: "&aPrismarine Axe"
-Prismarine_Shovel: "&aPrismarine Shovel"
-Prismarine_Helmet: "&lPrismarine Helmet"
-Prismarine_Chestplate: "&lPrismarine Chestplate"
-Prismarine_Leggings: "&lPrismarine Leggings"
-Prismarine_Boots: "&lPrismarine Boots"
+PrismarineSword: "&aPrismarine Sword"
+PrismarineHoe: "&aPrismarine Hoe"
+PrismarinePickaxe: "&aPrismarine Pickaxe"
+PrismarineAxe: "&aPrismarine Axe"
+PrismarineShovel: "&aPrismarine Shovel"
+PrismarineHelmet: "&lPrismarine Helmet"
+PrismarineChestplate: "&lPrismarine Chestplate"
+PrismarineLeggings: "&lPrismarine Leggings"
+PrismarineBoots: "&lPrismarine Boots"
 
 #GENERAL ARMORS
 
@@ -191,10 +191,10 @@ PlatedChainmail_Leggings: "&lPlated Chainmail Leggings"
 PlatedChainmail_Boots: "&lPlated Chainmail Boots"
 
 #EMERALD ARMOR
-Emerald_Helmet: "&2Emerald Helmet"
-Emerald_Chestplate: "&2Emerald Chestplate"
-Emerald_Leggings: "&2Emerald Leggings"
-Emerald_Boots: "&2Emerald Boots"
+EmeraldHelmet: "&2Emerald Helmet"
+EmeraldChestplate: "&2Emerald Chestplate"
+EmeraldLeggings: "&2Emerald Leggings"
+EmeraldBoots: "&2Emerald Boots"
 
 DescriptionRedstoneCore:
   Name: "Redstone Core"
@@ -205,10 +205,10 @@ DescriptionRedstoneCore:
   Line5: "&7  holding redstone in the offhand"
 
 #WHITER ARMOR
-Withering_Helmet: "&eWithering Helmet"
-Withering_Chestplate: "&eWithering Chestplate"
-Withering_Leggings: "&eWithering Leggings"
-Withering_Boots: "&eWithering Boots"
+WitheringHelmet: "&eWithering Helmet"
+WitheringChestplate: "&eWithering Chestplate"
+WitheringLeggings: "&eWithering Leggings"
+WitheringBoots: "&eWithering Boots"
 
 DescriptionWitheringArmorSet:
   Line1: ""

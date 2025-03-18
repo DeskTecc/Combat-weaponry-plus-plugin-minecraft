@@ -46,7 +46,7 @@ public class WoodenKnife extends BaseKnife{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.WoodenKnife.getValue())));
+                ConfigLoader.getLang().getString(knifePath)));
         meta.setItemModel(new NamespacedKey("cwp","wood/wooden_knife"));
         item.setItemMeta(meta);
         return item;

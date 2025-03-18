@@ -44,7 +44,7 @@ public class IronSaber extends BaseSaber{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronSaber.getValue())));
+                ConfigLoader.getLang().getString(saberPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_saber"));
         item.setItemMeta(meta);
         return item;

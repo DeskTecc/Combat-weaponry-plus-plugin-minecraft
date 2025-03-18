@@ -45,8 +45,8 @@ public class DiamondSaber extends BaseSaber{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondSaber.getValue())));
-        meta.setCustomModelData(1000010);
+                ConfigLoader.getLang().getString(saberPath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_saber"));
         item.setItemMeta(meta);
         return item;
     }

@@ -17,15 +17,7 @@ public abstract class BaseCleaver extends WeaponBase {
         Line6("DescriptionCleaver.Line6"),
         Line7("DescriptionCleaver.Line7"),
         Line8("DescriptionCleaver.Line8"),
-        Line9("DescriptionCleaver.Line9"),
-        WoodenCleaver("Wooden_Cleaver"),
-        GoldenCleaver("Golden_Cleaver"),
-        StoneCleaver("Stone_Cleaver"),
-        IronCleaver("Iron_Cleaver"),
-        EmeraldCleaver("Emerald_Cleaver"),
-        DiamondCleaver("Diamond_Cleaver"),
-        NetheriteCleaver("Netherite_Cleaver"),
-        PrismarineCleaver("Prismarine_Cleaver");
+        Line9("DescriptionCleaver.Line9");
 
         private String description_value;
 

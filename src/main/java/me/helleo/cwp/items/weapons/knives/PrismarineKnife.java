@@ -47,10 +47,10 @@ public class PrismarineKnife extends BaseKnife implements Listener {
         meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseKnife.description.PrismarineKnife.getValue())));
+                ConfigLoader.getLang().getString(knifePath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200006);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_knife"));
         item.setItemMeta(meta);
         return item;
     }

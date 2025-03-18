@@ -17,15 +17,7 @@ public abstract class BaseScythe extends WeaponBase {
         Line4("DescriptionScythe.Line4"),
         Line5("DescriptionScythe.Line5"),
         Line6("DescriptionScythe.Line6"),
-        Line7("DescriptionScythe.Line7"),
-        WoodenScythe("Wooden_Scythe"),
-        GoldenScythe("Golden_Scythe"),
-        StoneScythe("Stone_Scythe"),
-        IronScythe("Iron_Scythe"),
-        EmeraldScythe("Emerald_Scythe"),
-        DiamondScythe("Diamond_Scythe"),
-        NetheriteScythe("Netherite_Scythe"),
-        PrismarineScythe("Prismarine_Scythe");
+        Line7("DescriptionScythe.Line7");
 
         private final String description_value;
 

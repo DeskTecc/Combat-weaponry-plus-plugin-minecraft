@@ -46,7 +46,7 @@ public class GoldenScythe extends BaseScythe{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.GoldenScythe.getValue())));
+                ConfigLoader.getLang().getString(scythePath)));
         meta.setItemModel(new NamespacedKey("cwp","gold/golden_scythe"));
         item.setItemMeta(meta);
         return item;

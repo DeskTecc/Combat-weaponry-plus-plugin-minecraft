@@ -19,15 +19,7 @@ public abstract class BaseKatana extends WeaponBase {
         Line8("DescriptionKatana.Line8"),
         Line9("DescriptionKatana.Line9"),
         Line10("DescriptionKatana.Line10"),
-        Line11("DescriptionKatana.Line11"),
-        WoodenKatana("Wooden_Katana"),
-        GoldenKatana("Golden_Katana"),
-        StoneKatana("Stone_Katana"),
-        IronKatana("Iron_Katana"),
-        EmeraldKatana("Emerald_Katana"),
-        DiamondKatana("Diamond_Katana"),
-        NetheriteKatana("Netherite_Katana"),
-        PrismarineKatana("Prismarine_Katana");
+        Line11("DescriptionKatana.Line11");
 
         private final String description_value;
 

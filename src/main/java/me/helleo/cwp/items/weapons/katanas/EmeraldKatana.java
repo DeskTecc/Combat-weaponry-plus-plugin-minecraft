@@ -55,8 +55,8 @@ public class EmeraldKatana extends BaseKatana{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.EmeraldKatana.getValue())));
-        meta.setCustomModelData(1000012);
+                ConfigLoader.getLang().getString(katanaPath)));
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_katana"));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();

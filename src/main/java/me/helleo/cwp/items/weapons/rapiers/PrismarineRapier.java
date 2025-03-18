@@ -45,10 +45,10 @@ public class PrismarineRapier extends BaseRapier implements Listener {
         meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseRapier.description.PrismarineRapier.getValue())));
+                ConfigLoader.getLang().getString(rapierPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200005);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_rapier"));
         item.setItemMeta(meta);
         return item;
     }

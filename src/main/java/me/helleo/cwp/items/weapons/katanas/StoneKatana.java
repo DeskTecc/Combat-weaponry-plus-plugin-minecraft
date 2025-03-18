@@ -53,7 +53,7 @@ public class StoneKatana extends BaseKatana{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.StoneKatana.getValue())));
+                ConfigLoader.getLang().getString(katanaPath)));
         meta.setItemModel(new NamespacedKey("cwp","stone/stone_katana"));
         item.setItemMeta(meta);
         return item;

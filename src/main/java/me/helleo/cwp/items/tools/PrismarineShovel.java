@@ -3,6 +3,7 @@ package me.helleo.cwp.items.tools;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
@@ -45,8 +46,8 @@ public class PrismarineShovel extends WeaponBase {
 
         meta.setLore(setLore(lore, getAttackDamage(),getAttackSpeed()));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Prismarine_Shovel"));
-        meta.setCustomModelData(1210004);
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(shovelPath)));
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_shovel"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;

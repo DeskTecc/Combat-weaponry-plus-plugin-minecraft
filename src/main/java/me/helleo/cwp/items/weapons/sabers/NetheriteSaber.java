@@ -52,8 +52,8 @@ public class NetheriteSaber extends BaseSaber{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.NetheriteSaber.getValue())));
-        meta.setCustomModelData(1000010);
+                ConfigLoader.getLang().getString(saberPath)));
+        meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_saber"));
         item.setItemMeta(meta);
         return item;
     }

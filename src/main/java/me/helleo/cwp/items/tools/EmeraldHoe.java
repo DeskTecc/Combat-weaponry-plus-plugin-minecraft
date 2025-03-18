@@ -22,14 +22,14 @@ public class EmeraldHoe extends BaseTool{
 
         //emerald hoe
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Hoe")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("EmeraldHoe")));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingLevel, true);
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_hoe"));
         item.setItemMeta(meta);
         return item;
     }

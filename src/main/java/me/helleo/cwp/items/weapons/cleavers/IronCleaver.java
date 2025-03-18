@@ -42,7 +42,7 @@ public class IronCleaver extends BaseCleaver{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronCleaver.getValue())));
+                ConfigLoader.getLang().getString(cleaverPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_cleaver"));
         item.setItemMeta(meta);
         return item;

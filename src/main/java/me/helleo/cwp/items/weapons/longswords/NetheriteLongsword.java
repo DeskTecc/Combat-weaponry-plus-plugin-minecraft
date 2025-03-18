@@ -54,8 +54,8 @@ public class NetheriteLongsword extends BaseLongsword{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.NetheriteLongsword.getValue())));
-        meta.setCustomModelData(1000001);
+                ConfigLoader.getLang().getString(longswordPath)));
+        meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_longsword"));
         item.setItemMeta(meta);
         return item;
     }

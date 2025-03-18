@@ -54,8 +54,8 @@ public class NetheriteRapier extends BaseRapier{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.NetheriteRapier.getValue())));
-        meta.setCustomModelData(1000005);
+                ConfigLoader.getLang().getString(rapierPath)));
+        meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_rapier"));
         item.setItemMeta(meta);
         return item;
     }

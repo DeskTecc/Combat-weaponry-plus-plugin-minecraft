@@ -45,8 +45,8 @@ public class EmeraldSaber extends BaseSaber{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.EmeraldSaber.getValue())));
-        meta.setCustomModelData(1000030);
+                ConfigLoader.getLang().getString(saberPath)));
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_saber"));
 
         //enchants
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {

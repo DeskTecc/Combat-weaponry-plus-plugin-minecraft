@@ -45,10 +45,10 @@ public class PrismarineHelmet {
         modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_helmet.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
 
-        meta.setCustomModelData(1220001);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_helmet"));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Helmet"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PrismarineHelmet"))));
         item.setItemMeta(meta);
         return item;
     }

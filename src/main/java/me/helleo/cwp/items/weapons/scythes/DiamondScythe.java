@@ -46,8 +46,8 @@ public class DiamondScythe extends BaseScythe{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondScythe.getValue())));
-        meta.setCustomModelData(1000003);
+                ConfigLoader.getLang().getString(scythePath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_scythe"));
         item.setItemMeta(meta);
         return item;
     }

@@ -43,14 +43,14 @@ public class EmeraldChestplate extends BaseArmor{
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Chestplate"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("EmeraldChestplate"))));
         if (ConfigurationsBool.EnchantmentsOnEmeraldArmor.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Mending.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingLevel, true);
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_chestplate"));
         item.setItemMeta(meta);
         return item;
     }

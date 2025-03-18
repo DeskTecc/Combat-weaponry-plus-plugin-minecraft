@@ -48,10 +48,10 @@ public class PrismarineSpear extends BaseSpear implements Listener {
         meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseSpear.description.PrismarineSpear.getValue())));
+                ConfigLoader.getLang().getString(spearPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200004);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_spear"));
         item.setItemMeta(meta);
         return item;
     }

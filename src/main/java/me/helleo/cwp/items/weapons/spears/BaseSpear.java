@@ -17,15 +17,7 @@ public abstract class BaseSpear extends WeaponBase {
         Line6("DescriptionSpear.Line6"),
         Line7("DescriptionSpear.Line7"),
         Line8("DescriptionSpear.Line8"),
-        Line9("DescriptionSpear.Line9"),
-        WoodenSpear("Wooden_Spear"),
-        GoldenSpear("Golden_Spear"),
-        StoneSpear("Stone_Spear"),
-        IronSpear("Iron_Spear"),
-        EmeraldSpear("Emerald_Spear"),
-        DiamondSpear("Diamond_Spear"),
-        NetheriteSpear("Netherite_Spear"),
-        PrismarineSpear("Prismarine_Spear");
+        Line9("DescriptionSpear.Line9");
 
         private final String description_value;
 

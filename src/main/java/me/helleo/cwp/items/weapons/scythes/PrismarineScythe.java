@@ -47,10 +47,10 @@ public class PrismarineScythe extends BaseScythe implements Listener {
         meta.setLore(getLore(attack_damage,attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseScythe.description.PrismarineScythe.getValue())));
+                ConfigLoader.getLang().getString(scythePath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200003);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_scythe"));
         item.setItemMeta(meta);
         return item;
     }

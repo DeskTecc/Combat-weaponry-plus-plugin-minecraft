@@ -43,10 +43,10 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
         meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(BaseCleaver.description.PrismarineCleaver.getValue())));
+                ConfigLoader.getLang().getString(cleaverPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setCustomModelData(1200021);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_cleaver"));
         item.setItemMeta(meta);
         return item;
     }

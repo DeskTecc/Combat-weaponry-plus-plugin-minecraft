@@ -46,10 +46,10 @@ public class PrismarineBoots {
         modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_boots.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
 
-        meta.setCustomModelData(1220004);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_boots"));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Boots"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PrismarineBoots"))));
         item.setItemMeta(meta);
         return item;
     }

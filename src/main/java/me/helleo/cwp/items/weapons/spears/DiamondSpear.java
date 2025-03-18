@@ -46,8 +46,8 @@ public class DiamondSpear extends BaseSpear{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondSpear.getValue())));
-        meta.setCustomModelData(1000004);
+                ConfigLoader.getLang().getString(spearPath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_spear"));
         item.setItemMeta(meta);
         return item;
     }

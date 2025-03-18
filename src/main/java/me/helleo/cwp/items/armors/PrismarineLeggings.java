@@ -46,10 +46,10 @@ public class PrismarineLeggings {
         modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_leggings.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
 
-        meta.setCustomModelData(1220003);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_leggings"));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Leggings"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PrismarineLeggings"))));
         item.setItemMeta(meta);
         return item;
     }

@@ -42,14 +42,14 @@ public class EmeraldBoots extends BaseArmor{
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Boots"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("EmeraldBoots"))));
         if (ConfigurationsBool.EnchantmentsOnEmeraldArmor.getValue()) {
             int unbreakingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Unbreaking.getValue();
             int mendingLevel = (int) ConfigurationsDouble.EmeraldArmorEnchantLevels_Mending.getValue();
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingLevel, true);
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_boots"));
         item.setItemMeta(meta);
         return item;
     }

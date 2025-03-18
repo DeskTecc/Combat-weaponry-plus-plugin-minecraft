@@ -46,10 +46,10 @@ public class PrismarineChestplate {
         modifiers.put(Attribute.MAX_HEALTH,new AttributeModifier(NamespacedKey.fromString("generic.prismarine_chestplate.max_health"), hp,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
 
-        meta.setCustomModelData(1220002);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_chestplate"));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Chestplate"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("PrismarineChestplate"))));
         item.setItemMeta(meta);
         return item;
     }

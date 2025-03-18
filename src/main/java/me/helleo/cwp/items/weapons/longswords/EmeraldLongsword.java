@@ -48,8 +48,8 @@ public class EmeraldLongsword extends BaseLongsword{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.EmeraldLongsword.getValue())));
-        meta.setCustomModelData(1000011);
+                ConfigLoader.getLang().getString(longswordPath)));
+        meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_longsword"));
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {
             int unbreakingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Unbreaking.getValue();
             int mendingValue = (int) ConfigurationsDouble.EmeraldGearEnchantLevels_Mending.getValue();

@@ -46,7 +46,7 @@ public class IronRapier extends BaseRapier{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronRapier.getValue())));
+                ConfigLoader.getLang().getString(rapierPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_rapier"));
         item.setItemMeta(meta);
         return item;

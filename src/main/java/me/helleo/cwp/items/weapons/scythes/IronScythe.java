@@ -46,7 +46,7 @@ public class IronScythe extends BaseScythe{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronScythe.getValue())));
+                ConfigLoader.getLang().getString(scythePath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_scythe"));
         item.setItemMeta(meta);
         return item;

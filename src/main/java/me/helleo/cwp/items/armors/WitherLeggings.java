@@ -40,7 +40,7 @@ public class WitherLeggings {
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
         meta.setAttributeModifiers(modifiers);
 
-        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Withering_Leggings"))));
+        meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("WitheringLeggings"))));
         meta.setCustomModelData(5553333);
 
         List<String> lore = new ArrayList<>();

@@ -26,7 +26,7 @@ public class DiamondShield {
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
         }
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Diamond_Shield")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DiamondShield")));
         meta.setCustomModelData(5430001);
         item.setItemMeta(meta);
         return item;

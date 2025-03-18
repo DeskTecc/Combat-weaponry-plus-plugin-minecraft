@@ -46,7 +46,7 @@ public class IronKnife extends BaseKnife{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronKnife.getValue())));
+                ConfigLoader.getLang().getString(knifePath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_knife"));
         item.setItemMeta(meta);
         return item;

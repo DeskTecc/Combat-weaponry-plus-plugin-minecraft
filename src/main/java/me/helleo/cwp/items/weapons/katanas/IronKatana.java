@@ -53,7 +53,7 @@ public class IronKatana extends BaseKatana{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronKatana.getValue())));
+                ConfigLoader.getLang().getString(katanaPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_katana"));
         item.setItemMeta(meta);
         return item;

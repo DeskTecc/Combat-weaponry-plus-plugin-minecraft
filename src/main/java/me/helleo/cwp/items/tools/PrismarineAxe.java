@@ -46,9 +46,9 @@ public class PrismarineAxe extends WeaponBase {
 
         meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Axe")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(axePath)));
 
-        meta.setCustomModelData(1220001);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_axe"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;

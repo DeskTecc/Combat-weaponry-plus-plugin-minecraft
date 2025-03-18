@@ -46,7 +46,7 @@ public class IronLongsword extends BaseLongsword{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.IronLongsword.getValue())));
+                ConfigLoader.getLang().getString(longswordPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_longsword"));
         item.setItemMeta(meta);
         return item;

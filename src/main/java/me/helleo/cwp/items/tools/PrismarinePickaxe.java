@@ -3,6 +3,7 @@ package me.helleo.cwp.items.tools;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import me.helleo.cwp.CombatWeaponryPlus;
+import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
@@ -45,8 +46,8 @@ public class PrismarinePickaxe extends WeaponBase {
 
         meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',"Prismarine_Pickaxe"));
-        meta.setCustomModelData(1210002);
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(pickaxePath)));
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_pickaxe"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;

@@ -46,9 +46,9 @@ public class PrismarineHoe extends WeaponBase {
 
         meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Hoe")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(hoePath)));
 
-        meta.setCustomModelData(1210005);
+        meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_hoe"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;

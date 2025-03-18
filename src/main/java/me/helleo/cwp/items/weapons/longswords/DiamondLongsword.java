@@ -46,8 +46,8 @@ public class DiamondLongsword extends BaseLongsword{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.DiamondLongsword.getValue())));
-        meta.setCustomModelData(1000001);
+                ConfigLoader.getLang().getString(longswordPath)));
+        meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_longsword"));
         item.setItemMeta(meta);
         return item;
     }

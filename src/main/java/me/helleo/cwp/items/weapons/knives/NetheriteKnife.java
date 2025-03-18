@@ -56,8 +56,8 @@ public class NetheriteKnife extends BaseKnife{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                ConfigLoader.getLang().getString(description.NetheriteKnife.getValue())));
-        meta.setCustomModelData(1000006);
+                ConfigLoader.getLang().getString(knifePath)));
+        meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_knife"));
         item.setItemMeta(meta);
         return item;
     }
