@@ -18,30 +18,28 @@ public class DiamondSaber extends BaseSaber{
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String saberPath = "DiamondSaber";
+    private static double attack_damage = 6;
+    private static double attack_speed = -2.4;
+
 
     public static ItemStack getSaber() {
-        double attack_damage = 6;
-        double attack_speed = -2.4;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(saberPath);
-            attack_speed = getCustomSpeed(saberPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
-                AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
-        ));
         modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
+        modifiers.put(Attribute.GENERIC_ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
+                getAttackSpeed(),
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlotGroup.HAND
+        ));
+
 
         meta.setAttributeModifiers(modifiers);
 
@@ -50,6 +48,20 @@ public class DiamondSaber extends BaseSaber{
         meta.setCustomModelData(1000010);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(saberPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(saberPath);
+        }
+        return attack_speed;
     }
 
     public static void setSaberRecipe(){
