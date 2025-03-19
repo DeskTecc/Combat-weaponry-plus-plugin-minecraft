@@ -47,7 +47,7 @@ public class EmeraldSword extends WeaponBase {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Emerald_Sword")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(swordPath)));
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_sword"));
 
         if (ConfigurationsBool.EnchantmentsOnEmeraldGear.getValue()) {

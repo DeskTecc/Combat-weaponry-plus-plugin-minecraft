@@ -47,7 +47,7 @@ public class PrismarineSword extends WeaponBase {
 
         meta.setLore(setLore(lore,getAttackDamage(),getAttackSpeed()));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("Prismarine_Sword")));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(swordPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_sword"));
