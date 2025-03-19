@@ -41,7 +41,7 @@ public class WitherLeggings {
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("WitheringLeggings"))));
-        meta.setCustomModelData(5553333);
+        meta.setItemModel(new NamespacedKey("cwp","wither/wither_leggings"));
 
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringArmorSet.Line1")));

@@ -40,7 +40,7 @@ public class WitherChestplate {
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("WitheringChestplate"))));
-        meta.setCustomModelData(5553332);
+        meta.setItemModel(new NamespacedKey("cwp","wither/wither_chestplate"));
 
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringArmorSet.Line1")));

@@ -41,7 +41,7 @@ public class WitherHelmet {
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName((ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("WitheringHelmet"))));
-        meta.setCustomModelData(5553331);
+        meta.setItemModel(new NamespacedKey("cwp","wither/wither_helmet"));
 
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringArmorSet.Line1")));

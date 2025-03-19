@@ -29,7 +29,7 @@ public class FrostCharm extends BaseCharm{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionFrostCharm_Line3.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionFrostCharm_Line4.getValue()));
         meta.setLore(lore);
-        meta.setCustomModelData(45);
+        meta.setItemModel(new NamespacedKey("cwp","misc/frost_charm"));
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionFrostCharm_Name.getValue()));
         meta.addEnchant(Enchantment.UNBREAKING, 5, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

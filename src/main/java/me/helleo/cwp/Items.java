@@ -3,7 +3,7 @@ package me.helleo.cwp;
 import me.helleo.cwp.configurations.ConfigurationsString;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -18,7 +18,7 @@ public class Items {
         ItemMeta meta = item.getItemMeta();
         assert meta != null;
         meta.setDisplayName(ChatColor.YELLOW + "Wither Bone");
-        meta.setCustomModelData(2222222);
+        meta.setItemModel(new NamespacedKey("cwp","misc/wither_bone"));
         item.setItemMeta(meta);
         return item;
     }
@@ -33,7 +33,7 @@ public class Items {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionVessel_Line3.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionVessel_Line4.getValue()));
         vmeta.setLore(lore);
-        vmeta.setCustomModelData(2222223);
+        vmeta.setItemModel(new NamespacedKey("cwp","misc/vessel"));
         item.setItemMeta(vmeta);
         return item;
     }

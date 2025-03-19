@@ -72,7 +72,7 @@ public class ChorusBlade {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setLore(lore);
-        meta.setCustomModelData(1000007);
+        meta.setItemModel(new NamespacedKey("cwp","misc/chorus_blade"));
         item.setItemMeta(meta);
         return item;
     }
