@@ -9,6 +9,7 @@
 lang: "en"
 # ENABLE OR DISABLE THE RESOURCE PACK==================================================================================
 # PUT TRUE OR FALSE
+ResourcePack: true
 CustomResourcePack: false
 #CHANGE THE RESOURCE PACK: (to change it, replace the link with your own link)
 PackLink: https://www.dropbox.com/scl/fi/dhgubahgx3z0phg4wnbw3/cwp-texture-pack-1.5.7.zip?rlkey=cxtqp9575bk28qr90vyxb2tdv&dl=1
