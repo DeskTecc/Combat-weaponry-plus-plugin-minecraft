@@ -4,6 +4,7 @@ import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
 
 public enum ConfigurationsBool {
     Emerald(getConfig().getBoolean("Emerald")),
+    ResourcePack(getConfig().getBoolean("ResourcePack")),
     CustomResourcePack(getConfig().getBoolean("CustomResourcePack")),
     ShieldParry(getConfig().getBoolean("ShieldParry")),
     Chainmail(getConfig().getBoolean("Chainmail")),
