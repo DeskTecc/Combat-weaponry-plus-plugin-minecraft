@@ -62,7 +62,8 @@ public class SwordBow extends BaseBow{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionSwordBow_Name.getValue()));
 
         meta.setLore(lore);
-        meta.setCustomModelData(1000001);
+        meta.setItemModel(new NamespacedKey("cwp","bows/swordbow"));
+        /*meta.setCustomModelData(1000001);*/
         item.setItemMeta(meta);
         return item;
     }

@@ -33,7 +33,8 @@ public class CompoundBow extends BaseBow{
         meta.setLore(lore);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionCompoundBow_Name.getValue()));
-        meta.setCustomModelData(3330003);
+        meta.setItemModel(new NamespacedKey("cwp","bows/compoundbow"));
+        /*meta.setCustomModelData(3330003);*/
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.03,

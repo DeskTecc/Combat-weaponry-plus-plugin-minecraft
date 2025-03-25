@@ -34,7 +34,8 @@ public class LongBow extends BaseBow{
         meta.setLore(lore);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongBow_Name.getValue()));
-        meta.setCustomModelData(3330001);
+        meta.setItemModel(new NamespacedKey("cwp","bows/longbow"));
+        /*meta.setCustomModelData(3330001);*/
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), -0.01,

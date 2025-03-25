@@ -30,7 +30,8 @@ public class BurstCrossbow extends BaseBow{
 
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionBurstCrossbow_Name.getValue()));
-        meta.setCustomModelData(5552002);
+        meta.setItemModel(new NamespacedKey("cwp","bows/burstcrossbow"));
+        /*meta.setCustomModelData(5552002);*/
         item.setItemMeta(meta);
         return item;
     }

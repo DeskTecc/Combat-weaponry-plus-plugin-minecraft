@@ -39,7 +39,8 @@ public class RecurveBow extends BaseBow{
 
         meta.setAttributeModifiers(modifiers);
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRecurveBow_Name.getValue()));
-        meta.setCustomModelData(3330002);
+        meta.setItemModel(new NamespacedKey("cwp","bows/recurvebow"));
+        /*meta.setCustomModelData(3330002);*/
         item.setItemMeta(meta);
         return item;
     }

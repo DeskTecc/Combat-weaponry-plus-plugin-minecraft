@@ -78,7 +78,8 @@ public class HeavySwordBow extends BaseBow{
         meta.setAttributeModifiers(modifiers);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionHeavySwordBow_Name.getValue()));
-        meta.setCustomModelData(1000002);
+        meta.setItemModel(new NamespacedKey("cwp","bows/heavyswordbow"));
+        /*meta.setCustomModelData(1000002);*/
         item.setItemMeta(meta);
         return item;
     }

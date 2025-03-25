@@ -479,9 +479,9 @@ public class PlayerClick implements Listener {
         }
         //OBSIDIAN PICKAXE
         if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_PICKAXE)) {
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasItemModel()) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
-                    if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000001) {
+                    if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("obsidian_pickaxe")) {
                         //left click
                         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
                             player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, 2));
