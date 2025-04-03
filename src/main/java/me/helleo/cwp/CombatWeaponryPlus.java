@@ -8,14 +8,13 @@ package me.helleo.cwp;
 import me.helleo.cwp.configurations.*;
 import me.helleo.cwp.listeners.Commands;
 import me.helleo.cwp.listeners.EntityDamage;
-import me.helleo.cwp.listeners.PlayerClick;
+import me.helleo.cwp.listeners.PlayerCombat;
 import me.helleo.cwp.listeners.PlayerEvents;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.attribute.AttributeModifier.Operation;
-import org.bukkit.entity.AbstractArrow.PickupStatus;
 import org.bukkit.entity.*;
 import org.bukkit.entity.ArmorStand.LockType;
 import org.bukkit.event.EventHandler;
@@ -65,7 +64,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         Cooldown.setupCooldown();
 
         Bukkit.getPluginManager().registerEvents(this, this);
-        Bukkit.getPluginManager().registerEvents(new PlayerClick(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerCombat(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.getCommand("cwp").setExecutor(new Commands());
@@ -86,122 +85,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
 
-    }
-
-    @EventHandler
-    public void playerBowShoot(EntityShootBowEvent event) {
-        Entity entity = event.getEntity();
-        float speed = event.getForce();
-        Arrow arrow = (Arrow) event.getProjectile();
-        if (entity.getType().equals(EntityType.PLAYER)) {
-            Player player = (Player) entity;
-            if (player.getInventory().getItemInOffHand().getType() == Material.BOW || player.getInventory().getItemInOffHand().getType() == Material.CROSSBOW) {
-                return;
-            }
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-
-                //TEST BOW
-                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1069691) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1069691) {
-                    Vector vector = player.getLocation().getDirection();
-                    //these numbers make it around the same velocity as normal bows i think
-                    //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
-
-                    World world = player.getWorld();
-                    arrow.setVelocity(new Vector
-                            (vector.getX() * speed * 5,
-                                    vector.getY() * speed * 5,
-                                    vector.getZ() * speed * 5));
-
-                    Trident trident = player.launchProjectile(Trident.class, arrow.getVelocity());
-                    arrow.remove();
-                    trident.setPierceLevel(20);
-                    trident.setCritical(true);
-                    trident.setFireTicks(100);
-                    trident.setGravity(false);
-                    trident.setPickupStatus(PickupStatus.DISALLOWED);
-                    trident.setBounce(false);
-                    trident.setCustomName("Bob");
-                    trident.setCustomNameVisible(true);
-                    trident.setKnockbackStrength(10);
-                    world.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THROW, 10, 1);
-
-                    Entity pig = world.spawnEntity(player.getLocation().add(0, 9, 0), EntityType.PIG);
-                    pig.setCustomName("Kevin");
-                    pig.setCustomNameVisible(true);
-                    Entity chicken = world.spawnEntity(player.getLocation().add(0, 9, 0), EntityType.CHICKEN);
-                    chicken.setCustomName("Phil");
-                    chicken.setCustomNameVisible(true);
-
-                    pig.addPassenger(chicken);
-                    trident.addPassenger(pig);
-
-                    return;
-                }
-                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1069691) {// || player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() != 1069691) {
-
-                    // LONG BOW
-                    if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longbow") || player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longswordbow")) {
-                        Vector vector = player.getLocation().getDirection();
-                        //these numbers make it around the same velocity as normal bows
-                        //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
-
-                        double aspd = 4;
-                        double x = 1;
-                        if (ConfigurationsBool.UseCustomValues.getValue()) {
-                            aspd = ConfigurationsDouble.Bows_LongBow_ArrowSpeed.getValue();
-                            x = ConfigurationsDouble.Bows_LongBow_DmgMultiplier.getValue();
-                        }
-                        arrow.setVelocity(new Vector
-                                (vector.getX() * speed * aspd,
-                                        vector.getY() * speed * aspd,
-                                        vector.getZ() * speed * aspd));
-                        arrow.setDamage(arrow.getDamage() * x);
-                        return;
-                    }
-                    if (!player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longbow") || !player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longswordbow")) {
-                        // RECURVE BOW
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("recurvebow")) {
-                            Vector vector = player.getLocation().getDirection();
-                            //these numbers make it around the same velocity as normal bows
-                            //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
-
-                            double aspd = 5;
-                            double x = 1;
-                            if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                aspd = ConfigurationsDouble.Bows_RecurveBow_ArrowSpeed.getValue();
-                                x = ConfigurationsDouble.Bows_RecurveBow_DmgMultiplier.getValue();
-                            }
-                            arrow.setVelocity(new Vector
-                                    (vector.getX() * speed * aspd,
-                                            vector.getY() * speed * aspd,
-                                            vector.getZ() * speed * aspd));
-                            arrow.setDamage(arrow.getDamage() * x);
-                            return;
-                        }
-                        if (!player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("recurvebow")){
-                            //CBow
-                            if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("compoundbow")) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 3330003) {
-                                Vector vector = player.getLocation().getDirection();
-                                //these numbers make it around the same velocity as normal bows
-                                //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
-
-                                double aspd = 6;
-                                double x = 1;
-                                if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                    aspd = ConfigurationsDouble.Bows_CompoundBow_ArrowSpeed.getValue();
-                                    x = ConfigurationsDouble.Bows_CompoundBow_DmgMultiplier.getValue();
-                                }
-                                arrow.setVelocity(new Vector
-                                        (vector.getX() * speed * aspd,
-                                                vector.getY() * speed * aspd,
-                                                vector.getZ() * speed * aspd));
-                                arrow.setDamage(arrow.getDamage() * x);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     /*
@@ -1389,42 +1272,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
         }
     }
 
-    @EventHandler
-    public void doubleJump(EntityToggleGlideEvent event) {
-        if (!(event.getEntity() instanceof Player)) {
-            return;
-        }
-        Player player = (Player) event.getEntity();
-        if (player.isDead()) {
-            return;
-        }
-        if (player.getInventory().getChestplate() == null) {
-            return;
-        }
-        if (player.getInventory().getChestplate().getType() != Material.ELYTRA) {
-            return;
-        }
-
-        if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-            if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1212121) {
-                if (!player.isGliding()) {
-                    //player.sendMessage("start");
-                    //this is when elytra activates
-                    if (!(player.hasCooldown(Material.ELYTRA))) {
-                        player.setVelocity(player.getLocation().getDirection().multiply(1.1).setY(1));
-                        player.setCooldown(Material.ELYTRA, 40);
-                    }
-
-                    event.setCancelled(true);
-
-                }
-                if (player.isGliding()) {
-                    //this is when elytra lands on ground and deactivates
-                    //player.sendMessage("end");
-                }
-            }
-        }
-    }
 
     @EventHandler
     public void onFCharmDamageEntity(EntityDamageByEntityEvent event) {
@@ -1858,96 +1705,5 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 arrow.remove();
             }
         }.runTaskLater(this, 40L); // Adjust the delay (in ticks) as needed
-    }
-
-    //EXPLOSIVE STAFF
-    /*public ShapedRecipe getExStaffRecipe() {
-
-        //test
-
-        ItemStack item = new ItemStack(Material.CROSSBOW);
-        ItemMeta meta = item.getItemMeta();
-
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&6Explosion"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- Right click to create an explosion in the"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  direction you are facing"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7- The created explosion is able to"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7  launch nearby entities, including arrows"));
-        lore.add(ChatColor.translateAlternateColorCodes('&', ""));
-        assert meta != null;
-        meta.setLore(lore);
-
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "Explosive Staff"));
-        meta.setCustomModelData(22);
-        item.setItemMeta(meta);
-
-        NamespacedKey key = new NamespacedKey(this, "explosive_staff");
-        keys.add(key);
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-        recipe.shape("GTG", " S ", " S ");
-
-        recipe.setIngredient('G', Material.GOLD_INGOT);
-        recipe.setIngredient('T', Material.TNT);
-        recipe.setIngredient('S', Material.BEDROCK);
-
-        return recipe;
-    }*/
-
-    @EventHandler
-    public void explosion(EntityShootBowEvent event) {
-        // Check if the entity shooting the bow is a player
-        if (event.getEntityType() == EntityType.PLAYER) {
-            // Check if the bow being used has the desired CustomModelData
-            ItemStack bow = event.getBow();
-            assert bow != null;
-            if (bow.getItemMeta() != null && bow.getItemMeta().hasCustomModelData() && bow.getItemMeta().getCustomModelData() == 22) {
-
-                //remove the arrow
-                event.getProjectile().remove();
-                Player player = (Player) event.getEntity();
-
-                // Check if the player is holding a crossbow
-                ItemStack item = player.getInventory().getItemInMainHand();
-                if (item.getType() == Material.CROSSBOW) {
-                    Vector direction = player.getLocation().getDirection().multiply(2.5);
-                    Location playerLocation = player.getLocation().add(direction);
-                    Location location = new Location(player.getWorld(), playerLocation.getX(), playerLocation.getY(), playerLocation.getZ());
-                    player.getWorld().createExplosion(location, 2.0f, false, false);
-                    Collection<Entity> nearent = player.getWorld().getNearbyEntities(location, 3, 3, 3);
-                    for (Entity entity : nearent) {
-                        if (entity instanceof Arrow) {
-                            Arrow nearbyArrow = (Arrow) entity;
-
-                            // Apply a velocity to the nearby arrow
-                            Vector explosionDirection = nearbyArrow.getLocation().subtract(location).toVector().normalize();
-                            double explosionForce = 4.0; // Adjust the explosion force as needed
-                            Vector velocity = explosionDirection.multiply(explosionForce);
-                            nearbyArrow.setVelocity(velocity.setY(0));
-                            //nearbyArrow.setGravity(false);
-                            //nearbyArrow.setVelocity(new Vector(0,0,0));
-                            nearbyArrow.setDamage(nearbyArrow.getDamage() * 3);
-
-                            nearbyArrow.getWorld().playSound(location, Sound.BLOCK_ANVIL_LAND, 10, 2);
-                            nearbyArrow.getWorld().spawnParticle(Particle.CRIT, location, 10);
-
-                 		/*Bukkit.getScheduler().runTaskLater(this, () -> {
-                 			nearbyArrow.setVelocity(velocity.setY(0));
-
-                         	}, 5L);
-                         */
-                        } else {
-                            // Apply a velocity to the nearby entity
-                            Vector explosionDirection = entity.getLocation().subtract(location).toVector().normalize();
-                            double explosionForce = 3.0; // Adjust the explosion force as needed
-                            Vector velocity = explosionDirection.multiply(explosionForce);
-                            entity.setVelocity(velocity);
-                        }
-                    }
-                }
-            }
-        }
     }
 }

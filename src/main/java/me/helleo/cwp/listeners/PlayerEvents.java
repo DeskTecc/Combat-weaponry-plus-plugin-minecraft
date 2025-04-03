@@ -123,6 +123,37 @@ public class PlayerEvents implements Listener {
         }
     }
 
+    //event of EElytra
+    @EventHandler
+    public void doubleJump(EntityToggleGlideEvent event) {
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getEntity();
+        if (player.isDead()) {
+            return;
+        }
+        if (player.getInventory().getChestplate() == null) {
+            return;
+        }
+        if (player.getInventory().getChestplate().getType() != Material.ELYTRA) {
+            return;
+        }
+
+        if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
+            if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1212121) {
+                if (!player.isGliding()) {
+                    if (!(player.hasCooldown(Material.ELYTRA))) {
+                        player.setVelocity(player.getLocation().getDirection().multiply(1.1).setY(1));
+                        player.setCooldown(Material.ELYTRA, 40);
+                    }
+
+                    event.setCancelled(true);
+                }
+            }
+        }
+    }
+
     //Wither Armor effects:
 
     @EventHandler

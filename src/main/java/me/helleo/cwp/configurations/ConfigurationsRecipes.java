@@ -270,10 +270,6 @@ public class ConfigurationsRecipes {
             RedstoneCore.setItemRecipe();
         }
 
-        if (ConfigurationsBool.TridentBow.getValue()) {
-            TridentBow.setBowRecipe();
-        }
-
         if (ConfigurationsBool.WitherArmor.getValue()) {
             WitherHelmet.setArmorRecipe();
             WitherChestplate.setArmorRecipe();

@@ -3,12 +3,14 @@ package me.helleo.cwp.listeners;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.Cooldown;
 import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.items.weapons.sabers.*;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -16,10 +18,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class PlayerClick implements Listener {
+public class PlayerCombat implements Listener {
 
 
     //DUAL WIELDING
@@ -456,9 +459,9 @@ public class PlayerClick implements Listener {
 
         //CHORUS BLADE
         if (player.getInventory().getItemInMainHand().getType().equals(Material.IRON_SWORD)){
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()){
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasItemModel()){
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()
-                        && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000007) {
+                        && player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("chorus_blade")) {
                     //Right click
                     if (event.getAction() == Action.RIGHT_CLICK_AIR) {
                         if (Cooldown.checkCooldown(event.getPlayer())) {
@@ -479,6 +482,73 @@ public class PlayerClick implements Listener {
                             player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 40, 2));
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void playerBowShoot(EntityShootBowEvent event) {
+        Entity entity = event.getEntity();
+        float speed = event.getForce();
+        Arrow arrow = (Arrow) event.getProjectile();
+        if (entity.getType().equals(EntityType.PLAYER)) {
+            Player player = (Player) entity;
+            if (player.getInventory().getItemInOffHand().getType() == Material.BOW || player.getInventory().getItemInOffHand().getType() == Material.CROSSBOW) {
+                return;
+            }
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasItemModel()) {
+
+                // LONG BOW
+                if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longbow") || player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longswordbow")) {
+                    Vector vector = player.getLocation().getDirection();
+
+                    double aspd = 4;
+                    double x = 1;
+                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                        aspd = ConfigurationsDouble.Bows_LongBow_ArrowSpeed.getValue();
+                        x = ConfigurationsDouble.Bows_LongBow_DmgMultiplier.getValue();
+                    }
+                    arrow.setVelocity(new Vector
+                            (vector.getX() * speed * aspd,
+                                    vector.getY() * speed * aspd,
+                                    vector.getZ() * speed * aspd));
+                    arrow.setDamage(arrow.getDamage() * x);
+                    return;
+                }
+                // RECURVE BOW
+                if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("recurvebow")) {
+                    Vector vector = player.getLocation().getDirection();
+
+                    double aspd = 5;
+                    double x = 1;
+                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                        aspd = ConfigurationsDouble.Bows_RecurveBow_ArrowSpeed.getValue();
+                        x = ConfigurationsDouble.Bows_RecurveBow_DmgMultiplier.getValue();
+                    }
+                    arrow.setVelocity(new Vector
+                            (vector.getX() * speed * aspd,
+                                    vector.getY() * speed * aspd,
+                                    vector.getZ() * speed * aspd));
+                    arrow.setDamage(arrow.getDamage() * x);
+                    return;
+                }
+                //CompoundBow
+                if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("compoundbow")) {
+                    Vector vector = player.getLocation().getDirection();
+
+                    double aspd = 6;
+                    double x = 1;
+                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                        aspd = ConfigurationsDouble.Bows_CompoundBow_ArrowSpeed.getValue();
+                        x = ConfigurationsDouble.Bows_CompoundBow_DmgMultiplier.getValue();
+                    }
+                    arrow.setVelocity(new Vector
+                            (vector.getX() * speed * aspd,
+                                    vector.getY() * speed * aspd,
+                                    vector.getZ() * speed * aspd));
+                    arrow.setDamage(arrow.getDamage() * x);
+                    return;
                 }
             }
         }

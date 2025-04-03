@@ -78,7 +78,7 @@ public class ChorusBlade {
     }
 
     public ShapedRecipe getToolRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "chorusblade");
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "chorus_blade");
         CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getTool());
 
