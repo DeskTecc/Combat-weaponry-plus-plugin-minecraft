@@ -30,16 +30,29 @@ import me.helleo.cwp.items.weapons.spears.NetheriteSpear;
 import me.helleo.cwp.items.weapons.spears.PrismarineSpear;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.SmithingInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static me.helleo.cwp.CombatWeaponryPlus.getPlugin;
 import static org.bukkit.Bukkit.getServer;
@@ -104,6 +117,94 @@ public class PlayerEvents implements Listener {
                         getServer().getScheduler().runTaskLater(getPlugin(), () -> {
 
                         }, 5L);
+                    }
+                }
+            }
+        }
+    }
+
+    //Wither Armor effects:
+
+    @EventHandler
+    public void witherArmorHealing(EntityDamageByEntityEvent event) {
+        //healing
+        if (!(event.getDamager() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getDamager();
+        PlayerInventory playerInventory = player.getInventory();
+
+        List<ItemStack> playerArmorContents = Arrays.stream(playerInventory.getArmorContents())
+                .filter(Objects::nonNull)
+                .filter(x-> x.getItemMeta().hasItemModel())
+                .collect(Collectors.toList());
+
+        //check if player have full custom armor
+        if(playerArmorContents.size()==4){
+            ItemStack playerHelmet = playerInventory.getHelmet();
+            ItemStack playerChestplate = playerInventory.getChestplate();
+            ItemStack playerLeggings = playerInventory.getLeggings();
+            ItemStack playerBoots = playerInventory.getBoots();
+
+            if (playerHelmet.getItemMeta().getItemModel().getKey().contains("wither_helmet")
+                    && playerChestplate.getItemMeta().getItemModel().getKey().contains("wither_chestplate")
+                    && playerLeggings.getItemMeta().getItemModel().getKey().contains("wither_leggings")
+                    && playerBoots.getItemMeta().getItemModel().getKey().contains("wither_boots")) {
+
+                if (player.getAttackCooldown() == 1) {
+                    double damage = event.getFinalDamage();
+                    double health = (0.5 * damage) + player.getHealth();
+                    if (player.getAttribute(Attribute.MAX_HEALTH).getValue() >= health) {
+                        player.setHealth(health);
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
+    @EventHandler
+    public void witherArmorEffect(EntityDamageEvent event) {
+        // wither effect
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getEntity();
+        PlayerInventory playerInventory = player.getInventory();
+
+        List<ItemStack> playerArmorContents = Arrays.stream(playerInventory.getArmorContents())
+                .filter(Objects::nonNull)
+                .filter(x-> x.getItemMeta().hasItemModel())
+                .collect(Collectors.toList());
+
+        //check if player have full custom armor
+        if(playerArmorContents.size()==4){
+            ItemStack playerHelmet = playerInventory.getHelmet();
+            ItemStack playerChestplate = playerInventory.getChestplate();
+            ItemStack playerLeggings = playerInventory.getLeggings();
+            ItemStack playerBoots = playerInventory.getBoots();
+
+            if (playerHelmet.getItemMeta().getItemModel().getKey().contains("wither_helmet")
+                    && playerChestplate.getItemMeta().getItemModel().getKey().contains("wither_chestplate")
+                    && playerLeggings.getItemMeta().getItemModel().getKey().contains("wither_leggings")
+                    && playerBoots.getItemMeta().getItemModel().getKey().contains("wither_boots")) {
+
+                World world = player.getWorld();
+                if (!(event.getCause().equals(EntityDamageEvent.DamageCause.WITHER))) {
+                    if (event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)
+                            || event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)
+                            || event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK)
+                            || event.getCause().equals(EntityDamageEvent.DamageCause.PROJECTILE)) {
+                        if (player.isBlocking()) {
+                            return;
+                        }
+                    }
+                    world.playSound(player.getLocation(), Sound.ENTITY_WITHER_SKELETON_HURT, 4, 1);
+
+                    if (player.getHealth() < (0.5 * player.getAttribute(Attribute.MAX_HEALTH).getValue())) {
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 40, 2));
                     }
                 }
             }

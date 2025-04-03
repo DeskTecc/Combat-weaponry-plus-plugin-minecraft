@@ -431,7 +431,6 @@ public class PlayerClick implements Listener {
                 }
             }
         }
-        //
 
         //EELYTRA
         if (player.getInventory().getChestplate() != null) {
@@ -441,7 +440,6 @@ public class PlayerClick implements Listener {
                         if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560001) {
 
                             if (event.getAction() == Action.RIGHT_CLICK_AIR && player.isGliding()) {
-                                //player.sendMessage("qqq");
 
                                 ItemMeta meta = player.getInventory().getChestplate().getItemMeta();
                                 meta.setCustomModelData(1560002);
@@ -449,12 +447,6 @@ public class PlayerClick implements Listener {
                                 World world = player.getWorld();
                                 world.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 10, 1);
                                 player.setVelocity(player.getLocation().getDirection().multiply(2));
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
-                                    public void run() {
-                                        //player.setVelocity(player.getLocation().getDirection().multiply(0.5));
-
-                                    }
-                                }, 10L);
                             }
                         }
                     }

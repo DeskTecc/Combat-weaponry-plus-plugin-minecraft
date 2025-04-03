@@ -22,9 +22,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.CrossbowMeta;
@@ -90,147 +88,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-
-
-    //longsword dash ability
-    //unused
-
-//	@EventHandler()
-//	public void onccClick(PlayerInteractEvent event) {
-//		Player player = event.getPlayer();
-//		if (player.getInventory().getItemInMainHand().getItemMeta() != null)
-//		if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData() == true)
-//		if (player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-//			if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1200001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1000011) {
-//				if (player.getInventory().getItemInOffHand().getType() != Material.SHIELD) {
-//					if (event.getAction() == Action.RIGHT_CLICK_AIR) {
-//						if (Cooldown.checkCooldown(event.getPlayer())) {
-//							World world = (World) player.getWorld();
-//							world.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 10, 1);
-//							player.setVelocity(player.getLocation().getDirection().multiply(1.1));
-//							Cooldown.setCooldown(event.getPlayer(), 5);
-//
-//						} else {
-//							return;
-//
-//						}
-//
-///						return;
-//				}
-//			}
-//			}
-
-//	}
-
-
-
-    //CHARMS
-
-
-
-
-    // below is test stuff, i dont remember what it was for
-
-    //furnace recipe??
-
-    //public FurnaceRecipe getffrecipe() {
-    //	ItemStack result = new ItemStack(Material.PRISMARINE_CRYSTALS);
-    //	ItemMeta meta = result.getItemMeta();
-
-    //	List<String> lore = new ArrayList<String>();
-    //	lore.add("");
-    //	lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "The shards of diamonds");
-    //	lore.add("");
-    //	meta.setLore(lore);
-
-    //	meta.setDisplayName("Diamond Shard");
-    //	meta.addEnchant(Enchantment.DURABILITY, 69, true);
-    //	meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-    //	result.setItemMeta(meta);
-    //	NamespacedKey key = new NamespacedKey(this, "diamond_shard");
-    //	keys.add(key);
-    //	FurnaceRecipe recipe = new FurnaceRecipe(key, result, Material.DIAMOND, 70, 200);
-    //second last number is exp, last number is cooking time
-    //	return recipe;
-    //}
-
-
-    //public SmithingRecipe getssssrecipe() {
-
-    //	ItemStack result = new ItemStack(Material.PRISMARINE_CRYSTALS);
-    //	ItemMeta meta = result.getItemMeta();
-    //	meta.setDisplayName("Diamond Shard");
-    //	meta.addEnchant(Enchantment.DAMAGE_ALL, 69, true);
-    //	result.setItemMeta(meta);
-    //	NamespacedKey key = new NamespacedKey(this, "diamond_shard");
-    //keys.add(key);
-    //	SmithingRecipe recipe = new SmithingRecipe(key, result, null, null);
-    //
-    //	return recipe;
-    //}
-
-//public SmithingRecipe getsrecipe() {
-    //	ItemStack result = new ItemStack(Material.WOODEN_SWORD);
-
-    //	NamespacedKey key = new NamespacedKey(this, "diamond_bruh");
-    //	keys.add(key);
-
-//		ItemMeta meta = result.getItemMeta();
-//		List<String> lore = new ArrayList<String>();
-//		lore.add("");
-//		lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "eee");
-    //	lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "gfhdfdghdhg");
-    ///	meta.setLore(lore);
-
-    //	result.setItemMeta(meta);
-    //	RecipeChoice bruh = new RecipeChoice.MaterialChoice(Material.NETHERITE_SWORD);
-    //	RecipeChoice bruh2 = new RecipeChoice.MaterialChoice(Material.ACACIA_BOAT);
-    //bruh is base, bruh2 is upgrade
-//SmithingRecipe recipe = new SmithingRecipe(key, result, bruh, bruh2);
-//		recipe.getResult().addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 21);
-//		recipe.getResult().setAmount(34);
-//		//second last is base, last is add thingy??
-//		return recipe;
-//	}
-//public ShapedRecipe getTESTbowRecipe() {
-
-    //TEST bow
-
-    //ItemStack item = new ItemStack(Material.BOW);
-    //ItemMeta meta = item.getItemMeta();
-
-//	meta.setDisplayName(ChatColor.GOLD + "Test Bow");
-
-    //List<String> lore = new ArrayList<String>();
-//	lore.add("");
-//	lore.add(ChatColor.translateAlternateColorCodes('&', "&7Increases arrow velocity"));
-//	lore.add("");
-//	meta.setLore(lore);
-
-    //modifier
-    //AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "Attack Speed", -3,
-    //				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-    //meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier);
-    //AttributeModifier modifier2 = new AttributeModifier(UUID.randomUUID(), "Attack Damage", 8,
-    //				Operation.ADD_NUMBER, EquipmentSlot.HAND);
-    //meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier2);
-
-
-//meta.setCustomModelData(1069691);
-//	item.setItemMeta(meta);
-
-    //NamespacedKey key = new NamespacedKey(this, "test_bow");
-    //keys.add(key);
-//	ShapedRecipe recipe = new ShapedRecipe(key, item);
-
-//	recipe.shape("SSS", "SBS", "SSS");
-
-    //recipe.setIngredient('S', Material.EXPERIENCE_BOTTLE);
-    //recipe.setIngredient('B', Material.BOW);
-
-    //return recipe;
-//}
-
     @EventHandler
     public void playerBowShoot(EntityShootBowEvent event) {
         Entity entity = event.getEntity();
@@ -247,10 +104,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1069691) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1069691) {
                     Vector vector = player.getLocation().getDirection();
                     //these numbers make it around the same velocity as normal bows i think
-                    //arrow.setVelocity(new Vector
-                    //(vector.getX() * speed * 3.5,
-                    //vector.getY() * speed * 4,
-                    //vector.getZ()* speed * 3.5));
+                    //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
+
                     World world = player.getWorld();
                     arrow.setVelocity(new Vector
                             (vector.getX() * speed * 5,
@@ -280,7 +135,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                     pig.addPassenger(chicken);
                     trident.addPassenger(pig);
 
-
                     return;
                 }
                 if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1069691) {// || player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() != 1069691) {
@@ -289,10 +143,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                     if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longbow") || player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("longswordbow")) {
                         Vector vector = player.getLocation().getDirection();
                         //these numbers make it around the same velocity as normal bows
-                        //arrow.setVelocity(new Vector
-                        //(vector.getX() * speed * 3.5,
-                        //vector.getY() * speed * 4,
-                        //vector.getZ()* speed * 3.5));
+                        //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
+
                         double aspd = 4;
                         double x = 1;
                         if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -311,10 +163,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                         if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("recurvebow")) {
                             Vector vector = player.getLocation().getDirection();
                             //these numbers make it around the same velocity as normal bows
-                            //arrow.setVelocity(new Vector
-                            //(vector.getX() * speed * 3.5,
-                            //vector.getY() * speed * 4,
-                            //vector.getZ()* speed * 3.5));
+                            //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
+
                             double aspd = 5;
                             double x = 1;
                             if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -333,10 +183,8 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
                             if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("compoundbow")) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 3330003) {
                                 Vector vector = player.getLocation().getDirection();
                                 //these numbers make it around the same velocity as normal bows
-                                //arrow.setVelocity(new Vector
-                                //(vector.getX() * speed * 3.5,
-                                //vector.getY() * speed * 4,
-                                //vector.getZ()* speed * 3.5));
+                                //arrow.setVelocity(new Vector (vector.getX() * speed * 3.5, vector.getY() * speed * 4, vector.getZ()* speed * 3.5));
+
                                 double aspd = 6;
                                 double x = 1;
                                 if (ConfigurationsBool.UseCustomValues.getValue()) {
@@ -614,16 +462,16 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             //^^^that works to make damage less
 
             //repeating crossbow
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasItemModel()) {
                 if (player.getInventory().getChestplate() != null)
                     if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("repeatingcrossbow") && player.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE) {
-                        if (!player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
+                        if (!player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
 
                             if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("repeatingcrossbow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                 if (player.getInventory().getChestplate() != null) {
                                     if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                        if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                            if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                                        if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                            if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
                                                 return;
                                             }
                                         }
@@ -695,15 +543,15 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             return;
                         }
 
-                        if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                            if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() != 1231234) {
+                        if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                            if (!player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                 if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("repeatingcrossbow") &&
                                         player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                     if (player.getInventory().getChestplate() != null) {
                                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                            if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                                if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                                            if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                                if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
                                                     return;
                                                 }
                                             }
@@ -841,8 +689,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("repeatingcrossbow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                     if (player.getInventory().getChestplate() != null) {
                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                            if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                            if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
                                     return;
                                 }
                             }
@@ -914,22 +762,21 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
 
             //burst crossbow
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasItemModel()) {
                 if (player.getInventory().getChestplate() != null) {
-
 
                     if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("burstcrossbow") && player.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE) {
                         Location loc = player.getLocation();
 
                         if (player.getInventory().getChestplate() != null) {
                             if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                if (!player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
+                                if (!player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
 
                                     if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("burstcrossbow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                         if (player.getInventory().getChestplate() != null) {
                                             if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                                if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                                    if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                                                if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                                    if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                                         return;
                                                     }
@@ -937,7 +784,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                             }
                                         }
                                         player.getInventory().getItemInOffHand().setAmount(player.getInventory().getItemInOffHand().getAmount() - 1);
-
 
                                         //up down
                                         double arrowAngle = 80;
@@ -969,15 +815,15 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                     }
                                     return;
                                 }
-                                if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                    if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() != 1231234) {
+                                if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                    if (!player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                         if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("burstcrossbow") &&
                                                 player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                             if (player.getInventory().getChestplate() != null) {
                                                 if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                                    if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                                        if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                                                    if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                                        if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
                                                             return;
                                                         }
                                                     }
@@ -1053,8 +899,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("burstcrossbow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                     if (player.getInventory().getChestplate() != null) {
                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                            if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                            if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                     return;
                                 }
@@ -1069,11 +915,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                     //		arrow1.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
                     //		Float speed1 = event.getForce();
-                    //		arrow1.setVelocity(new Vector
-                    //				(playerDirection1.getX() * speed1 * 4.5,
-                    //				playerDirection1.getY() * speed1 * 6,
-                    //				playerDirection1.getZ()* speed1 * 4.5));
-
+                    //		arrow1.setVelocity(new Vector (playerDirection1.getX() * speed1 * 4.5, playerDirection1.getY() * speed1 * 6, playerDirection1.getZ()* speed1 * 4.5));
 
                     //arrow 2
 
@@ -1081,10 +923,7 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                     //		Arrow arrow2 = player.launchProjectile(Arrow.class, playerDirection2);
                     //		arrow2.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
                     ////		Float speed2 = event.getForce();
-                    //		arrow2.setVelocity(new Vector
-                    //				(playerDirection2.getX() * speed2 * 4.5,
-                    //				playerDirection2.getY() * speed2 * 4,
-                    //				playerDirection2.getZ()* speed2 * 4.5));
+                    //		arrow2.setVelocity(new Vector (playerDirection2.getX() * speed2 * 4.5, playerDirection2.getY() * speed2 * 4, playerDirection2.getZ()* speed2 * 4.5));
 
                     Location loc = player.getLocation();
 
@@ -1126,23 +965,21 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
             }
 
             //redstone bow
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasItemModel()) {
                 if (player.getInventory().getChestplate() != null)
-
 
                     if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("redstonebow") && player.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE) {
                         //Location loc = player.getLocation();
 
                         if (player.getInventory().getChestplate() != null) {
                             if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                if (!player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-
+                                if (!player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
 
                                     if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("redstonebow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                         if (player.getInventory().getChestplate() != null) {
                                             if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                                if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                                    if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                                                if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                                    if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                                         return;
                                                     }
@@ -1169,14 +1006,14 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                     }
                                     return;
                                 }
-                                if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                    if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() != 1231234) {
+                                if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                    if (!player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                         if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("redstonebow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                                             if (player.getInventory().getChestplate() != null) {
                                                 if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                                                    if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                                        if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                                                    if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                                        if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
 
                                                             return;
                                                         }
@@ -1224,8 +1061,8 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().getItemModel().getKey().contains("redstonebow") && player.getInventory().getItemInOffHand().getType() == Material.REDSTONE) {
                     if (player.getInventory().getChestplate() != null) {
                         if (player.getInventory().getChestplate().getType().equals(Material.IRON_CHESTPLATE)) {
-                            if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
-                                if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1231234) {
+                            if (player.getInventory().getChestplate().getItemMeta().hasItemModel()) {
+                                if (player.getInventory().getChestplate().getItemMeta().getItemModel().getKey().contains("redstone_core")) {
                                     return;
                                 }
                             }
@@ -1487,11 +1324,9 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                                                 //world.strikeLightning(entity.getLocation());
                                             }
 
-
                                             world.playSound(entity.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 10, 1);
 
                                             world.spawnParticle(Particle.SWEEP_ATTACK, entity.getLocation().getX(), entity.getLocation().getY() + 1, entity.getLocation().getZ(), 1);
-
 
                                         }
                                     }
@@ -1549,110 +1384,6 @@ public void onCraftingCbowevent(PrepareItemCraftEvent event) {
                             }
                         }
                     }
-                }
-            }
-        }
-    }
-
-
-
-    @EventHandler
-    public void witherArmorBonusThing(EntityDamageByEntityEvent event) {
-        //healing
-        if (!(event.getDamager() instanceof Player)) {
-            return;
-        }
-        Player player = (Player) event.getDamager();
-        if (player.getInventory().getHelmet() == null) {
-            return;
-        }
-        if (player.getInventory().getChestplate() == null) {
-            return;
-        }
-        if (player.getInventory().getLeggings() == null) {
-            return;
-        }
-        if (player.getInventory().getBoots() == null) {
-            return;
-        }
-        if (!(player.getInventory().getHelmet().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getChestplate().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getLeggings().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getBoots().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-
-        if (player.getInventory().getHelmet().getItemMeta().getCustomModelData() == 5553331
-                && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 5553332
-                && player.getInventory().getLeggings().getItemMeta().getCustomModelData() == 5553333
-                && player.getInventory().getBoots().getItemMeta().getCustomModelData() == 5553334) {
-            if (player.getAttackCooldown() == 1) {
-                double damage = event.getFinalDamage();
-                double health = (0.5 * damage) + player.getHealth();
-                if (player.getAttribute(Attribute.MAX_HEALTH).getValue() >= health) {
-                    player.setHealth(health);
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void witherArmorBonusThingTwo(EntityDamageEvent event) {
-        // wither effect
-        if (!(event.getEntity() instanceof Player)) {
-            return;
-        }
-        Player player = (Player) event.getEntity();
-        if (player.getInventory().getHelmet() == null) {
-            return;
-        }
-        if (player.getInventory().getChestplate() == null) {
-            return;
-        }
-        if (player.getInventory().getLeggings() == null) {
-            return;
-        }
-        if (player.getInventory().getBoots() == null) {
-            return;
-        }
-        if (!(player.getInventory().getHelmet().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getChestplate().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getLeggings().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getBoots().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-
-        if (player.getInventory().getHelmet().getItemMeta().getCustomModelData() == 5553331
-                && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 5553332
-                && player.getInventory().getLeggings().getItemMeta().getCustomModelData() == 5553333
-                && player.getInventory().getBoots().getItemMeta().getCustomModelData() == 5553334) {
-
-            World world = player.getWorld();
-            if (!(event.getCause().equals(DamageCause.WITHER))) {
-                if (event.getCause().equals(DamageCause.ENTITY_ATTACK)
-                        || event.getCause().equals(DamageCause.ENTITY_EXPLOSION)
-                        || event.getCause().equals(DamageCause.ENTITY_SWEEP_ATTACK)
-                        || event.getCause().equals(DamageCause.PROJECTILE)) {
-                    if (player.isBlocking()) {
-                        return;
-                    }
-                }
-                world.playSound(player.getLocation(), Sound.ENTITY_WITHER_SKELETON_HURT, 4, 1);
-
-                if (player.getHealth() < (0.5 * player.getAttribute(Attribute.MAX_HEALTH).getValue())) {
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 40, 2));
                 }
             }
         }

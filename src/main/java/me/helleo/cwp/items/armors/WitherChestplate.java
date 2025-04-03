@@ -59,7 +59,7 @@ public class WitherChestplate {
     }
 
     public ShapedRecipe getArmorRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "wither_bone_chestplate");
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "wither_chestplate");
         CombatWeaponryPlus.getRecipes().setKey(key);
 
         ItemStack wbone = new ItemStack(Material.BONE);

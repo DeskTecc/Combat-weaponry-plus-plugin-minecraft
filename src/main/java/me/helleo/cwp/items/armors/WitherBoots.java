@@ -58,7 +58,7 @@ public class WitherBoots {
     }
 
     public ShapedRecipe getArmorRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "wither_bone_boots");
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "wither_boots");
         CombatWeaponryPlus.getRecipes().setKey(key);
 
         ItemStack wbone = new ItemStack(Material.BONE);
