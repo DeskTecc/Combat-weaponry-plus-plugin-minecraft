@@ -41,7 +41,7 @@ public class PrismarineAlloy {
     }
 
     public ShapedRecipe getItemRecipe(){
-        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "prisupgrade");
+        NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "prismarine_alloy");
         CombatWeaponryPlus.getRecipes().setKey(key);
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
 
