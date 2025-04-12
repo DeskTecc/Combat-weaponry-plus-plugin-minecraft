@@ -25,17 +25,17 @@ public class GoldCharm extends BaseCharm{
     static ItemMeta meta = item.getItemMeta();
 
     public ShapedRecipe getCharmRecipe() {
-        double atkspd = 0.3;
-        double mvspd = -0.15;
+        double attack_speed = 0.3;
+        double move_speed = -0.15;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            atkspd = ConfigurationsDouble.Charms_GoldCharm_BonusAttackSpeedPercent.getValue() / 100;
-            mvspd = ConfigurationsDouble.Charms_GoldCharm_BonusMoveSpeedPercent.getValue() / 100;
+            attack_speed = ConfigurationsDouble.Charms_GoldCharm_BonusAttackSpeedPercent.getValue() / 100;
+            move_speed = ConfigurationsDouble.Charms_GoldCharm_BonusMoveSpeedPercent.getValue() / 100;
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), atkspd,
+        modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), attack_speed,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), mvspd,
+        modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.move_speed"), move_speed,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlotGroup.OFFHAND));
         meta.setAttributeModifiers(modifiers);
 
@@ -44,6 +44,12 @@ public class GoldCharm extends BaseCharm{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldCharm_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldCharm_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldCharm_Line3.getValue()));
+        lore.add("");
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Off Hand:"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&c +"+String.format("%.1f",attack_speed*100).replace(',','.')+"% Attack Speed"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+String.format("%.1f",move_speed*100).replace(',','.')+"% Move Speed"));
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
         meta.setLore(lore);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionGoldCharm_Name.getValue()));

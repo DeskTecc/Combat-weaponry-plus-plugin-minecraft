@@ -65,97 +65,99 @@ public class EntityDamage implements Listener {
         //CLEAVER COOLDOWN
         if (event.getDamager() instanceof Player) {
             Player p = (Player) event.getDamager();
-            ItemMeta itemMeta = p.getInventory().getItemInMainHand().getItemMeta();
-            assert itemMeta != null;
-            if (itemMeta.hasItemModel()){
-                if(itemMeta.getItemModel().getKey().contains("cleaver")){
-                    double old_attack_speed;
-                    double old_attack_damage;
-                    //need to know what type of cleaver player is using
-                    switch(p.getInventory().getItemInMainHand().getType()){
-                        case WOODEN_SWORD:
-                            old_attack_speed=WoodenCleaver.getAttackSpeed();
-                            old_attack_damage=WoodenCleaver.getAttackDamage();
-                            break;
-                        case STONE_SWORD:
-                            old_attack_speed=StoneCleaver.getAttackSpeed();
-                            old_attack_damage=StoneCleaver.getAttackDamage();
-                            break;
-                        //Emerald Cleaver is also a Golden Sword
-                        case GOLDEN_SWORD:
-                            if(p.getInventory().getItemInMainHand().isSimilar(EmeraldCleaver.getCleaver())) {
-                                old_attack_speed=EmeraldCleaver.getAttackSpeed();
-                                old_attack_damage=EmeraldCleaver.getAttackDamage();
-                            }else{
-                                old_attack_speed=GoldenCleaver.getAttackSpeed();
-                                old_attack_damage=GoldenCleaver.getAttackDamage();
-                            }
-                            break;
-                        case IRON_SWORD:
-                            old_attack_speed=IronCleaver.getAttackSpeed();
-                            old_attack_damage=IronCleaver.getAttackDamage();
-                            break;
-                        case DIAMOND_SWORD:
-                            old_attack_speed=DiamondCleaver.getAttackSpeed();
-                            old_attack_damage=DiamondCleaver.getAttackDamage();
-                            break;
-                        //Prismarine Cleaver is also a Netherite Sword
-                        case NETHERITE_SWORD:
-                            if(p.getInventory().getItemInMainHand().isSimilar(PrismarineCleaver.getCleaver())) {
-                                old_attack_speed=PrismarineCleaver.getAttackSpeed();
-                                old_attack_damage=PrismarineCleaver.getAttackDamage();
-                            }else{
-                                old_attack_speed=NetheriteCleaver.getAttackSpeed();
-                                old_attack_damage=NetheriteCleaver.getAttackDamage();
-                            }
-                            break;
-                        default:
-                            old_attack_speed= -3.6;
-                            old_attack_damage= 1;
-                    }
+            if(p.getInventory().getItemInMainHand().hasItemMeta()) {
+                ItemMeta itemMeta = p.getInventory().getItemInMainHand().getItemMeta();
 
-                    //if player has atk cooldown 60% or more but less than 100%
-                    if (p.getAttackCooldown() >= 0.6) {
-                        //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
-                        if (p.getAttribute(Attribute.ATTACK_SPEED).getValue() < 1.9) {
+                if (itemMeta.hasItemModel()) {
+                    if (itemMeta.getItemModel().getKey().contains("cleaver")) {
+                        double old_attack_speed;
+                        double old_attack_damage;
+                        //need to know what type of cleaver player is using
+                        switch (p.getInventory().getItemInMainHand().getType()) {
+                            case WOODEN_SWORD:
+                                old_attack_speed = WoodenCleaver.getAttackSpeed();
+                                old_attack_damage = WoodenCleaver.getAttackDamage();
+                                break;
+                            case STONE_SWORD:
+                                old_attack_speed = StoneCleaver.getAttackSpeed();
+                                old_attack_damage = StoneCleaver.getAttackDamage();
+                                break;
+                            //Emerald Cleaver is also a Golden Sword
+                            case GOLDEN_SWORD:
+                                if (p.getInventory().getItemInMainHand().isSimilar(EmeraldCleaver.getCleaver())) {
+                                    old_attack_speed = EmeraldCleaver.getAttackSpeed();
+                                    old_attack_damage = EmeraldCleaver.getAttackDamage();
+                                } else {
+                                    old_attack_speed = GoldenCleaver.getAttackSpeed();
+                                    old_attack_damage = GoldenCleaver.getAttackDamage();
+                                }
+                                break;
+                            case IRON_SWORD:
+                                old_attack_speed = IronCleaver.getAttackSpeed();
+                                old_attack_damage = IronCleaver.getAttackDamage();
+                                break;
+                            case DIAMOND_SWORD:
+                                old_attack_speed = DiamondCleaver.getAttackSpeed();
+                                old_attack_damage = DiamondCleaver.getAttackDamage();
+                                break;
+                            //Prismarine Cleaver is also a Netherite Sword
+                            case NETHERITE_SWORD:
+                                if (p.getInventory().getItemInMainHand().isSimilar(PrismarineCleaver.getCleaver())) {
+                                    old_attack_speed = PrismarineCleaver.getAttackSpeed();
+                                    old_attack_damage = PrismarineCleaver.getAttackDamage();
+                                } else {
+                                    old_attack_speed = NetheriteCleaver.getAttackSpeed();
+                                    old_attack_damage = NetheriteCleaver.getAttackDamage();
+                                }
+                                break;
+                            default:
+                                old_attack_speed = -3.6;
+                                old_attack_damage = 1;
+                        }
+
+                        //if player has atk cooldown 60% or more but less than 100%
+                        if (p.getAttackCooldown() >= 0.6) {
+                            //if player's atk speed less than 1.9 (default 4 for fist, and 0.4 for cleaver)
+                            if (p.getAttribute(Attribute.ATTACK_SPEED).getValue() < 1.9) {
+                                ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
+
+                                double last_cooldown = -3.6;
+                                for (AttributeModifier attributeModifier : m.getAttributeModifiers(Attribute.ATTACK_SPEED)) {
+                                    if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_speed"))) {
+                                        last_cooldown = attributeModifier.getAmount();
+                                        break;
+                                    }
+                                }
+                                //if less than 100% cooldown attack_speed will increase
+                                if (p.getAttackCooldown() < 1) {
+                                    AttributeModifier attack_speed = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), last_cooldown + 0.25,
+                                            AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                    m.removeAttributeModifier(Attribute.ATTACK_SPEED);
+                                    m.addAttributeModifier(Attribute.ATTACK_SPEED, attack_speed);
+                                }
+                                AttributeModifier attack_damage = new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"), old_attack_damage,
+                                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                                m.removeAttributeModifier(Attribute.ATTACK_DAMAGE);
+                                m.addAttributeModifier(Attribute.ATTACK_DAMAGE, attack_damage);
+                                p.getInventory().getItemInMainHand().setItemMeta(m);
+                                // DEBUG
+                                //Bukkit.getConsoleSender().sendMessage("OLD COOLDOWN: "+old_cooldown);
+                                //Bukkit.getConsoleSender().sendMessage("NEW COOLDOWN: "+(old_cooldown+0.25));
+                            }
+                        } else {
                             ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
 
-                            double last_cooldown =  -3.6;
-                            for (AttributeModifier attributeModifier : m.getAttributeModifiers(Attribute.ATTACK_SPEED)) {
-                                if (attributeModifier.getKey().equals(NamespacedKey.fromString("generic.attack_speed"))) {
-                                    last_cooldown = attributeModifier.getAmount();
-                                    break;
-                                }
-                            }
-                            //if less than 100% cooldown attack_speed will increase
-                            if(p.getAttackCooldown() < 1) {
-                                AttributeModifier attack_speed = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), last_cooldown + 0.25,
-                                        AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                                m.removeAttributeModifier(Attribute.ATTACK_SPEED);
-                                m.addAttributeModifier(Attribute.ATTACK_SPEED, attack_speed);
-                            }
-                            AttributeModifier attack_damage = new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"), old_attack_damage,
+                            AttributeModifier attack_speed = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), old_attack_speed,
+                                    AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
+                            m.removeAttributeModifier(Attribute.ATTACK_SPEED);
+                            m.addAttributeModifier(Attribute.ATTACK_SPEED, attack_speed);
+
+                            AttributeModifier attack_damage = new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"), 1,
                                     AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
                             m.removeAttributeModifier(Attribute.ATTACK_DAMAGE);
                             m.addAttributeModifier(Attribute.ATTACK_DAMAGE, attack_damage);
                             p.getInventory().getItemInMainHand().setItemMeta(m);
-                            // DEBUG
-                            //Bukkit.getConsoleSender().sendMessage("OLD COOLDOWN: "+old_cooldown);
-                            //Bukkit.getConsoleSender().sendMessage("NEW COOLDOWN: "+(old_cooldown+0.25));
                         }
-                    } else{
-                        ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
-
-                        AttributeModifier attack_speed = new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"), old_attack_speed,
-                                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                        m.removeAttributeModifier(Attribute.ATTACK_SPEED);
-                        m.addAttributeModifier(Attribute.ATTACK_SPEED, attack_speed);
-
-                        AttributeModifier attack_damage = new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"), 1,
-                                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND);
-                        m.removeAttributeModifier(Attribute.ATTACK_DAMAGE);
-                        m.addAttributeModifier(Attribute.ATTACK_DAMAGE, attack_damage);
-                        p.getInventory().getItemInMainHand().setItemMeta(m);
                     }
                 }
             }
