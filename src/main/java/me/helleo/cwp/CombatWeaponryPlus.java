@@ -8,7 +8,7 @@ package me.helleo.cwp;
 import me.helleo.cwp.configurations.*;
 import me.helleo.cwp.listeners.Commands;
 import me.helleo.cwp.listeners.EntityDamage;
-import me.helleo.cwp.listeners.PlayerClick;
+import me.helleo.cwp.listeners.PlayerCombat;
 import me.helleo.cwp.listeners.PlayerEvents;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.*;
@@ -67,7 +67,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         Cooldown.setupCooldown();
 
         Bukkit.getPluginManager().registerEvents(this, this);
-        Bukkit.getPluginManager().registerEvents(new PlayerClick(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerCombat(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.getCommand("cwp").setExecutor(new Commands());
@@ -90,131 +90,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     }
 
-
-    @EventHandler
-    public void playerBowShoot(EntityShootBowEvent event) {
-        Entity entity = event.getEntity();
-        float speed = event.getForce();
-        Arrow arrow = (Arrow) event.getProjectile();
-        if (entity.getType().equals(EntityType.PLAYER)) {
-            Player player = (Player) entity;
-            if (player.getInventory().getItemInOffHand().getType() == Material.BOW || player.getInventory().getItemInOffHand().getType() == Material.CROSSBOW) {
-                return;
-            }
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-
-                //TEST BOW
-                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1069691) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 1069691) {
-                    Vector vector = player.getLocation().getDirection();
-                    //these numbers make it around the same velocity as normal bows i think
-                    //arrow.setVelocity(new Vector
-                    //(vector.getX() * speed * 3.5,
-                    //vector.getY() * speed * 4,
-                    //vector.getZ()* speed * 3.5));
-                    World world = player.getWorld();
-                    arrow.setVelocity(new Vector
-                            (vector.getX() * speed * 5,
-                                    vector.getY() * speed * 5,
-                                    vector.getZ() * speed * 5));
-
-                    Trident trident = player.launchProjectile(Trident.class, arrow.getVelocity());
-                    arrow.remove();
-                    trident.setPierceLevel(20);
-                    trident.setCritical(true);
-                    trident.setFireTicks(100);
-                    trident.setGravity(false);
-                    trident.setPickupStatus(PickupStatus.DISALLOWED);
-                    trident.setBounce(false);
-                    trident.setCustomName("Bob");
-                    trident.setCustomNameVisible(true);
-                    trident.setKnockbackStrength(10);
-                    world.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THROW, 10, 1);
-
-                    Entity pig = world.spawnEntity(player.getLocation().add(0, 9, 0), EntityType.PIG);
-                    pig.setCustomName("Kevin");
-                    pig.setCustomNameVisible(true);
-                    Entity chicken = world.spawnEntity(player.getLocation().add(0, 9, 0), EntityType.CHICKEN);
-                    chicken.setCustomName("Phil");
-                    chicken.setCustomNameVisible(true);
-
-                    pig.addPassenger(chicken);
-                    trident.addPassenger(pig);
-
-
-                    return;
-                }
-                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 1069691) {// || player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() != 1069691) {
-
-                    // LONG BOW
-                    if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330004) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 3330001) {
-                        Vector vector = player.getLocation().getDirection();
-                        //these numbers make it around the same velocity as normal bows
-                        //arrow.setVelocity(new Vector
-                        //(vector.getX() * speed * 3.5,
-                        //vector.getY() * speed * 4,
-                        //vector.getZ()* speed * 3.5));
-                        double aspd = 4;
-                        double x = 1;
-                        if (ConfigurationsBool.UseCustomValues.getValue()) {
-                            aspd = ConfigurationsDouble.Bows_LongBow_ArrowSpeed.getValue();
-                            x = ConfigurationsDouble.Bows_LongBow_DmgMultiplier.getValue();
-                        }
-                        arrow.setVelocity(new Vector
-                                (vector.getX() * speed * aspd,
-                                        vector.getY() * speed * aspd,
-                                        vector.getZ() * speed * aspd));
-                        arrow.setDamage(arrow.getDamage() * x);
-                        return;
-                    }
-                    if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 3330001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 3330004) {// || player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() != 3330001) {
-                        // RBOW
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330002) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 3330002) {
-                            Vector vector = player.getLocation().getDirection();
-                            //these numbers make it around the same velocity as normal bows
-                            //arrow.setVelocity(new Vector
-                            //(vector.getX() * speed * 3.5,
-                            //vector.getY() * speed * 4,
-                            //vector.getZ()* speed * 3.5));
-                            double aspd = 5;
-                            double x = 1;
-                            if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                aspd = ConfigurationsDouble.Bows_RecurveBow_ArrowSpeed.getValue();
-                                x = ConfigurationsDouble.Bows_RecurveBow_DmgMultiplier.getValue();
-                            }
-                            arrow.setVelocity(new Vector
-                                    (vector.getX() * speed * aspd,
-                                            vector.getY() * speed * aspd,
-                                            vector.getZ() * speed * aspd));
-                            arrow.setDamage(arrow.getDamage() * x);
-                            return;
-                        }
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() != 3330002) {//|| player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() != 3330002) {
-                            //CBow
-                            if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330003) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 3330003) {
-                                Vector vector = player.getLocation().getDirection();
-                                //these numbers make it around the same velocity as normal bows
-                                //arrow.setVelocity(new Vector
-                                //(vector.getX() * speed * 3.5,
-                                //vector.getY() * speed * 4,
-                                //vector.getZ()* speed * 3.5));
-                                double aspd = 6;
-                                double x = 1;
-                                if (ConfigurationsBool.UseCustomValues.getValue()) {
-                                    aspd = ConfigurationsDouble.Bows_CompoundBow_ArrowSpeed.getValue();
-                                    x = ConfigurationsDouble.Bows_CompoundBow_DmgMultiplier.getValue();
-                                }
-                                arrow.setVelocity(new Vector
-                                        (vector.getX() * speed * aspd,
-                                                vector.getY() * speed * aspd,
-                                                vector.getZ() * speed * aspd));
-                                arrow.setDamage(arrow.getDamage() * x);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     @EventHandler
     public void playerCrossBowShoot(EntityShootBowEvent event) {
@@ -1304,108 +1179,6 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
         }
 
-    }
-
-    @EventHandler
-    public void witherArmorBonusThing(EntityDamageByEntityEvent event) {
-        //healing
-        if (!(event.getDamager() instanceof Player)) {
-            return;
-        }
-        Player player = (Player) event.getDamager();
-        if (player.getInventory().getHelmet() == null) {
-            return;
-        }
-        if (player.getInventory().getChestplate() == null) {
-            return;
-        }
-        if (player.getInventory().getLeggings() == null) {
-            return;
-        }
-        if (player.getInventory().getBoots() == null) {
-            return;
-        }
-        if (!(player.getInventory().getHelmet().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getChestplate().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getLeggings().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getBoots().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-
-        if (player.getInventory().getHelmet().getItemMeta().getCustomModelData() == 5553331
-                && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 5553332
-                && player.getInventory().getLeggings().getItemMeta().getCustomModelData() == 5553333
-                && player.getInventory().getBoots().getItemMeta().getCustomModelData() == 5553334) {
-            if (player.getAttackCooldown() == 1) {
-                double damage = event.getFinalDamage();
-                double health = (0.5 * damage) + player.getHealth();
-                if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() >= health) {
-                    player.setHealth(health);
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void witherArmorBonusThingTwo(EntityDamageEvent event) {
-        // wither effect
-        if (!(event.getEntity() instanceof Player)) {
-            return;
-        }
-        Player player = (Player) event.getEntity();
-        if (player.getInventory().getHelmet() == null) {
-            return;
-        }
-        if (player.getInventory().getChestplate() == null) {
-            return;
-        }
-        if (player.getInventory().getLeggings() == null) {
-            return;
-        }
-        if (player.getInventory().getBoots() == null) {
-            return;
-        }
-        if (!(player.getInventory().getHelmet().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getChestplate().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getLeggings().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-        if (!(player.getInventory().getBoots().getItemMeta().hasCustomModelData())) {
-            return;
-        }
-
-        if (player.getInventory().getHelmet().getItemMeta().getCustomModelData() == 5553331
-                && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 5553332
-                && player.getInventory().getLeggings().getItemMeta().getCustomModelData() == 5553333
-                && player.getInventory().getBoots().getItemMeta().getCustomModelData() == 5553334) {
-
-            World world = player.getWorld();
-            if (!(event.getCause().equals(DamageCause.WITHER))) {
-                if (event.getCause().equals(DamageCause.ENTITY_ATTACK)
-                        || event.getCause().equals(DamageCause.ENTITY_EXPLOSION)
-                        || event.getCause().equals(DamageCause.ENTITY_SWEEP_ATTACK)
-                        || event.getCause().equals(DamageCause.PROJECTILE)) {
-                    if (player.isBlocking()) {
-                        return;
-                    }
-                }
-                world.playSound(player.getLocation(), Sound.ENTITY_WITHER_SKELETON_HURT, 4, 1);
-
-                if (player.getHealth() < (0.5 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue())) {
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 40, 2));
-                }
-            }
-        }
     }
 
     @EventHandler

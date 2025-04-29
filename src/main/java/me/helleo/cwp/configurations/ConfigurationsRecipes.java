@@ -270,10 +270,6 @@ public class ConfigurationsRecipes {
             RedstoneCore.setItemRecipe();
         }
 
-        if (ConfigurationsBool.TridentBow.getValue()) {
-            TridentBow.setBowRecipe();
-        }
-
         if (ConfigurationsBool.WitherArmor.getValue()) {
             WitherHelmet.setArmorRecipe();
             WitherChestplate.setArmorRecipe();
@@ -282,13 +278,6 @@ public class ConfigurationsRecipes {
         }
         if (ConfigurationsBool.JumpElytra.getValue()) {
             JumpElytra.setItemRecipe();
-        }
-
-        if (ConfigurationsBool.FishSword.getValue()) {
-            FishSword.setItemRecipe();
-        }
-        if (ConfigurationsBool.WindBlade.getValue()) {
-            WindBlade.setItemRecipe();
         }
         if (ConfigurationsBool.VolcanicBlade.getValue()) {
             VolcanicBlade.setItemRecipe();

@@ -30,16 +30,29 @@ import me.helleo.cwp.items.weapons.spears.NetheriteSpear;
 import me.helleo.cwp.items.weapons.spears.PrismarineSpear;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.SmithingInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static me.helleo.cwp.CombatWeaponryPlus.getPlugin;
 import static org.bukkit.Bukkit.getServer;
@@ -105,6 +118,132 @@ public class PlayerEvents implements Listener {
 
                         }, 5L);
                     }
+                }
+            }
+        }
+    }
+
+    //event of EElytra
+    @EventHandler
+    public void doubleJump(EntityToggleGlideEvent event) {
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getEntity();
+        if (player.isDead()) {
+            return;
+        }
+        if (player.getInventory().getChestplate() == null) {
+            return;
+        }
+        if (player.getInventory().getChestplate().getType() != Material.ELYTRA) {
+            return;
+        }
+
+        if (player.getInventory().getChestplate().getItemMeta().hasCustomModelData()) {
+            if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1212121) {
+                if (!player.isGliding()) {
+                    if (!(player.hasCooldown(Material.ELYTRA))) {
+                        player.setVelocity(player.getLocation().getDirection().multiply(1.1).setY(1));
+                        player.setCooldown(Material.ELYTRA, 40);
+                    }
+
+                    event.setCancelled(true);
+                }
+            }
+        }
+    }
+
+    //Wither Armor effects:
+
+    @EventHandler
+    public void witherArmorHealing(EntityDamageByEntityEvent event) {
+        //healing
+        if (!(event.getDamager() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getDamager();
+        PlayerInventory playerInventory = player.getInventory();
+
+        List<ItemStack> playerArmorContents = Arrays.stream(playerInventory.getArmorContents())
+                .filter(Objects::nonNull)
+                .filter(x-> x.getItemMeta().hasCustomModelData())
+                .collect(Collectors.toList());
+
+        //check if player have full custom armor
+        if(playerArmorContents.size()==4) {
+            ItemStack playerHelmet = playerInventory.getHelmet();
+            ItemStack playerChestplate = playerInventory.getChestplate();
+            ItemStack playerLeggings = playerInventory.getLeggings();
+            ItemStack playerBoots = playerInventory.getBoots();
+
+            if (playerHelmet.getItemMeta().getCustomModelData()==5553331
+                    && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 5553332
+                    && player.getInventory().getLeggings().getItemMeta().getCustomModelData() == 5553333
+                    && player.getInventory().getBoots().getItemMeta().getCustomModelData() == 5553334){
+
+            }
+            if (player.getAttackCooldown() == 1) {
+                double damage = event.getFinalDamage();
+                double health = (0.5 * damage) + player.getHealth();
+                if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() >= health) {
+                    player.setHealth(health);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void witherArmorBonusThingTwo(EntityDamageEvent event) {
+        // wither effect
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) event.getEntity();
+        if (player.getInventory().getHelmet() == null) {
+            return;
+        }
+        if (player.getInventory().getChestplate() == null) {
+            return;
+        }
+        if (player.getInventory().getLeggings() == null) {
+            return;
+        }
+        if (player.getInventory().getBoots() == null) {
+            return;
+        }
+        if (!(player.getInventory().getHelmet().getItemMeta().hasCustomModelData())) {
+            return;
+        }
+        if (!(player.getInventory().getChestplate().getItemMeta().hasCustomModelData())) {
+            return;
+        }
+        if (!(player.getInventory().getLeggings().getItemMeta().hasCustomModelData())) {
+            return;
+        }
+        if (!(player.getInventory().getBoots().getItemMeta().hasCustomModelData())) {
+            return;
+        }
+
+        if (player.getInventory().getHelmet().getItemMeta().getCustomModelData() == 5553331
+                && player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 5553332
+                && player.getInventory().getLeggings().getItemMeta().getCustomModelData() == 5553333
+                && player.getInventory().getBoots().getItemMeta().getCustomModelData() == 5553334) {
+
+            World world = player.getWorld();
+            if (!(event.getCause().equals(EntityDamageEvent.DamageCause.WITHER))) {
+                if (event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)
+                        || event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)
+                        || event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK)
+                        || event.getCause().equals(EntityDamageEvent.DamageCause.PROJECTILE)) {
+                    if (player.isBlocking()) {
+                        return;
+                    }
+                }
+                world.playSound(player.getLocation(), Sound.ENTITY_WITHER_SKELETON_HURT, 4, 1);
+
+                if (player.getHealth() < (0.5 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue())) {
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 40, 2));
                 }
             }
         }

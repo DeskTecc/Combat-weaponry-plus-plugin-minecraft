@@ -25,17 +25,17 @@ public class BlazeCharm extends BaseCharm{
     static ItemMeta meta = item.getItemMeta();
 
     public ShapedRecipe getCharmRecipe() {
-        double dmg = 4;
-        double hp = -2;
+        double attack_damage = 4;
+        double max_health = -2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            dmg = ConfigurationsDouble.Charms_BlazeCharm_BonusDamage.getValue();
-            hp = ConfigurationsDouble.Charms_BlazeCharm_BonusHealth.getValue();
+            attack_damage = ConfigurationsDouble.Charms_BlazeCharm_BonusDamage.getValue();
+            max_health = ConfigurationsDouble.Charms_BlazeCharm_BonusHealth.getValue();
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), dmg,
+        modifiers.put(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), attack_damage,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), max_health,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
 
         meta.setAttributeModifiers(modifiers);
@@ -44,7 +44,14 @@ public class BlazeCharm extends BaseCharm{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionBlazeCharm_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionBlazeCharm_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionBlazeCharm_Line3.getValue()));
+        lore.add("");
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Off Hand:"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&c +"+String.format("%.1f",attack_damage/2).replace(',','.')+" Attack Damage"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9 "+String.format("%.1f",max_health/2).replace(',','.')+" Max Health"));
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
         meta.setLore(lore);
+
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionBlazeCharm_Name.getValue()));
         meta.addEnchant(Enchantment.UNBREAKING, 5, true);

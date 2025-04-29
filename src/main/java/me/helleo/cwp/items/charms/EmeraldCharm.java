@@ -26,18 +26,18 @@ public class EmeraldCharm extends BaseCharm{
 
     public ShapedRecipe getCharmRecipe() {
 
-        double hp = 4;
-        double def = -2;
+        double max_health = 4;
+        double armor = -2;
         if (ConfigurationsBool.UseCustomValues.getValue()) {
-            hp = ConfigurationsDouble.Charms_EmeraldCharm_BonusHealth.getValue();
-            def = ConfigurationsDouble.Charms_EmeraldCharm_BonusArmor.getValue();
+            max_health = ConfigurationsDouble.Charms_EmeraldCharm_BonusHealth.getValue();
+            armor = ConfigurationsDouble.Charms_EmeraldCharm_BonusArmor.getValue();
 
         }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), hp,
+        modifiers.put(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.max_health"), max_health,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
-        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.armor"), def,
+        modifiers.put(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.armor"), armor,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.OFFHAND));
         meta.setAttributeModifiers(modifiers);
 
@@ -45,12 +45,17 @@ public class EmeraldCharm extends BaseCharm{
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldCharm_Line1.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldCharm_Line2.getValue()));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldCharm_Line3.getValue()));
+        lore.add("");
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7When in Off Hand:"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&9+"+String.format("%.1f",max_health/2).replace(',','.')+" Max Health"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&c"+String.format("%.1f",armor/2).replace(',','.')+" Armor"));
         meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionEmeraldCharm_Name.getValue()));
         meta.addEnchant(Enchantment.UNBREAKING, 5, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        //meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
 
         item.setItemMeta(meta);
 

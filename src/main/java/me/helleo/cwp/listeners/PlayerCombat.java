@@ -3,17 +3,17 @@ package me.helleo.cwp.listeners;
 import me.helleo.cwp.CombatWeaponryPlus;
 import me.helleo.cwp.Cooldown;
 import me.helleo.cwp.configurations.ConfigurationsBool;
+import me.helleo.cwp.configurations.ConfigurationsDouble;
 import me.helleo.cwp.items.weapons.sabers.*;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
-import org.bukkit.entity.Damageable;
-import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -21,13 +21,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class PlayerClick implements Listener {
+public class PlayerCombat implements Listener {
 
     //DUAL WIELDING
     @EventHandler
@@ -444,7 +445,6 @@ public class PlayerClick implements Listener {
                 }
             }
         }
-        //
 
         //EELYTRA
         if (player.getInventory().getChestplate() != null) {
@@ -454,7 +454,6 @@ public class PlayerClick implements Listener {
                         if (player.getInventory().getChestplate().getItemMeta().getCustomModelData() == 1560001) {
 
                             if (event.getAction() == Action.RIGHT_CLICK_AIR && player.isGliding()) {
-                                //player.sendMessage("qqq");
 
                                 ItemMeta meta = player.getInventory().getChestplate().getItemMeta();
                                 meta.setCustomModelData(1560002);
@@ -462,12 +461,6 @@ public class PlayerClick implements Listener {
                                 World world = player.getWorld();
                                 world.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 10, 1);
                                 player.setVelocity(player.getLocation().getDirection().multiply(2));
-                                getServer().getScheduler().runTaskLater(CombatWeaponryPlus.getPlugin(), new Runnable() {
-                                    public void run() {
-                                        //player.setVelocity(player.getLocation().getDirection().multiply(0.5));
-
-                                    }
-                                }, 10L);
                             }
                         }
                     }
@@ -503,25 +496,70 @@ public class PlayerClick implements Listener {
                 }
             }
         }
-        //REALLY GOOD SWORD
-        if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_HOE)){
+    }
+
+    @EventHandler
+    public void playerBowShoot(EntityShootBowEvent event) {
+        Entity entity = event.getEntity();
+        float speed = event.getForce();
+        Arrow arrow = (Arrow) event.getProjectile();
+        if (entity.getType().equals(EntityType.PLAYER)) {
+            Player player = (Player) entity;
+            if (player.getInventory().getItemInOffHand().getType() == Material.BOW || player.getInventory().getItemInOffHand().getType() == Material.CROSSBOW) {
+                return;
+            }
             if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
-                    if (event.getAction() == Action.RIGHT_CLICK_AIR) {
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 1234567) {
-                            World world = player.getWorld();
-                            world.playSound(player.getLocation(), Sound.MUSIC_DISC_CAT, 10, 1);
-                            ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
-                            meta.setDisplayName("GOTTEM");
-                            List<String> lore = new ArrayList<>();
-                            lore.add("");
-                            lore.add(ChatColor.translateAlternateColorCodes('&', "&6im sorry"));
-                            lore.add("");
-                            meta.setLore(lore);
-                            meta.setCustomModelData(6969420);
-                            player.getInventory().getItemInMainHand().setItemMeta(meta);
-                        }
+
+                // LONG BOW
+                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330001 || player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330004) {
+                    Vector vector = player.getLocation().getDirection();
+
+                    double aspd = 4;
+                    double x = 1;
+                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                        aspd = ConfigurationsDouble.Bows_LongBow_ArrowSpeed.getValue();
+                        x = ConfigurationsDouble.Bows_LongBow_DmgMultiplier.getValue();
                     }
+                    arrow.setVelocity(new Vector
+                            (vector.getX() * speed * aspd,
+                                    vector.getY() * speed * aspd,
+                                    vector.getZ() * speed * aspd));
+                    arrow.setDamage(arrow.getDamage() * x);
+                    return;
+                }
+                // RECURVE BOW
+                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330002) {//||player.getInventory().getItemInOffHand().getItemMeta().getCustomModelData() == 3330002) {
+                    Vector vector = player.getLocation().getDirection();
+
+                    double aspd = 5;
+                    double x = 1;
+                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                        aspd = ConfigurationsDouble.Bows_RecurveBow_ArrowSpeed.getValue();
+                        x = ConfigurationsDouble.Bows_RecurveBow_DmgMultiplier.getValue();
+                    }
+                    arrow.setVelocity(new Vector
+                            (vector.getX() * speed * aspd,
+                                    vector.getY() * speed * aspd,
+                                    vector.getZ() * speed * aspd));
+                    arrow.setDamage(arrow.getDamage() * x);
+                    return;
+                }
+                //CompoundBow
+                if (player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 3330003) {
+                    Vector vector = player.getLocation().getDirection();
+
+                    double aspd = 6;
+                    double x = 1;
+                    if (ConfigurationsBool.UseCustomValues.getValue()) {
+                        aspd = ConfigurationsDouble.Bows_CompoundBow_ArrowSpeed.getValue();
+                        x = ConfigurationsDouble.Bows_CompoundBow_DmgMultiplier.getValue();
+                    }
+                    arrow.setVelocity(new Vector
+                            (vector.getX() * speed * aspd,
+                                    vector.getY() * speed * aspd,
+                                    vector.getZ() * speed * aspd));
+                    arrow.setDamage(arrow.getDamage() * x);
+                    return;
                 }
             }
         }
