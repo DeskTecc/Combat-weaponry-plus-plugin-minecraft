@@ -30,12 +30,12 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                 getAttackDamage(),
                 AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
+                EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
                 getAttackSpeed(),
                 AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
+                EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);

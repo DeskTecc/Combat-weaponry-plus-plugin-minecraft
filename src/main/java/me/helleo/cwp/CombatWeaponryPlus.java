@@ -84,7 +84,7 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-
+        recipes.clearRecipes();
     }
 
     /*

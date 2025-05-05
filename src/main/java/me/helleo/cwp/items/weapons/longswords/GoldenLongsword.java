@@ -35,12 +35,12 @@ public class GoldenLongsword extends BaseLongsword{
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
                 attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
+                EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
                 attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
-                EquipmentSlotGroup.HAND
+                EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);

@@ -79,7 +79,6 @@ public class PlayerEvents implements Listener {
             }
         }
 
-
         player.discoverRecipes(CombatWeaponryPlus.getRecipes().getKeys());
     }
 
@@ -263,7 +262,6 @@ public class PlayerEvents implements Listener {
             if(modifier.hasItemMeta()) {
                 if (template.getType().equals(Material.LAPIS_LAZULI)
                         && modifier.getItemMeta().getItemModel().getKey().contains("prismarine_alloy")) {
-
                     if (tool.hasItemMeta()) {
                         //Prismarine Longsword
                         if (tool.isSimilar(NetheriteLongsword.getLongsword())) {
