@@ -55,7 +55,7 @@ public class EmeraldSaber extends BaseSaber{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
-
+        meta.setCustomModelData(1000030);
         item.setItemMeta(meta);
         return item;
     }

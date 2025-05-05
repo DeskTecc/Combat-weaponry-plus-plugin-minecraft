@@ -51,6 +51,7 @@ public class PrismarineSaber extends WeaponBase implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_saber"));
+        meta.setCustomModelData(1200010);
         item.setItemMeta(meta);
         return item;
     }

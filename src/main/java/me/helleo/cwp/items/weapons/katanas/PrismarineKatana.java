@@ -60,6 +60,7 @@ public class PrismarineKatana extends BaseKatana implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_katana"));
+        meta.setCustomModelData(1200002);
         item.setItemMeta(meta);
         return item;
     }

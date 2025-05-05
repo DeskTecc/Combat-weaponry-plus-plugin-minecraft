@@ -54,6 +54,7 @@ public class NetheriteCleaver extends BaseCleaver{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(cleaverPath)));
         meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_cleaver"));
+        meta.setCustomModelData(1000021);
         item.setItemMeta(meta);
         return item;
     }

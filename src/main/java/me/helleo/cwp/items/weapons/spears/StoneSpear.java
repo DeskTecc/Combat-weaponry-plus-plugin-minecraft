@@ -48,6 +48,7 @@ public class StoneSpear extends BaseSpear{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(spearPath)));
         meta.setItemModel(new NamespacedKey("cwp","stone/stone_spear"));
+        meta.setCustomModelData(1000004);
         item.setItemMeta(meta);
         return item;
     }

@@ -46,6 +46,7 @@ public class GoldenSaber extends BaseSaber{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(saberPath)));
         meta.setItemModel(new NamespacedKey("cwp","gold/golden_saber"));
+        meta.setCustomModelData(1000010);
         item.setItemMeta(meta);
         return item;
     }

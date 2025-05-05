@@ -63,7 +63,7 @@ public class SwordBow extends BaseBow{
 
         meta.setLore(lore);
         meta.setItemModel(new NamespacedKey("cwp","bows/swordbow"));
-        /*meta.setCustomModelData(1000001);*/
+        meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;
     }

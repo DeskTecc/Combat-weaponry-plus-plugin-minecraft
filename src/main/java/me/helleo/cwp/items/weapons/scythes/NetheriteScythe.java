@@ -56,6 +56,7 @@ public class NetheriteScythe extends BaseScythe{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(scythePath)));
         meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_scythe"));
+        meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;
     }

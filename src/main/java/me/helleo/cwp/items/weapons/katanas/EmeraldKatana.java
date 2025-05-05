@@ -63,6 +63,7 @@ public class EmeraldKatana extends BaseKatana{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
+        meta.setCustomModelData(1000012);
         item.setItemMeta(meta);
         return item;
     }

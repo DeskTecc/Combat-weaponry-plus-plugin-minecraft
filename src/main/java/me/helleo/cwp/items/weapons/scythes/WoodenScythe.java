@@ -47,6 +47,7 @@ public class WoodenScythe extends BaseScythe {
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(scythePath)));
         meta.setItemModel(new NamespacedKey("cwp","wood/wooden_scythe"));
+        meta.setCustomModelData(1000003);
         item.setItemMeta(meta);
         return item;
     }

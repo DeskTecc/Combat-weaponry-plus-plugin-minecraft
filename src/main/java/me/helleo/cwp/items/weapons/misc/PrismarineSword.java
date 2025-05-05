@@ -51,6 +51,7 @@ public class PrismarineSword extends WeaponBase {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_sword"));
+        meta.setCustomModelData(1210001);
         item.setItemMeta(meta);
         return item;
     }

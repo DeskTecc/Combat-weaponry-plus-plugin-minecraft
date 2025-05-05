@@ -52,6 +52,7 @@ public class PrismarineSpear extends BaseSpear implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_spear"));
+        meta.setCustomModelData(1200004);
         item.setItemMeta(meta);
         return item;
     }

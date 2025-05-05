@@ -56,6 +56,7 @@ public class EmeraldLongsword extends BaseLongsword{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
+        meta.setCustomModelData(1000011);
         item.setItemMeta(meta);
         return item;
     }

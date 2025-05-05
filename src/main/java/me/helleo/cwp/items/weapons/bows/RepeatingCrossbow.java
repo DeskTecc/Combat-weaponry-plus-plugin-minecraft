@@ -29,7 +29,7 @@ public class RepeatingCrossbow extends BaseBow{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRepeatingCrossbow_Name.getValue()));
         meta.setItemModel(new NamespacedKey("cwp","bows/repeatingcrossbow"));
-        /*meta.setCustomModelData(5552001);*/
+        meta.setCustomModelData(5552001);
         item.setItemMeta(meta);
         return item;
     }

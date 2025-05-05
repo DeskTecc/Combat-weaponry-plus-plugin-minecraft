@@ -43,6 +43,7 @@ public class WoodenCleaver extends BaseCleaver{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(cleaverPath)));
         meta.setItemModel(new NamespacedKey("cwp","wood/wooden_cleaver"));
+        meta.setCustomModelData(1000021);
         item.setItemMeta(meta);
         return item;
     }

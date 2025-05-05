@@ -51,6 +51,7 @@ public class PrismarineLongsword extends BaseLongsword implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_longsword"));
+        meta.setCustomModelData(1200001);
         item.setItemMeta(meta);
         return item;
     }

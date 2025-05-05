@@ -51,6 +51,7 @@ public class PrismarineScythe extends BaseScythe implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_scythe"));
+        meta.setCustomModelData(1200003);
         item.setItemMeta(meta);
         return item;
     }

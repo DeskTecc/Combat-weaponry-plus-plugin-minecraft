@@ -48,6 +48,7 @@ public class IronRapier extends BaseRapier{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(rapierPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_rapier"));
+        meta.setCustomModelData(1000005);
         item.setItemMeta(meta);
         return item;
     }

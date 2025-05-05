@@ -52,7 +52,7 @@ public class LongswordBow extends BaseBow{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionLongswordBow_Name.getValue()));
         meta.setItemModel(new NamespacedKey("cwp","bows/longswordbow"));
-        /*meta.setCustomModelData(3330004);*/
+        meta.setCustomModelData(3330004);
         item.setItemMeta(meta);
         return item;
     }

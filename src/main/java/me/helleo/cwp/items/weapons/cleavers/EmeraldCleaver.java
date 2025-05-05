@@ -54,6 +54,7 @@ public class EmeraldCleaver extends BaseCleaver{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
+        meta.setCustomModelData(1000031);
         item.setItemMeta(meta);
         return item;
     }

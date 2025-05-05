@@ -64,6 +64,7 @@ public class NetheriteKatana extends BaseKatana{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(katanaPath)));
         meta.setItemModel(new NamespacedKey("cwp","netherite/netherite_katana"));
+        meta.setCustomModelData(1000002);
         item.setItemMeta(meta);
         return item;
     }

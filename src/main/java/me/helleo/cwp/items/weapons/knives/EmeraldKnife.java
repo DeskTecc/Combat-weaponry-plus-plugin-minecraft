@@ -57,6 +57,7 @@ public class EmeraldKnife extends BaseKnife{
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_knife"));
+        meta.setCustomModelData(1000016);
         item.setItemMeta(meta);
         return item;
     }

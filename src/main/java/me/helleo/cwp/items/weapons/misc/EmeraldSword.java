@@ -56,6 +56,7 @@ public class EmeraldSword extends WeaponBase {
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingLevel, true);
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
+        meta.setCustomModelData(1000017);
         item.setItemMeta(meta);
         return item;
     }

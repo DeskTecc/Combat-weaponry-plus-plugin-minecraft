@@ -51,6 +51,7 @@ public class PrismarineKnife extends BaseKnife implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_knife"));
+        meta.setCustomModelData(1200006);
         item.setItemMeta(meta);
         return item;
     }

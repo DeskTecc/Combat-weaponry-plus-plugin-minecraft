@@ -48,6 +48,7 @@ public class IronSpear extends BaseSpear{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(spearPath)));
         meta.setItemModel(new NamespacedKey("cwp","iron/iron_spear"));
+        meta.setCustomModelData(1000004);
         item.setItemMeta(meta);
         return item;
     }

@@ -56,6 +56,7 @@ public class EmeraldRapier extends BaseRapier{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
+        meta.setCustomModelData(1000015);
         item.setItemMeta(meta);
         return item;
     }

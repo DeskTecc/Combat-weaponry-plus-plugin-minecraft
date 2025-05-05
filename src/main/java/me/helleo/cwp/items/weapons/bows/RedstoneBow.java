@@ -31,7 +31,7 @@ public class RedstoneBow extends BaseBow{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigurationsString.DescriptionRedstoneBow_Name.getValue()));
         meta.setItemModel(new NamespacedKey("cwp","bows/redstonebow"));
-        /*meta.setCustomModelData(3330005);*/
+        meta.setCustomModelData(3330005);
         item.setItemMeta(meta);
         return item;
     }

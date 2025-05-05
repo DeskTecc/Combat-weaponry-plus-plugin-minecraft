@@ -48,6 +48,7 @@ public class DiamondKnife extends BaseKnife{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(knifePath)));
         meta.setItemModel(new NamespacedKey("cwp","diamond/diamond_knife"));
+        meta.setCustomModelData(1000006);
         item.setItemMeta(meta);
         return item;
     }

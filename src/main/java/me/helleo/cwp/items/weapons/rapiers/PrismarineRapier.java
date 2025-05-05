@@ -49,6 +49,7 @@ public class PrismarineRapier extends BaseRapier implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_rapier"));
+        meta.setCustomModelData(1200005);
         item.setItemMeta(meta);
         return item;
     }

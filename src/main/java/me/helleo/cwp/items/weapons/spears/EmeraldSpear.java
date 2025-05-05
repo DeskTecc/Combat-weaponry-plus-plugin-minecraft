@@ -56,6 +56,7 @@ public class EmeraldSpear extends BaseSpear{
             meta.addEnchant(Enchantment.UNBREAKING, unbreakingValue, true);
             meta.addEnchant(Enchantment.MENDING, mendingValue, true);
         }
+        meta.setCustomModelData(1000014);
         item.setItemMeta(meta);
         return item;
     }

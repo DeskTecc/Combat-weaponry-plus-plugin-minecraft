@@ -47,6 +47,7 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_cleaver"));
+        meta.setCustomModelData(1200021);
         item.setItemMeta(meta);
         return item;
     }

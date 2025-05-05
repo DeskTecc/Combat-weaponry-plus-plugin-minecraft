@@ -57,6 +57,7 @@ public class EmeraldScythe extends BaseScythe{
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(scythePath)));
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_scythe"));
+        meta.setCustomModelData(1000013);
         item.setItemMeta(meta);
         return item;
     }
