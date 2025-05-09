@@ -18,6 +18,8 @@ public class NetheriteRapier extends BaseRapier{
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String rapierPath = "NetheriteRapier";
+    static double attack_damage = 5;
+    static double attack_speed = -2.1;
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -28,25 +30,19 @@ public class NetheriteRapier extends BaseRapier{
     }
 
     public static ItemStack getRapier() {
-        double attack_damage = 5;
-        double attack_speed = -2.1;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(rapierPath);
-            attack_speed = getCustomSpeed(rapierPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, rapierPath),getAttackSpeed(attack_speed, rapierPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -61,9 +57,17 @@ public class NetheriteRapier extends BaseRapier{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, rapierPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, rapierPath);
+    }
+
     public static void setRapierRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "rapier",
+                weapon_type,
                 "netherite_rapier",
                 getRapier(),
                 getNetherite()));

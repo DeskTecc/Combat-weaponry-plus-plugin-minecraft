@@ -20,27 +20,24 @@ public class EmeraldRapier extends BaseRapier{
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String rapierPath = "EmeraldRapier";
+    static double attack_damage = 3;
+    static double attack_speed = -1.6;
+
 
     public static ItemStack getRapier() {
-        double attack_damage = 3;
-        double attack_speed = -1.6;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(rapierPath);
-            attack_speed = getCustomSpeed(rapierPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, rapierPath),getAttackSpeed(attack_speed, rapierPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -61,9 +58,17 @@ public class EmeraldRapier extends BaseRapier{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, rapierPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, rapierPath);
+    }
+
     public static void setRapierRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "rapier",
+                weapon_type,
                 "emerald_rapier",
                 getRapier(),
                 Material.EMERALD));

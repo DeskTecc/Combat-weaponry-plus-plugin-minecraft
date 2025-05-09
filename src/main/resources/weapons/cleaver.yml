@@ -1,0 +1,28 @@
+CleaverCrafting:
+  - " MM"
+  - "MM "
+  - "S  "
+WoodenCleaver:
+  Damage: 8.0
+  Speed: -3.6
+GoldenCleaver:
+  Damage: 8.0
+  Speed: -3.6
+StoneCleaver:
+  Damage: 9.0
+  Speed: -3.6
+IronCleaver:
+  Damage: 10.0
+  Speed: -3.6
+EmeraldCleaver:
+  Damage: 10.0
+  Speed: -3.6
+DiamondCleaver:
+  Damage: 11.0
+  Speed: -3.6
+NetheriteCleaver:
+  Damage: 12.0
+  Speed: -3.6
+PrismarineCleaver:
+  Damage: 14.0
+  Speed: -3.5

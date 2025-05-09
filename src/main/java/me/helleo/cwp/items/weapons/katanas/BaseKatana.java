@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.weapons.katanas;
 
 import me.helleo.cwp.configurations.ConfigLoader;
+import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseKatana extends WeaponBase {
+    static String weapon_type = "katana";
     public enum description {
         Line1("DescriptionKatana.Line1"),
         Line2("DescriptionKatana.Line2"),
@@ -46,6 +48,27 @@ public abstract class BaseKatana extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line10.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line11.getValue())));
         return setLore(lore, attack_damage,attack_speed);
+    }
+
+    public static double getAttackDamage(double attack_damage, String katanaPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(weapon_type, katanaPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(double attack_speed, String katanaPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(weapon_type, katanaPath);
+        }
+        return attack_speed;
+    }
+
+    public static double getMoveSpeed(double move_speed, String katanaPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            move_speed = getCustomMoveSpeed(weapon_type, katanaPath);
+        }
+        return move_speed;
     }
 
     public static boolean isKatana(ItemStack item){

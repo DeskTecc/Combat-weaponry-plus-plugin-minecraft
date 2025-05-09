@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.weapons.spears;
 
 import me.helleo.cwp.configurations.ConfigLoader;
+import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseSpear extends WeaponBase {
+    static String weapon_type = "spear";
     public enum description {
         Line1("DescriptionSpear.Line1"),
         Line2("DescriptionSpear.Line2"),
@@ -42,6 +44,20 @@ public abstract class BaseSpear extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line8.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line9.getValue())));
         return setLore(lore, attack_damage,attack_speed);
+    }
+
+    public static double getAttackDamage(double attack_damage, String spearPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(weapon_type, spearPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(double attack_speed, String spearPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(weapon_type, spearPath);
+        }
+        return attack_speed;
     }
 
     public static boolean isSpear(ItemStack item){

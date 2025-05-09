@@ -1,0 +1,28 @@
+RapierCrafting:
+  - "  M"
+  - "MM "
+  - "SM "
+WoodenRapier:
+  Damage: 2.0
+  Speed: -2.1
+GoldenRapier:
+  Damage: 2.0
+  Speed: -1.6
+StoneRapier:
+  Damage: 2.5
+  Speed: -2.1
+IronRapier:
+  Damage: 3.0
+  Speed: -2.1
+EmeraldRapier:
+  Damage: 3.0
+  Speed: -1.6
+DiamondRapier:
+  Damage: 4.0
+  Speed: -2.1
+NetheriteRapier:
+  Damage: 5.0
+  Speed: -2.1
+PrismarineRapier:
+  Damage: 7.0
+  Speed: -2.0

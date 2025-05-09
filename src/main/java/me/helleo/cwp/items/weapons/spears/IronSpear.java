@@ -18,27 +18,23 @@ public class IronSpear extends BaseSpear{
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String spearPath = "IronSpear";
+    static double attack_damage = 2;
+    static double attack_speed = -1.5;
 
     public static ItemStack getSpear() {
-        double attack_damage = 2;
-        double attack_speed = -1.5;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(spearPath);
-            attack_speed = getCustomSpeed(spearPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, spearPath),getAttackSpeed(attack_speed, spearPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, spearPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, spearPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -53,9 +49,17 @@ public class IronSpear extends BaseSpear{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, spearPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, spearPath);
+    }
+
     public static void setSpearRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "spear",
+                weapon_type,
                 "iron_spear",
                 getSpear(),
                 Material.IRON_INGOT));

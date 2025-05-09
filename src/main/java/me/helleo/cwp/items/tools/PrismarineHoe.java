@@ -18,24 +18,30 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+
 public class PrismarineHoe extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_HOE);
     static ItemMeta meta = item.getItemMeta();
     private static final String hoePath = "PrismarineHoe";
-    private static double attack_damage = 1;
-    private static double attack_speed = 0;
 
     public static ItemStack getTool(){
+        double attack_damage = 1;
+        double attack_speed = 0;
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getConfig().getDouble(hoePath+".Damage");
+            attack_speed = getConfig().getDouble(hoePath+".Speed");
+        }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE, new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -44,7 +50,7 @@ public class PrismarineHoe extends WeaponBase {
 
         List<String> lore = new ArrayList<>();
 
-        meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
+        meta.setLore(setLore(lore, attack_damage, attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(hoePath)));
 
@@ -53,20 +59,6 @@ public class PrismarineHoe extends WeaponBase {
         meta.setCustomModelData(1210005);
         item.setItemMeta(meta);
         return item;
-    }
-
-    public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(hoePath);
-        }
-        return attack_damage;
-    }
-
-    public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(hoePath);
-        }
-        return attack_speed;
     }
 
     public static void setPrismarineHoeRecipe() {

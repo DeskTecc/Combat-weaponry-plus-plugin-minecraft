@@ -18,24 +18,30 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+
 public class PrismarineAxe extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_AXE);
     static ItemMeta meta = item.getItemMeta();
     private static final String axePath = "PrismarineAxe";
-    private static double attack_damage = 10;
-    private static double attack_speed = -3;
 
     public static ItemStack getAxe(){
+        double attack_damage = 10;
+        double attack_speed = -3;
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getConfig().getDouble(axePath+".Damage");
+            attack_speed = getConfig().getDouble(axePath+".Speed");
+        }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE, new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -44,7 +50,7 @@ public class PrismarineAxe extends WeaponBase {
 
         List<String> lore = new ArrayList<>();
 
-        meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
+        meta.setLore(setLore(lore, attack_damage, attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(axePath)));
 
@@ -53,20 +59,6 @@ public class PrismarineAxe extends WeaponBase {
         meta.setCustomModelData(1220001);
         item.setItemMeta(meta);
         return item;
-    }
-
-    public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(axePath);
-        }
-        return attack_damage;
-    }
-
-    public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(axePath);
-        }
-        return attack_speed;
     }
 
     public static void setPrismarineAxeRecipe() {

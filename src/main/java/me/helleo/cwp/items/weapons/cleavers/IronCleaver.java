@@ -18,23 +18,24 @@ public class IronCleaver extends BaseCleaver{
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String cleaverPath = "IronCleaver";
-    private static double attack_damage = 10;
-    private static double attack_speed = -3.6;
+    static double attack_damage = 10;
+    static double attack_speed = -3.6;
 
     public static ItemStack getCleaver() {
 
-        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
+
+        meta.setLore(getLore(getAttackDamage(attack_damage, cleaverPath),getAttackSpeed(attack_speed, cleaverPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                getAttackDamage(attack_damage, cleaverPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                getAttackSpeed(attack_speed, cleaverPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -50,22 +51,16 @@ public class IronCleaver extends BaseCleaver{
     }
 
     public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(cleaverPath);
-        }
-        return attack_damage;
+        return getAttackDamage(attack_damage, cleaverPath);
     }
 
     public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(cleaverPath);
-        }
-        return attack_speed;
+        return getAttackSpeed(attack_speed, cleaverPath);
     }
 
     public static void setCleaverRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "cleaver",
+                weapon_type,
                 "iron_cleaver",
                 getCleaver(),
                 Material.IRON_INGOT));

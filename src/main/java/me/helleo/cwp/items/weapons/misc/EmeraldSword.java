@@ -20,29 +20,33 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+
 public class EmeraldSword extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
     private static final String swordPath = "EmeraldSword";
-    private static double attack_damage = 5;
-    private static double attack_speed = -2.2;
-
 
     public ItemStack getSword(){
-        //modifier
+        double attack_damage = 5;
+        double attack_speed = -2.2;
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getConfig().getDouble(swordPath+".Damage");
+            attack_speed = getConfig().getDouble(swordPath+".Speed");
+        }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
-        modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), getAttackDamage(),
+        modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_damage"), attack_damage,
                         AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
-        modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), getAttackSpeed(),
+        modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(CombatWeaponryPlus.getPlugin(),"generic.attack_speed"), attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HAND));
 
         meta.setAttributeModifiers(modifiers);
 
         List<String> lore = new ArrayList<String>();
 
-        meta.setLore(WeaponBase.setLore(lore, getAttackDamage(), getAttackSpeed()));
+        meta.setLore(WeaponBase.setLore(lore, attack_damage, attack_speed));
 
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -59,20 +63,6 @@ public class EmeraldSword extends WeaponBase {
         meta.setCustomModelData(1000017);
         item.setItemMeta(meta);
         return item;
-    }
-
-    public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(swordPath);
-        }
-        return attack_damage;
-    }
-
-    public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(swordPath);
-        }
-        return attack_speed;
     }
 
     public ShapedRecipe getToolRecipe(){

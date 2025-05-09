@@ -18,27 +18,24 @@ public class GoldenLongsword extends BaseLongsword{
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String longswordPath = "GoldenLongsword";
+    static double attack_damage = 4;
+    static double attack_speed = -2.6;
 
     public static ItemStack getLongsword() {
-        double attack_damage = 4;
-        double attack_speed = -2.6;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(longswordPath);
-            attack_speed = getCustomSpeed(longswordPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+
+        meta.setLore(getLore(getAttackDamage(attack_damage, longswordPath),getAttackSpeed(attack_speed, longswordPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, longswordPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, longswordPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -53,9 +50,17 @@ public class GoldenLongsword extends BaseLongsword{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, longswordPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, longswordPath);
+    }
+
     public static void setLongswordRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "longsword",
+                weapon_type,
                 "golden_longsword",
                 getLongsword(),
                 Material.GOLD_INGOT));

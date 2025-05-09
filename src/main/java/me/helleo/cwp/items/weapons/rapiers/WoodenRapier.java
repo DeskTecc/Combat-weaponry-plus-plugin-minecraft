@@ -18,27 +18,23 @@ public class WoodenRapier extends BaseRapier{
     static ItemStack item = new ItemStack(Material.WOODEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String rapierPath = "WoodenRapier";
+    static double attack_damage = 2;
+    static double attack_speed = -2.1;
 
     public static ItemStack getRapier() {
-        double attack_damage = 2;
-        double attack_speed = -2.1;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(rapierPath);
-            attack_speed = getCustomSpeed(rapierPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, rapierPath),getAttackSpeed(attack_speed, rapierPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -53,9 +49,17 @@ public class WoodenRapier extends BaseRapier{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, rapierPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, rapierPath);
+    }
+
     public static void setRapierRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "rapier",
+                weapon_type,
                 "wooden_rapier",
                 getRapier(),
                 Material.STICK));

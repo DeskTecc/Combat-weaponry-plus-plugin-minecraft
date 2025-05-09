@@ -21,31 +21,27 @@ public class PrismarineSpear extends BaseSpear implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String spearPath = "PrismarineSpear";
+    static double attack_damage = 6;
+    static double attack_speed = -1.4;
+
 
     public static ItemStack getItem(){
 
-        double attack_damage = 6;
-        double attack_speed = -1.4;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(spearPath);
-            attack_speed = getCustomSpeed(spearPath);
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, spearPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, spearPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, spearPath),getAttackSpeed(attack_speed, spearPath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(spearPath)));
@@ -55,6 +51,14 @@ public class PrismarineSpear extends BaseSpear implements Listener {
         meta.setCustomModelData(1200004);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, spearPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, spearPath);
     }
 
     public static void setPrismarineSpearRecipe() {

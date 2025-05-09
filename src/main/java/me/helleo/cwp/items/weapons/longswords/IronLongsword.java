@@ -18,27 +18,23 @@ public class IronLongsword extends BaseLongsword{
     static ItemStack item = new ItemStack(Material.IRON_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String longswordPath = "IronLongsword";
+    static double attack_damage = 6;
+    static double attack_speed = -2.8;
 
     public static ItemStack getLongsword() {
-        double attack_damage = 6;
-        double attack_speed = -2.8;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(longswordPath);
-            attack_speed = getCustomSpeed(longswordPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, longswordPath),getAttackSpeed(attack_speed, longswordPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, longswordPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, longswordPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -53,9 +49,17 @@ public class IronLongsword extends BaseLongsword{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, longswordPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, longswordPath);
+    }
+
     public static void setLongswordRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "longsword",
+                weapon_type,
                 "iron_longsword",
                 getLongsword(),
                 Material.IRON_INGOT));

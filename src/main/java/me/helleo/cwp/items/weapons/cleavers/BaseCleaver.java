@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.weapons.cleavers;
 
 import me.helleo.cwp.configurations.ConfigLoader;
+import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseCleaver extends WeaponBase {
-
+    static String weapon_type = "cleaver";
     public enum description{
         Line1("DescriptionCleaver.Line1"),
         Line2("DescriptionCleaver.Line2"),
@@ -44,6 +45,20 @@ public abstract class BaseCleaver extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line7.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line8.getValue())));
         return lore;
+    }
+
+    public static double getAttackDamage(double attack_damage, String cleaverPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(weapon_type, cleaverPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(double attack_speed, String cleaverPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(weapon_type,cleaverPath);
+        }
+        return attack_speed;
     }
 
     public static boolean isCleaver(ItemStack item){

@@ -11,6 +11,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.List;
 
 import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+import static me.helleo.cwp.configurations.ConfigLoader.getWeapon;
 
 public abstract class WeaponBase {
 
@@ -48,7 +49,7 @@ public abstract class WeaponBase {
                 return getKatanaShape();
             case "cleaver":
                 return getCleaverShape();
-            case "knife":
+            case "knife.yml":
                 return getKnifeShape();
             case "longsword":
                 return getLongswordShape();
@@ -65,22 +66,24 @@ public abstract class WeaponBase {
         }
     }
 
-    protected static Double getCustomDamage(String path){return getConfig().getDouble(path+".Damage");}
-
-    protected static Double getCustomSpeed(String path){
-        return getConfig().getDouble(path+".Speed");
+    protected static Double getCustomDamage(String weapon_type, String path){
+        return getWeapon(weapon_type).getDouble(path+".Damage");
     }
 
-    protected static Double getCustomMoveSpeed(String path){
-        return getConfig().getDouble(path+".MoveSpeed");
+    protected static Double getCustomSpeed(String weapon_type, String path){
+        return getWeapon(weapon_type).getDouble(path+".Speed");
+    }
+
+    protected static Double getCustomMoveSpeed(String weapon_type, String path){
+        return getWeapon(weapon_type).getDouble(path+".MoveSpeed");
     }
 
 
     private static String[] getCleaverShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("CleaverCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("CleaverCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("CleaverCrafting").get(2)
+                ConfigLoader.getWeapon("cleaver").getStringList("CleaverCrafting").get(0),
+                ConfigLoader.getWeapon("cleaver").getStringList("CleaverCrafting").get(1),
+                ConfigLoader.getWeapon("cleaver").getStringList("CleaverCrafting").get(2)
                 /*" MM",
                 "MM ",
                 "S  "*/};
@@ -88,9 +91,9 @@ public abstract class WeaponBase {
 
     private static String[] getKatanaShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("KatanaCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("KatanaCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("KatanaCrafting").get(2),
+                ConfigLoader.getWeapon("katana").getStringList("KatanaCrafting").get(0),
+                ConfigLoader.getWeapon("katana").getStringList("KatanaCrafting").get(1),
+                ConfigLoader.getWeapon("katana").getStringList("KatanaCrafting").get(2),
                 /*"  M",
                 " M ",
                 "S  "*/};
@@ -98,9 +101,9 @@ public abstract class WeaponBase {
 
     private static String[] getKnifeShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("KnifeCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("KnifeCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("KnifeCrafting").get(2),
+                ConfigLoader.getWeapon("knife").getStringList("KnifeCrafting").get(0),
+                ConfigLoader.getWeapon("knife").getStringList("KnifeCrafting").get(1),
+                ConfigLoader.getWeapon("knife").getStringList("KnifeCrafting").get(2),
                 /*"   ",
                 " M ",
                 " S "*/};
@@ -108,9 +111,9 @@ public abstract class WeaponBase {
 
     private static String[] getLongswordShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("LongswordCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("LongswordCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("LongswordCrafting").get(2),
+                ConfigLoader.getWeapon("longsword").getStringList("LongswordCrafting").get(0),
+                ConfigLoader.getWeapon("longsword").getStringList("LongswordCrafting").get(1),
+                ConfigLoader.getWeapon("longsword").getStringList("LongswordCrafting").get(2),
                 /*" M ",
                 " M ",
                 "MSM"*/};
@@ -118,9 +121,9 @@ public abstract class WeaponBase {
 
     private static String[] getRapierShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("RapierCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("RapierCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("RapierCrafting").get(2),
+                ConfigLoader.getWeapon("rapier").getStringList("RapierCrafting").get(0),
+                ConfigLoader.getWeapon("rapier").getStringList("RapierCrafting").get(1),
+                ConfigLoader.getWeapon("rapier").getStringList("RapierCrafting").get(2),
                 /*"  M",
                 "MM ",
                 "SM "*/};
@@ -128,9 +131,9 @@ public abstract class WeaponBase {
 
     private static String[] getSaberShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("SaberCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("SaberCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("SaberCrafting").get(2)
+                ConfigLoader.getWeapon("saber").getStringList("SaberCrafting").get(0),
+                ConfigLoader.getWeapon("saber").getStringList("SaberCrafting").get(1),
+                ConfigLoader.getWeapon("saber").getStringList("SaberCrafting").get(2)
                 /*" MM",
                 " M ",
                 "S  "*/};
@@ -138,9 +141,9 @@ public abstract class WeaponBase {
 
     private static String[] getScytheShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("ScytheCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("ScytheCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("ScytheCrafting").get(2),
+                ConfigLoader.getWeapon("scythe").getStringList("ScytheCrafting").get(0),
+                ConfigLoader.getWeapon("scythe").getStringList("ScytheCrafting").get(1),
+                ConfigLoader.getWeapon("scythe").getStringList("ScytheCrafting").get(2),
                 /*"MMM",
                 "  S",
                 "  S"*/};
@@ -148,9 +151,9 @@ public abstract class WeaponBase {
 
     private static String[] getSpearShape(){
         return new String[]{
-                ConfigLoader.getConfig().getStringList("SpearCrafting").get(0),
-                ConfigLoader.getConfig().getStringList("SpearCrafting").get(1),
-                ConfigLoader.getConfig().getStringList("SpearCrafting").get(2),
+                ConfigLoader.getWeapon("spear").getStringList("SpearCrafting").get(0),
+                ConfigLoader.getWeapon("spear").getStringList("SpearCrafting").get(1),
+                ConfigLoader.getWeapon("spear").getStringList("SpearCrafting").get(2),
                 /*" MM",
                 " SM",
                 "S  "*/};

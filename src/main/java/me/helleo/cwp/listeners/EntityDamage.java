@@ -45,7 +45,7 @@ public class EntityDamage implements Listener {
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
             if (itemInHand.hasItemMeta()) {
                 assert itemInHand.getItemMeta() != null;
-                if(itemInHand.getItemMeta().getItemModel().getKey().contains("knife")){
+                if(itemInHand.getItemMeta().getItemModel().getKey().contains("knife.yml")){
                     if (!player.hasCooldown(itemInHand.getType())) {
                         player.setCooldown(itemInHand.getType(), 15);
                     }
@@ -241,7 +241,7 @@ public class EntityDamage implements Listener {
                     }*/
 
                     // KNIFE
-                    if (itemMeta.getItemModel().getKey().contains("knife")) {
+                    if (itemMeta.getItemModel().getKey().contains("knife.yml")) {
                         event.setDamage(attack_damage);
                     }
 
@@ -432,7 +432,7 @@ public class EntityDamage implements Listener {
                                 return;
                             }
                             //KNIFE
-                            if (itemMeta.getItemModel().getKey().contains("knife")) {
+                            if (itemMeta.getItemModel().getKey().contains("knife.yml")) {
                                 World world = player.getWorld();
                                 Player player2 = (Player) event.getEntity();
 

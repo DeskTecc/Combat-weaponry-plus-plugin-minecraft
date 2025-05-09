@@ -21,26 +21,28 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String cleaverPath = "PrismarineCleaver";
-    private static double attack_damage = 14;
-    private static double attack_speed = -3.5;
+    static double attack_damage = 14;
+    static double attack_speed = -3.5;
 
     public static ItemStack getCleaver(){
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
+
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                getAttackDamage(attack_damage, cleaverPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
+
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                getAttackSpeed(attack_speed, cleaverPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
+        meta.setLore(getLore(getAttackDamage(attack_damage, cleaverPath),getAttackSpeed(attack_speed, cleaverPath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(cleaverPath)));
@@ -53,17 +55,11 @@ public class PrismarineCleaver extends BaseCleaver implements Listener {
     }
 
     public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(cleaverPath);
-        }
-        return attack_damage;
+        return getAttackDamage(attack_damage, cleaverPath);
     }
 
     public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(cleaverPath);
-        }
-        return attack_speed;
+        return getAttackSpeed(attack_speed, cleaverPath);
     }
 
     public static void setPrismarineCleaverRecipe() {

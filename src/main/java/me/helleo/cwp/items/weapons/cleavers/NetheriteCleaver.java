@@ -18,9 +18,8 @@ public class NetheriteCleaver extends BaseCleaver{
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String cleaverPath = "NetheriteCleaver";
-
-    private static double attack_damage = 12;
-    private static double attack_speed = -3.6;
+    static double attack_damage = 12;
+    static double attack_speed = -3.6;
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -33,18 +32,19 @@ public class NetheriteCleaver extends BaseCleaver{
 
     public static ItemStack getCleaver() {
 
-        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
+
+        meta.setLore(getLore(getAttackDamage(attack_damage, cleaverPath),getAttackSpeed(attack_speed, cleaverPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                getAttackDamage(attack_damage, cleaverPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                getAttackSpeed(attack_speed, cleaverPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -60,22 +60,16 @@ public class NetheriteCleaver extends BaseCleaver{
     }
 
     public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(cleaverPath);
-        }
-        return attack_damage;
+        return getAttackDamage(attack_damage, cleaverPath);
     }
 
     public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(cleaverPath);
-        }
-        return attack_speed;
+        return getAttackSpeed(attack_speed, cleaverPath);
     }
 
     public static void setCleaverRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "cleaver",
+                weapon_type,
                 "netherite_cleaver",
                 getCleaver(),
                 getNetherite()));

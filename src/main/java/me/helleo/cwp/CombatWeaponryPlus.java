@@ -39,6 +39,7 @@ import org.bukkit.util.Vector;
 import java.io.IOException;
 import java.util.*;
 
+import static me.helleo.cwp.configurations.ConfigLoader.loadWeapons;
 import static me.helleo.cwp.configurations.ConfigLoader.setLang;
 
 
@@ -68,6 +69,12 @@ public class CombatWeaponryPlus extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         this.getCommand("cwp").setExecutor(new Commands());
+        try {
+            loadWeapons();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         this.saveDefaultConfig();
         String lang = "en";
         if(!ConfigLoader.getConfig().contains("lang")){

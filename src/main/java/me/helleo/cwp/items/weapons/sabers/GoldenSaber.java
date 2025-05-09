@@ -18,25 +18,25 @@ public class GoldenSaber extends BaseSaber{
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String saberPath = "GoldenSaber";
-    private static double attack_damage = 3;
-    private static double attack_speed = -2.4;
+    static final double attack_damage = 3;
+    static final double attack_speed = -2.4;
 
 
     public static ItemStack getSaber() {
 
-        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
+        meta.setLore(getLore(getAttackDamage(attack_damage, saberPath),getAttackSpeed(attack_speed, saberPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
 
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                getAttackDamage(attack_damage, saberPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                getAttackSpeed(attack_speed, saberPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -52,22 +52,16 @@ public class GoldenSaber extends BaseSaber{
     }
 
     public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(saberPath);
-        }
-        return attack_damage;
+        return getAttackDamage(attack_damage, saberPath);
     }
 
     public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(saberPath);
-        }
-        return attack_speed;
+        return getAttackSpeed(attack_speed, saberPath);
     }
 
     public static void setSaberRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "saber",
+                weapon_type,
                 "golden_saber",
                 getSaber(),
                 Material.GOLD_INGOT));

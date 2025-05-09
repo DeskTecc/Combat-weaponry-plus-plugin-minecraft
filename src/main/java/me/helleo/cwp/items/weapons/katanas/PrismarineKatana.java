@@ -21,39 +21,32 @@ public class PrismarineKatana extends BaseKatana implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String katanaPath = "PrismarineKatana";
+    static double attack_damage = 8;
+    static double attack_speed = -2.2;
+    static double move_speed = 0.03;
 
     public static ItemStack getItem(){
 
-        double attack_damage = 8;
-        double attack_speed = -2.2;
-        double move_speed = 0.03;
-
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(katanaPath);
-            attack_speed = getCustomSpeed(katanaPath);
-            move_speed = getCustomMoveSpeed(katanaPath);
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, katanaPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, katanaPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.move_speed"),
-                move_speed,
+                getMoveSpeed(move_speed, katanaPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, katanaPath),getAttackSpeed(attack_speed, katanaPath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(katanaPath)));
@@ -63,6 +56,18 @@ public class PrismarineKatana extends BaseKatana implements Listener {
         meta.setCustomModelData(1200002);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, katanaPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, katanaPath);
+    }
+
+    public static double getMoveSpeed(){
+        return getAttackSpeed(move_speed, katanaPath);
     }
 
     public static void setPrismarineKatanaRecipe() {

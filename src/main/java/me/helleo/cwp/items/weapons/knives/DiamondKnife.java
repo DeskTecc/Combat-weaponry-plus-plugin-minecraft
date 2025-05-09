@@ -18,27 +18,24 @@ public class DiamondKnife extends BaseKnife{
     static ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String knifePath = "DiamondKnife";
+    static double attack_damage = 3;
+    static double attack_speed = -1;
+
 
     public static ItemStack getKnife() {
-        double attack_damage = 3;
-        double attack_speed = -1;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(knifePath);
-            attack_speed = getCustomSpeed(knifePath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, knifePath),getAttackSpeed(attack_speed, knifePath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, knifePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, knifePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -53,9 +50,17 @@ public class DiamondKnife extends BaseKnife{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, knifePath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, knifePath);
+    }
+
     public static void setKnifeRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "knife",
+                weapon_type,
                 "diamond_knife",
                 getKnife(),
                 Material.DIAMOND));

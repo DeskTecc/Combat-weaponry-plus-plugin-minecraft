@@ -18,6 +18,10 @@ public class NetheriteKatana extends BaseKatana{
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String katanaPath = "NetheriteKatana";
+    static double attack_damage = 6;
+    static double attack_speed = -2.3;
+    static double move_speed = 0.02;
+
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -27,34 +31,25 @@ public class NetheriteKatana extends BaseKatana{
         }
     }
 
-
     public static ItemStack getKatana() {
-        double attack_damage = 6;
-        double attack_speed = -2.3;
-        double move_speed = 0.02;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(katanaPath);
-            attack_speed = getCustomSpeed(katanaPath);
-            move_speed = getCustomMoveSpeed(katanaPath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, katanaPath),getAttackSpeed(attack_speed,katanaPath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, katanaPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, katanaPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.MOVEMENT_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.move_speed"),
-                move_speed,
+                getMoveSpeed(move_speed, katanaPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -69,9 +64,21 @@ public class NetheriteKatana extends BaseKatana{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, katanaPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, katanaPath);
+    }
+
+    public static double getMoveSpeed(){
+        return getAttackSpeed(move_speed, katanaPath);
+    }
+
     public static void setKatanaRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "katana",
+                weapon_type,
                 "netherite_katana",
                 getKatana(),
                 getNetherite()));

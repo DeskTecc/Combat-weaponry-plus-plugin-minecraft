@@ -1,0 +1,28 @@
+KnifeCrafting:
+  - "   "
+  - " M "
+  - " S "
+WoodenKnife:
+  Damage: 1.0
+  Speed: -1.0
+GoldenKnife:
+  Damage: 1.0
+  Speed: 0.0
+StoneKnife:
+  Damage: 1.5
+  Speed: -1.0
+IronKnife:
+  Damage: 2.0
+  Speed: -1.0
+EmeraldKnife:
+  Damage: 2.0
+  Speed: 0.0
+DiamondKnife:
+  Damage: 3.0
+  Speed: -1.0
+NetheriteKnife:
+  Damage: 4.0
+  Speed: -1.0
+PrismarineKnife:
+  Damage: 6.0
+  Speed: -1.0

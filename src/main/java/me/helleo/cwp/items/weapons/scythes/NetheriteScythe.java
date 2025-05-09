@@ -18,6 +18,8 @@ public class NetheriteScythe extends BaseScythe{
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String scythePath = "NetheriteScythe";
+    static double attack_damage = 9;
+    static double attack_speed = -3;
 
     private static Material getNetherite(){
         if(ConfigurationsBool.NetheriteIngots.getValue()){
@@ -28,25 +30,19 @@ public class NetheriteScythe extends BaseScythe{
     }
 
     public static ItemStack getScythe() {
-        double attack_damage = 9;
-        double attack_speed = -3;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scythePath);
-            attack_speed = getCustomSpeed(scythePath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, scythePath),getAttackSpeed(attack_speed, scythePath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, scythePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, scythePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -61,9 +57,17 @@ public class NetheriteScythe extends BaseScythe{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, scythePath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, scythePath);
+    }
+
     public static void setScytheRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "scythe",
+                weapon_type,
                 "netherite_scythe",
                 getScythe(),
                 getNetherite()));

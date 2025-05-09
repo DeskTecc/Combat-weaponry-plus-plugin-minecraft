@@ -1,0 +1,28 @@
+SpearCrafting:
+  - " MM"
+  - " SM"
+  - "S  "
+WoodenSpear:
+  Damage: 1.0
+  Speed: -1.5
+GoldenSpear:
+  Damage: 1.0
+  Speed: -1.2
+StoneSpear:
+  Damage: 1.5
+  Speed: -1.5
+IronSpear:
+  Damage: 2.0
+  Speed: -1.5
+EmeraldSpear:
+  Damage: 2.0
+  Speed: -1.2
+DiamondSpear:
+  Damage: 3.0
+  Speed: -1.5
+NetheriteSpear:
+  Damage: 4.0
+  Speed: -1.5
+PrismarineSpear:
+  Damage: 6.0
+  Speed: -1.4

@@ -20,29 +20,24 @@ public class PrismarineRapier extends BaseRapier implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String rapierPath = "PrismarineRapier";
+    static double attack_damage = 7;
+    static double attack_speed = -2.0;
 
     public static ItemStack getItem(){
 
-        double attack_damage = 7;
-        double attack_speed = -2.0;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(rapierPath);
-            attack_speed = getCustomSpeed(rapierPath);
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, rapierPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, rapierPath),getAttackSpeed(attack_speed, rapierPath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(rapierPath)));
@@ -52,6 +47,14 @@ public class PrismarineRapier extends BaseRapier implements Listener {
         meta.setCustomModelData(1200005);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, rapierPath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, rapierPath);
     }
 
     public static void setPrismarineRapierRecipe() {

@@ -18,33 +18,33 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import static me.helleo.cwp.items.weapons.sabers.BaseSaber.getLore;
 
-public class PrismarineSaber extends WeaponBase implements Listener {
+public class PrismarineSaber extends BaseSaber implements Listener {
 
     //The prismarine items are based on upgrade of netherite items
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String saberPath = "PrismarineSaber";
-    private static double attack_damage = 9.0;
-    private static double attack_speed = -2.3;
+    static final double attack_damage = 9.0;
+    static final double attack_speed = -2.3;
 
 
     public static ItemStack getItem(){
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                getAttackDamage(attack_damage, saberPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                getAttackSpeed(attack_speed, saberPath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(getAttackDamage(),getAttackSpeed()));
+        meta.setLore(getLore(BaseSaber.getAttackDamage(attack_damage, saberPath),BaseSaber.getAttackSpeed(attack_speed, saberPath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(saberPath)));
@@ -57,17 +57,11 @@ public class PrismarineSaber extends WeaponBase implements Listener {
     }
 
     public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(saberPath);
-        }
-        return attack_damage;
+        return getAttackDamage(attack_damage, saberPath);
     }
 
     public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(saberPath);
-        }
-        return attack_speed;
+        return getAttackSpeed(attack_speed, saberPath);
     }
 
     public static void setPrismarineSaberRecipe() {

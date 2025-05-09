@@ -1,0 +1,28 @@
+ScytheCrafting:
+  - "MMM"
+  - "  S"
+  - "  S"
+WoodenScythe:
+  Damage: 6.0
+  Speed: -3.0
+GoldenScythe:
+  Damage: 6.0
+  Speed: -2.8
+StoneScythe:
+  Damage: 6.5
+  Speed: -3.0
+IronScythe:
+  Damage: 8.0
+  Speed: -3.0
+EmeraldScythe:
+  Damage: 7.0
+  Speed: -2.8
+DiamondScythe:
+  Damage: 8.0
+  Speed: -3.0
+NetheriteScythe:
+  Damage: 9.0
+  Speed: -3.0
+PrismarineScythe:
+  Damage: 11
+  Speed: -2.8

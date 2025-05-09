@@ -1,0 +1,28 @@
+LongswordCrafting:
+  - " M "
+  - " M "
+  - "MSM"
+WoodenLongsword:
+  Damage: 4.0
+  Speed: -2.8
+GoldenLongsword:
+  Damage: 4.0
+  Speed: -2.6
+StoneLongsword:
+  Damage: 5.0
+  Speed: -2.8
+IronLongsword:
+  Damage: 6.0
+  Speed: -2.8
+EmeraldLongsword:
+  Damage: 6.0
+  Speed: -2.6
+DiamondLongsword:
+  Damage: 7.0
+  Speed: -2.8
+NetheriteLongsword:
+  Damage: 8.0
+  Speed: -2.8
+PrismarineLongsword:
+  Damage: 10.0
+  Speed: -2.7

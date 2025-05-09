@@ -46,6 +46,36 @@ public class ConfigLoader {
         plugin.reloadConfig();
     }
 
+    public static void setWeapon(String weapon) throws IOException {
+        File weaponYml = new File(plugin.getDataFolder() + "/weapons/" + weapon + ".yml");
+        if(!weaponYml.exists()){
+            plugin.saveResource("weapons/" + weapon + ".yml",false);
+        }
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(weaponYml);
+        config.save(weaponYml);
+    }
+
+    public static YamlConfiguration getWeapon(String weapon){
+        try {
+            File langYml = new File(plugin.getDataFolder() + "/weapons/" + weapon + ".yml");
+            return YamlConfiguration.loadConfiguration(langYml);
+        } catch (Exception e) {
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+    public static void loadWeapons() throws IOException {
+        setWeapon("cleaver");
+        setWeapon("katana");
+        setWeapon("knife");
+        setWeapon("longsword");
+        setWeapon("rapier");
+        setWeapon("saber");
+        setWeapon("scythe");
+        setWeapon("spear");
+    }
+
     public static FileConfiguration getConfig(){
         return plugin.getConfig();
     }

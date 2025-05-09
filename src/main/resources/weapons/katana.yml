@@ -1,0 +1,36 @@
+KatanaCrafting:
+  - "  M"
+  - " M "
+  - "S  "
+WoodenKatana:
+  Damage: 2.5
+  Speed: -2.3
+  MoveSpeed: 0.02
+GoldenKatana:
+  Damage: 2.5
+  Speed: -2.0
+  MoveSpeed: 0.02
+StoneKatana:
+  Damage: 3.0
+  Speed: -2.3
+  MoveSpeed: 0.02
+IronKatana:
+  Damage: 4.0
+  Speed: -2.3
+  MoveSpeed: 0.02
+EmeraldKatana:
+  Damage: 4.0
+  Speed: -2.0
+  MoveSpeed: 0.02
+DiamondKatana:
+  Damage: 5.0
+  Speed: -2.3
+  MoveSpeed: 0.02
+NetheriteKatana:
+  Damage: 6.0
+  Speed: -2.3
+  MoveSpeed: 0.02
+PrismarineKatana:
+  Damage: 8.0
+  Speed: -2.2
+  MoveSpeed: 0.03

@@ -20,31 +20,26 @@ public class PrismarineScythe extends BaseScythe implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String scythePath = "PrismarineScythe";
+    static double attack_damage = 11;
+    static double attack_speed = -2.8;
 
     public static ItemStack getItem(){
 
-        double attack_damage = 11;
-        double attack_speed = -2.8;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scythePath);
-            attack_speed = getCustomSpeed(scythePath);
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, scythePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, scythePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, scythePath),getAttackSpeed(attack_speed, scythePath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(scythePath)));
@@ -54,6 +49,14 @@ public class PrismarineScythe extends BaseScythe implements Listener {
         meta.setCustomModelData(1200003);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, scythePath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, scythePath);
     }
 
     public static void setPrismarineScytheRecipe() {

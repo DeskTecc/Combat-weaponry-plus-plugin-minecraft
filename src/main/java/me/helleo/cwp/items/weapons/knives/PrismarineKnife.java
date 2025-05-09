@@ -20,31 +20,27 @@ public class PrismarineKnife extends BaseKnife implements Listener {
     static ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String knifePath = "PrismarineKnife";
+    static double attack_damage = 6;
+    static double attack_speed = -1;
+
 
     public static ItemStack getItem(){
 
-        double attack_damage = 6;
-        double attack_speed = -1;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(knifePath);
-            attack_speed = getCustomSpeed(knifePath);
-        }
-
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, knifePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, knifePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
 
         meta.setAttributeModifiers(modifiers);
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, knifePath),getAttackSpeed(attack_speed, knifePath)));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 ConfigLoader.getLang().getString(knifePath)));
@@ -54,6 +50,14 @@ public class PrismarineKnife extends BaseKnife implements Listener {
         meta.setCustomModelData(1200006);
         item.setItemMeta(meta);
         return item;
+    }
+
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, knifePath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, knifePath);
     }
 
     public static void setPrismarineKnifeRecipe() {

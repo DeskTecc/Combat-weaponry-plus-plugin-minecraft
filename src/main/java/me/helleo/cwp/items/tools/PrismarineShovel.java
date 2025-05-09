@@ -18,24 +18,30 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+
 public class PrismarineShovel extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_SHOVEL);
     static ItemMeta meta = item.getItemMeta();
     private static String shovelPath = "PrismarineShovel";
-    private static double attack_damage = 6.5;
-    private static double attack_speed = -3;
 
     public static ItemStack getTool(){
+        double attack_damage = 6.5;
+        double attack_speed = -3;
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getConfig().getDouble(shovelPath+".Damage");
+            attack_speed = getConfig().getDouble(shovelPath+".Speed");
+        }
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE, new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -44,7 +50,7 @@ public class PrismarineShovel extends WeaponBase {
 
         List<String> lore = new ArrayList<>();
 
-        meta.setLore(setLore(lore, getAttackDamage(),getAttackSpeed()));
+        meta.setLore(setLore(lore, attack_damage, attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(shovelPath)));
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_shovel"));
@@ -52,20 +58,6 @@ public class PrismarineShovel extends WeaponBase {
         meta.setCustomModelData(1210004);
         item.setItemMeta(meta);
         return item;
-    }
-
-    public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(shovelPath);
-        }
-        return attack_damage;
-    }
-
-    public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(shovelPath);
-        }
-        return attack_speed;
     }
 
     public static void setPrismarineShovelRecipe() {

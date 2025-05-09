@@ -18,6 +18,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.helleo.cwp.configurations.ConfigLoader.getConfig;
+
 public class PrismarinePickaxe extends WeaponBase {
 
     static ItemStack item = new ItemStack(Material.NETHERITE_PICKAXE);
@@ -28,14 +30,18 @@ public class PrismarinePickaxe extends WeaponBase {
 
     public static ItemStack getTool(){
 
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getConfig().getDouble(pickaxePath+".Damage");
+            attack_speed = getConfig().getDouble(pickaxePath+".Speed");
+        }
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_DAMAGE, new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                getAttackDamage(),
+                attack_damage,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
         modifiers.put(Attribute.ATTACK_SPEED, new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                getAttackSpeed(),
+                attack_speed,
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.HAND
         ));
@@ -44,7 +50,7 @@ public class PrismarinePickaxe extends WeaponBase {
 
         List<String> lore = new ArrayList<>();
 
-        meta.setLore(setLore(lore, getAttackDamage(), getAttackSpeed()));
+        meta.setLore(setLore(lore, attack_damage, attack_speed));
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(pickaxePath)));
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_pickaxe"));
@@ -52,20 +58,6 @@ public class PrismarinePickaxe extends WeaponBase {
         meta.setCustomModelData(1210002);
         item.setItemMeta(meta);
         return item;
-    }
-
-    public static double getAttackDamage(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_damage = getCustomDamage(pickaxePath);
-        }
-        return attack_damage;
-    }
-
-    public static double getAttackSpeed(){
-        if(ConfigurationsBool.UseCustomValues.getValue()){
-            attack_speed = getCustomSpeed(pickaxePath);
-        }
-        return attack_speed;
     }
 
     public static void setPrismarinePickaxeRecipe() {

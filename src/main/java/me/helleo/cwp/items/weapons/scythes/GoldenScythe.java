@@ -18,27 +18,23 @@ public class GoldenScythe extends BaseScythe{
     static ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
     static ItemMeta meta = item.getItemMeta();
     static String scythePath = "GoldenScythe";
+    static double attack_damage = 6;
+    static double attack_speed = -2.8;
 
     public static ItemStack getScythe() {
-        double attack_damage = 6;
-        double attack_speed = -2.8;
-        if (ConfigurationsBool.UseCustomValues.getValue()) {
-            attack_damage = getCustomDamage(scythePath);
-            attack_speed = getCustomSpeed(scythePath);
-        }
 
-        meta.setLore(getLore(attack_damage,attack_speed));
+        meta.setLore(getLore(getAttackDamage(attack_damage, scythePath),getAttackSpeed(attack_speed, scythePath)));
         //important:
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         Multimap<Attribute,AttributeModifier> modifiers = ArrayListMultimap.create();
         modifiers.put(Attribute.ATTACK_SPEED,new AttributeModifier(NamespacedKey.fromString("generic.attack_speed"),
-                attack_speed,
+                getAttackSpeed(attack_speed, scythePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
         modifiers.put(Attribute.ATTACK_DAMAGE,new AttributeModifier(NamespacedKey.fromString("generic.attack_damage"),
-                attack_damage,
+                getAttackDamage(attack_damage, scythePath),
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlotGroup.MAINHAND
         ));
@@ -53,9 +49,17 @@ public class GoldenScythe extends BaseScythe{
         return item;
     }
 
+    public static double getAttackDamage(){
+        return getAttackDamage(attack_damage, scythePath);
+    }
+
+    public static double getAttackSpeed(){
+        return getAttackSpeed(attack_speed, scythePath);
+    }
+
     public static void setScytheRecipe(){
         Bukkit.addRecipe(getWeaponRecipe(
-                "scythe",
+                weapon_type,
                 "golden_scythe",
                 getScythe(),
                 Material.GOLD_INGOT));

@@ -1,0 +1,28 @@
+SaberCrafting:
+  - " MM"
+  - " M "
+  - "S  "
+WoodenSaber:
+  Damage: 3.0
+  Speed: -2.4
+GoldenSaber:
+  Damage: 3.0
+  Speed: -2.4
+StoneSaber:
+  Damage: 4.0
+  Speed: -2.4
+IronSaber:
+  Damage: 5.0
+  Speed: -2.4
+EmeraldSaber:
+  Damage: 5.0
+  Speed: -2.4
+DiamondSaber:
+  Damage: 6.0
+  Speed: -2.4
+NetheriteSaber:
+  Damage: 7.0
+  Speed: -2.4
+PrismarineSaber:
+  Damage: 9.0
+  Speed: -2.3

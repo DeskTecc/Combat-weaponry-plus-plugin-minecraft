@@ -1,6 +1,7 @@
 package me.helleo.cwp.items.weapons.longswords;
 
 import me.helleo.cwp.configurations.ConfigLoader;
+import me.helleo.cwp.configurations.ConfigurationsBool;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseLongsword extends WeaponBase {
+    static String weapon_type = "longsword";
     public enum description {
         Line1("DescriptionLongsword.Line1"),
         Line2("DescriptionLongsword.Line2"),
@@ -34,6 +36,20 @@ public abstract class BaseLongsword extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line4.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line5.getValue())));
         return setLore(lore, attack_damage,attack_speed);
+    }
+
+    public static double getAttackDamage(double attack_damage, String longswordPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_damage = getCustomDamage(weapon_type, longswordPath);
+        }
+        return attack_damage;
+    }
+
+    public static double getAttackSpeed(double attack_speed, String longswordPath){
+        if(ConfigurationsBool.UseCustomValues.getValue()){
+            attack_speed = getCustomSpeed(weapon_type, longswordPath);
+        }
+        return attack_speed;
     }
 
     public static boolean isLongsword(ItemStack item){
