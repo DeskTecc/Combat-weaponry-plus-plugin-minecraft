@@ -6,7 +6,7 @@
 
     <groupId>me.helleo.cwp</groupId>
     <artifactId>CombatWeaponryPlus</artifactId>
-    <version>RELEASE 1.0.1</version>
+    <version>ALPHA 1.0.3</version>
     <packaging>jar</packaging>
 
     <name>Combat Weaponry Plus</name>

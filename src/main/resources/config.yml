@@ -94,16 +94,11 @@ CursedVessel: false
 # The wither armor works but I am unsure if it is balanced or not
 WitherArmor: false
 Eelytra: false
-TridentBow: false
 JumpElytra: false
 VolcanicBlade: false
 VolcanicSpear: false
 VolcanicAxe: false
 VolcanicCleaver: false
-#The test katana is a diamond katana with different abilities.
-#Those abilities will most likely not be added to the regular katanas since it was really complicated to make.
-#However, I might add the abilities to a new unique weapon in the future.
-TestKatana: false
 #enable or disable wither skeleton bones (they will drop from wither skeletons)
 # wither skeleton bones are used to craft the wither armor
 WitherBones: false
@@ -315,6 +310,10 @@ PrismarineSword:
   Speed: 1.6
 #BASIC WEAPONS: ============================================================================================================
 #SCYTHES
+ScytheCrafting:
+  - "MMM"
+  - "  S"
+  - "  S"
 WoodenScythe:
   Damage: 6.0
   Speed: -3.0
@@ -340,6 +339,10 @@ PrismarineScythe:
   Damage: 11
   Speed: -2.8
 #RAPIERS
+RapierCrafting:
+  - "  M"
+  - "MM "
+  - "SM "
 WoodenRapier:
   Damage: 2.0
   Speed: -2.1
@@ -365,6 +368,10 @@ PrismarineRapier:
   Damage: 7.0
   Speed: -2.0
 #LONGSWORDS
+LongswordCrafting:
+  - " M "
+  - " M "
+  - "MSM"
 WoodenLongsword:
   Damage: 4.0
   Speed: -2.8
@@ -390,6 +397,10 @@ PrismarineLongsword:
   Damage: 10.0
   Speed: -2.7
 #KNIVES
+KnifeCrafting:
+  - "   "
+  - " M "
+  - " S "
 WoodenKnife:
   Damage: 1.0
   Speed: -1.0
@@ -415,6 +426,10 @@ PrismarineKnife:
   Damage: 6.0
   Speed: -1.0
 #SPEARS
+SpearCrafting:
+  - " MM"
+  - " SM"
+  - "S  "
 WoodenSpear:
   Damage: 1.0
   Speed: -1.5
@@ -440,6 +455,10 @@ PrismarineSpear:
   Damage: 6.0
   Speed: -1.4
 #KATANAS
+KatanaCrafting:
+  - "  M"
+  - " M "
+  - "S  "
 WoodenKatana:
   Damage: 2.5
   Speed: -2.3
@@ -473,6 +492,10 @@ PrismarineKatana:
   Speed: -2.2
   MoveSpeed: 0.03
 #SABERS
+SaberCrafting:
+  - " MM"
+  - " M "
+  - "S  "
 WoodenSaber:
   Damage: 3.0
   Speed: -2.4
@@ -498,6 +521,10 @@ PrismarineSaber:
   Damage: 9.0
   Speed: -2.3
 #CLEAVERS
+CleaverCrafting:
+    - " MM"
+    - "MM "
+    - "S  "
 WoodenCleaver:
   Damage: 8.0
   Speed: -3.6

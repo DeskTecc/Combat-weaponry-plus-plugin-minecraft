@@ -78,58 +78,82 @@ public abstract class WeaponBase {
 
     private static String[] getCleaverShape(){
         return new String[]{
-                " MM",
+                ConfigLoader.getConfig().getStringList("CleaverCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("CleaverCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("CleaverCrafting").get(2)
+                /*" MM",
                 "MM ",
-                "S  "};
+                "S  "*/};
     }
 
     private static String[] getKatanaShape(){
         return new String[]{
-                "  M",
+                ConfigLoader.getConfig().getStringList("KatanaCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("KatanaCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("KatanaCrafting").get(2),
+                /*"  M",
                 " M ",
-                "S  "};
+                "S  "*/};
     }
 
     private static String[] getKnifeShape(){
         return new String[]{
-                "   ",
+                ConfigLoader.getConfig().getStringList("KnifeCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("KnifeCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("KnifeCrafting").get(2),
+                /*"   ",
                 " M ",
-                " S "};
+                " S "*/};
     }
 
     private static String[] getLongswordShape(){
         return new String[]{
+                ConfigLoader.getConfig().getStringList("LongswordCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("LongswordCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("LongswordCrafting").get(2),
+                /*" M ",
                 " M ",
-                " M ",
-                "MSM"};
+                "MSM"*/};
     }
 
     private static String[] getRapierShape(){
         return new String[]{
-                "  M",
+                ConfigLoader.getConfig().getStringList("RapierCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("RapierCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("RapierCrafting").get(2),
+                /*"  M",
                 "MM ",
-                "SM "};
+                "SM "*/};
     }
 
     private static String[] getSaberShape(){
         return new String[]{
-                " MM",
+                ConfigLoader.getConfig().getStringList("SaberCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("SaberCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("SaberCrafting").get(2)
+                /*" MM",
                 " M ",
-                "S  "};
+                "S  "*/};
     }
 
     private static String[] getScytheShape(){
         return new String[]{
-                "MMM",
+                ConfigLoader.getConfig().getStringList("ScytheCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("ScytheCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("ScytheCrafting").get(2),
+                /*"MMM",
                 "  S",
-                "  S"};
+                "  S"*/};
     }
 
     private static String[] getSpearShape(){
         return new String[]{
-                " MM",
+                ConfigLoader.getConfig().getStringList("SpearCrafting").get(0),
+                ConfigLoader.getConfig().getStringList("SpearCrafting").get(1),
+                ConfigLoader.getConfig().getStringList("SpearCrafting").get(2),
+                /*" MM",
                 " SM",
-                "S  "};
+                "S  "*/};
     }
 
     protected static List<String> setLore(List<String> lore,Double damage, Double speed){
