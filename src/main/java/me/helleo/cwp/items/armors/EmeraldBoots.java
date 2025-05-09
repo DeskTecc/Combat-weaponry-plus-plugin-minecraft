@@ -50,6 +50,7 @@ public class EmeraldBoots extends BaseArmor{
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_boots"));
+        meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;
     }

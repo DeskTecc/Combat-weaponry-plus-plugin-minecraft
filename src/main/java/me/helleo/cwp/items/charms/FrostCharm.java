@@ -44,7 +44,7 @@ public class FrostCharm extends BaseCharm{
 
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         meta.setUnbreakable(true);
-
+        meta.setCustomModelData(45);
         item.setItemMeta(meta);
 
         NamespacedKey key = new NamespacedKey(CombatWeaponryPlus.getPlugin(), "frost_charm");

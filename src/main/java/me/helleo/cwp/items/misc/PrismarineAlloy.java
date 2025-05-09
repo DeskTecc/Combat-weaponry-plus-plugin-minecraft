@@ -36,6 +36,7 @@ public class PrismarineAlloy {
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_alloy"));
+        meta.setCustomModelData(9999901);
         item.setItemMeta(meta);
         return item;
     }

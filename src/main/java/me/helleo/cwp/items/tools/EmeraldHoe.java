@@ -30,6 +30,7 @@ public class EmeraldHoe extends BaseTool{
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_hoe"));
+        meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;
     }

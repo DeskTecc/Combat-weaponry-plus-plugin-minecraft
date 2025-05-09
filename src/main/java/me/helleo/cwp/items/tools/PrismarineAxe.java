@@ -50,6 +50,7 @@ public class PrismarineAxe extends WeaponBase {
 
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_axe"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setCustomModelData(1220001);
         item.setItemMeta(meta);
         return item;
     }

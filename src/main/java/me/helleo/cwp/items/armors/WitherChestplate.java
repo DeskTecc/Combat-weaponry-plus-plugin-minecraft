@@ -53,7 +53,7 @@ public class WitherChestplate {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringArmorSet.Line8")));
 
         meta.setLore(lore);
-
+        meta.setCustomModelData(5553332);
         item.setItemMeta(meta);
         return item;
     }

@@ -50,6 +50,7 @@ public class PrismarineHoe extends WeaponBase {
 
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_hoe"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setCustomModelData(1210005);
         item.setItemMeta(meta);
         return item;
     }

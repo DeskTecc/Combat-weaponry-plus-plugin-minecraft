@@ -38,7 +38,7 @@ public class JumpElytra {
         lore.add("");
 
         meta.setLore(lore);
-
+        meta.setCustomModelData(1212121);
         item.setItemMeta(meta);
         return item;
     }

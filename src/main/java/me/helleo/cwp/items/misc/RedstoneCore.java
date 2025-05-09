@@ -46,6 +46,7 @@ public class RedstoneCore {
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionRedstoneCore.Name")));
         meta.setItemModel(new NamespacedKey("cwp","misc/redstone_core"));
+        meta.setCustomModelData(1231234);
         item.setItemMeta(meta);
         return item;
     }

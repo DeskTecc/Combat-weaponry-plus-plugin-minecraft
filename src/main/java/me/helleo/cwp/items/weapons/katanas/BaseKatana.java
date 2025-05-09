@@ -3,6 +3,7 @@ package me.helleo.cwp.items.weapons.katanas;
 import me.helleo.cwp.configurations.ConfigLoader;
 import me.helleo.cwp.items.weapons.WeaponBase;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +46,19 @@ public abstract class BaseKatana extends WeaponBase {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line10.getValue())));
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(description.Line11.getValue())));
         return setLore(lore, attack_damage,attack_speed);
+    }
+
+    public static boolean isKatana(ItemStack item){
+        if(item.hasItemMeta()){
+            if(item.getItemMeta().hasCustomModelData()) {
+                return item.getItemMeta().getCustomModelData() == 1000002 ||
+                        item.getItemMeta().getCustomModelData() == 1000012 ||
+                        item.getItemMeta().getCustomModelData() == 1200002;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 }

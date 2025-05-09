@@ -49,6 +49,7 @@ public class PrismarineShovel extends WeaponBase {
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(shovelPath)));
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_shovel"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setCustomModelData(1210004);
         item.setItemMeta(meta);
         return item;
     }

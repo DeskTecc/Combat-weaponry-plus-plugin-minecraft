@@ -54,7 +54,7 @@ public class WitherLeggings {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringArmorSet.Line8")));
 
         meta.setLore(lore);
-
+        meta.setCustomModelData(5553333);
         item.setItemMeta(meta);
         return item;
     }

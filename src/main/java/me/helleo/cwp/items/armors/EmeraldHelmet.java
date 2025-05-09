@@ -48,6 +48,7 @@ public class EmeraldHelmet extends BaseArmor {
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_helmet"));
+        meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;
     }

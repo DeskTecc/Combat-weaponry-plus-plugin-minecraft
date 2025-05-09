@@ -35,6 +35,7 @@ public class ObsidianPickaxe extends BaseTool{
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionObsidianPickaxe.Name")));
         meta.setItemModel(new NamespacedKey("cwp","misc/obsidian_pickaxe"));
+        meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;
     }

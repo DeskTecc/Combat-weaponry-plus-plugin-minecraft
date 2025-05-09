@@ -49,6 +49,7 @@ public class PrismarinePickaxe extends WeaponBase {
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString(pickaxePath)));
         meta.setItemModel(new NamespacedKey("cwp","prismarine/prismarine_pickaxe"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setCustomModelData(1210002);
         item.setItemMeta(meta);
         return item;
     }

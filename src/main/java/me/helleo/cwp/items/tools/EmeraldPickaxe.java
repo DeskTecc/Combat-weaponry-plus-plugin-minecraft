@@ -30,6 +30,7 @@ public class EmeraldPickaxe extends BaseTool{
             meta.addEnchant(Enchantment.MENDING, mendingLevel, true);
         }
         meta.setItemModel(new NamespacedKey("cwp","emerald/emerald_pickaxe"));
+        meta.setCustomModelData(1000001);
         item.setItemMeta(meta);
         return item;
     }

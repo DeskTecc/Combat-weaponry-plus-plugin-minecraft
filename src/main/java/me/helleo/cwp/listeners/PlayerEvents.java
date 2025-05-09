@@ -11,21 +11,29 @@ import me.helleo.cwp.items.tools.PrismarineAxe;
 import me.helleo.cwp.items.tools.PrismarineHoe;
 import me.helleo.cwp.items.tools.PrismarinePickaxe;
 import me.helleo.cwp.items.tools.PrismarineShovel;
+import me.helleo.cwp.items.weapons.cleavers.BaseCleaver;
 import me.helleo.cwp.items.weapons.cleavers.NetheriteCleaver;
 import me.helleo.cwp.items.weapons.cleavers.PrismarineCleaver;
+import me.helleo.cwp.items.weapons.katanas.BaseKatana;
 import me.helleo.cwp.items.weapons.katanas.NetheriteKatana;
 import me.helleo.cwp.items.weapons.katanas.PrismarineKatana;
+import me.helleo.cwp.items.weapons.knives.BaseKnife;
 import me.helleo.cwp.items.weapons.knives.NetheriteKnife;
 import me.helleo.cwp.items.weapons.knives.PrismarineKnife;
+import me.helleo.cwp.items.weapons.longswords.BaseLongsword;
 import me.helleo.cwp.items.weapons.longswords.NetheriteLongsword;
 import me.helleo.cwp.items.weapons.longswords.PrismarineLongsword;
 import me.helleo.cwp.items.weapons.misc.PrismarineSword;
+import me.helleo.cwp.items.weapons.rapiers.BaseRapier;
 import me.helleo.cwp.items.weapons.rapiers.NetheriteRapier;
 import me.helleo.cwp.items.weapons.rapiers.PrismarineRapier;
+import me.helleo.cwp.items.weapons.sabers.BaseSaber;
 import me.helleo.cwp.items.weapons.sabers.NetheriteSaber;
 import me.helleo.cwp.items.weapons.sabers.PrismarineSaber;
+import me.helleo.cwp.items.weapons.scythes.BaseScythe;
 import me.helleo.cwp.items.weapons.scythes.NetheriteScythe;
 import me.helleo.cwp.items.weapons.scythes.PrismarineScythe;
+import me.helleo.cwp.items.weapons.spears.BaseSpear;
 import me.helleo.cwp.items.weapons.spears.NetheriteSpear;
 import me.helleo.cwp.items.weapons.spears.PrismarineSpear;
 import org.bukkit.Bukkit;
@@ -264,7 +272,7 @@ public class PlayerEvents implements Listener {
                         && modifier.getItemMeta().getItemModel().getKey().contains("prismarine_alloy")) {
                     if (tool.hasItemMeta()) {
                         //Prismarine Longsword
-                        if (tool.isSimilar(NetheriteLongsword.getLongsword())) {
+                        if (BaseLongsword.isLongsword(tool) && tool.isSimilar(NetheriteLongsword.getLongsword())) {
                             ItemStack item = PrismarineLongsword.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -273,7 +281,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Cleaver
-                        if (tool.isSimilar(NetheriteCleaver.getCleaver())) {
+                        if (BaseCleaver.isCleaver(tool) && tool.isSimilar(NetheriteCleaver.getCleaver())) {
                             ItemStack item = PrismarineCleaver.getCleaver();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -282,7 +290,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Saber
-                        if (tool.isSimilar(NetheriteSaber.getSaber())) {
+                        if (BaseSaber.isSaber(tool) && tool.isSimilar(NetheriteSaber.getSaber())) {
                             ItemStack item = PrismarineSaber.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -291,7 +299,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Knife
-                        if (tool.isSimilar(NetheriteKnife.getKnife())) {
+                        if (BaseKnife.isKnife(tool) && tool.isSimilar(NetheriteKnife.getKnife())) {
                             ItemStack item = PrismarineKnife.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -300,7 +308,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Katana
-                        if (tool.isSimilar(NetheriteKatana.getKatana())) {
+                        if (BaseKatana.isKatana(tool) && tool.isSimilar(NetheriteKatana.getKatana())) {
                             ItemStack item = PrismarineKatana.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -309,7 +317,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Spear
-                        if (tool.isSimilar(NetheriteSpear.getSpear())) {
+                        if (BaseSpear.isSpear(tool) && tool.isSimilar(NetheriteSpear.getSpear())) {
                             ItemStack item = PrismarineSpear.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -318,7 +326,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Rapier
-                        if (tool.isSimilar(NetheriteRapier.getRapier())) {
+                        if (BaseRapier.isRapier(tool) && tool.isSimilar(NetheriteRapier.getRapier())) {
                             ItemStack item = PrismarineRapier.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {
@@ -327,7 +335,7 @@ public class PlayerEvents implements Listener {
                         }
 
                         //Prismarine Scythe
-                        if (tool.isSimilar(NetheriteScythe.getScythe())) {
+                        if (BaseScythe.isScythe(tool) && tool.isSimilar(NetheriteScythe.getScythe())) {
                             ItemStack item = PrismarineScythe.getItem();
 
                             if (ConfigurationsBool.Prismarine.getValue()) {

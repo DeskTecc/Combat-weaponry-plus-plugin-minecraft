@@ -54,7 +54,7 @@ public class WitherHelmet {
         lore.add(ChatColor.translateAlternateColorCodes('&', ConfigLoader.getLang().getString("DescriptionWitheringArmorSet.Line8")));
 
         meta.setLore(lore);
-
+        meta.setCustomModelData(5553331);
         item.setItemMeta(meta);
         return item;
     }
