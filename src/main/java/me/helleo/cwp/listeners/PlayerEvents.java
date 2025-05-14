@@ -263,9 +263,9 @@ public class PlayerEvents implements Listener {
                 inventory.getItem(1)!=null &&
                 inventory.getItem(2)!=null){
 
-        ItemStack template = inventory.getItem(0); // needs to be Lapis Lazuli
-        ItemStack tool = inventory.getItem(1); // needs to be a Netherite tool
-        ItemStack modifier = inventory.getItem(2); // needs to be a Prismarine alloy
+            ItemStack template = inventory.getItem(0); // needs to be Lapis Lazuli
+            ItemStack tool = inventory.getItem(1); // needs to be a Netherite tool
+            ItemStack modifier = inventory.getItem(2); // needs to be a Prismarine alloy
 
             if(modifier.hasItemMeta()) {
                 if (template.getType().equals(Material.LAPIS_LAZULI)

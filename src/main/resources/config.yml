@@ -308,12 +308,6 @@ Swords_ChorusBlade:
 PrismarineSword:
   Damage: 9.0
   Speed: 1.6
-#BASIC WEAPONS: ============================================================================================================
-
-
-
-
-#
 #======================================================================================================================================================
 # MAKE NETHERITE WEAPONS REQUIRE INGOTS INSTEAD OF SCRAP TO CRAFT (in the crafting table recipe)
 # PUT TRUE OR FALSE
