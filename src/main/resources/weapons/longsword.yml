@@ -1,3 +1,8 @@
+#--------------------
+#  CRAFTING INFO
+#  M = Material
+#  S = Stick
+#--------------------
 LongswordCrafting:
   - " M "
   - " M "

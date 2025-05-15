@@ -311,7 +311,7 @@ PrismarineSword:
 #======================================================================================================================================================
 # MAKE NETHERITE WEAPONS REQUIRE INGOTS INSTEAD OF SCRAP TO CRAFT (in the crafting table recipe)
 # PUT TRUE OR FALSE
-NetheriteIngots: false
+NetheriteIngots: true
 #======================================================================================================================================================
 #
 # Customize item descriptions===========================================================================================
@@ -545,4 +545,3 @@ DescriptionChorusBlade:
   Line7: "&7When in Main Hand:"
   Line8: "&9 4 Attack Damage"
   Line9: "&9 10 Attack Speed"
-# BE SURE TO LET ME KNOW IF ANYTHING ISN'T WORKING RIGHT

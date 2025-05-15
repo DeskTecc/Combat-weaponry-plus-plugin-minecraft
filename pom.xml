@@ -11,7 +11,7 @@
 
     <name>Combat Weaponry Plus</name>
 
-    <description>a minecraft plugin, adds more items</description>
+    <description>A plugin that add new bows, swords, armors and items with special mechanics.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
