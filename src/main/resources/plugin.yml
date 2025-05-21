@@ -1,7 +1,7 @@
 name: CombatWeaponryPlus
 version: '${project.version}'
 main: me.helleo.cwp.CombatWeaponryPlus
-api-version: '1.21.1'
+api-version: '1.21.0'
 commands:
   cwp:
     description: main prefix command
